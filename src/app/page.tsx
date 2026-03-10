@@ -394,6 +394,31 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Ready for your project? Section */}
+        <section className="py-24 px-6 relative">
+          <div className="max-w-7xl mx-auto">
+            <div className="bg-[#0a0a0a] rounded-[4rem] p-16 md:p-24 text-center space-y-12">
+              <div className="space-y-4">
+                <h2 className="text-5xl md:text-7xl font-headline font-black text-white">Ready for your project?</h2>
+                <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                  Let&apos;s create something extraordinary together. I look forward to hearing from you.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Button asChild className="h-16 px-10 rounded-2xl bg-white text-[#0a0a0a] hover:bg-white/90 font-black text-lg transition-all hover:scale-105">
+                  <Link href="/contact">
+                    Free offer <ArrowRight className="ml-2 w-6 h-6" />
+                  </Link>
+                </Button>
+                <Button variant="outline" className="h-16 px-10 rounded-2xl border-white/20 bg-white/5 text-white hover:bg-white/10 font-black text-lg transition-all hover:scale-105">
+                  <Phone className="mr-2 w-6 h-6" />
+                  8466006486
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Floating Action Buttons */}
         <div className="fixed bottom-8 right-8 flex flex-col gap-4 z-50">
           <button className="w-14 h-14 bg-secondary text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
