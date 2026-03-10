@@ -4,13 +4,16 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Globe, Menu, X, Sparkles } from "lucide-react";
+import { Globe, Menu, X, ChevronDown } from "lucide-react";
 
 const NAV_ITEMS = [
-  { name: { en: "Home", de: "Startseite" }, href: "/" },
-  { name: { en: "Services", de: "Leistungen" }, href: "/services" },
-  { name: { en: "Portfolio", de: "Portfolio" }, href: "/portfolio" },
-  { name: { en: "Blog", de: "Blog" }, href: "/blog" },
+  { name: { en: "Services", de: "Leistungen" }, href: "/services", hasSub: true },
+  { name: { en: "Blog", de: "Blog" }, href: "/blog", hasSub: true },
+  { name: { en: "Locations", de: "Standorte" }, href: "#", hasSub: true },
+  { name: { en: "References", de: "Referenzen" }, href: "/portfolio" },
+  { name: { en: "Prices", de: "Preise" }, href: "#" },
+  { name: { en: "FAQ", de: "FAQ" }, href: "#" },
+  { name: { en: "About me", de: "Über mich" }, href: "#" },
 ];
 
 export default function Navbar() {
@@ -28,49 +31,57 @@ export default function Navbar() {
 
   return (
     <nav className={cn(
-      "fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 py-4",
-      isScrolled ? "bg-background/80 backdrop-blur-xl border-b border-white/[0.08] py-3" : "bg-transparent"
+      "fixed top-6 left-6 right-6 z-50 transition-all duration-300",
+      "mx-auto max-w-7xl px-8 py-3 rounded-2xl border bg-white/90 backdrop-blur-sm shadow-sm",
+      isScrolled ? "py-2 shadow-md" : ""
     )}>
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <div className="flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center font-bold text-primary-foreground italic rotate-3 group-hover:rotate-0 transition-transform duration-300 shadow-lg shadow-primary/20">
-            W
-          </div>
-          <span className="font-headline font-bold text-2xl tracking-tight text-white">
-            Wibify<span className="text-primary">.</span>
+          <span className="font-headline font-black text-2xl tracking-tight text-secondary italic">
+            Wibify
           </span>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-10">
+        <div className="hidden lg:flex items-center gap-8">
           {NAV_ITEMS.map((item) => (
             <Link 
               key={item.href} 
               href={item.href}
-              className="text-sm font-medium text-white/70 hover:text-primary transition-colors relative group"
+              className="text-[13px] font-semibold text-secondary/70 hover:text-secondary transition-colors flex items-center gap-1"
             >
               {item.name[lang]}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+              {item.hasSub && <ChevronDown className="w-3 h-3" />}
             </Link>
           ))}
-          <div className="h-4 w-px bg-white/10" />
-          <button 
-            onClick={toggleLang}
-            className="flex items-center gap-2 text-xs font-semibold text-white/50 hover:text-white transition-colors uppercase tracking-widest"
-          >
-            <Globe className="w-4 h-4" />
-            {lang}
-          </button>
-          <Button asChild className="rounded-full px-6 bg-white text-black hover:bg-primary hover:text-white transition-all duration-300 font-bold">
+        </div>
+
+        <div className="hidden md:flex items-center gap-4">
+          <Button asChild className="rounded-xl px-6 bg-secondary text-white hover:bg-secondary/90 transition-all duration-300 font-bold text-xs h-9">
             <Link href="/contact">
-              {lang === "en" ? "Let's Talk" : "Kontakt"}
+              {lang === "en" ? "Offer" : "Angebot"}
             </Link>
           </Button>
+          
+          <div className="flex items-center gap-3 ml-2">
+            <button className="text-secondary/50 hover:text-secondary transition-colors">
+              <Globe className="w-4 h-4" />
+            </button>
+            <button 
+              onClick={toggleLang}
+              className="flex items-center gap-1.5"
+            >
+              <div className="w-5 h-3.5 bg-yellow-400 rounded-sm relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-[33%] bg-black" />
+                <div className="absolute top-[33%] left-0 w-full h-[33%] bg-red-600" />
+              </div>
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu Toggle */}
         <button 
-          className="md:hidden p-2 text-white"
+          className="lg:hidden p-2 text-secondary"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <X /> : <Menu />}
@@ -79,34 +90,22 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="absolute top-0 left-0 w-full h-screen bg-background p-10 flex flex-col gap-8 md:hidden animate-in fade-in slide-in-from-top-4 duration-500">
-          <div className="flex justify-between items-center mb-10">
-             <Link href="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center font-bold text-primary-foreground italic">W</div>
-              <span className="font-headline font-bold text-2xl text-white">Wibify<span className="text-primary">.</span></span>
-            </Link>
-            <button onClick={() => setMobileMenuOpen(false)} className="text-white"><X className="w-8 h-8" /></button>
-          </div>
+        <div className="absolute top-full left-0 mt-4 w-full bg-white rounded-2xl border shadow-xl p-8 flex flex-col gap-6 lg:hidden animate-in fade-in slide-in-from-top-4 duration-300">
           {NAV_ITEMS.map((item) => (
             <Link 
               key={item.href} 
               href={item.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="text-3xl font-bold text-white hover:text-primary transition-colors"
+              className="text-lg font-bold text-secondary hover:text-primary transition-colors"
             >
               {item.name[lang]}
             </Link>
           ))}
-          <div className="mt-auto space-y-6">
-            <button onClick={toggleLang} className="flex items-center gap-3 text-lg font-bold text-white/50 uppercase">
-              <Globe className="w-6 h-6" /> {lang === "en" ? "English" : "Deutsch"}
-            </button>
-            <Button asChild size="lg" className="w-full rounded-full bg-primary text-white font-bold h-16 text-xl">
-              <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-                {lang === "en" ? "Start a Project" : "Projekt starten"}
-              </Link>
-            </Button>
-          </div>
+          <Button asChild size="lg" className="w-full rounded-xl bg-secondary text-white font-bold h-14 mt-4">
+            <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
+              {lang === "en" ? "Get Offer" : "Angebot erhalten"}
+            </Link>
+          </Button>
         </div>
       )}
     </nav>
