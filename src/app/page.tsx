@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
@@ -14,10 +13,23 @@ import {
   Globe,
   Palette,
   ArrowRight,
-  Zap
+  Zap,
+  FileText,
+  Users,
+  Rocket,
+  X,
+  Check
 } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { cn } from "@/lib/utils";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogClose,
+} from "@/components/ui/dialog";
 
 const TechLogos = [
   { name: "HTML5", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg> },
@@ -105,6 +117,29 @@ const pricingPlans = [
     textClass: "text-amber-400",
     mutedText: "text-amber-400/60",
     lineColor: "bg-amber-400/20"
+  }
+];
+
+const processSteps = [
+  {
+    title: "1. Briefing & Requirements",
+    description: "After booking, you will receive a questionnaire. I will gather all the important information about your project: goals, target audience, design preferences, and technical requirements.",
+    icon: <FileText className="w-5 h-5" />
+  },
+  {
+    title: "2. Kick-off Meeting",
+    description: "In a 30-minute call, I will discuss your project with you in detail. You will get to know me personally, and I will answer any questions you may have.",
+    icon: <Users className="w-5 h-5" />
+  },
+  {
+    title: "3. Design & Development",
+    description: "I'll start with the first draft. You'll receive regular updates via Slack and can provide feedback at any time. Iterative process until perfection is achieved.",
+    icon: <Sparkles className="w-5 h-5" />
+  },
+  {
+    title: "4. Launch & Support",
+    description: "Once you approve it, your project will go live. You will receive an introduction to the dashboard, and I will be available to answer any questions you may have.",
+    icon: <Rocket className="w-5 h-5" />
   }
 ];
 
@@ -295,9 +330,54 @@ export default function Home() {
                <p className="text-muted-foreground text-sm font-medium">
                   Free initial consultation • Guaranteed response within 12 hours • No-obligation quote
                </p>
-               <Button variant="outline" className="rounded-full bg-muted/30 border-none flex items-center gap-2 text-xs font-bold px-6 h-10">
-                  <Zap className="w-3 h-3 text-secondary" /> This is how I work <ArrowRight className="w-3 h-3" />
-               </Button>
+               <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="outline" className="rounded-full bg-muted/30 border-none flex items-center gap-2 text-xs font-bold px-6 h-10">
+                      <Zap className="w-3 h-3 text-secondary" /> This is how I work <ArrowRight className="w-3 h-3" />
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-2xl rounded-[3rem] p-0 overflow-hidden border-none shadow-2xl">
+                    <div className="p-8 md:p-12 bg-white space-y-10">
+                      <DialogHeader className="space-y-2 relative">
+                        <DialogTitle className="text-4xl font-headline font-black text-secondary">This is how I work</DialogTitle>
+                        <p className="text-muted-foreground font-medium">From booking to launch</p>
+                        <DialogClose className="absolute -top-4 -right-4 w-10 h-10 bg-muted/50 rounded-full flex items-center justify-center hover:bg-muted transition-colors">
+                          <X className="w-5 h-5 text-secondary" />
+                        </DialogClose>
+                      </DialogHeader>
+
+                      <div className="space-y-8">
+                        {processSteps.map((step, idx) => (
+                          <div key={idx} className="flex gap-6 group">
+                            <div className="w-12 h-12 rounded-2xl bg-secondary text-white flex items-center justify-center shrink-0 shadow-lg group-hover:scale-110 transition-transform">
+                              {step.icon}
+                            </div>
+                            <div className="space-y-2">
+                              <h3 className="text-xl font-bold text-secondary tracking-tight">{step.title}</h3>
+                              <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="bg-[#f0fdf4] border border-[#dcfce7] rounded-3xl p-6 flex items-center gap-4">
+                        <div className="w-10 h-10 rounded-full bg-[#22c55e] flex items-center justify-center text-white shadow-sm">
+                          <Check className="w-6 h-6" />
+                        </div>
+                        <div>
+                          <p className="font-bold text-[#166534] text-sm">Average project duration: 2-4 weeks</p>
+                          <p className="text-[#166534]/70 text-[11px] font-medium leading-none">Depending on complexity and chosen package</p>
+                        </div>
+                      </div>
+
+                      <DialogClose asChild>
+                        <Button className="w-full h-16 rounded-2xl bg-secondary text-white font-black text-lg shadow-xl shadow-secondary/10 hover:scale-[1.02] transition-all">
+                          Understood <Check className="ml-2 w-5 h-5" />
+                        </Button>
+                      </DialogClose>
+                    </div>
+                  </DialogContent>
+               </Dialog>
             </div>
           </div>
         </section>
