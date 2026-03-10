@@ -22,7 +22,6 @@ import {
   ExternalLink,
   ArrowUpRight
 } from "lucide-react";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { cn } from "@/lib/utils";
 import {
   Dialog,
@@ -57,7 +56,7 @@ const TechLogos = [
   { name: "Next.js", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.735 18.91l-4.8-6.178V18.15h-1.35V7.477h1.35l4.8 6.177V7.477h1.35v10.673h-1.35zm-5.735-8.24l-2.025 2.625V13.8L12 11.2V10.67zm0 0l-2.025 2.625V13.8L12 11.2V10.67z"/></svg> },
 ];
 
-const references = [
+const completedProjects = [
   {
     title: "Srinika Spices",
     tag: "E-commerce",
@@ -68,14 +67,14 @@ const references = [
   {
     title: "Gurucharan Interiors",
     tag: "Interior Design",
-    description: "Elegant portfolio for a leading interior design firm showcasing premium residential and commercial projects.",
+    description: "Elegant portfolio for a leading interior design firm showcasing premium projects.",
     link: "https://gurucharaninteriors.in",
     imageUrl: "https://s0.wp.com/mshots/v1/https://gurucharaninteriors.in?w=800&h=600"
   },
   {
     title: "Yasodha.in",
-    tag: "Education",
-    description: "Comprehensive educational platform and personal branding portal for professional development.",
+    tag: "Portfolio",
+    description: "Professional personal branding portal for specialized career development.",
     link: "https://yasodha.in",
     imageUrl: "https://s0.wp.com/mshots/v1/https://yasodha.in?w=800&h=600"
   }
@@ -261,13 +260,14 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              {references.map((ref, idx) => (
+              {completedProjects.map((ref, idx) => (
                 <div key={idx} className="group flex flex-col space-y-2">
                   <div className="relative aspect-[4/3] rounded-[1.25rem] overflow-hidden shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1 border border-muted/50 bg-muted/10">
                     <Image 
                       src={ref.imageUrl} 
                       alt={ref.title} 
                       fill 
+                      unoptimized
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
