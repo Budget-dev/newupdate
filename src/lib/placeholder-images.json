@@ -1,3 +1,46 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero",
+      "description": "Modern digital agency workspace",
+      "imageUrl": "https://picsum.photos/seed/agency-hero/1200/800",
+      "imageHint": "digital workspace"
+    },
+    {
+      "id": "service-web",
+      "description": "Web design and development showcase",
+      "imageUrl": "https://picsum.photos/seed/service-web/600/400",
+      "imageHint": "web design"
+    },
+    {
+      "id": "service-app",
+      "description": "Mobile and web application interface",
+      "imageUrl": "https://picsum.photos/seed/service-app/600/400",
+      "imageHint": "app interface"
+    },
+    {
+      "id": "service-software",
+      "description": "Custom software code and architecture",
+      "imageUrl": "https://picsum.photos/seed/service-soft/600/400",
+      "imageHint": "software development"
+    },
+    {
+      "id": "project-1",
+      "description": "E-commerce platform project",
+      "imageUrl": "https://picsum.photos/seed/project1/800/600",
+      "imageHint": "ecommerce store"
+    },
+    {
+      "id": "project-2",
+      "description": "Fintech dashboard project",
+      "imageUrl": "https://picsum.photos/seed/project2/800/600",
+      "imageHint": "finance dashboard"
+    },
+    {
+      "id": "project-3",
+      "description": "Healthcare management system",
+      "imageUrl": "https://picsum.photos/seed/project3/800/600",
+      "imageHint": "medical app"
+    }
+  ]
 }
