@@ -12,8 +12,10 @@ import {
   Smartphone, 
   Zap, 
   CheckCircle2, 
-  MessageSquare,
-  Sparkles
+  Sparkles,
+  MousePointer2,
+  Rocket,
+  ShieldCheck
 } from "lucide-react";
 
 const heroImg = PlaceHolderImages.find(img => img.id === 'hero');
@@ -23,140 +25,134 @@ const softImg = PlaceHolderImages.find(img => img.id === 'service-software');
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-background">
       <Navbar />
       
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
-          <div className="absolute inset-0 grid-pattern opacity-50 -z-10" />
-          <div className="absolute top-0 right-0 w-1/3 h-full hero-gradient -z-10" />
+        <section className="relative pt-40 pb-20 md:pt-56 md:pb-40 overflow-hidden">
+          <div className="absolute inset-0 grid-pattern opacity-30 -z-10" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] hero-glow -z-10 blur-[120px]" />
           
-          <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-semibold text-xs uppercase tracking-widest animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <Sparkles className="w-4 h-4" /> Digital Success Made Affordable
+          <div className="max-w-7xl mx-auto px-6 text-center space-y-12">
+            <div className="space-y-6 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-primary font-bold text-xs uppercase tracking-widest">
+                <Sparkles className="w-4 h-4" /> Leading Digital Agency
               </div>
-              <h1 className="text-5xl md:text-7xl font-headline font-bold text-secondary leading-tight tracking-tighter text-balance">
-                Your Idea, <span className="text-primary underline decoration-4 underline-offset-8">Perfectly</span> Executed.
+              <h1 className="text-6xl md:text-8xl font-headline font-extrabold text-white leading-[1.1] tracking-tighter">
+                Transform Your Vision <br />
+                <span className="text-gradient">Into Digital Reality.</span>
               </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto lg:mx-0 text-balance">
-                High-end digital solutions for growing businesses. We build fast, modern, and high-converting web applications without the enterprise price tag.
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed text-balance">
+                We craft high-performance digital products for the next generation of businesses. Speed, aesthetics, and conversion are our core principles.
               </p>
-              <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-                <Button size="lg" asChild className="h-14 px-8 text-lg bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-full shadow-xl shadow-secondary/10">
-                  <Link href="/contact">Get Your Free Draft <ArrowRight className="ml-2 w-5 h-5" /></Link>
-                </Button>
-                <Button variant="ghost" size="lg" asChild className="h-14 px-8 text-lg rounded-full">
-                  <Link href="/portfolio">View Our Work</Link>
-                </Button>
-              </div>
-              <div className="flex items-center gap-6 justify-center lg:justify-start pt-4 text-sm text-muted-foreground font-medium">
-                <div className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-primary" /> 100% Quality</div>
-                <div className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-primary" /> Fixed Pricing</div>
-                <div className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-primary" /> Fast Delivery</div>
-              </div>
             </div>
-            
-            <div className="relative animate-float">
-              <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
-                <Image 
-                  src={heroImg?.imageUrl || ""} 
-                  alt={heroImg?.description || ""} 
-                  width={600} 
-                  height={400}
-                  className="w-full object-cover"
-                  priority
-                  data-ai-hint="digital agency"
-                />
-              </div>
-              <div className="absolute -top-6 -right-6 w-32 h-32 bg-primary rounded-full -z-10 blur-3xl opacity-30" />
-              <div className="absolute -bottom-6 -left-6 w-48 h-48 bg-primary rounded-full -z-10 blur-3xl opacity-20" />
-              
-              <div className="absolute bottom-10 -right-10 bg-white p-4 rounded-2xl shadow-xl border hidden md:block animate-in fade-in slide-in-from-right-10 delay-500 duration-700">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white">
-                    <Zap className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-sm">Performance Score</div>
-                    <div className="text-xs text-muted-foreground">Optimized for SEO & Speed</div>
-                  </div>
+
+            <div className="flex flex-col sm:flex-row items-center gap-6 justify-center animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200">
+              <Button size="lg" asChild className="h-16 px-10 text-xl bg-primary text-white hover:bg-primary/90 rounded-full shadow-2xl shadow-primary/40 font-bold group">
+                <Link href="/contact">
+                  Let's Work Together <ArrowRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
+              <Button variant="outline" size="lg" asChild className="h-16 px-10 text-xl rounded-full glass-card text-white hover:bg-white/10 border-white/20">
+                <Link href="/portfolio">Explore Our Portfolio</Link>
+              </Button>
+            </div>
+
+            <div className="pt-20 grid grid-cols-2 md:grid-cols-4 gap-8 opacity-50">
+              {['Google', 'Webflow', 'React', 'Firebase'].map((partner) => (
+                <div key={partner} className="text-2xl font-bold text-white tracking-widest grayscale hover:grayscale-0 transition-all">
+                  {partner}
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Services Overview */}
-        <section id="services" className="py-24 bg-white">
+        {/* Stats Section */}
+        <section className="py-20 border-y border-white/[0.05] bg-white/[0.01]">
+          <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
+            {[
+              { label: "Projects Completed", value: "150+" },
+              { label: "Happy Clients", value: "99%" },
+              { label: "Conversion Lift", value: "240%" },
+            ].map((stat, i) => (
+              <div key={i} className="text-center space-y-2">
+                <div className="text-5xl font-extrabold text-gradient">{stat.value}</div>
+                <div className="text-sm uppercase tracking-widest font-bold text-muted-foreground">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Services Section */}
+        <section id="services" className="py-32 relative">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center space-y-4 mb-16">
-              <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-primary">Our Expertise</h2>
-              <h3 className="text-4xl md:text-5xl font-headline font-bold text-secondary">Solutions Tailored to You</h3>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                We combine technical excellence with creative design to build products that actually drive growth.
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
+              <div className="space-y-4 max-w-2xl">
+                <h2 className="text-primary font-bold uppercase tracking-widest text-sm">What we do</h2>
+                <h3 className="text-4xl md:text-6xl font-extrabold text-white leading-tight">Elite Digital <br />Craftsmanship.</h3>
+              </div>
+              <p className="text-muted-foreground max-w-sm">
+                From high-end design to complex backend systems, we provide full-cycle development services.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 {
-                  title: "Web Design",
-                  desc: "Modern, responsive websites that capture your brand essence and convert visitors into customers.",
-                  icon: <Layout className="w-6 h-6" />,
+                  title: "Strategic Web Design",
+                  desc: "We don't just design; we create digital experiences that sell and resonate.",
+                  icon: <Layout className="w-8 h-8 text-primary" />,
                   img: webImg
                 },
                 {
-                  title: "Web Applications",
-                  desc: "Scalable and robust web apps built with the latest technologies like React and Next.js.",
-                  icon: <Code className="w-6 h-6" />,
+                  title: "Performance Apps",
+                  desc: "Scalable SaaS and enterprise solutions built with cutting-edge tech stacks.",
+                  icon: <Code className="w-8 h-8 text-primary" />,
                   img: appImg
                 },
                 {
-                  title: "Custom Software",
-                  desc: "Unique software solutions designed to automate your workflows and solve complex business problems.",
-                  icon: <Smartphone className="w-6 h-6" />,
+                  title: "Product Evolution",
+                  desc: "Iterative growth strategies for established products needing a modern edge.",
+                  icon: <Zap className="w-8 h-8 text-primary" />,
                   img: softImg
                 }
               ].map((service, idx) => (
-                <Card key={idx} className="group border-none shadow-none bg-transparent overflow-hidden">
-                  <CardContent className="p-0 space-y-6">
-                    <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-6">
-                      <Image 
-                        src={service.img?.imageUrl || ""} 
-                        alt={service.title} 
-                        fill 
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                        data-ai-hint={service.img?.imageHint}
-                      />
-                      <div className="absolute inset-0 bg-secondary/20 group-hover:bg-transparent transition-colors duration-500" />
-                      <div className="absolute top-4 left-4 w-12 h-12 bg-white rounded-xl flex items-center justify-center text-primary shadow-lg">
-                        {service.icon}
-                      </div>
-                    </div>
-                    <h4 className="text-2xl font-bold text-secondary group-hover:text-primary transition-colors">{service.title}</h4>
+                <div key={idx} className="group glass-card p-10 rounded-[2.5rem] space-y-8 hover:-translate-y-2 transition-all duration-500">
+                  <div className="w-20 h-20 bg-primary/10 rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                    {service.icon}
+                  </div>
+                  <div className="space-y-4">
+                    <h4 className="text-3xl font-bold text-white group-hover:text-primary transition-colors leading-tight">{service.title}</h4>
                     <p className="text-muted-foreground leading-relaxed">{service.desc}</p>
-                    <Link href="/services" className="inline-flex items-center gap-2 font-bold text-sm text-secondary hover:translate-x-1 transition-transform">
-                      Learn More <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  </CardContent>
-                </Card>
+                  </div>
+                  <Link href="/services" className="flex items-center gap-2 font-bold text-primary group-hover:translate-x-2 transition-transform">
+                    View Service <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-primary/5">
-          <div className="max-w-4xl mx-auto px-6 text-center space-y-8">
-            <h2 className="text-3xl md:text-5xl font-headline font-bold text-secondary">Ready to build something <span className="text-primary italic">extraordinary</span>?</h2>
-            <p className="text-xl text-muted-foreground">
-              Contact us today for a free initial draft of your project. No strings attached.
-            </p>
-            <Button size="lg" asChild className="bg-secondary text-secondary-foreground rounded-full px-12 h-16 text-xl">
-              <Link href="/contact">Get Free Project Draft</Link>
-            </Button>
+        <section className="py-32">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="glass-card p-12 md:p-24 rounded-[3rem] relative overflow-hidden bg-gradient-to-br from-primary/20 to-transparent">
+              <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 blur-[150px] -z-10" />
+              <div className="max-w-3xl space-y-10">
+                <h2 className="text-5xl md:text-7xl font-extrabold text-white leading-tight tracking-tighter">
+                  Ready to Lead the <br /> <span className="text-gradient">Digital Race?</span>
+                </h2>
+                <p className="text-xl text-white/70 max-w-xl">
+                  Stop settling for average. Let's build a product that dominates your market and defines your industry.
+                </p>
+                <Button size="lg" asChild className="h-16 px-12 text-xl bg-white text-black hover:bg-primary hover:text-white rounded-full font-bold transition-all duration-300">
+                  <Link href="/contact">Start Your Project Now</Link>
+                </Button>
+              </div>
+            </div>
           </div>
         </section>
       </main>
