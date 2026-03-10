@@ -16,11 +16,11 @@ import {
   Star,
   MapPin,
   Wrench,
-  ChevronDown,
   Layout,
   Code,
   ShieldCheck,
-  ExternalLink
+  ExternalLink,
+  ArrowUpRight
 } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { cn } from "@/lib/utils";
@@ -59,22 +59,25 @@ const TechLogos = [
 
 const references = [
   {
-    title: "Propvex Capital",
-    tag: "Finance",
-    description: "Investment and capital management. Professional financial platform with an elegant design.",
-    image: PlaceHolderImages.find(img => img.id === 'project-2')
+    title: "Srinika Spices",
+    tag: "E-commerce",
+    description: "High-quality spice distribution platform with seamless ordering and inventory management.",
+    link: "https://srinikaspice.in",
+    imageUrl: "https://s0.wp.com/mshots/v1/https://srinikaspice.in?w=800&h=600"
   },
   {
-    title: "Steak Club New York",
-    tag: "Gastronomy",
-    description: "Exclusive steakhouse website with a modern reservation system and digital menu.",
-    image: PlaceHolderImages.find(img => img.id === 'service-web')
+    title: "Gurucharan Interiors",
+    tag: "Interior Design",
+    description: "Elegant portfolio for a leading interior design firm showcasing premium residential and commercial projects.",
+    link: "https://gurucharaninteriors.in",
+    imageUrl: "https://s0.wp.com/mshots/v1/https://gurucharaninteriors.in?w=800&h=600"
   },
   {
-    title: "Chauffeur Munich",
-    tag: "Transport",
-    description: "Premium chauffeur service platform. Automated booking processes and elegant design.",
-    image: PlaceHolderImages.find(img => img.id === 'project-4')
+    title: "Yasodha.in",
+    tag: "Education",
+    description: "Comprehensive educational platform and personal branding portal for professional development.",
+    link: "https://yasodha.in",
+    imageUrl: "https://s0.wp.com/mshots/v1/https://yasodha.in?w=800&h=600"
   }
 ];
 
@@ -182,7 +185,7 @@ export default function Home() {
       
       <main className="flex-1 relative z-10">
         {/* Hero Section */}
-        <section className="relative pt-16 pb-6 md:pt-24 md:pb-8 overflow-hidden">
+        <section className="relative pt-12 pb-4 md:pt-20 md:pb-6 overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 text-center space-y-4">
             <div className="space-y-3 animate-in fade-in slide-in-from-bottom-8 duration-1000">
               <h1 className="text-4xl md:text-[56px] font-headline font-black text-secondary leading-[1.1] tracking-tight">
@@ -195,7 +198,6 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col items-center gap-4 pt-2 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200">
-              {/* Custom Sparkle Button */}
               <div className="sparkle-btn-wrapper">
                 <Link href="/contact" className="sparkle-btn group">
                   <svg className="sparkle-btn-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -247,27 +249,32 @@ export default function Home() {
           </div>
         </section>
 
-        {/* References Section */}
-        <section className="py-6 px-6 relative">
+        {/* Completed Projects Section */}
+        <section className="py-4 px-6 relative">
           <div className="max-w-7xl mx-auto main-section-container overflow-hidden">
             <div className="flex flex-col md:flex-row md:items-center gap-3 mb-6">
-              <h2 className="text-3xl md:text-4xl font-headline font-black text-secondary">References.</h2>
+              <h2 className="text-3xl md:text-4xl font-headline font-black text-secondary">Completed Projects.</h2>
               <div className="w-px h-6 md:h-10 bg-muted-foreground/20 hidden md:block" />
-              <p className="text-muted-foreground text-[9px] md:text-[10px] max-w-[130px] leading-tight font-medium">
-                Selected works. Local to international platforms.
+              <p className="text-muted-foreground text-[9px] md:text-[10px] max-w-[150px] leading-tight font-medium">
+                Our showcase of high-performance digital transformations.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {references.map((ref, idx) => (
                 <div key={idx} className="group flex flex-col space-y-2">
-                  <div className="relative aspect-[4/3] rounded-[1.25rem] overflow-hidden shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1 border border-muted/50">
+                  <div className="relative aspect-[4/3] rounded-[1.25rem] overflow-hidden shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1 border border-muted/50 bg-muted/10">
                     <Image 
-                      src={ref.image?.imageUrl || ""} 
+                      src={ref.imageUrl} 
                       alt={ref.title} 
                       fill 
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                       <Link href={ref.link} target="_blank" className="bg-white text-secondary px-4 py-2 rounded-full text-xs font-black flex items-center gap-2 shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                          Visit Site <ArrowUpRight className="w-3 h-3" />
+                       </Link>
+                    </div>
                     <div className="absolute top-2 left-2">
                       <span className="bg-black/50 backdrop-blur-md text-white text-[7px] font-black uppercase tracking-[0.1em] px-2 py-0.5 rounded-full">
                         {ref.tag}
@@ -275,7 +282,12 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="px-1 space-y-0.5">
-                    <h3 className="text-base font-black text-secondary">{ref.title}</h3>
+                    <h3 className="text-base font-black text-secondary flex items-center justify-between">
+                      {ref.title}
+                      <Link href={ref.link} target="_blank" className="text-muted-foreground hover:text-primary transition-colors">
+                        <ExternalLink className="w-3 h-3" />
+                      </Link>
+                    </h3>
                     <p className="text-muted-foreground text-[10px] leading-relaxed">
                       {ref.description}
                     </p>
@@ -287,7 +299,7 @@ export default function Home() {
         </section>
 
         {/* Prices Section */}
-        <section className="py-6 px-6 relative">
+        <section className="py-4 px-6 relative">
           <div className="max-w-7xl mx-auto main-section-container overflow-hidden space-y-6">
             <div className="space-y-2">
               <div className="flex flex-col md:flex-row md:items-baseline gap-2">
@@ -395,7 +407,7 @@ export default function Home() {
         <ResultsSection />
 
         {/* Reviews Section */}
-        <section className="py-6 px-6 relative bg-white overflow-hidden">
+        <section className="py-4 px-6 relative bg-white overflow-hidden">
           <div className="max-w-7xl mx-auto flex flex-col items-center space-y-5">
             <div className="text-center space-y-1">
               <h2 className="text-2xl md:text-4xl font-headline font-black text-secondary tracking-tight">What customers say</h2>
@@ -450,7 +462,7 @@ export default function Home() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-6 px-6 relative">
+        <section className="py-4 px-6 relative">
           <div className="max-w-7xl mx-auto main-section-container space-y-6">
             <div className="flex flex-col md:flex-row md:items-baseline gap-3 border-b pb-4">
               <h2 className="text-5xl md:text-6xl font-headline font-black text-secondary">FAQ.</h2>
@@ -466,7 +478,7 @@ export default function Home() {
                   { q: "Why BudgetDev?", a: "We combine high-end design with technical excellence at a fair price. No hidden costs, just results." },
                   { q: "How long does it take?", a: "An average website takes 2-4 weeks. Complex web apps can take 2-3 months depending on the scope." },
                   { q: "How much does a website cost with BudgetDev?", a: "Our packages start at ₹3,500 for corporate sites. We provide fixed-price quotes after the initial briefing." },
-                  { q: "What technologies does BudgetDev use?", a: "We primarily use Next.js, React, Tailwind CSS, and Firebase for scalable, lightning-fast performance." },
+                  { q: "What technologies does BudgetDev use?", a: "We primarily use Next.js, React, TypeScript, and Firebase for scalable, lightning-fast performance." },
                   { q: "Are BudgetDev websites SEO-optimized?", a: "Yes, every project includes on-page SEO best practices to ensure you are visible on Google from day one." },
                   { q: "Does BudgetDev also offer on-site consulting in Vizianagaram?", a: "Absolutely! We love meeting local clients in Vizianagaram to discuss their digital vision in person." },
                   { q: "Why not use a website builder like Wix or Jimdo?", a: "Builders are limited in performance and customization. We provide 100/100 PageSpeed scores and full ownership of your code." }
@@ -490,7 +502,7 @@ export default function Home() {
                   <h4 className="font-black text-secondary text-base">Local in Vizianagaram</h4>
                 </div>
                 <p className="text-muted-foreground text-[10px] leading-relaxed">
-                  Personal contact is irreplaceable. No anonymous call center, but direct contacts for your project in Andhra Pradesh.
+                  Personal contact is irreplaceable. No anonymous call center, but direct contact for your project in Andhra Pradesh.
                 </p>
               </Card>
 
@@ -515,7 +527,7 @@ export default function Home() {
         </section>
 
         {/* Expertise Section */}
-        <section className="py-6 px-6 relative">
+        <section className="py-4 px-6 relative">
           <div className="max-w-7xl mx-auto main-section-container space-y-8">
             <div className="flex flex-col md:flex-row md:items-baseline gap-3 border-b pb-4">
               <h2 className="text-5xl md:text-6xl font-headline font-black text-secondary">Expertise.</h2>
@@ -524,7 +536,6 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Stats Row */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {[
                 { label: "Projects realized", value: "50+" },
@@ -539,7 +550,6 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Our Services */}
             <div className="space-y-4">
               <h3 className="text-xl font-black text-secondary">Our services</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -576,11 +586,10 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Expertise Footer Section */}
             <div className="pt-4 border-t flex flex-col md:flex-row justify-between items-center gap-4">
               <div className="space-y-0.5">
                 <h4 className="text-[9px] font-black text-secondary uppercase tracking-widest">State-of-the-art technologies</h4>
-                <p className="text-[8px] text-muted-foreground font-medium">Next.js, React, TypeScript, Tailwind CSS, Firebase, Supabase, Vercel</p>
+                <p className="text-[8px] text-muted-foreground font-medium">Next.js, React, TypeScript, Tailwind CSS, Firebase</p>
               </div>
               <div className="flex gap-2">
                 <div className="flex items-center gap-1.5 bg-secondary text-white px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest">
@@ -595,7 +604,7 @@ export default function Home() {
         </section>
 
         {/* About me Section */}
-        <section id="about" className="py-6 px-6 relative">
+        <section id="about" className="py-4 px-6 relative">
           <div className="max-w-7xl mx-auto main-section-container space-y-8">
             <div className="flex flex-col md:flex-row md:items-baseline gap-4 border-b pb-4">
               <h2 className="text-5xl md:text-6xl font-headline font-black text-secondary">About me.</h2>
@@ -605,7 +614,6 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
-              {/* Left Column: Portrait Card */}
               <div className="lg:col-span-2 relative group">
                 <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl bg-[#1A1A1A] border border-muted/20">
                   <Image 
@@ -614,7 +622,6 @@ export default function Home() {
                     fill 
                     className="object-cover object-top"
                   />
-                  {/* Glass Overlay Bottom */}
                   <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
                     <div className="space-y-2">
                       <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30 text-primary text-[8px] font-black uppercase tracking-widest">
@@ -629,25 +636,20 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Right Column: Narrative & Stats */}
               <div className="lg:col-span-3 space-y-8 py-4">
                 <div className="space-y-6">
                   <h3 className="text-3xl font-black text-secondary leading-tight">One head, clear visions.</h3>
                   <div className="space-y-4 text-[13px] text-muted-foreground leading-relaxed max-w-xl">
                     <p>
                       I&apos;m Venkatesh Choppa – the sole driving force behind BudgetDev, your web design agency in Vizianagaram. 
-                      No large team, no unnecessary meetings, no wasted hours. As a developer with 
-                      innovative thinking, I work efficiently, with high quality, and quickly.
+                      As a frontend developer with innovative thinking, I work efficiently, with high quality, and quickly.
                     </p>
                     <p>
-                      I personally manage and execute everything to deliver the best possible result. No 500 hours 
-                      of work for things that simply need to work. I&apos;m the best partner you&apos;ll find when it 
-                      comes to excellence. <Link href="/contact" className="text-primary font-bold hover:underline">Learn more about me.</Link>
+                      I run a web development agency serving businesses across Andhra Pradesh. We build professional, SEO-optimized websites for restaurants, cafes, and local businesses. I personally manage and execute everything to deliver the best possible result.
                     </p>
                   </div>
                 </div>
 
-                {/* About Stats Row */}
                 <div className="grid grid-cols-3 gap-4 border-t border-b py-6">
                   {[
                     { label: "Unique users", value: "7.5M+" },
@@ -661,7 +663,6 @@ export default function Home() {
                   ))}
                 </div>
 
-                {/* Service Tags */}
                 <div className="flex flex-wrap gap-2">
                   {["Web Development", "UI/UX Design", "Automation"].map(tag => (
                     <span key={tag} className="px-4 py-1.5 bg-muted/50 border border-muted-foreground/10 text-secondary text-[8px] font-black uppercase tracking-widest rounded-lg">
@@ -674,8 +675,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CTA Section - Screenshot Style */}
-        <section className="py-6 px-6 relative">
+        {/* CTA Section */}
+        <section className="py-4 px-6 relative">
           <div className="max-w-7xl mx-auto rounded-[2.5rem] bg-[#0a0a0a] p-10 md:p-16 overflow-hidden relative shadow-2xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
               <div className="space-y-8">
@@ -694,7 +695,7 @@ export default function Home() {
                     </svg>
                     <div className="sparkle-txt-wrapper">
                       <div className="sparkle-txt-1">
-                        {"PROJEKT STARTEN".split("").map((char, i) => (
+                        {"START PROJECT".split("").map((char, i) => (
                           <span key={i} className="sparkle-btn-letter">{char === " " ? "\u00A0" : char}</span>
                         ))}
                       </div>
@@ -711,7 +712,7 @@ export default function Home() {
                   </div>
                   <div className="pt-4">
                     <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-black uppercase tracking-widest">
-                       <div className="w-2 h-2 rounded-full bg-primary animate-pulse" /> Available for new projects
+                       <div className="w-2 h-2 rounded-full bg-primary animate-pulse" /> Available: +91 8466006486
                     </div>
                   </div>
                 </Card>
@@ -721,14 +722,14 @@ export default function Home() {
         </section>
 
         {/* Map Section */}
-        <section className="py-6 px-6 relative mb-12">
+        <section className="py-4 px-6 relative mb-8">
           <div className="max-w-7xl mx-auto rounded-[2.5rem] bg-[#0a0a0a] p-8 md:p-12 space-y-8 border border-white/5">
             <div className="flex justify-between items-end">
               <div className="space-y-2">
                 <span className="text-primary text-xs font-black uppercase tracking-widest">Vizianagaram location</span>
                 <p className="text-white text-base font-bold">Fort City, Vizianagaram, Andhra Pradesh 535003</p>
               </div>
-              <Link href="https://maps.google.com" className="text-white/40 text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 hover:text-white transition-colors">
+              <Link href="https://maps.google.com" target="_blank" className="text-white/40 text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 hover:text-white transition-colors">
                 Open in Google Maps <ExternalLink className="w-3 h-3" />
               </Link>
             </div>
@@ -748,7 +749,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* FABs */}
         <div className="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
           <Link href="https://wa.me/918466006486" className="w-10 h-10 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all">
             <MessageCircle className="w-5 h-5" />

@@ -34,6 +34,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 's0.wp.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };
