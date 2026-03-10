@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Instagram, Linkedin, Twitter, Github, Mail, MapPin, Phone } from "lucide-react";
+import { Instagram, Linkedin, Twitter, Github } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-16">
         <div className="space-y-6">
           <Link href="/" className="font-headline font-black text-2xl tracking-tight text-secondary italic">
-            Wibify
+            BudgetDev
           </Link>
           <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
             The digital agency that turns bold ideas into market-defining products. Based in Bocholt.
@@ -34,7 +34,7 @@ export default function Footer() {
         <div>
           <h4 className="font-bold text-secondary mb-6 text-sm uppercase tracking-wider">Contact</h4>
           <ul className="space-y-4 text-sm text-muted-foreground">
-            <li className="flex items-center gap-3">hello@wibify.agency</li>
+            <li className="flex items-center gap-3">hello@budgetdev.de</li>
             <li className="flex items-center gap-3">Bocholt, Germany</li>
             <li className="flex items-center gap-3">+49 (0) 123 456789</li>
           </ul>
@@ -50,7 +50,7 @@ export default function Footer() {
       </div>
       
       <div className="max-w-7xl mx-auto mt-20 pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4 text-[12px] text-muted-foreground font-medium">
-        <p>© {new Date().getFullYear()} Wibify Agency. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} BudgetDev. All rights reserved.</p>
         <div className="flex gap-8">
           <Link href="#" className="hover:text-secondary transition-colors">Privacy Policy</Link>
           <Link href="#" className="hover:text-secondary transition-colors">Terms & Conditions</Link>

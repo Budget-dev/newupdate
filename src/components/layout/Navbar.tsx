@@ -12,7 +12,6 @@ const NAV_ITEMS = [
   { name: { en: "Locations", de: "Standorte" }, href: "#", hasSub: true },
   { name: { en: "References", de: "Referenzen" }, href: "/portfolio" },
   { name: { en: "Prices", de: "Preise" }, href: "#" },
-  { name: { en: "FAQ", de: "FAQ" }, href: "#" },
   { name: { en: "About me", de: "Über mich" }, href: "#" },
 ];
 
@@ -38,7 +37,7 @@ export default function Navbar() {
       <div className="flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
           <span className="font-headline font-black text-2xl tracking-tight text-secondary italic">
-            Wibify
+            BudgetDev
           </span>
         </Link>
 
