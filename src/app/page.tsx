@@ -173,20 +173,20 @@ export default function Home() {
       <Navbar />
       
       <main className="flex-1 relative z-10">
-        {/* Hero Section */}
-        <section className="relative pt-32 pb-12 md:pt-40 md:pb-20 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-6 text-center space-y-8">
-            <div className="space-y-6 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-              <h1 className="text-5xl md:text-[80px] font-headline font-black text-secondary leading-[0.9] tracking-tight">
+        {/* Hero Section - Compacted vertical spacing */}
+        <section className="relative pt-24 pb-8 md:pt-32 md:pb-12 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-6 text-center space-y-6">
+            <div className="space-y-4 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+              <h1 className="text-4xl md:text-[64px] font-headline font-black text-secondary leading-[1.1] tracking-tight">
                 We build what you <br />
                 <span className="squiggle-underline">digital success</span>
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-medium">
+              <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed font-medium">
                 Websites, web apps and custom software — all perfectly tailored to your business.
               </p>
             </div>
 
-            <div className="flex flex-col items-center gap-8 pt-4 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200">
+            <div className="flex flex-col items-center gap-6 pt-2 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200">
               {/* Custom Sparkle Button */}
               <div className="sparkle-btn-wrapper">
                 <Link href="/contact" className="sparkle-btn group">
@@ -203,33 +203,33 @@ export default function Home() {
                 </Link>
               </div>
 
-              <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-2xl font-black text-secondary">92+</span>
-                  <div className="text-[9px] leading-tight font-bold text-muted-foreground uppercase text-left">
+              <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8">
+                <div className="flex items-baseline gap-1.5">
+                  <span className="text-xl font-black text-secondary">92+</span>
+                  <div className="text-[8px] leading-tight font-bold text-muted-foreground uppercase text-left">
                     Projects <br /> completed
                   </div>
                 </div>
-                <div className="w-px h-8 bg-muted hidden md:block" />
-                <div className="flex items-baseline gap-2">
-                  <span className="text-2xl font-black text-secondary">100</span>
-                  <div className="text-[9px] leading-tight font-bold text-muted-foreground uppercase text-left">
+                <div className="w-px h-6 bg-muted hidden md:block" />
+                <div className="flex items-baseline gap-1.5">
+                  <span className="text-xl font-black text-secondary">100</span>
+                  <div className="text-[8px] leading-tight font-bold text-muted-foreground uppercase text-left">
                     PageSpeed <br /> Score
                   </div>
                 </div>
-                <div className="w-px h-8 bg-muted hidden md:block" />
-                <div className="flex items-baseline gap-2">
-                  <span className="text-2xl font-black text-primary">4.9</span>
-                  <div className="text-[9px] leading-tight font-bold text-muted-foreground uppercase text-left">
+                <div className="w-px h-6 bg-muted hidden md:block" />
+                <div className="flex items-baseline gap-1.5">
+                  <span className="text-xl font-black text-primary">4.9</span>
+                  <div className="text-[8px] leading-tight font-bold text-muted-foreground uppercase text-left">
                     Google <br /> review
                   </div>
                 </div>
               </div>
 
-              <div className="w-full max-w-4xl overflow-hidden relative mt-4">
-                <div className="flex gap-16 items-center animate-scroll whitespace-nowrap py-2">
+              <div className="w-full max-w-3xl overflow-hidden relative mt-2">
+                <div className="flex gap-12 items-center animate-scroll whitespace-nowrap py-1">
                   {[...TechLogos, ...TechLogos, ...TechLogos].map((logo, idx) => (
-                    <div key={idx} className="flex flex-col items-center gap-2 shrink-0 opacity-40 hover:opacity-100 transition-all duration-300">
+                    <div key={idx} className="flex flex-col items-center gap-2 shrink-0 opacity-30 hover:opacity-100 transition-all duration-300">
                       {logo.svg}
                     </div>
                   ))}
@@ -239,36 +239,36 @@ export default function Home() {
           </div>
         </section>
 
-        {/* References Section */}
-        <section className="py-12 px-6 relative">
+        {/* References Section - Compact py-8 */}
+        <section className="py-8 px-6 relative">
           <div className="max-w-7xl mx-auto main-section-container overflow-hidden">
-            <div className="flex flex-col md:flex-row md:items-center gap-6 mb-10">
-              <h2 className="text-5xl md:text-7xl font-headline font-black text-secondary">References.</h2>
-              <div className="w-px h-10 md:h-16 bg-muted-foreground/20 hidden md:block" />
-              <p className="text-muted-foreground text-xs md:text-sm max-w-[180px] leading-tight font-medium">
+            <div className="flex flex-col md:flex-row md:items-center gap-4 mb-8">
+              <h2 className="text-4xl md:text-5xl font-headline font-black text-secondary">References.</h2>
+              <div className="w-px h-8 md:h-12 bg-muted-foreground/20 hidden md:block" />
+              <p className="text-muted-foreground text-[10px] md:text-xs max-w-[150px] leading-tight font-medium">
                 Selected works. Local to international platforms.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {references.map((ref, idx) => (
-                <div key={idx} className="group flex flex-col space-y-4">
-                  <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1 border border-muted/50">
+                <div key={idx} className="group flex flex-col space-y-3">
+                  <div className="relative aspect-[4/3] rounded-[1.5rem] overflow-hidden shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1 border border-muted/50">
                     <Image 
                       src={ref.image?.imageUrl || ""} 
                       alt={ref.title} 
                       fill 
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute top-3 left-3">
-                      <span className="bg-black/50 backdrop-blur-md text-white text-[9px] font-black uppercase tracking-[0.1em] px-2 py-1 rounded-full">
+                    <div className="absolute top-2.5 left-2.5">
+                      <span className="bg-black/50 backdrop-blur-md text-white text-[8px] font-black uppercase tracking-[0.1em] px-2 py-0.5 rounded-full">
                         {ref.tag}
                       </span>
                     </div>
                   </div>
-                  <div className="px-1 space-y-1">
-                    <h3 className="text-xl font-black text-secondary">{ref.title}</h3>
-                    <p className="text-muted-foreground text-xs leading-relaxed">
+                  <div className="px-1 space-y-0.5">
+                    <h3 className="text-lg font-black text-secondary">{ref.title}</h3>
+                    <p className="text-muted-foreground text-[11px] leading-relaxed">
                       {ref.description}
                     </p>
                   </div>
@@ -278,102 +278,102 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Prices Section */}
-        <section className="py-12 px-6 relative">
-          <div className="max-w-7xl mx-auto main-section-container overflow-hidden space-y-10">
-            <div className="space-y-4">
-              <div className="flex flex-col md:flex-row md:items-baseline gap-4">
-                <h2 className="text-5xl md:text-7xl font-headline font-black text-secondary">Prices.</h2>
-                <p className="text-muted-foreground font-medium text-base italic">Transparent costs. ROI-first approach.</p>
+        {/* Prices Section - Compact py-8 */}
+        <section className="py-8 px-6 relative">
+          <div className="max-w-7xl mx-auto main-section-container overflow-hidden space-y-8">
+            <div className="space-y-3">
+              <div className="flex flex-col md:flex-row md:items-baseline gap-3">
+                <h2 className="text-4xl md:text-5xl font-headline font-black text-secondary">Prices.</h2>
+                <p className="text-muted-foreground font-medium text-sm italic">Transparent costs. ROI-first approach.</p>
               </div>
               <div className="w-full h-px bg-muted" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {pricingPlans.map((plan, idx) => (
                 <div key={idx} className={cn(
-                  "relative group rounded-[2.5rem] p-8 flex flex-col space-y-8 shadow-sm transition-all duration-500",
+                  "relative group rounded-[2rem] p-6 flex flex-col space-y-6 shadow-sm transition-all duration-500",
                   plan.theme === "light" && "bg-white border border-muted/50 hover:shadow-lg",
                   plan.theme === "dark" && "bg-[#0a0a0a] text-white hover:shadow-lg",
                   plan.theme === "premium" && "bg-gradient-to-br from-[#1c1917] to-[#44403c] text-primary hover:shadow-lg"
                 )}>
-                  <div className="space-y-2">
+                  <div className="space-y-1.5">
                     <div className="flex justify-between items-center">
-                      <h3 className="text-3xl font-black">{plan.name}</h3>
+                      <h3 className="text-2xl font-black">{plan.name}</h3>
                       {plan.badge && (
-                        <span className="text-[9px] font-black px-2 py-0.5 rounded-full bg-primary text-white">
+                        <span className="text-[8px] font-black px-1.5 py-0.5 rounded-full bg-primary text-white">
                           {plan.badge}
                         </span>
                       )}
                     </div>
-                    <p className={cn("text-xs leading-relaxed", plan.mutedText)}>
+                    <p className={cn("text-[11px] leading-relaxed", plan.mutedText)}>
                       {plan.description}
                     </p>
                   </div>
 
-                  <div className="space-y-6">
-                    <div className="space-y-1">
-                      <p className={cn("text-[9px] font-black uppercase tracking-[0.1em]", plan.mutedText)}>one-time</p>
-                      <div className="flex items-baseline gap-2">
-                        <span className={cn("text-4xl font-black", plan.textClass)}>{plan.price}</span>
-                        <span className={cn("line-through text-xs opacity-40", plan.mutedText)}>{plan.oldPrice}</span>
+                  <div className="space-y-4">
+                    <div className="space-y-0.5">
+                      <p className={cn("text-[8px] font-black uppercase tracking-[0.1em]", plan.mutedText)}>one-time</p>
+                      <div className="flex items-baseline gap-1.5">
+                        <span className={cn("text-3xl font-black", plan.textClass)}>{plan.price}</span>
+                        <span className={cn("line-through text-[10px] opacity-40", plan.mutedText)}>{plan.oldPrice}</span>
                       </div>
                     </div>
-                    <div className="space-y-2">
-                      <p className={cn("text-[9px] font-black uppercase tracking-[0.1em]", plan.mutedText)}>monthly rent</p>
+                    <div className="space-y-1">
+                      <p className={cn("text-[8px] font-black uppercase tracking-[0.1em]", plan.mutedText)}>monthly rent</p>
                       <div className="flex items-baseline gap-1">
-                        <span className={cn("text-2xl font-black", plan.theme === "light" ? "text-primary" : plan.textClass)}>from {plan.monthly}</span>
-                        <span className={cn("text-[10px] font-medium", plan.mutedText)}>/ Month</span>
+                        <span className={cn("text-xl font-black", plan.theme === "light" ? "text-primary" : plan.textClass)}>from {plan.monthly}</span>
+                        <span className={cn("text-[9px] font-medium", plan.mutedText)}>/ Month</span>
                       </div>
                     </div>
                   </div>
 
-                  <Button className={cn("w-full h-12 rounded-xl font-black text-sm", plan.buttonClass)}>
-                    View details <ArrowRight className="ml-2 w-4 h-4" />
+                  <Button className={cn("w-full h-10 rounded-xl font-black text-xs", plan.buttonClass)}>
+                    View details <ArrowRight className="ml-1.5 w-3 h-3" />
                   </Button>
                 </div>
               ))}
             </div>
 
-            <div className="pt-4 flex flex-col md:flex-row items-center justify-center gap-6 text-center">
-               <p className="text-muted-foreground text-xs font-medium">
+            <div className="pt-2 flex flex-col md:flex-row items-center justify-center gap-4 text-center">
+               <p className="text-muted-foreground text-[10px] font-medium">
                   Free consultation • 12h Response • No-obligation
                </p>
                <Dialog>
                   <DialogTrigger asChild>
-                    <Button variant="outline" className="rounded-full bg-muted/30 border-none flex items-center gap-2 text-[10px] font-bold px-5 h-8">
-                      <Zap className="w-3 h-3" /> This is how I work <ArrowRight className="w-3 h-3" />
+                    <Button variant="outline" className="rounded-full bg-muted/30 border-none flex items-center gap-1.5 text-[9px] font-bold px-4 h-7">
+                      <Zap className="w-2.5 h-2.5" /> This is how I work <ArrowRight className="w-2.5 h-2.5" />
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="max-w-2xl rounded-[2.5rem] p-0 overflow-hidden border-none shadow-2xl">
-                    <div className="p-8 md:p-10 bg-white space-y-8">
+                  <DialogContent className="max-w-lg rounded-[2rem] p-0 overflow-hidden border-none shadow-2xl">
+                    <div className="p-6 md:p-8 bg-white space-y-6">
                       <DialogHeader className="space-y-1 relative">
-                        <DialogTitle className="text-3xl font-headline font-black text-secondary">This is how I work</DialogTitle>
-                        <p className="text-muted-foreground text-sm font-medium">From booking to launch</p>
+                        <DialogTitle className="text-2xl font-headline font-black text-secondary">This is how I work</DialogTitle>
+                        <p className="text-muted-foreground text-xs font-medium">From booking to launch</p>
                       </DialogHeader>
 
-                      <div className="space-y-6">
+                      <div className="space-y-4">
                         {processSteps.map((step, idx) => (
-                          <div key={idx} className="flex gap-4 group">
-                            <div className="w-10 h-10 rounded-xl bg-secondary text-white flex items-center justify-center shrink-0 shadow-md">
+                          <div key={idx} className="flex gap-3 group">
+                            <div className="w-8 h-8 rounded-lg bg-secondary text-white flex items-center justify-center shrink-0 shadow-md">
                               {step.icon}
                             </div>
-                            <div className="space-y-1">
-                              <h3 className="text-lg font-bold text-secondary tracking-tight">{step.title}</h3>
-                              <p className="text-muted-foreground text-xs leading-relaxed">{step.description}</p>
+                            <div className="space-y-0.5">
+                              <h3 className="text-base font-bold text-secondary tracking-tight">{step.title}</h3>
+                              <p className="text-muted-foreground text-[11px] leading-relaxed">{step.description}</p>
                             </div>
                           </div>
                         ))}
                       </div>
 
-                      <div className="bg-primary/5 border border-primary/10 rounded-2xl p-4 flex items-center gap-4">
-                        <Check className="w-5 h-5 text-primary" />
-                        <p className="font-bold text-secondary text-xs">Average project duration: 2-4 weeks</p>
+                      <div className="bg-primary/5 border border-primary/10 rounded-xl p-3 flex items-center gap-3">
+                        <Check className="w-4 h-4 text-primary" />
+                        <p className="font-bold text-secondary text-[11px]">Average project duration: 2-4 weeks</p>
                       </div>
 
                       <DialogClose asChild>
-                        <Button className="w-full h-14 rounded-xl bg-secondary text-white font-black text-base shadow-xl hover:scale-[1.01] transition-all">
-                          Understood <Check className="ml-2 w-4 h-4" />
+                        <Button className="w-full h-12 rounded-xl bg-secondary text-white font-black text-sm shadow-xl hover:scale-[1.01] transition-all">
+                          Understood <Check className="ml-1.5 w-3 h-3" />
                         </Button>
                       </DialogClose>
                     </div>
@@ -383,47 +383,47 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Reviews Section */}
-        <section className="py-12 px-6 relative bg-white overflow-hidden">
-          <div className="max-w-7xl mx-auto flex flex-col items-center space-y-8">
-            <div className="text-center space-y-4">
-              <h2 className="text-4xl md:text-6xl font-headline font-black text-secondary tracking-tight">What customers say</h2>
-              <div className="flex flex-col items-center gap-1">
+        {/* Reviews Section - Compact py-8 */}
+        <section className="py-8 px-6 relative bg-white overflow-hidden">
+          <div className="max-w-7xl mx-auto flex flex-col items-center space-y-6">
+            <div className="text-center space-y-2">
+              <h2 className="text-3xl md:text-5xl font-headline font-black text-secondary tracking-tight">What customers say</h2>
+              <div className="flex flex-col items-center gap-0.5">
                 <div className="flex gap-0.5">
                   {[1, 2, 3, 4, 5].map((s) => (
-                    <Star key={s} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                    <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <div className="flex items-center gap-2 text-sm font-black text-secondary">
+                <div className="flex items-center gap-1.5 text-[11px] font-black text-secondary">
                   <span>5.0</span>
-                  <span className="text-muted-foreground font-medium text-[10px]">Based on 16 reviews</span>
+                  <span className="text-muted-foreground font-medium text-[9px]">Based on 16 reviews</span>
                 </div>
               </div>
             </div>
 
-            <div className="w-full relative px-10">
+            <div className="w-full relative px-8">
               <Carousel className="w-full" opts={{ align: "start", loop: true }}>
                 <CarouselContent className="-ml-4">
                   {reviews.map((review, idx) => (
                     <CarouselItem key={idx} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="bg-white rounded-[1.5rem] border border-muted/50 p-6 flex flex-col space-y-4 h-full shadow-sm">
-                        <p className="text-secondary text-xs font-medium leading-relaxed italic">
+                      <div className="bg-white rounded-[1.25rem] border border-muted/50 p-5 flex flex-col space-y-3 h-full shadow-sm">
+                        <p className="text-secondary text-[11px] font-medium leading-relaxed italic">
                           "{review.text}"
                         </p>
-                        <div className="flex items-center gap-3 pt-4 border-t border-muted/20 mt-auto">
-                          <Image src={review.avatar} alt={review.name} width={32} height={32} className="rounded-full" />
+                        <div className="flex items-center gap-2 pt-3 border-t border-muted/20 mt-auto">
+                          <Image src={review.avatar} alt={review.name} width={28} height={28} className="rounded-full" />
                           <div>
-                            <h4 className="font-bold text-secondary text-[11px]">{review.name}</h4>
-                            <p className="text-[9px] text-muted-foreground">{review.location}</p>
+                            <h4 className="font-bold text-secondary text-[10px]">{review.name}</h4>
+                            <p className="text-[8px] text-muted-foreground">{review.location}</p>
                           </div>
                         </div>
                       </div>
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <div className="flex justify-center gap-3 mt-8">
-                  <CarouselPrevious className="static translate-y-0 h-10 w-10" />
-                  <CarouselNext className="static translate-y-0 h-10 w-10" />
+                <div className="flex justify-center gap-3 mt-6">
+                  <CarouselPrevious className="static translate-y-0 h-8 w-8" />
+                  <CarouselNext className="static translate-y-0 h-8 w-8" />
                 </div>
               </Carousel>
             </div>
@@ -433,23 +433,23 @@ export default function Home() {
         {/* Results Section */}
         <ResultsSection />
 
-        {/* CTA Section */}
-        <section className="py-16 px-6 relative">
+        {/* CTA Section - Compact p-10 */}
+        <section className="py-12 px-6 relative">
           <div className="max-w-7xl mx-auto">
-            <div className="bg-[#0a0a0a] rounded-[3rem] p-12 md:p-16 text-center space-y-8 shadow-2xl">
-              <div className="space-y-3">
-                <h2 className="text-4xl md:text-6xl font-headline font-black text-white tracking-tight">Ready for your project?</h2>
-                <p className="text-white/60 text-base md:text-lg max-w-xl mx-auto font-medium">
+            <div className="bg-[#0a0a0a] rounded-[2.5rem] p-10 md:p-12 text-center space-y-6 shadow-2xl">
+              <div className="space-y-2">
+                <h2 className="text-3xl md:text-5xl font-headline font-black text-white tracking-tight">Ready for your project?</h2>
+                <p className="text-white/60 text-sm md:text-base max-w-lg mx-auto font-medium">
                   Let&apos;s create something extraordinary together.
                 </p>
               </div>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button asChild className="h-14 px-10 rounded-xl bg-white text-[#0a0a0a] hover:bg-primary hover:text-white font-black text-lg transition-all shadow-xl">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <Button asChild className="h-12 px-8 rounded-xl bg-white text-[#0a0a0a] hover:bg-primary hover:text-white font-black text-base transition-all shadow-xl">
                   <Link href="/contact">
-                    Free offer <ArrowRight className="ml-2 w-5 h-5" />
+                    Free offer <ArrowRight className="ml-1.5 w-4 h-4" />
                   </Link>
                 </Button>
-                <Button variant="outline" className="h-14 px-10 rounded-xl border-white/20 bg-white/5 text-white hover:bg-white/10 font-black text-lg transition-all">
+                <Button variant="outline" className="h-12 px-8 rounded-xl border-white/20 bg-white/5 text-white hover:bg-white/10 font-black text-base transition-all">
                   8466006486
                 </Button>
               </div>
@@ -459,11 +459,11 @@ export default function Home() {
 
         {/* FABs */}
         <div className="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
-          <Link href="https://wa.me/918466006486" className="w-12 h-12 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all">
-            <MessageCircle className="w-6 h-6" />
+          <Link href="https://wa.me/918466006486" className="w-10 h-10 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all">
+            <MessageCircle className="w-5 h-5" />
           </Link>
-          <Link href="tel:+918466006486" className="w-12 h-12 bg-secondary text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all">
-            <Phone className="w-5 h-5" />
+          <Link href="tel:+918466006486" className="w-10 h-10 bg-secondary text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all">
+            <Phone className="w-4 h-4" />
           </Link>
         </div>
       </main>

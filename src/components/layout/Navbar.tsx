@@ -45,7 +45,7 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-8">
           {NAV_ITEMS.map((item) => (
             <Link 
-              key={item.href} 
+              key={item.name.en} 
               href={item.href}
               className="text-[13px] font-semibold text-secondary/70 hover:text-secondary transition-colors flex items-center gap-1"
             >
@@ -92,7 +92,7 @@ export default function Navbar() {
         <div className="absolute top-full left-0 mt-4 w-full bg-white rounded-2xl border shadow-xl p-8 flex flex-col gap-6 lg:hidden animate-in fade-in slide-in-from-top-4 duration-300">
           {NAV_ITEMS.map((item) => (
             <Link 
-              key={item.href} 
+              key={item.name.en} 
               href={item.href}
               onClick={() => setMobileMenuOpen(false)}
               className="text-lg font-bold text-secondary hover:text-primary transition-colors"
