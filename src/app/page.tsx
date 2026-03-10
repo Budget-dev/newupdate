@@ -1,13 +1,17 @@
+
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 import { 
   Sparkles,
   MessageSquare,
   Phone,
-  MessageCircle
+  MessageCircle,
+  ArrowUpRight
 } from "lucide-react";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 // Tech logos as inline SVGs for cleaner look
 const TechLogos = [
@@ -19,6 +23,45 @@ const TechLogos = [
   { name: "Next.js", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.735 18.91l-4.8-6.178V18.15h-1.35V7.477h1.35l4.8 6.177V7.477h1.35v10.673h-1.35zm-5.735-8.24l-2.025 2.625V13.8L12 11.2V10.67zm0 0l-2.025 2.625V13.8L12 11.2V10.67z"/></svg> },
   { name: "Tailwind", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8 1.026.257 1.759.99 2.57 1.801.83.832 1.663 1.66 3.23 1.66 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.566-.881-2.275-1.589-.785-.785-1.531-1.532-3.325-1.532zm-6 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8 1.027.257 1.76.99 2.571 1.801.831.832 1.664 1.66 3.231 1.66 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.566-.881-2.275-1.589-.785-.785-1.531-1.532-3.326-1.532z"/></svg> },
   { name: "OpenAI", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5153-4.9022 6.0462 6.0462 0 0 0-3.9998-2.8271 6.0417 6.0417 0 0 0-5.1928 1.0683 6.058 6.058 0 0 0-4.6235-2.0118 6.051 6.051 0 0 0-5.0427 2.7317 6.052 6.052 0 0 0-.9658 5.0221 6.051 6.051 0 0 0-2.8262 4.0039 6.0473 6.0473 0 0 0 1.0686 5.1989 6.0261 6.0261 0 0 0 4.6212 2.0121 6.04 6.04 0 0 0 5.0428-2.733 6.0396 6.0396 0 0 0 4.9682 2.733 6.0423 6.0423 0 0 0 5.0428-2.733 6.051 6.051 0 0 0 3.8682 1.8282 6.0423 6.0423 0 0 0 4.6212-2.0121 6.0396 6.0396 0 0 0 1.0686-5.1989 6.0473 6.0473 0 0 0-2.8262-4.0039zm-10.2819 12.0121a4.8143 4.8143 0 0 1-4.0157-2.176l.1042-.0604 4.5445-2.6247a.5416.5416 0 0 0 .2708-.4688V10.165l2.4278 1.4013v5.6291a.1354.1354 0 0 1-.0677.1172l-3.264 1.8864z"/></svg> },
+];
+
+const references = [
+  {
+    title: "Propvex Capital",
+    tag: "Finance",
+    description: "Investment and capital management. Professional financial platform with an elegant design.",
+    image: PlaceHolderImages.find(img => img.id === 'project-2')
+  },
+  {
+    title: "Steak Club New York",
+    tag: "Gastronomy",
+    description: "Exclusive steakhouse website with a modern reservation system and digital menu.",
+    image: PlaceHolderImages.find(img => img.id === 'service-web')
+  },
+  {
+    title: "Chauffeur Munich",
+    tag: "Transport",
+    description: "Premium chauffeur service platform. Automated booking processes and elegant design.",
+    image: PlaceHolderImages.find(img => img.id === 'project-4')
+  },
+  {
+    title: "Car Company",
+    tag: "Automotive",
+    description: "Modern automotive portal with a sleek interface for vehicle showcase and management.",
+    image: PlaceHolderImages.find(img => img.id === 'project-5')
+  },
+  {
+    title: "Moussa Export",
+    tag: "Trade",
+    description: "Global export portal for trade and transport, focusing on efficiency and reach.",
+    image: PlaceHolderImages.find(img => img.id === 'project-6')
+  },
+  {
+    title: "Autolackiererei Köse",
+    tag: "Automotive",
+    description: "High-end automotive paint shop portal showcasing precision and quality craft.",
+    image: PlaceHolderImages.find(img => img.id === 'project-1')
+  }
 ];
 
 export default function Home() {
@@ -84,6 +127,53 @@ export default function Home() {
                   ))}
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* References Section */}
+        <section className="py-24 bg-white/50 backdrop-blur-sm relative">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="flex items-center gap-8 mb-16">
+              <h2 className="text-6xl md:text-8xl font-headline font-black text-secondary">References.</h2>
+              <div className="w-px h-12 md:h-20 bg-muted-foreground/20 hidden md:block" />
+              <p className="text-muted-foreground text-sm md:text-base max-w-[200px] leading-tight">
+                Selected works. From local companies to international platforms.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {references.map((ref, idx) => (
+                <div key={idx} className="group flex flex-col space-y-6">
+                  <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-sm transition-all duration-500 group-hover:shadow-xl group-hover:-translate-y-2 border border-muted/50 bg-white p-2">
+                    <div className="relative h-full w-full rounded-[1.5rem] overflow-hidden">
+                      <Image 
+                        src={ref.image?.imageUrl || ""} 
+                        alt={ref.title} 
+                        fill 
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        data-ai-hint={ref.image?.imageHint}
+                      />
+                      <div className="absolute top-4 left-4">
+                        <span className="bg-black/50 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1 rounded-full">
+                          {ref.tag}
+                        </span>
+                      </div>
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500 flex items-center justify-center">
+                         <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all duration-500">
+                            <ArrowUpRight className="w-6 h-6 text-secondary" />
+                         </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="px-2 space-y-2">
+                    <h3 className="text-2xl font-black text-secondary">{ref.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {ref.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
