@@ -19,7 +19,8 @@ import {
   ChevronDown,
   Layout,
   Code,
-  ShieldCheck
+  ShieldCheck,
+  ExternalLink
 } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { cn } from "@/lib/utils";
@@ -594,7 +595,7 @@ export default function Home() {
         </section>
 
         {/* About me Section */}
-        <section className="py-6 px-6 relative">
+        <section id="about" className="py-6 px-6 relative">
           <div className="max-w-7xl mx-auto main-section-container space-y-8">
             <div className="flex flex-col md:flex-row md:items-baseline gap-4 border-b pb-4">
               <h2 className="text-5xl md:text-6xl font-headline font-black text-secondary">About me.</h2>
@@ -634,13 +635,13 @@ export default function Home() {
                   <h3 className="text-3xl font-black text-secondary leading-tight">One head, clear visions.</h3>
                   <div className="space-y-4 text-[13px] text-muted-foreground leading-relaxed max-w-xl">
                     <p>
-                      I'm Venkatesh Choppa – the sole driving force behind BudgetDev, your web design agency in Vizianagaram. 
+                      I&apos;m Venkatesh Choppa – the sole driving force behind BudgetDev, your web design agency in Vizianagaram. 
                       No large team, no unnecessary meetings, no wasted hours. As a developer with 
                       innovative thinking, I work efficiently, with high quality, and quickly.
                     </p>
                     <p>
                       I personally manage and execute everything to deliver the best possible result. No 500 hours 
-                      of work for things that simply need to work. I'm the best partner you'll find when it 
+                      of work for things that simply need to work. I&apos;m the best partner you&apos;ll find when it 
                       comes to excellence. <Link href="/contact" className="text-primary font-bold hover:underline">Learn more about me.</Link>
                     </p>
                   </div>
@@ -673,26 +674,76 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-12 px-6 relative">
-          <div className="max-w-7xl mx-auto">
-            <div className="bg-[#0a0a0a] rounded-[2.5rem] p-10 md:p-12 text-center space-y-6 shadow-2xl">
-              <div className="space-y-2">
-                <h2 className="text-3xl md:text-5xl font-headline font-black text-white tracking-tight">Ready for your project?</h2>
-                <p className="text-white/60 text-sm md:text-base max-w-lg mx-auto font-medium">
-                  Let&apos;s create something extraordinary together.
-                </p>
-              </div>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                <Button asChild className="h-12 px-8 rounded-xl bg-white text-[#0a0a0a] hover:bg-primary hover:text-white font-black text-base transition-all shadow-xl">
-                  <Link href="/contact">
-                    Free offer <ArrowRight className="ml-1.5 w-4 h-4" />
+        {/* CTA Section - Screenshot Style */}
+        <section className="py-6 px-6 relative">
+          <div className="max-w-7xl mx-auto rounded-[2.5rem] bg-[#0a0a0a] p-10 md:p-16 overflow-hidden relative shadow-2xl">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+              <div className="space-y-8">
+                <div className="space-y-4">
+                  <span className="text-primary text-xs font-black uppercase tracking-widest">make contact</span>
+                  <h2 className="text-5xl md:text-7xl font-headline font-black text-white leading-tight">Ready for your project?</h2>
+                  <p className="text-white/60 text-base md:text-lg max-w-md font-medium">
+                    Let&apos;s get started together. Send me an inquiry and receive a response within 12 hours.
+                  </p>
+                </div>
+                
+                <div className="sparkle-btn-wrapper">
+                  <Link href="/contact" className="sparkle-btn group">
+                    <svg className="sparkle-btn-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+                    </svg>
+                    <div className="sparkle-txt-wrapper">
+                      <div className="sparkle-txt-1">
+                        {"PROJEKT STARTEN".split("").map((char, i) => (
+                          <span key={i} className="sparkle-btn-letter">{char === " " ? "\u00A0" : char}</span>
+                        ))}
+                      </div>
+                    </div>
                   </Link>
-                </Button>
-                <Button variant="outline" className="h-12 px-8 rounded-xl border-white/20 bg-white/5 text-white hover:bg-white/10 font-black text-base transition-all">
-                  8466006486
-                </Button>
+                </div>
               </div>
+
+              <div className="flex justify-end">
+                <Card className="w-full max-w-sm bg-white/5 border-white/10 rounded-[2rem] p-8 space-y-4 backdrop-blur-xl">
+                  <div className="space-y-1">
+                    <h3 className="text-2xl font-black text-white italic tracking-tight">BudgetDev.agency</h3>
+                    <p className="text-white/40 text-[11px] font-bold uppercase tracking-wider">Web design & software development</p>
+                  </div>
+                  <div className="pt-4">
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-black uppercase tracking-widest">
+                       <div className="w-2 h-2 rounded-full bg-primary animate-pulse" /> Available for new projects
+                    </div>
+                  </div>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Map Section */}
+        <section className="py-6 px-6 relative mb-12">
+          <div className="max-w-7xl mx-auto rounded-[2.5rem] bg-[#0a0a0a] p-8 md:p-12 space-y-8 border border-white/5">
+            <div className="flex justify-between items-end">
+              <div className="space-y-2">
+                <span className="text-primary text-xs font-black uppercase tracking-widest">Vizianagaram location</span>
+                <p className="text-white text-base font-bold">Fort City, Vizianagaram, Andhra Pradesh 535003</p>
+              </div>
+              <Link href="https://maps.google.com" className="text-white/40 text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 hover:text-white transition-colors">
+                Open in Google Maps <ExternalLink className="w-3 h-3" />
+              </Link>
+            </div>
+            
+            <div className="relative h-[400px] w-full rounded-[2rem] overflow-hidden grayscale invert opacity-80 hover:grayscale-0 hover:invert-0 hover:opacity-100 transition-all duration-700">
+               <iframe 
+                width="100%" 
+                height="100%" 
+                frameBorder="0" 
+                scrolling="no" 
+                marginHeight={0} 
+                marginWidth={0} 
+                src="https://www.openstreetmap.org/export/embed.html?bbox=83.3900%2C18.1100%2C83.4100%2C18.1300&amp;layer=mapnik&amp;marker=18.1200%2C83.4000" 
+                className="filter contrast-125 border-none"
+              />
             </div>
           </div>
         </section>
