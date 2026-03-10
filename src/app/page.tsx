@@ -156,34 +156,30 @@ const reviews = [
   {
     name: "Srinivas Rao",
     location: "Vijayawada, AP",
-    date: "1 month ago",
-    text: "BudgetDev completely transformed our online presence. The website is incredibly fast and the user interface is just beautiful. Their attention to detail in the coding phase was impressive. Highly recommended for any business in AP looking for global quality.",
-    initial: "S",
-    color: "bg-indigo-600"
+    date: "vor 2 Stunden",
+    text: "Wirklich Gut!!!",
+    avatar: "https://picsum.photos/seed/srinivas/100/100",
   },
   {
     name: "Anitha Reddy",
     location: "Visakhapatnam, AP",
-    date: "2 months ago",
-    text: "Extremely professional and delivered our e-commerce app ahead of schedule. The integration with payment gateways and local shipping APIs was seamless. Best digital agency I've worked with in India.",
-    initial: "A",
-    color: "bg-emerald-600"
+    date: "vor 1 Tag",
+    text: "Ich bin absolut begeistert von der Zusammenarbeit! Die Homepage wurde genau nach meinen Vorstellungen umgesetzt und sieht nicht nur modern und professionell aus, sondern funktioniert auch technisch einwandfrei.",
+    avatar: "https://picsum.photos/seed/anitha/100/100",
   },
   {
     name: "Venkatesh K.",
     location: "Tirupati, AP",
-    date: "3 months ago",
-    text: "The technical depth BudgetDev brings is unmatched. They optimized our existing portal and improved our load times by 70%. Their fixed-price model really helped us stay within budget without compromising on features.",
-    initial: "V",
-    color: "bg-rose-600"
+    date: "vor einem Monat",
+    text: "Ich muss sagen es war eine gute und zuverlässige Arbeit die mir abgeliefert wurde danke.",
+    avatar: "https://picsum.photos/seed/venkatesh/100/100",
   },
   {
     name: "Sai Kumar",
     location: "Guntur, AP",
-    date: "2 weeks ago",
-    text: "Amazing experience working with this team. They built a custom CRM for our logistics business that has saved us hours of manual work every day. The ROI was visible within the first month.",
-    initial: "S",
-    color: "bg-amber-600"
+    date: "vor 2 Wochen",
+    text: "Exzellente Arbeit. Das Team hat unsere Erwartungen übertroffen. Sehr zu empfehlen für alle Unternehmen in Andhra Pradesh.",
+    avatar: "https://picsum.photos/seed/sai/100/100",
   }
 ];
 
@@ -366,7 +362,7 @@ export default function Home() {
                       <p className={cn("text-[10px] font-black uppercase tracking-[0.2em]", plan.mutedText)}>monthly</p>
                       <div className="space-y-1">
                         <div className="flex items-baseline gap-2">
-                          <span className={cn("text-3xl font-black", plan.theme === "light" ? "text-[#00E699]" : plan.textClass)}>from {plan.monthly}</span>
+                          <span className={cn("text-3xl font-black", plan.theme === "light" ? "text-primary" : plan.textClass)}>from {plan.monthly}</span>
                           <span className={cn("text-sm font-medium", plan.mutedText)}>/ Month</span>
                         </div>
                         <p className={cn("text-[10px] font-medium opacity-60", plan.mutedText)}>24-month term, including maintenance</p>
@@ -416,13 +412,13 @@ export default function Home() {
                         ))}
                       </div>
 
-                      <div className="bg-[#f0fdf4] border border-[#dcfce7] rounded-3xl p-6 flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-full bg-[#22c55e] flex items-center justify-center text-white shadow-sm">
+                      <div className="bg-primary/5 border border-primary/10 rounded-3xl p-6 flex items-center gap-4">
+                        <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white shadow-sm">
                           <Check className="w-6 h-6" />
                         </div>
                         <div>
-                          <p className="font-bold text-[#166534] text-sm">Average project duration: 2-4 weeks</p>
-                          <p className="text-[#166534]/70 text-[11px] font-medium leading-none">Depending on complexity and chosen package</p>
+                          <p className="font-bold text-secondary text-sm">Average project duration: 2-4 weeks</p>
+                          <p className="text-muted-foreground text-[11px] font-medium leading-none">Depending on complexity and chosen package</p>
                         </div>
                       </div>
 
@@ -449,53 +445,39 @@ export default function Home() {
                   <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
                   <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
                 </svg>
-                <span className="text-sm font-bold text-secondary">Verified Google Reviews</span>
-              </div>
-              <h2 className="text-5xl md:text-7xl font-headline font-black text-secondary leading-tight tracking-tight">
-                Trusted in <span className="text-primary italic">Andhra Pradesh</span>
-              </h2>
-              <div className="flex flex-col items-center gap-3">
-                <div className="flex gap-1">
-                  {[1, 2, 3, 4, 5].map((s) => (
-                    <Star key={s} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
-                  ))}
-                  <span className="text-3xl font-black ml-3">5.0</span>
-                </div>
-                <p className="text-muted-foreground font-semibold text-sm uppercase tracking-wider">Based on 24 local reviews</p>
+                <span className="text-sm font-bold text-secondary uppercase tracking-wider">What customers say</span>
               </div>
             </div>
 
-            <div className="w-full relative px-4 md:px-12">
+            <div className="w-full relative">
               <Carousel className="w-full" opts={{ align: "start", loop: true }}>
                 <CarouselContent className="-ml-4 md:-ml-6">
                   {reviews.map((review, idx) => (
                     <CarouselItem key={idx} className="pl-4 md:pl-6 md:basis-1/2 lg:basis-1/3">
-                      <div className="bg-white rounded-[3rem] border border-muted/50 p-10 flex flex-col space-y-8 h-full shadow-lg shadow-black/5 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group">
-                        <div className="flex justify-between items-start">
-                          <div className="flex gap-1">
-                            {[1, 2, 3, 4, 5].map((s) => (
-                              <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                            ))}
-                          </div>
-                          <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">{review.date}</span>
+                      <div className="bg-white rounded-[2rem] border border-muted/60 p-8 flex flex-col space-y-6 h-full shadow-sm hover:shadow-md transition-all duration-300">
+                        <div className="flex gap-1">
+                          {[1, 2, 3, 4, 5].map((s) => (
+                            <Star key={s} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                          ))}
                         </div>
-                        <p className="text-secondary/80 text-base md:text-lg font-medium leading-relaxed flex-1 italic">
-                          "{review.text}"
+                        
+                        <p className="text-secondary/90 text-sm md:text-base font-medium leading-relaxed flex-1">
+                          {review.text}
                         </p>
-                        <div className="pt-8 border-t border-muted/30">
-                          <div className="flex items-center gap-4">
-                            <div className={cn("w-14 h-14 rounded-2xl flex items-center justify-center text-white font-black text-xl shadow-inner", review.color)}>
-                              {review.initial}
-                            </div>
-                            <div className="flex-1">
-                              <h4 className="font-black text-secondary text-lg leading-none mb-1">{review.name}</h4>
-                              <p className="text-xs text-primary font-bold uppercase tracking-widest">{review.location}</p>
-                            </div>
-                            <Link href="#" className="w-10 h-10 rounded-full border border-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-white hover:border-primary transition-all">
-                              <ExternalLink className="w-4 h-4" />
-                            </Link>
+                        
+                        <div className="flex items-center gap-4 pt-4 border-t border-muted/40">
+                          <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0">
+                            <Image src={review.avatar} alt={review.name} fill className="object-cover" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h4 className="font-bold text-secondary text-sm truncate">{review.name}</h4>
+                            <p className="text-[11px] text-muted-foreground">{review.date}</p>
                           </div>
                         </div>
+                        
+                        <Link href="#" className="inline-flex items-center gap-2 text-[11px] font-semibold text-muted-foreground hover:text-primary transition-colors">
+                          Auf Google ansehen <ExternalLink className="w-3.5 h-3.5" />
+                        </Link>
                       </div>
                     </CarouselItem>
                   ))}
@@ -505,8 +487,8 @@ export default function Home() {
                    <CarouselNext className="static translate-y-0" />
                 </div>
                 <div className="hidden md:block">
-                  <CarouselPrevious className="-left-16 bg-white shadow-xl border-muted/50 w-14 h-14 hover:bg-primary hover:text-white hover:border-primary transition-all" />
-                  <CarouselNext className="-right-16 bg-white shadow-xl border-muted/50 w-14 h-14 hover:bg-primary hover:text-white hover:border-primary transition-all" />
+                  <CarouselPrevious className="-left-16 bg-white shadow-md border-muted/50 w-12 h-12 hover:bg-primary hover:text-white transition-all" />
+                  <CarouselNext className="-right-16 bg-white shadow-md border-muted/50 w-12 h-12 hover:bg-primary hover:text-white transition-all" />
                 </div>
               </Carousel>
             </div>
