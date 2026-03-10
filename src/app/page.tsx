@@ -5,28 +5,18 @@ import Link from "next/link";
 import Image from "next/image";
 import { 
   Sparkles,
-  MessageSquare,
   Phone,
   MessageCircle,
-  ArrowUpRight,
-  CheckCircle2,
-  Globe,
-  Palette,
   ArrowRight,
   Zap,
   FileText,
   Users,
   Rocket,
-  X,
   Check,
   Star,
-  ExternalLink,
-  Search,
-  LineChart as ChartIcon,
-  Smartphone,
-  ShieldCheck,
-  Layout,
-  Layers
+  MapPin,
+  Wrench,
+  ChevronDown
 } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { cn } from "@/lib/utils";
@@ -45,6 +35,13 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Card } from "@/components/ui/card";
 import { ResultsSection } from "@/components/sections/ResultsSection";
 
 const TechLogos = [
@@ -161,6 +158,13 @@ const reviews = [
     date: "3 months ago",
     text: "Very reliable and creative. They helped us scale our custom software needs on a budget.",
     avatar: "https://picsum.photos/seed/venkat/100/100",
+  },
+  {
+    name: "Sai Krishna",
+    location: "Vizianagaram, AP",
+    date: "2 months ago",
+    text: "Top-notch performance. Our new platform load times are under 1 second. Highly recommended.",
+    avatar: "https://picsum.photos/seed/sai/100/100",
   }
 ];
 
@@ -173,7 +177,7 @@ export default function Home() {
       <Navbar />
       
       <main className="flex-1 relative z-10">
-        {/* Hero Section - Compacted vertical spacing */}
+        {/* Hero Section */}
         <section className="relative pt-24 pb-8 md:pt-32 md:pb-12 overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 text-center space-y-6">
             <div className="space-y-4 animate-in fade-in slide-in-from-bottom-8 duration-1000">
@@ -239,7 +243,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* References Section - Compact py-8 */}
+        {/* References Section */}
         <section className="py-8 px-6 relative">
           <div className="max-w-7xl mx-auto main-section-container overflow-hidden">
             <div className="flex flex-col md:flex-row md:items-center gap-4 mb-8">
@@ -278,7 +282,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Prices Section - Compact py-8 */}
+        {/* Prices Section */}
         <section className="py-8 px-6 relative">
           <div className="max-w-7xl mx-auto main-section-container overflow-hidden space-y-8">
             <div className="space-y-3">
@@ -383,7 +387,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Reviews Section - Compact py-8 */}
+        {/* Reviews Section */}
         <section className="py-8 px-6 relative bg-white overflow-hidden">
           <div className="max-w-7xl mx-auto flex flex-col items-center space-y-6">
             <div className="text-center space-y-2">
@@ -433,7 +437,72 @@ export default function Home() {
         {/* Results Section */}
         <ResultsSection />
 
-        {/* CTA Section - Compact p-10 */}
+        {/* FAQ Section */}
+        <section className="py-8 px-6 relative">
+          <div className="max-w-7xl mx-auto main-section-container space-y-8">
+            <div className="flex flex-col md:flex-row md:items-baseline gap-4 border-b pb-6">
+              <h2 className="text-6xl md:text-7xl font-headline font-black text-secondary">FAQ.</h2>
+              <p className="text-muted-foreground font-medium text-xs max-w-md leading-tight">
+                Plain language instead of technical jargon. The most important answers.
+              </p>
+            </div>
+
+            <div className="bg-[#F8FAF9] rounded-[2rem] p-8 space-y-6">
+              <h3 className="text-2xl font-black text-secondary">Interesting facts</h3>
+              <Accordion type="single" collapsible className="w-full space-y-3">
+                {[
+                  { q: "Why BudgetDev?", a: "We combine high-end design with technical excellence at a fair price. No hidden costs, just results." },
+                  { q: "How long does it take?", a: "An average website takes 2-4 weeks. Complex web apps can take 2-3 months depending on the scope." },
+                  { q: "How much does a website cost with BudgetDev?", a: "Our packages start at ₹3,500 for corporate sites. We provide fixed-price quotes after the initial briefing." },
+                  { q: "What technologies does BudgetDev use?", a: "We primarily use Next.js, React, Tailwind CSS, and Firebase for scalable, lightning-fast performance." },
+                  { q: "Are BudgetDev websites SEO-optimized?", a: "Yes, every project includes on-page SEO best practices to ensure you are visible on Google from day one." },
+                  { q: "Does BudgetDev also offer on-site consulting in Vizianagaram?", a: "Absolutely! We love meeting local clients in Vizianagaram to discuss their digital vision in person." },
+                  { q: "Why not use a website builder like Wix or Jimdo?", a: "Builders are limited in performance and customization. We provide 100/100 PageSpeed scores and full ownership of your code." }
+                ].map((item, i) => (
+                  <AccordionItem key={i} value={`item-${i}`} className="bg-white rounded-xl border px-6">
+                    <AccordionTrigger className="text-sm font-bold hover:no-underline">{item.q}</AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground text-xs leading-relaxed">
+                      {item.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <Card className="p-8 rounded-[2rem] border-none bg-[#F8FAF9] space-y-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                    <MapPin className="w-4 h-4" />
+                  </div>
+                  <h4 className="font-black text-secondary text-lg">Local in Vizianagaram</h4>
+                </div>
+                <p className="text-muted-foreground text-xs leading-relaxed">
+                  Personal contact is irreplaceable. No anonymous call center, but direct contacts for your project in Andhra Pradesh.
+                </p>
+              </Card>
+
+              <Card className="p-8 rounded-[2rem] border-none bg-secondary text-white space-y-4 relative overflow-hidden group">
+                <div className="relative z-10 space-y-4">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white">
+                      <Wrench className="w-4 h-4" />
+                    </div>
+                    <h4 className="font-black text-lg italic">Individually?</h4>
+                  </div>
+                  <p className="text-white/60 text-xs leading-relaxed">
+                    I would be happy to create a customized offer for online shops or complex software.
+                  </p>
+                  <Link href="/contact" className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest hover:text-primary transition-colors">
+                    Inquiries <ArrowRight className="w-3 h-3" />
+                  </Link>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
         <section className="py-12 px-6 relative">
           <div className="max-w-7xl mx-auto">
             <div className="bg-[#0a0a0a] rounded-[2.5rem] p-10 md:p-12 text-center space-y-6 shadow-2xl">
