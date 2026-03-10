@@ -18,7 +18,9 @@ import {
   Users,
   Rocket,
   X,
-  Check
+  Check,
+  Star,
+  ExternalLink
 } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { cn } from "@/lib/utils";
@@ -30,6 +32,13 @@ import {
   DialogTrigger,
   DialogClose,
 } from "@/components/ui/dialog";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const TechLogos = [
   { name: "HTML5", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg> },
@@ -140,6 +149,30 @@ const processSteps = [
     title: "4. Launch & Support",
     description: "Once you approve it, your project will go live. You will receive an introduction to the dashboard, and I will be available to answer any questions you may have.",
     icon: <Rocket className="w-5 h-5" />
+  }
+];
+
+const reviews = [
+  {
+    name: "köse kaan",
+    date: "3 months ago",
+    text: "BudgetDev created my entire website and I am more than satisfied with the result. The collaboration was very professional, fast, and straightforward. My wishes were always taken into account, and I received valuable tips.",
+    initial: "K",
+    color: "bg-orange-600"
+  },
+  {
+    name: "Mustafa Celik",
+    date: "3 months ago",
+    text: "Thank you so much for the fantastic work! The website was implemented exactly as I envisioned – modern, clear, and professional. Communication was always friendly, reliable, and prompt. I am very happy with the result and highly recommend them!",
+    initial: "M",
+    color: "bg-green-600"
+  },
+  {
+    name: "mark",
+    date: "6 months ago",
+    text: "Very accommodating, gave us good advice and we are now ranked better on Google thanks to the optimization. Highly recommend working with BudgetDev for anyone looking for digital growth.",
+    initial: "M",
+    color: "bg-blue-600"
   }
 ];
 
@@ -390,6 +423,72 @@ export default function Home() {
                     </div>
                   </DialogContent>
                </Dialog>
+            </div>
+          </div>
+        </section>
+
+        {/* What customers say Section */}
+        <section className="py-24 px-6 relative bg-white">
+          <div className="max-w-7xl mx-auto flex flex-col items-center space-y-12">
+            <div className="flex flex-col items-center space-y-6 text-center">
+              <div className="bg-white border border-muted shadow-sm px-6 py-2 rounded-full flex items-center gap-3">
+                <svg className="w-5 h-5" viewBox="0 0 24 24">
+                  <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                  <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
+                  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                </svg>
+                <span className="text-sm font-bold text-secondary">Google Reviews</span>
+              </div>
+              <h2 className="text-5xl md:text-7xl font-headline font-black text-secondary leading-tight">
+                What customers say
+              </h2>
+              <div className="flex flex-col items-center gap-2">
+                <div className="flex gap-1">
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <Star key={s} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
+                  ))}
+                  <span className="text-2xl font-black ml-2">5</span>
+                </div>
+                <p className="text-muted-foreground font-medium text-sm">Based on 16 reviews</p>
+              </div>
+            </div>
+
+            <div className="w-full relative px-12">
+              <Carousel className="w-full" opts={{ align: "start", loop: true }}>
+                <CarouselContent className="-ml-4">
+                  {reviews.map((review, idx) => (
+                    <CarouselItem key={idx} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                      <div className="bg-white rounded-[2.5rem] border border-muted/50 p-10 flex flex-col space-y-8 h-full shadow-sm hover:shadow-xl transition-all duration-500">
+                        <div className="flex gap-0.5">
+                          {[1, 2, 3, 4, 5].map((s) => (
+                            <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                          ))}
+                        </div>
+                        <p className="text-muted-foreground text-sm leading-relaxed flex-1">
+                          "{review.text}"
+                        </p>
+                        <div className="pt-6 border-t border-muted/30 space-y-4">
+                          <div className="flex items-center gap-4">
+                            <div className={cn("w-12 h-12 rounded-full flex items-center justify-center text-white font-bold", review.color)}>
+                              {review.initial}
+                            </div>
+                            <div>
+                              <h4 className="font-bold text-secondary text-sm">{review.name}</h4>
+                              <p className="text-[10px] text-muted-foreground font-medium">{review.date}</p>
+                            </div>
+                          </div>
+                          <Link href="#" className="inline-flex items-center gap-1.5 text-[11px] font-bold text-muted-foreground hover:text-primary transition-colors">
+                            View on Google <ExternalLink className="w-3 h-3" />
+                          </Link>
+                        </div>
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="-left-4 bg-white shadow-lg border-muted/50 w-12 h-12 hover:bg-muted" />
+                <CarouselNext className="-right-4 bg-white shadow-lg border-muted/50 w-12 h-12 hover:bg-muted" />
+              </Carousel>
             </div>
           </div>
         </section>
