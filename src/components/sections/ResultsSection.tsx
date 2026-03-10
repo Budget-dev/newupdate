@@ -54,7 +54,7 @@ const features = [
 export function ResultsSection() {
   return (
     <section className="py-24 px-6 relative">
-      <div className="max-w-7xl mx-auto bg-white rounded-[4rem] border border-muted/50 shadow-2xl shadow-black/5 p-12 md:p-20 overflow-hidden space-y-16">
+      <div className="max-w-7xl mx-auto main-section-container space-y-16">
         <div className="flex flex-col md:flex-row md:items-center gap-8 border-b pb-12">
           <h2 className="text-7xl md:text-9xl font-headline font-black text-secondary">Results.</h2>
           <div className="w-px h-16 bg-muted-foreground/20 hidden md:block" />
@@ -180,7 +180,7 @@ export function ResultsSection() {
 
         {/* Bottom Row Feature Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <Card className="p-8 rounded-[2.5rem] border border-muted/30 shadow-sm flex flex-col items-center justify-between text-center space-y-6 bg-white hover:shadow-md transition-shadow">
+          <Card className="p-8 rounded-[2.5rem] border border-muted-foreground/10 shadow-sm flex flex-col items-center justify-between text-center space-y-6 bg-white hover:shadow-md transition-shadow">
             <div className="grid grid-cols-2 gap-3">
               <div className="w-10 h-10 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-500 font-bold text-xs shadow-sm">
                 <Layout className="w-5 h-5" />
@@ -198,7 +198,7 @@ export function ResultsSection() {
             <p className="font-black text-secondary text-sm italic">Perfectly integrated</p>
           </Card>
 
-          <Card className="p-8 rounded-[2.5rem] border border-muted/30 shadow-sm flex flex-col items-center justify-between text-center space-y-6 bg-white hover:shadow-md transition-shadow">
+          <Card className="p-8 rounded-[2.5rem] border border-muted-foreground/10 shadow-sm flex flex-col items-center justify-between text-center space-y-6 bg-white hover:shadow-md transition-shadow">
             <div className="w-16 h-16 border-2 border-primary/20 rounded-2xl flex items-center justify-center relative">
                <div className="w-10 h-10 border-2 border-primary rounded-xl flex items-center justify-center bg-primary/5">
                   <div className="w-4 h-4 bg-primary rounded-sm" />
@@ -207,14 +207,14 @@ export function ResultsSection() {
             <p className="font-black text-secondary text-sm italic">Build to scale</p>
           </Card>
 
-          <Card className="p-8 rounded-[2.5rem] border border-muted/30 shadow-sm flex flex-col items-center justify-between text-center space-y-6 bg-white hover:shadow-md transition-shadow">
+          <Card className="p-8 rounded-[2.5rem] border border-muted-foreground/10 shadow-sm flex flex-col items-center justify-between text-center space-y-6 bg-white hover:shadow-md transition-shadow">
             <div className="bg-[#F8FAF9] border border-muted/50 rounded-2xl px-6 py-4 flex items-center gap-3">
               <span className="text-primary font-black text-sm tracking-tighter">Mon - Fri: 10 -</span>
             </div>
             <p className="font-black text-secondary text-sm italic">Simple processing</p>
           </Card>
 
-          <Card className="p-8 rounded-[2.5rem] border border-muted/30 shadow-sm flex flex-col items-center justify-between text-center space-y-6 bg-white hover:shadow-md transition-shadow">
+          <Card className="p-8 rounded-[2.5rem] border border-muted-foreground/10 shadow-sm flex flex-col items-center justify-between text-center space-y-6 bg-white hover:shadow-md transition-shadow">
             <div className="relative">
               <div className="bg-white border border-muted/30 rounded-2xl px-10 py-5 space-y-2 shadow-sm">
                 <div className="flex justify-center gap-0.5 mb-2">

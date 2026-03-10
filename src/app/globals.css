@@ -10,7 +10,7 @@
     --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
-    --primary: 160 84% 39%; /* The requested Emerald Green rgb(16, 185, 129) */
+    --primary: 160 84% 39%; /* Emerald Green rgb(16, 185, 129) */
     --primary-foreground: 0 0% 100%;
     --secondary: 222 47% 11%;
     --secondary-foreground: 210 40% 98%;
@@ -38,27 +38,9 @@
 
 .grid-pattern {
   background-image: 
-    linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
-.hero-underline {
-  position: relative;
-  display: inline-block;
-}
-
-.hero-underline::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0.1em;
-  width: 100%;
-  height: 0.15em;
-  background-color: hsl(var(--primary));
-  border-radius: 1em;
-  z-index: -1;
-  opacity: 0.8;
+    linear-gradient(to right, rgba(0,0,0,0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
 }
 
 .squiggle-underline {
@@ -77,17 +59,9 @@
   z-index: -1;
 }
 
-.nav-floating {
-  @apply sticky top-6 z-50 mx-auto max-w-5xl rounded-full border bg-white/80 backdrop-blur-md shadow-sm;
-}
-
 @keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 .animate-scroll {
@@ -105,7 +79,7 @@
   --padding: 4px;
   --transition: 0.4s;
   --button-color: #111827;
-  --highlight-color-hue: 160deg; /* Emerald Green */
+  --highlight-color-hue: 160deg;
 
   user-select: none;
   display: flex;
@@ -121,16 +95,12 @@
     inset 0px 2px 2px rgba(255, 255, 255, 0.15),
     inset 0px 4px 4px rgba(255, 255, 255, 0.1),
     inset 0px 8px 8px rgba(255, 255, 255, 0.05),
-    inset 0px 16px 16px rgba(255, 255, 255, 0.05),
     0px -1px 1px rgba(0, 0, 0, 0.02),
-    0px -2px 2px rgba(0, 0, 0, 0.03),
-    0px -4px 4px rgba(0, 0, 0, 0.05),
-    0px -8px 8px rgba(0, 0, 0, 0.06),
     0px -16px 16px rgba(0, 0, 0, 0.08);
   border: solid 1px #fff2;
   border-radius: var(--border-radius);
   cursor: pointer;
-  transition: box-shadow var(--transition), border var(--transition), background-color var(--transition), transform 0.2s;
+  transition: all var(--transition);
   color: white;
 }
 
@@ -145,14 +115,8 @@
   pointer-events: none;
   background-image: linear-gradient(0deg, #0004, #000a);
   z-index: -1;
-  transition: box-shadow var(--transition), filter var(--transition);
-  box-shadow:
-    0 -8px 8px -6px #0000 inset,
-    0 -16px 16px -8px #00000000 inset,
-    1px 1px 1px #fff2,
-    2px 2px 2px #fff1,
-    -1px -1px 1px #0002,
-    -2px -2px 2px #0001;
+  transition: box-shadow var(--transition);
+  box-shadow: 0 -8px 8px -6px #0000 inset, 1px 1px 1px #fff2, -2px -2px 2px #0001;
 }
 
 .sparkle-btn::after {
@@ -172,9 +136,8 @@
     8%,
     transparent
   );
-  background-position: 0 0;
   opacity: 0;
-  transition: opacity var(--transition), filter var(--transition);
+  transition: opacity var(--transition);
 }
 
 .sparkle-btn-letter {
@@ -182,14 +145,10 @@
   display: inline-block;
   color: #fffb;
   animation: letter-anim 2s ease-in-out infinite;
-  transition: color var(--transition), text-shadow var(--transition), opacity var(--transition);
 }
 
 @keyframes letter-anim {
-  50% {
-    text-shadow: 0 0 3px #fff8;
-    color: #fff;
-  }
+  50% { text-shadow: 0 0 3px #fff8; color: #fff; }
 }
 
 .sparkle-btn-svg {
@@ -198,87 +157,15 @@
   margin-right: 0.75rem;
   fill: #e8e8e8;
   animation: flicker 2s linear infinite;
-  animation-delay: 0.5s;
   filter: drop-shadow(0 0 2px #fff9);
-  transition: fill var(--transition), filter var(--transition), opacity var(--transition);
 }
 
-@keyframes flicker {
-  50% {
-    opacity: 0.3;
-  }
-}
+@keyframes flicker { 50% { opacity: 0.3; } }
 
-.sparkle-txt-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  min-width: 10em;
-}
+.sparkle-btn:hover { transform: scale(1.05); border-color: hsla(var(--highlight-color-hue), 100%, 80%, 40%); }
+.sparkle-btn:hover::after { opacity: 1; mask-image: linear-gradient(0deg, #fff, transparent); }
+.sparkle-btn:active { transform: scale(0.98); }
 
-.sparkle-txt-1,
-.sparkle-txt-2 {
-  position: absolute;
-  white-space: nowrap;
+.main-section-container {
+  @apply bg-white rounded-[3.5rem] border border-slate-200 shadow-2xl shadow-slate-200/50 p-12 md:p-20;
 }
-
-.sparkle-txt-1 {
-  animation: appear-anim 1s ease-in-out forwards;
-}
-
-.sparkle-txt-2 {
-  opacity: 0;
-}
-
-@keyframes appear-anim {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-.sparkle-btn:hover {
-  transform: scale(1.05);
-  border: solid 1px hsla(var(--highlight-color-hue), 100%, 80%, 40%);
-}
-
-.sparkle-btn:hover::before {
-  box-shadow:
-    0 -8px 8px -6px #fffa inset,
-    0 -16px 16px -8px hsla(var(--highlight-color-hue), 100%, 70%, 30%) inset,
-    1px 1px 1px #fff2,
-    2px 2px 2px #fff1,
-    -1px -1px 1px #0002,
-    -2px -2px 2px #0001;
-}
-
-.sparkle-btn:hover::after {
-  opacity: 1;
-  mask-image: linear-gradient(0deg, #fff, transparent);
-}
-
-.sparkle-btn:hover .sparkle-btn-svg {
-  fill: #fff;
-  filter: drop-shadow(0 0 3px hsl(var(--highlight-color-hue), 100%, 70%)) drop-shadow(0 -4px 6px #0009);
-  animation: none;
-}
-
-.sparkle-btn:active {
-  transform: scale(0.98);
-  border: solid 1px hsla(var(--highlight-color-hue), 100%, 80%, 70%);
-  background-color: hsla(var(--highlight-color-hue), 50%, 20%, 0.5);
-}
-
-.sparkle-btn-letter:nth-child(1) { animation-delay: 0s; }
-.sparkle-btn-letter:nth-child(2) { animation-delay: 0.08s; }
-.sparkle-btn-letter:nth-child(3) { animation-delay: 0.16s; }
-.sparkle-btn-letter:nth-child(4) { animation-delay: 0.24s; }
-.sparkle-btn-letter:nth-child(5) { animation-delay: 0.32s; }
-.sparkle-btn-letter:nth-child(6) { animation-delay: 0.4s; }
-.sparkle-btn-letter:nth-child(7) { animation-delay: 0.48s; }
-.sparkle-btn-letter:nth-child(8) { animation-delay: 0.56s; }
-.sparkle-btn-letter:nth-child(9) { animation-delay: 0.64s; }
-.sparkle-btn-letter:nth-child(10) { animation-delay: 0.72s; }
-.sparkle-btn-letter:nth-child(11) { animation-delay: 0.8s; }
-.sparkle-btn-letter:nth-child(12) { animation-delay: 0.88s; }
-.sparkle-btn-letter:nth-child(13) { animation-delay: 0.96s; }
-.sparkle-btn-letter:nth-child(14) { animation-delay: 1.04s; }
-.sparkle-btn-letter:nth-child(15) { animation-delay: 1.12s; }

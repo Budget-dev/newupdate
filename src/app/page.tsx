@@ -268,7 +268,7 @@ export default function Home() {
 
         {/* References Section */}
         <section className="py-24 px-6 relative">
-          <div className="max-w-7xl mx-auto bg-white rounded-[4rem] border border-muted/50 shadow-2xl shadow-black/5 p-12 md:p-20 overflow-hidden">
+          <div className="max-w-7xl mx-auto main-section-container overflow-hidden">
             <div className="flex flex-col md:flex-row md:items-center gap-8 mb-20">
               <h2 className="text-6xl md:text-8xl font-headline font-black text-secondary">References.</h2>
               <div className="w-px h-12 md:h-20 bg-muted-foreground/20 hidden md:block" />
@@ -315,7 +315,7 @@ export default function Home() {
 
         {/* Prices Section */}
         <section className="py-24 px-6 relative">
-          <div className="max-w-7xl mx-auto bg-white rounded-[4rem] border border-muted/50 shadow-2xl shadow-black/5 p-12 md:p-20 overflow-hidden space-y-16">
+          <div className="max-w-7xl mx-auto main-section-container overflow-hidden space-y-16">
             <div className="space-y-6">
               <div className="flex flex-col md:flex-row md:items-baseline gap-6">
                 <h2 className="text-6xl md:text-8xl font-headline font-black text-secondary">Prices.</h2>
