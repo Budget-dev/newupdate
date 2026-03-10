@@ -16,7 +16,10 @@ import {
   Star,
   MapPin,
   Wrench,
-  ChevronDown
+  ChevronDown,
+  Layout,
+  Code,
+  ShieldCheck
 } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { cn } from "@/lib/utils";
@@ -498,6 +501,86 @@ export default function Home() {
                   </Link>
                 </div>
               </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Expertise Section */}
+        <section className="py-8 px-6 relative">
+          <div className="max-w-7xl mx-auto main-section-container space-y-12">
+            <div className="flex flex-col md:flex-row md:items-baseline gap-4 border-b pb-6">
+              <h2 className="text-6xl md:text-7xl font-headline font-black text-secondary">Expertise.</h2>
+              <p className="text-muted-foreground font-medium text-xs max-w-md leading-tight">
+                What we do in Vizianagaram and throughout Andhra Pradesh.
+              </p>
+            </div>
+
+            {/* Stats Row */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { label: "Projects realized", value: "50+" },
+                { label: "Users reached", value: "7.5M+" },
+                { label: "Customer satisfaction", value: "100%" },
+                { label: "Average response time", value: "24h" }
+              ].map((stat, i) => (
+                <Card key={i} className="p-6 rounded-[1.5rem] border-none bg-[#F8FAF9] flex flex-col items-center justify-center text-center space-y-1">
+                  <span className="text-3xl font-black text-secondary">{stat.value}</span>
+                  <span className="text-[10px] font-medium text-muted-foreground uppercase tracking-widest">{stat.label}</span>
+                </Card>
+              ))}
+            </div>
+
+            {/* Our Services */}
+            <div className="space-y-6">
+              <h3 className="text-2xl font-black text-secondary">Our services</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {[
+                  { 
+                    title: "Web design & UI/UX", 
+                    desc: "Conversion-optimized designs that not only look good, but sell.",
+                    icon: <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary"><Layout className="w-5 h-5" /></div>
+                  },
+                  { 
+                    title: "Web development", 
+                    desc: "Next.js, React, TypeScript — state-of-the-art technologies for maximum performance.",
+                    icon: <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary"><Code className="w-5 h-5" /></div>
+                  },
+                  { 
+                    title: "Web Apps & Software", 
+                    desc: "Customized applications, dashboards and automated systems.",
+                    icon: <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary"><Zap className="w-5 h-5" /></div>
+                  },
+                  { 
+                    title: "AI integration", 
+                    desc: "Intelligent chatbots, automations and AI-powered features.",
+                    icon: <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary"><Sparkles className="w-5 h-5" /></div>
+                  }
+                ].map((service, i) => (
+                  <Card key={i} className="p-6 rounded-[1.5rem] border border-muted/50 flex items-start gap-4">
+                    {service.icon}
+                    <div className="space-y-1">
+                      <h4 className="font-bold text-secondary">{service.title}</h4>
+                      <p className="text-xs text-muted-foreground leading-relaxed">{service.desc}</p>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            </div>
+
+            {/* Footer Section */}
+            <div className="pt-6 border-t flex flex-col md:flex-row justify-between items-center gap-6">
+              <div className="space-y-1">
+                <h4 className="text-xs font-black text-secondary uppercase tracking-widest">State-of-the-art technologies</h4>
+                <p className="text-[10px] text-muted-foreground font-medium">Next.js, React, TypeScript, Tailwind CSS, Firebase, Supabase, Vercel</p>
+              </div>
+              <div className="flex gap-3">
+                <div className="flex items-center gap-2 bg-secondary text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest">
+                   <Rocket className="w-3 h-3" /> PageSpeed 100/100
+                </div>
+                <div className="flex items-center gap-2 bg-primary text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest">
+                   <ShieldCheck className="w-3 h-3" /> GDPR compliant
+                </div>
+              </div>
             </div>
           </div>
         </section>
