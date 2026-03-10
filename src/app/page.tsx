@@ -181,19 +181,19 @@ export default function Home() {
       
       <main className="flex-1 relative z-10">
         {/* Hero Section */}
-        <section className="relative pt-24 pb-8 md:pt-32 md:pb-12 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-6 text-center space-y-6">
-            <div className="space-y-4 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-              <h1 className="text-4xl md:text-[64px] font-headline font-black text-secondary leading-[1.1] tracking-tight">
+        <section className="relative pt-16 pb-6 md:pt-24 md:pb-8 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-6 text-center space-y-4">
+            <div className="space-y-3 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+              <h1 className="text-4xl md:text-[56px] font-headline font-black text-secondary leading-[1.1] tracking-tight">
                 We build what you <br />
                 <span className="squiggle-underline">digital success</span>
               </h1>
-              <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed font-medium">
+              <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed font-medium">
                 Websites, web apps and custom software — all perfectly tailored to your business.
               </p>
             </div>
 
-            <div className="flex flex-col items-center gap-6 pt-2 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200">
+            <div className="flex flex-col items-center gap-4 pt-2 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200">
               {/* Custom Sparkle Button */}
               <div className="sparkle-btn-wrapper">
                 <Link href="/contact" className="sparkle-btn group">
@@ -212,31 +212,31 @@ export default function Home() {
 
               <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8">
                 <div className="flex items-baseline gap-1.5">
-                  <span className="text-xl font-black text-secondary">92+</span>
-                  <div className="text-[8px] leading-tight font-bold text-muted-foreground uppercase text-left">
+                  <span className="text-lg font-black text-secondary">92+</span>
+                  <div className="text-[7px] leading-tight font-bold text-muted-foreground uppercase text-left">
                     Projects <br /> completed
                   </div>
                 </div>
-                <div className="w-px h-6 bg-muted hidden md:block" />
+                <div className="w-px h-5 bg-muted hidden md:block" />
                 <div className="flex items-baseline gap-1.5">
-                  <span className="text-xl font-black text-secondary">100</span>
-                  <div className="text-[8px] leading-tight font-bold text-muted-foreground uppercase text-left">
+                  <span className="text-lg font-black text-secondary">100</span>
+                  <div className="text-[7px] leading-tight font-bold text-muted-foreground uppercase text-left">
                     PageSpeed <br /> Score
                   </div>
                 </div>
-                <div className="w-px h-6 bg-muted hidden md:block" />
+                <div className="w-px h-5 bg-muted hidden md:block" />
                 <div className="flex items-baseline gap-1.5">
-                  <span className="text-xl font-black text-primary">4.9</span>
-                  <div className="text-[8px] leading-tight font-bold text-muted-foreground uppercase text-left">
+                  <span className="text-lg font-black text-primary">4.9</span>
+                  <div className="text-[7px] leading-tight font-bold text-muted-foreground uppercase text-left">
                     Google <br /> review
                   </div>
                 </div>
               </div>
 
-              <div className="w-full max-w-3xl overflow-hidden relative mt-2">
-                <div className="flex gap-12 items-center animate-scroll whitespace-nowrap py-1">
+              <div className="w-full max-w-2xl overflow-hidden relative mt-2">
+                <div className="flex gap-10 items-center animate-scroll whitespace-nowrap py-1">
                   {[...TechLogos, ...TechLogos, ...TechLogos].map((logo, idx) => (
-                    <div key={idx} className="flex flex-col items-center gap-2 shrink-0 opacity-30 hover:opacity-100 transition-all duration-300">
+                    <div key={idx} className="flex flex-col items-center gap-2 shrink-0 opacity-20 hover:opacity-100 transition-all duration-300">
                       {logo.svg}
                     </div>
                   ))}
@@ -247,35 +247,35 @@ export default function Home() {
         </section>
 
         {/* References Section */}
-        <section className="py-8 px-6 relative">
+        <section className="py-6 px-6 relative">
           <div className="max-w-7xl mx-auto main-section-container overflow-hidden">
-            <div className="flex flex-col md:flex-row md:items-center gap-4 mb-8">
-              <h2 className="text-4xl md:text-5xl font-headline font-black text-secondary">References.</h2>
-              <div className="w-px h-8 md:h-12 bg-muted-foreground/20 hidden md:block" />
-              <p className="text-muted-foreground text-[10px] md:text-xs max-w-[150px] leading-tight font-medium">
+            <div className="flex flex-col md:flex-row md:items-center gap-3 mb-6">
+              <h2 className="text-3xl md:text-4xl font-headline font-black text-secondary">References.</h2>
+              <div className="w-px h-6 md:h-10 bg-muted-foreground/20 hidden md:block" />
+              <p className="text-muted-foreground text-[9px] md:text-[10px] max-w-[130px] leading-tight font-medium">
                 Selected works. Local to international platforms.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {references.map((ref, idx) => (
-                <div key={idx} className="group flex flex-col space-y-3">
-                  <div className="relative aspect-[4/3] rounded-[1.5rem] overflow-hidden shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1 border border-muted/50">
+                <div key={idx} className="group flex flex-col space-y-2">
+                  <div className="relative aspect-[4/3] rounded-[1.25rem] overflow-hidden shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1 border border-muted/50">
                     <Image 
                       src={ref.image?.imageUrl || ""} 
                       alt={ref.title} 
                       fill 
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute top-2.5 left-2.5">
-                      <span className="bg-black/50 backdrop-blur-md text-white text-[8px] font-black uppercase tracking-[0.1em] px-2 py-0.5 rounded-full">
+                    <div className="absolute top-2 left-2">
+                      <span className="bg-black/50 backdrop-blur-md text-white text-[7px] font-black uppercase tracking-[0.1em] px-2 py-0.5 rounded-full">
                         {ref.tag}
                       </span>
                     </div>
                   </div>
                   <div className="px-1 space-y-0.5">
-                    <h3 className="text-lg font-black text-secondary">{ref.title}</h3>
-                    <p className="text-muted-foreground text-[11px] leading-relaxed">
+                    <h3 className="text-base font-black text-secondary">{ref.title}</h3>
+                    <p className="text-muted-foreground text-[10px] leading-relaxed">
                       {ref.description}
                     </p>
                   </div>
@@ -286,69 +286,69 @@ export default function Home() {
         </section>
 
         {/* Prices Section */}
-        <section className="py-8 px-6 relative">
-          <div className="max-w-7xl mx-auto main-section-container overflow-hidden space-y-8">
-            <div className="space-y-3">
-              <div className="flex flex-col md:flex-row md:items-baseline gap-3">
-                <h2 className="text-4xl md:text-5xl font-headline font-black text-secondary">Prices.</h2>
-                <p className="text-muted-foreground font-medium text-sm italic">Transparent costs. ROI-first approach.</p>
+        <section className="py-6 px-6 relative">
+          <div className="max-w-7xl mx-auto main-section-container overflow-hidden space-y-6">
+            <div className="space-y-2">
+              <div className="flex flex-col md:flex-row md:items-baseline gap-2">
+                <h2 className="text-3xl md:text-4xl font-headline font-black text-secondary">Prices.</h2>
+                <p className="text-muted-foreground font-medium text-xs italic">Transparent costs. ROI-first approach.</p>
               </div>
               <div className="w-full h-px bg-muted" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {pricingPlans.map((plan, idx) => (
                 <div key={idx} className={cn(
-                  "relative group rounded-[2rem] p-6 flex flex-col space-y-6 shadow-sm transition-all duration-500",
+                  "relative group rounded-[1.5rem] p-5 flex flex-col space-y-5 shadow-sm transition-all duration-500",
                   plan.theme === "light" && "bg-white border border-muted/50 hover:shadow-lg",
                   plan.theme === "dark" && "bg-[#0a0a0a] text-white hover:shadow-lg",
                   plan.theme === "premium" && "bg-gradient-to-br from-[#1c1917] to-[#44403c] text-primary hover:shadow-lg"
                 )}>
-                  <div className="space-y-1.5">
+                  <div className="space-y-1">
                     <div className="flex justify-between items-center">
-                      <h3 className="text-2xl font-black">{plan.name}</h3>
+                      <h3 className="text-xl font-black">{plan.name}</h3>
                       {plan.badge && (
-                        <span className="text-[8px] font-black px-1.5 py-0.5 rounded-full bg-primary text-white">
+                        <span className="text-[7px] font-black px-1.5 py-0.5 rounded-full bg-primary text-white">
                           {plan.badge}
                         </span>
                       )}
                     </div>
-                    <p className={cn("text-[11px] leading-relaxed", plan.mutedText)}>
+                    <p className={cn("text-[10px] leading-relaxed", plan.mutedText)}>
                       {plan.description}
                     </p>
                   </div>
 
-                  <div className="space-y-4">
+                  <div className="space-y-3">
                     <div className="space-y-0.5">
-                      <p className={cn("text-[8px] font-black uppercase tracking-[0.1em]", plan.mutedText)}>one-time</p>
+                      <p className={cn("text-[7px] font-black uppercase tracking-[0.1em]", plan.mutedText)}>one-time</p>
                       <div className="flex items-baseline gap-1.5">
-                        <span className={cn("text-3xl font-black", plan.textClass)}>{plan.price}</span>
-                        <span className={cn("line-through text-[10px] opacity-40", plan.mutedText)}>{plan.oldPrice}</span>
+                        <span className={cn("text-2xl font-black", plan.textClass)}>{plan.price}</span>
+                        <span className={cn("line-through text-[9px] opacity-40", plan.mutedText)}>{plan.oldPrice}</span>
                       </div>
                     </div>
-                    <div className="space-y-1">
-                      <p className={cn("text-[8px] font-black uppercase tracking-[0.1em]", plan.mutedText)}>monthly rent</p>
+                    <div className="space-y-0.5">
+                      <p className={cn("text-[7px] font-black uppercase tracking-[0.1em]", plan.mutedText)}>monthly rent</p>
                       <div className="flex items-baseline gap-1">
-                        <span className={cn("text-xl font-black", plan.theme === "light" ? "text-primary" : plan.textClass)}>from {plan.monthly}</span>
-                        <span className={cn("text-[9px] font-medium", plan.mutedText)}>/ Month</span>
+                        <span className={cn("text-lg font-black", plan.theme === "light" ? "text-primary" : plan.textClass)}>from {plan.monthly}</span>
+                        <span className={cn("text-[8px] font-medium", plan.mutedText)}>/ Month</span>
                       </div>
                     </div>
                   </div>
 
-                  <Button className={cn("w-full h-10 rounded-xl font-black text-xs", plan.buttonClass)}>
+                  <Button className={cn("w-full h-9 rounded-lg font-black text-[11px]", plan.buttonClass)}>
                     View details <ArrowRight className="ml-1.5 w-3 h-3" />
                   </Button>
                 </div>
               ))}
             </div>
 
-            <div className="pt-2 flex flex-col md:flex-row items-center justify-center gap-4 text-center">
-               <p className="text-muted-foreground text-[10px] font-medium">
+            <div className="pt-1 flex flex-col md:flex-row items-center justify-center gap-3 text-center">
+               <p className="text-muted-foreground text-[9px] font-medium">
                   Free consultation • 12h Response • No-obligation
                </p>
                <Dialog>
                   <DialogTrigger asChild>
-                    <Button variant="outline" className="rounded-full bg-muted/30 border-none flex items-center gap-1.5 text-[9px] font-bold px-4 h-7">
+                    <Button variant="outline" className="rounded-full bg-muted/30 border-none flex items-center gap-1.5 text-[8px] font-bold px-3 h-6">
                       <Zap className="w-2.5 h-2.5" /> This is how I work <ArrowRight className="w-2.5 h-2.5" />
                     </Button>
                   </DialogTrigger>
@@ -390,69 +390,77 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Results Section */}
+        <ResultsSection />
+
         {/* Reviews Section */}
-        <section className="py-8 px-6 relative bg-white overflow-hidden">
-          <div className="max-w-7xl mx-auto flex flex-col items-center space-y-6">
-            <div className="text-center space-y-2">
-              <h2 className="text-3xl md:text-5xl font-headline font-black text-secondary tracking-tight">What customers say</h2>
+        <section className="py-6 px-6 relative bg-white overflow-hidden">
+          <div className="max-w-7xl mx-auto flex flex-col items-center space-y-5">
+            <div className="text-center space-y-1">
+              <h2 className="text-2xl md:text-4xl font-headline font-black text-secondary tracking-tight">What customers say</h2>
               <div className="flex flex-col items-center gap-0.5">
                 <div className="flex gap-0.5">
                   {[1, 2, 3, 4, 5].map((s) => (
-                    <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    <Star key={s} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <div className="flex items-center gap-1.5 text-[11px] font-black text-secondary">
+                <div className="flex items-center gap-1.5 text-[10px] font-black text-secondary">
                   <span>5.0</span>
-                  <span className="text-muted-foreground font-medium text-[9px]">Based on 16 reviews</span>
+                  <span className="text-muted-foreground font-medium text-[8px]">Based on 16 reviews</span>
                 </div>
               </div>
             </div>
 
-            <div className="w-full relative px-8">
+            <div className="w-full relative px-6 group/carousel">
               <Carousel className="w-full" opts={{ align: "start", loop: true }}>
-                <CarouselContent className="-ml-4">
+                <CarouselContent className="-ml-3">
                   {reviews.map((review, idx) => (
-                    <CarouselItem key={idx} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="bg-white rounded-[1.25rem] border border-muted/50 p-5 flex flex-col space-y-3 h-full shadow-sm">
-                        <p className="text-secondary text-[11px] font-medium leading-relaxed italic">
+                    <CarouselItem key={idx} className="pl-3 md:basis-1/2 lg:basis-1/3">
+                      <div className="bg-white rounded-[1rem] border border-muted/50 p-4 flex flex-col space-y-3 h-full shadow-sm">
+                        <p className="text-secondary text-[10px] font-medium leading-relaxed italic">
                           "{review.text}"
                         </p>
-                        <div className="flex items-center gap-2 pt-3 border-t border-muted/20 mt-auto">
-                          <Image src={review.avatar} alt={review.name} width={28} height={28} className="rounded-full" />
-                          <div>
-                            <h4 className="font-bold text-secondary text-[10px]">{review.name}</h4>
-                            <p className="text-[8px] text-muted-foreground">{review.location}</p>
+                        <div className="flex items-center justify-between pt-2 border-t border-muted/20 mt-auto">
+                          <div className="flex items-center gap-2">
+                            <Image src={review.avatar} alt={review.name} width={24} height={24} className="rounded-full" />
+                            <div>
+                              <h4 className="font-bold text-secondary text-[9px]">{review.name}</h4>
+                              <p className="text-[7px] text-muted-foreground">{review.location}</p>
+                            </div>
                           </div>
+                          <Link href="#" className="text-[8px] font-black text-primary uppercase tracking-widest hover:underline">
+                            Google
+                          </Link>
                         </div>
                       </div>
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <div className="flex justify-center gap-3 mt-6">
-                  <CarouselPrevious className="static translate-y-0 h-8 w-8" />
-                  <CarouselNext className="static translate-y-0 h-8 w-8" />
-                </div>
+                <CarouselPrevious className="h-7 w-7 opacity-0 group-hover/carousel:opacity-100 transition-opacity left-0 bg-white shadow-md border-muted" />
+                <CarouselNext className="h-7 w-7 opacity-0 group-hover/carousel:opacity-100 transition-opacity right-0 bg-white shadow-md border-muted" />
               </Carousel>
+              <div className="flex justify-center mt-4">
+                <Link href="#" className="text-[9px] font-black text-secondary hover:text-primary transition-colors uppercase tracking-[0.2em] flex items-center gap-1.5">
+                   View all 16 reviews on Google <ArrowRight className="w-2.5 h-2.5" />
+                </Link>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Results Section */}
-        <ResultsSection />
-
         {/* FAQ Section */}
-        <section className="py-8 px-6 relative">
-          <div className="max-w-7xl mx-auto main-section-container space-y-8">
-            <div className="flex flex-col md:flex-row md:items-baseline gap-4 border-b pb-6">
-              <h2 className="text-6xl md:text-7xl font-headline font-black text-secondary">FAQ.</h2>
-              <p className="text-muted-foreground font-medium text-xs max-w-md leading-tight">
+        <section className="py-6 px-6 relative">
+          <div className="max-w-7xl mx-auto main-section-container space-y-6">
+            <div className="flex flex-col md:flex-row md:items-baseline gap-3 border-b pb-4">
+              <h2 className="text-5xl md:text-6xl font-headline font-black text-secondary">FAQ.</h2>
+              <p className="text-muted-foreground font-medium text-[10px] max-w-[200px] leading-tight">
                 Plain language instead of technical jargon. The most important answers.
               </p>
             </div>
 
-            <div className="bg-[#F8FAF9] rounded-[2rem] p-8 space-y-6">
-              <h3 className="text-2xl font-black text-secondary">Interesting facts</h3>
-              <Accordion type="single" collapsible className="w-full space-y-3">
+            <div className="bg-[#F8FAF9] rounded-[1.5rem] p-6 space-y-4">
+              <h3 className="text-xl font-black text-secondary">Interesting facts</h3>
+              <Accordion type="single" collapsible className="w-full space-y-2">
                 {[
                   { q: "Why BudgetDev?", a: "We combine high-end design with technical excellence at a fair price. No hidden costs, just results." },
                   { q: "How long does it take?", a: "An average website takes 2-4 weeks. Complex web apps can take 2-3 months depending on the scope." },
@@ -462,9 +470,9 @@ export default function Home() {
                   { q: "Does BudgetDev also offer on-site consulting in Vizianagaram?", a: "Absolutely! We love meeting local clients in Vizianagaram to discuss their digital vision in person." },
                   { q: "Why not use a website builder like Wix or Jimdo?", a: "Builders are limited in performance and customization. We provide 100/100 PageSpeed scores and full ownership of your code." }
                 ].map((item, i) => (
-                  <AccordionItem key={i} value={`item-${i}`} className="bg-white rounded-xl border px-6">
-                    <AccordionTrigger className="text-sm font-bold hover:no-underline">{item.q}</AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground text-xs leading-relaxed">
+                  <AccordionItem key={i} value={`item-${i}`} className="bg-white rounded-xl border px-4">
+                    <AccordionTrigger className="text-[11px] font-bold hover:no-underline py-3">{item.q}</AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground text-[10px] leading-relaxed pb-3">
                       {item.a}
                     </AccordionContent>
                   </AccordionItem>
@@ -472,32 +480,32 @@ export default function Home() {
               </Accordion>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card className="p-8 rounded-[2rem] border-none bg-[#F8FAF9] space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Card className="p-6 rounded-[1.5rem] border-none bg-[#F8FAF9] space-y-3">
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                    <MapPin className="w-4 h-4" />
+                  <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                    <MapPin className="w-3.5 h-3.5" />
                   </div>
-                  <h4 className="font-black text-secondary text-lg">Local in Vizianagaram</h4>
+                  <h4 className="font-black text-secondary text-base">Local in Vizianagaram</h4>
                 </div>
-                <p className="text-muted-foreground text-xs leading-relaxed">
+                <p className="text-muted-foreground text-[10px] leading-relaxed">
                   Personal contact is irreplaceable. No anonymous call center, but direct contacts for your project in Andhra Pradesh.
                 </p>
               </Card>
 
-              <Card className="p-8 rounded-[2rem] border-none bg-secondary text-white space-y-4 relative overflow-hidden group">
-                <div className="relative z-10 space-y-4">
+              <Card className="p-6 rounded-[1.5rem] border-none bg-secondary text-white space-y-3 relative overflow-hidden group">
+                <div className="relative z-10 space-y-3">
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white">
-                      <Wrench className="w-4 h-4" />
+                    <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-white">
+                      <Wrench className="w-3.5 h-3.5" />
                     </div>
-                    <h4 className="font-black text-lg italic">Individually?</h4>
+                    <h4 className="font-black text-base italic">Individually?</h4>
                   </div>
-                  <p className="text-white/60 text-xs leading-relaxed">
+                  <p className="text-white/60 text-[10px] leading-relaxed">
                     I would be happy to create a customized offer for online shops or complex software.
                   </p>
-                  <Link href="/contact" className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest hover:text-primary transition-colors">
-                    Inquiries <ArrowRight className="w-3 h-3" />
+                  <Link href="/contact" className="inline-flex items-center gap-2 text-[9px] font-black uppercase tracking-widest hover:text-primary transition-colors">
+                    Inquiries <ArrowRight className="w-2.5 h-2.5" />
                   </Link>
                 </div>
               </Card>
@@ -506,79 +514,159 @@ export default function Home() {
         </section>
 
         {/* Expertise Section */}
-        <section className="py-8 px-6 relative">
-          <div className="max-w-7xl mx-auto main-section-container space-y-12">
-            <div className="flex flex-col md:flex-row md:items-baseline gap-4 border-b pb-6">
-              <h2 className="text-6xl md:text-7xl font-headline font-black text-secondary">Expertise.</h2>
-              <p className="text-muted-foreground font-medium text-xs max-w-md leading-tight">
+        <section className="py-6 px-6 relative">
+          <div className="max-w-7xl mx-auto main-section-container space-y-8">
+            <div className="flex flex-col md:flex-row md:items-baseline gap-3 border-b pb-4">
+              <h2 className="text-5xl md:text-6xl font-headline font-black text-secondary">Expertise.</h2>
+              <p className="text-muted-foreground font-medium text-[10px] max-w-[200px] leading-tight">
                 What we do in Vizianagaram and throughout Andhra Pradesh.
               </p>
             </div>
 
             {/* Stats Row */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {[
                 { label: "Projects realized", value: "50+" },
                 { label: "Users reached", value: "7.5M+" },
                 { label: "Customer satisfaction", value: "100%" },
                 { label: "Average response time", value: "24h" }
               ].map((stat, i) => (
-                <Card key={i} className="p-6 rounded-[1.5rem] border-none bg-[#F8FAF9] flex flex-col items-center justify-center text-center space-y-1">
-                  <span className="text-3xl font-black text-secondary">{stat.value}</span>
-                  <span className="text-[10px] font-medium text-muted-foreground uppercase tracking-widest">{stat.label}</span>
+                <Card key={i} className="p-5 rounded-[1.25rem] border-none bg-[#F8FAF9] flex flex-col items-center justify-center text-center space-y-1">
+                  <span className="text-2xl font-black text-secondary">{stat.value}</span>
+                  <span className="text-[8px] font-medium text-muted-foreground uppercase tracking-widest">{stat.label}</span>
                 </Card>
               ))}
             </div>
 
             {/* Our Services */}
-            <div className="space-y-6">
-              <h3 className="text-2xl font-black text-secondary">Our services</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="space-y-4">
+              <h3 className="text-xl font-black text-secondary">Our services</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {[
                   { 
                     title: "Web design & UI/UX", 
                     desc: "Conversion-optimized designs that not only look good, but sell.",
-                    icon: <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary"><Layout className="w-5 h-5" /></div>
+                    icon: <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary"><Layout className="w-4 h-4" /></div>
                   },
                   { 
                     title: "Web development", 
                     desc: "Next.js, React, TypeScript — state-of-the-art technologies for maximum performance.",
-                    icon: <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary"><Code className="w-5 h-5" /></div>
+                    icon: <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary"><Code className="w-4 h-4" /></div>
                   },
                   { 
                     title: "Web Apps & Software", 
                     desc: "Customized applications, dashboards and automated systems.",
-                    icon: <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary"><Zap className="w-5 h-5" /></div>
+                    icon: <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary"><Zap className="w-4 h-4" /></div>
                   },
                   { 
                     title: "AI integration", 
                     desc: "Intelligent chatbots, automations and AI-powered features.",
-                    icon: <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary"><Sparkles className="w-5 h-5" /></div>
+                    icon: <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary"><Sparkles className="w-4 h-4" /></div>
                   }
                 ].map((service, i) => (
-                  <Card key={i} className="p-6 rounded-[1.5rem] border border-muted/50 flex items-start gap-4">
+                  <Card key={i} className="p-4 rounded-[1.25rem] border border-muted/50 flex items-start gap-3">
                     {service.icon}
-                    <div className="space-y-1">
-                      <h4 className="font-bold text-secondary">{service.title}</h4>
-                      <p className="text-xs text-muted-foreground leading-relaxed">{service.desc}</p>
+                    <div className="space-y-0.5">
+                      <h4 className="font-bold text-secondary text-sm">{service.title}</h4>
+                      <p className="text-[10px] text-muted-foreground leading-relaxed">{service.desc}</p>
                     </div>
                   </Card>
                 ))}
               </div>
             </div>
 
-            {/* Footer Section */}
-            <div className="pt-6 border-t flex flex-col md:flex-row justify-between items-center gap-6">
-              <div className="space-y-1">
-                <h4 className="text-xs font-black text-secondary uppercase tracking-widest">State-of-the-art technologies</h4>
-                <p className="text-[10px] text-muted-foreground font-medium">Next.js, React, TypeScript, Tailwind CSS, Firebase, Supabase, Vercel</p>
+            {/* Expertise Footer Section */}
+            <div className="pt-4 border-t flex flex-col md:flex-row justify-between items-center gap-4">
+              <div className="space-y-0.5">
+                <h4 className="text-[9px] font-black text-secondary uppercase tracking-widest">State-of-the-art technologies</h4>
+                <p className="text-[8px] text-muted-foreground font-medium">Next.js, React, TypeScript, Tailwind CSS, Firebase, Supabase, Vercel</p>
               </div>
-              <div className="flex gap-3">
-                <div className="flex items-center gap-2 bg-secondary text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest">
-                   <Rocket className="w-3 h-3" /> PageSpeed 100/100
+              <div className="flex gap-2">
+                <div className="flex items-center gap-1.5 bg-secondary text-white px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest">
+                   <Rocket className="w-2.5 h-2.5" /> PageSpeed 100/100
                 </div>
-                <div className="flex items-center gap-2 bg-primary text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest">
-                   <ShieldCheck className="w-3 h-3" /> GDPR compliant
+                <div className="flex items-center gap-1.5 bg-primary text-white px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest">
+                   <ShieldCheck className="w-2.5 h-2.5" /> GDPR compliant
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* About me Section */}
+        <section className="py-6 px-6 relative">
+          <div className="max-w-7xl mx-auto main-section-container space-y-8">
+            <div className="flex flex-col md:flex-row md:items-baseline gap-4 border-b pb-4">
+              <h2 className="text-5xl md:text-6xl font-headline font-black text-secondary">About me.</h2>
+              <p className="text-muted-foreground font-medium text-[10px] max-w-[200px] leading-tight">
+                The mastermind behind BudgetDev.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+              {/* Left Column: Portrait Card */}
+              <div className="lg:col-span-2 relative group">
+                <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl bg-[#1A1A1A] border border-muted/20">
+                  <Image 
+                    src="https://yasodha.in/assets/venkatesh-profile.png" 
+                    alt="Venkatesh Choppa" 
+                    fill 
+                    className="object-cover object-top"
+                  />
+                  {/* Glass Overlay Bottom */}
+                  <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
+                    <div className="space-y-2">
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30 text-primary text-[8px] font-black uppercase tracking-widest">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" /> Founder & Developer
+                      </div>
+                      <div className="space-y-0.5">
+                        <h3 className="text-2xl font-black text-white leading-none">Venkatesh Choppa</h3>
+                        <p className="text-white/60 text-[9px] font-medium">Vizianagaram, Andhra Pradesh</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: Narrative & Stats */}
+              <div className="lg:col-span-3 space-y-8 py-4">
+                <div className="space-y-6">
+                  <h3 className="text-3xl font-black text-secondary leading-tight">One head, clear visions.</h3>
+                  <div className="space-y-4 text-[13px] text-muted-foreground leading-relaxed max-w-xl">
+                    <p>
+                      I'm Venkatesh Choppa – the sole driving force behind BudgetDev, your web design agency in Vizianagaram. 
+                      No large team, no unnecessary meetings, no wasted hours. As a developer with 
+                      innovative thinking, I work efficiently, with high quality, and quickly.
+                    </p>
+                    <p>
+                      I personally manage and execute everything to deliver the best possible result. No 500 hours 
+                      of work for things that simply need to work. I'm the best partner you'll find when it 
+                      comes to excellence. <Link href="/contact" className="text-primary font-bold hover:underline">Learn more about me.</Link>
+                    </p>
+                  </div>
+                </div>
+
+                {/* About Stats Row */}
+                <div className="grid grid-cols-3 gap-4 border-t border-b py-6">
+                  {[
+                    { label: "Unique users", value: "7.5M+" },
+                    { label: "Page views", value: "3.4M+" },
+                    { label: "Satisfied entrepreneurs", value: "100%" }
+                  ].map((stat, i) => (
+                    <div key={i} className="space-y-1">
+                      <p className="text-xl font-black text-secondary">{stat.value}</p>
+                      <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest leading-tight">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Service Tags */}
+                <div className="flex flex-wrap gap-2">
+                  {["Web Development", "UI/UX Design", "Automation"].map(tag => (
+                    <span key={tag} className="px-4 py-1.5 bg-muted/50 border border-muted-foreground/10 text-secondary text-[8px] font-black uppercase tracking-widest rounded-lg">
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
