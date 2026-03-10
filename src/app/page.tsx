@@ -20,7 +20,13 @@ import {
   X,
   Check,
   Star,
-  ExternalLink
+  ExternalLink,
+  Search,
+  LineChart as ChartIcon,
+  Smartphone,
+  ShieldCheck,
+  Layout,
+  Layers
 } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { cn } from "@/lib/utils";
@@ -39,15 +45,15 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { ResultsSection } from "@/components/sections/ResultsSection";
 
 const TechLogos = [
   { name: "HTML5", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg> },
   { name: "CSS3", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm17.09 4.413L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H18.59l-.423-4.471h-9.13L8.85 9.75h8.927l-.423-4.471z"/></svg> },
   { name: "JavaScript", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M0 0h24v24H0V0zm22.034 18.268c0-2.037-1.474-3.112-3.462-3.112-2.015 0-3.417 1.066-3.417 3.112 0 2.058 1.402 3.112 3.417 3.112 2.022 0 3.462-1.054 3.462-3.112zm-4.814 0c0-1.042.66-1.554 1.352-1.554.68 0 1.351.512 1.351 1.554 0 1.053-.671 1.554-1.351 1.554-.692 0-1.352-.501-1.352-1.554zm-1.838 4.732h4.512v-1.74h-4.512v1.74zM10.8 11.026c0-1.475-1.144-2.318-2.618-2.318-1.516 0-2.686.843-2.686 2.318 0 1.474 1.17 2.318 2.686 2.318 1.474 0 2.618-.844 2.618-2.318zm-3.66 0c0-.75.467-1.159.982-1.159.525 0 .972.41.972 1.159 0 .749-.447 1.159-.972 1.159-.515 0-.982-.41-.982-1.159zm-1.396 3.614h4.082V12.9h-4.082v1.74z"/></svg> },
-  { name: "React", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M23.32 10.43c.04.53.04 1.08 0 1.62-.05.54-.15 1.08-.29 1.61-.14.53-.33 1.04-.56 1.54l-.06.13c-.02.04-.04.08-.07.12-.01.03-.03.05-.04.08-.24.46-.51.9-.81 1.32-.3.42-.64.81-1 1.18-.36.37-.75.72-1.17 1.03-.42.31-.86.59-1.32.83-.42.31-.86.59-1.32.83-.42.31-.86.59-1.32.83-.42.31-.86.59-1.32.83-.42.31-.86.59-1.32.83-.42.31-.86.59-1.32.83-.42.31-.86.59-1.32.83-.42.31-.86.59-1.32.83-.42.31-.86.59-1.32.83-.42.31-.86.59-1.32.83-.42.31-.86.59-1.32.83-.42.31-.86.59-1.32.83-.42.31-.86.59-1.32.83-.42.31-.86.59-1.32.83-.42.31-.86.59-1.32.83-.42.31-.86.59-1.32.83-.42.31-.86.59-1.32.83-.42.31-.86.59-1.32.83-.42.31-.86.59-1.32.83-.42.31-.86.59-1.32.83z"/></svg> },
+  { name: "React", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM10.622 8.415l4.879 2.817a.75.75 0 0 1 0 1.298l-4.879 2.817a.75.75 0 0 1-1.122-.649V9.064a.75.75 0 0 1 1.122-.649z"/></svg> },
   { name: "Firebase", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M3.89 15.672L6.255.461A.534.534 0 0 1 7.27.275l2.458 4.608-2.458 8.441a1.2 1.2 0 0 0 .504.148h.001c.144 0 .285-.027.42-.078l2.67-1.006L8.136 5.856l1.96-1.745 5.518 9.84a1.2 1.2 0 0 0 1.521.493l2.855-1.076-2.583 4.887a1.2 1.2 0 0 0 .513.142h.001a1.2 1.2 0 0 0 .61-.17l3.618-1.365a.534.534 0 0 0 .245-.724l-3.328-6.305-1.666 3.161L3.89 15.672zm11.724-4.825L13.116 6.04l-2.003-3.755a.534.534 0 0 0-.964.03l-1.013 3.475 2.502 4.498 3.972-2.441z"/></svg> },
   { name: "Next.js", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.735 18.91l-4.8-6.178V18.15h-1.35V7.477h1.35l4.8 6.177V7.477h1.35v10.673h-1.35zm-5.735-8.24l-2.025 2.625V13.8L12 11.2V10.67zm0 0l-2.025 2.625V13.8L12 11.2V10.67z"/></svg> },
-  { name: "Tailwind", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8 1.026.257 1.759.99 2.57 1.801.83.832 1.663 1.66 3.23 1.66 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.566-.881-2.275-1.589-.785-.785-1.531-1.532-3.325-1.532zm-6 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8 1.027.257 1.76.99 2.571 1.801.831.832 1.664 1.66 3.231 1.66 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.566-.881-2.275-1.589-.785-.785-1.531-1.532-3.326-1.532z"/></svg> },
 ];
 
 const references = [
@@ -154,32 +160,32 @@ const processSteps = [
 
 const reviews = [
   {
-    name: "Ramesh Babu",
+    name: "Srinivas Rao",
     location: "Vijayawada, AP",
-    date: "4 weeks ago",
-    text: "An extremely reliable service provider who performs his work cleanly and professionally. All agreements were honored and the results were excellent. I can wholeheartedly recommend him.",
-    avatar: "https://picsum.photos/seed/ramesh/100/100",
-  },
-  {
-    name: "Lakshmi Priya",
-    location: "Visakhapatnam, AP",
-    date: "3 months ago",
-    text: "BudgetDev created my entire website and I am more than satisfied with the result. The collaboration was very professional, fast, and straightforward. My wishes were always taken into account.",
-    avatar: "https://picsum.photos/seed/lakshmi/100/100",
-  },
-  {
-    name: "Suresh Kumar",
-    location: "Guntur, AP",
-    date: "3 months ago",
-    text: "Thank you so much for the fantastic work! The website was implemented exactly as I envisioned – modern, clear, and professional. Communication was always friendly, reliable, and prompt.",
-    avatar: "https://picsum.photos/seed/suresh/100/100",
+    date: "2 weeks ago",
+    text: "Excellent service and clean implementation. All requirements were met with high precision. Strongly recommended for high-performance websites.",
+    avatar: "https://picsum.photos/seed/srinivas/100/100",
   },
   {
     name: "Anitha Reddy",
     location: "Visakhapatnam, AP",
     date: "1 month ago",
-    text: "Absolutly thrilled with the cooperation! The homepage was implemented exactly according to my ideas and looks modern and professional.",
+    text: "BudgetDev transformed our business portal. The modern design and speed improvements are phenomenal. Truly professional team.",
     avatar: "https://picsum.photos/seed/anitha/100/100",
+  },
+  {
+    name: "Venkatesh Babu",
+    location: "Guntur, AP",
+    date: "3 months ago",
+    text: "Very reliable and creative. They helped us scale our custom software needs on a tight budget. Great communication throughout.",
+    avatar: "https://picsum.photos/seed/venkat/100/100",
+  },
+  {
+    name: "Sai Krishna",
+    location: "Tirupati, AP",
+    date: "4 months ago",
+    text: "The web application built by BudgetDev exceeded our expectations. Clean code, great UI, and delivered on time.",
+    avatar: "https://picsum.photos/seed/sai/100/100",
   }
 ];
 
@@ -201,7 +207,7 @@ export default function Home() {
                 <span className="squiggle-underline">digital success</span>
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-medium">
-                Web design from Bocholt: Websites, web apps and custom software — all <br className="hidden md:block" /> from one source, perfectly tailored to your business.
+                Web design and development: Websites, web apps and custom software — all <br className="hidden md:block" /> from one source, perfectly tailored to your business.
               </p>
             </div>
 
@@ -463,54 +469,46 @@ export default function Home() {
 
             <div className="w-full relative px-12">
               <Carousel className="w-full" opts={{ align: "start", loop: true }}>
-                <CarouselContent className="-ml-4 md:-ml-6">
+                <CarouselContent className="-ml-4">
                   {reviews.map((review, idx) => (
-                    <CarouselItem key={idx} className="pl-4 md:pl-6 md:basis-1/2 lg:basis-1/3">
-                      <div className="bg-white rounded-[2rem] border border-muted/50 p-8 flex flex-col space-y-8 h-full shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300">
-                        <div className="flex gap-1">
+                    <CarouselItem key={idx} className="pl-4 md:basis-1/2 lg:basis-1/4">
+                      <div className="bg-white rounded-[2rem] border border-muted/50 p-8 flex flex-col space-y-6 h-full shadow-sm hover:shadow-md transition-shadow">
+                        <div className="flex gap-0.5">
                           {[1, 2, 3, 4, 5].map((s) => (
-                            <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                            <Star key={s} className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
                           ))}
                         </div>
-                        
-                        <p className="text-secondary/80 text-sm md:text-[15px] font-medium leading-relaxed flex-1">
-                          {review.text}
+                        <p className="text-secondary text-sm font-medium leading-relaxed italic">
+                          "{review.text}"
                         </p>
-                        
-                        <div className="flex flex-col space-y-4 pt-6 border-t border-muted/30">
-                          <div className="flex items-center gap-4">
-                            <div className="relative w-10 h-10 rounded-full overflow-hidden shrink-0 border border-muted/50">
-                              <Image src={review.avatar} alt={review.name} fill className="object-cover" />
-                            </div>
-                            <div className="min-w-0">
-                              <h4 className="font-bold text-secondary text-sm truncate">{review.name}</h4>
-                              <p className="text-[11px] text-muted-foreground">{review.date}</p>
-                            </div>
+                        <div className="flex items-center gap-3 pt-4 border-t border-muted/20 mt-auto">
+                          <div className="relative w-8 h-8 rounded-full overflow-hidden shrink-0">
+                            <Image src={review.avatar} alt={review.name} fill className="object-cover" />
                           </div>
-                          <Link href="#" className="inline-flex items-center gap-2 text-[11px] font-semibold text-muted-foreground hover:text-primary transition-colors">
-                            View on Google <ExternalLink className="w-3.5 h-3.5" />
-                          </Link>
+                          <div className="min-w-0">
+                            <h4 className="font-bold text-secondary text-[12px] truncate">{review.name}</h4>
+                            <p className="text-[10px] text-muted-foreground">{review.location}</p>
+                          </div>
                         </div>
                       </div>
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious className="-left-4 md:-left-12 bg-white shadow-lg border-muted/20 w-10 h-10 hover:bg-primary hover:text-white transition-all disabled:opacity-0" />
-                <CarouselNext className="-right-4 md:-right-12 bg-white shadow-lg border-muted/20 w-10 h-10 hover:bg-primary hover:text-white transition-all disabled:opacity-0" />
+                <div className="flex justify-center gap-4 mt-12">
+                  <CarouselPrevious className="static translate-y-0 h-12 w-12 border-muted" />
+                  <CarouselNext className="static translate-y-0 h-12 w-12 border-muted" />
+                </div>
               </Carousel>
             </div>
 
-            <Button className="rounded-full bg-black text-white hover:bg-black/90 font-black px-8 h-12 flex items-center gap-2 shadow-xl shadow-black/10">
-              <svg className="w-4 h-4" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                <path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                <path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
-                <path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-              </svg>
-              View all 16 reviews on Google <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
+            <Button variant="outline" className="rounded-full border-muted text-secondary hover:bg-secondary hover:text-white font-bold px-8 h-12 transition-all">
+              View all 16 reviews on Google
             </Button>
           </div>
         </section>
+
+        {/* Results Section */}
+        <ResultsSection />
 
         {/* Ready for your project? Section */}
         <section className="py-24 px-6 relative">
