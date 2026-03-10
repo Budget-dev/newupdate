@@ -167,5 +167,5 @@
 .sparkle-btn:active { transform: scale(0.98); }
 
 .main-section-container {
-  @apply bg-white rounded-[3.5rem] border border-slate-200 shadow-2xl shadow-slate-200/50 p-12 md:p-20;
+  @apply bg-white rounded-[3rem] border border-slate-200 shadow-xl shadow-slate-200/50 p-8 md:p-14;
 }
