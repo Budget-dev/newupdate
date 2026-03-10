@@ -7,16 +7,16 @@ import { cn } from "@/lib/utils";
 import { Globe, Menu, X, ChevronDown } from "lucide-react";
 
 const NAV_ITEMS = [
-  { name: { en: "Services", de: "Leistungen" }, href: "/services", hasSub: true },
-  { name: { en: "Blog", de: "Blog" }, href: "/blog", hasSub: true },
-  { name: { en: "Locations", de: "Standorte" }, href: "#", hasSub: true },
-  { name: { en: "References", de: "Referenzen" }, href: "/portfolio" },
-  { name: { en: "Prices", de: "Preise" }, href: "#" },
-  { name: { en: "About me", de: "Über mich" }, href: "#" },
+  { name: { en: "Services", in: "Services" }, href: "/services", hasSub: true },
+  { name: { en: "Blog", in: "Journal" }, href: "/blog", hasSub: true },
+  { name: { en: "Locations", in: "Locations" }, href: "#", hasSub: true },
+  { name: { en: "Portfolio", in: "Portfolio" }, href: "/portfolio" },
+  { name: { en: "Prices", in: "Pricing" }, href: "#" },
+  { name: { en: "About me", in: "Founder" }, href: "#about" },
 ];
 
 export default function Navbar() {
-  const [lang, setLang] = useState<"en" | "de">("en");
+  const [lang, setLang] = useState<"en" | "in">("en");
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -26,7 +26,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleLang = () => setLang(l => (l === "en" ? "de" : "en"));
+  const toggleLang = () => setLang(l => (l === "en" ? "in" : "en"));
 
   return (
     <nav className={cn(
@@ -58,7 +58,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-4">
           <Button asChild className="rounded-xl px-6 bg-secondary text-white hover:bg-secondary/90 transition-all duration-300 font-bold text-xs h-9">
             <Link href="/contact">
-              {lang === "en" ? "Offer" : "Angebot"}
+              {lang === "en" ? "Offer" : "Get Free Quote"}
             </Link>
           </Button>
           
@@ -68,11 +68,17 @@ export default function Navbar() {
             </button>
             <button 
               onClick={toggleLang}
-              className="flex items-center gap-1.5"
+              className="flex items-center gap-1.5 focus:outline-none"
+              title="Toggle Locale"
             >
-              <div className="w-5 h-3.5 bg-yellow-400 rounded-sm relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-[33%] bg-black" />
-                <div className="absolute top-[33%] left-0 w-full h-[33%] bg-red-600" />
+              <div className="w-5 h-3.5 border border-muted/20 rounded-sm relative overflow-hidden bg-white shadow-sm">
+                <div className="absolute top-0 left-0 w-full h-[33.3%] bg-[#FF9933]" />
+                <div className="absolute top-[33.3%] left-0 w-full h-[33.3%] bg-white flex items-center justify-center">
+                  <div className="w-1.5 h-1.5 rounded-full border-[0.5px] border-[#000080] flex items-center justify-center">
+                    <div className="w-[1.5px] h-[1.5px] bg-[#000080] rounded-full" />
+                  </div>
+                </div>
+                <div className="absolute bottom-0 left-0 w-full h-[33.3%] bg-[#138808]" />
               </div>
             </button>
           </div>
@@ -102,7 +108,7 @@ export default function Navbar() {
           ))}
           <Button asChild size="lg" className="w-full rounded-xl bg-secondary text-white font-bold h-14 mt-4">
             <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-              {lang === "en" ? "Get Offer" : "Angebot erhalten"}
+              {lang === "en" ? "Get Offer" : "Get Free Quote"}
             </Link>
           </Button>
         </div>
