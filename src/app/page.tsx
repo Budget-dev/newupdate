@@ -132,17 +132,17 @@ export default function Home() {
         </section>
 
         {/* References Section */}
-        <section className="py-24 bg-white/50 backdrop-blur-sm relative">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="flex items-center gap-8 mb-16">
+        <section className="py-24 px-6 relative">
+          <div className="max-w-7xl mx-auto bg-white rounded-[4rem] border border-muted/50 shadow-2xl shadow-black/5 p-12 md:p-20 overflow-hidden">
+            <div className="flex flex-col md:flex-row md:items-center gap-8 mb-20">
               <h2 className="text-6xl md:text-8xl font-headline font-black text-secondary">References.</h2>
               <div className="w-px h-12 md:h-20 bg-muted-foreground/20 hidden md:block" />
-              <p className="text-muted-foreground text-sm md:text-base max-w-[200px] leading-tight">
+              <p className="text-muted-foreground text-sm md:text-base max-w-[200px] leading-tight font-medium">
                 Selected works. From local companies to international platforms.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
               {references.map((ref, idx) => (
                 <div key={idx} className="group flex flex-col space-y-6">
                   <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-sm transition-all duration-500 group-hover:shadow-xl group-hover:-translate-y-2 border border-muted/50 bg-white p-2">
