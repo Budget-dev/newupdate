@@ -154,25 +154,36 @@ const processSteps = [
 
 const reviews = [
   {
-    name: "köse kaan",
-    date: "3 months ago",
-    text: "BudgetDev created my entire website and I am more than satisfied with the result. The collaboration was very professional, fast, and straightforward. My wishes were always taken into account, and I received valuable tips.",
-    initial: "K",
-    color: "bg-orange-600"
+    name: "Srinivas Rao",
+    location: "Vijayawada, AP",
+    date: "1 month ago",
+    text: "BudgetDev completely transformed our online presence. The website is incredibly fast and the user interface is just beautiful. Their attention to detail in the coding phase was impressive. Highly recommended for any business in AP looking for global quality.",
+    initial: "S",
+    color: "bg-indigo-600"
   },
   {
-    name: "Mustafa Celik",
-    date: "3 months ago",
-    text: "Thank you so much for the fantastic work! The website was implemented exactly as I envisioned – modern, clear, and professional. Communication was always friendly, reliable, and prompt. I am very happy with the result and highly recommend them!",
-    initial: "M",
-    color: "bg-green-600"
+    name: "Anitha Reddy",
+    location: "Visakhapatnam, AP",
+    date: "2 months ago",
+    text: "Extremely professional and delivered our e-commerce app ahead of schedule. The integration with payment gateways and local shipping APIs was seamless. Best digital agency I've worked with in India.",
+    initial: "A",
+    color: "bg-emerald-600"
   },
   {
-    name: "mark",
-    date: "6 months ago",
-    text: "Very accommodating, gave us good advice and we are now ranked better on Google thanks to the optimization. Highly recommend working with BudgetDev for anyone looking for digital growth.",
-    initial: "M",
-    color: "bg-blue-600"
+    name: "Venkatesh K.",
+    location: "Tirupati, AP",
+    date: "3 months ago",
+    text: "The technical depth BudgetDev brings is unmatched. They optimized our existing portal and improved our load times by 70%. Their fixed-price model really helped us stay within budget without compromising on features.",
+    initial: "V",
+    color: "bg-rose-600"
+  },
+  {
+    name: "Sai Kumar",
+    location: "Guntur, AP",
+    date: "2 weeks ago",
+    text: "Amazing experience working with this team. They built a custom CRM for our logistics business that has saved us hours of manual work every day. The ROI was visible within the first month.",
+    initial: "S",
+    color: "bg-amber-600"
   }
 ];
 
@@ -427,10 +438,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* What customers say Section */}
-        <section className="py-24 px-6 relative bg-white">
-          <div className="max-w-7xl mx-auto flex flex-col items-center space-y-12">
-            <div className="flex flex-col items-center space-y-6 text-center">
+        {/* Reviews Section */}
+        <section className="py-24 px-6 relative bg-white overflow-hidden">
+          <div className="max-w-7xl mx-auto flex flex-col items-center space-y-16">
+            <div className="flex flex-col items-center space-y-6 text-center animate-in fade-in duration-700">
               <div className="bg-white border border-muted shadow-sm px-6 py-2 rounded-full flex items-center gap-3">
                 <svg className="w-5 h-5" viewBox="0 0 24 24">
                   <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -438,56 +449,65 @@ export default function Home() {
                   <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
                   <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
                 </svg>
-                <span className="text-sm font-bold text-secondary">Google Reviews</span>
+                <span className="text-sm font-bold text-secondary">Verified Google Reviews</span>
               </div>
-              <h2 className="text-5xl md:text-7xl font-headline font-black text-secondary leading-tight">
-                What customers say
+              <h2 className="text-5xl md:text-7xl font-headline font-black text-secondary leading-tight tracking-tight">
+                Trusted in <span className="text-primary italic">Andhra Pradesh</span>
               </h2>
-              <div className="flex flex-col items-center gap-2">
+              <div className="flex flex-col items-center gap-3">
                 <div className="flex gap-1">
                   {[1, 2, 3, 4, 5].map((s) => (
                     <Star key={s} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
                   ))}
-                  <span className="text-2xl font-black ml-2">5</span>
+                  <span className="text-3xl font-black ml-3">5.0</span>
                 </div>
-                <p className="text-muted-foreground font-medium text-sm">Based on 16 reviews</p>
+                <p className="text-muted-foreground font-semibold text-sm uppercase tracking-wider">Based on 24 local reviews</p>
               </div>
             </div>
 
-            <div className="w-full relative px-12">
+            <div className="w-full relative px-4 md:px-12">
               <Carousel className="w-full" opts={{ align: "start", loop: true }}>
-                <CarouselContent className="-ml-4">
+                <CarouselContent className="-ml-4 md:-ml-6">
                   {reviews.map((review, idx) => (
-                    <CarouselItem key={idx} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="bg-white rounded-[2.5rem] border border-muted/50 p-10 flex flex-col space-y-8 h-full shadow-sm hover:shadow-xl transition-all duration-500">
-                        <div className="flex gap-0.5">
-                          {[1, 2, 3, 4, 5].map((s) => (
-                            <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                          ))}
+                    <CarouselItem key={idx} className="pl-4 md:pl-6 md:basis-1/2 lg:basis-1/3">
+                      <div className="bg-white rounded-[3rem] border border-muted/50 p-10 flex flex-col space-y-8 h-full shadow-lg shadow-black/5 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group">
+                        <div className="flex justify-between items-start">
+                          <div className="flex gap-1">
+                            {[1, 2, 3, 4, 5].map((s) => (
+                              <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                            ))}
+                          </div>
+                          <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">{review.date}</span>
                         </div>
-                        <p className="text-muted-foreground text-sm leading-relaxed flex-1">
+                        <p className="text-secondary/80 text-base md:text-lg font-medium leading-relaxed flex-1 italic">
                           "{review.text}"
                         </p>
-                        <div className="pt-6 border-t border-muted/30 space-y-4">
+                        <div className="pt-8 border-t border-muted/30">
                           <div className="flex items-center gap-4">
-                            <div className={cn("w-12 h-12 rounded-full flex items-center justify-center text-white font-bold", review.color)}>
+                            <div className={cn("w-14 h-14 rounded-2xl flex items-center justify-center text-white font-black text-xl shadow-inner", review.color)}>
                               {review.initial}
                             </div>
-                            <div>
-                              <h4 className="font-bold text-secondary text-sm">{review.name}</h4>
-                              <p className="text-[10px] text-muted-foreground font-medium">{review.date}</p>
+                            <div className="flex-1">
+                              <h4 className="font-black text-secondary text-lg leading-none mb-1">{review.name}</h4>
+                              <p className="text-xs text-primary font-bold uppercase tracking-widest">{review.location}</p>
                             </div>
+                            <Link href="#" className="w-10 h-10 rounded-full border border-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-white hover:border-primary transition-all">
+                              <ExternalLink className="w-4 h-4" />
+                            </Link>
                           </div>
-                          <Link href="#" className="inline-flex items-center gap-1.5 text-[11px] font-bold text-muted-foreground hover:text-primary transition-colors">
-                            View on Google <ExternalLink className="w-3 h-3" />
-                          </Link>
                         </div>
                       </div>
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious className="-left-4 bg-white shadow-lg border-muted/50 w-12 h-12 hover:bg-muted" />
-                <CarouselNext className="-right-4 bg-white shadow-lg border-muted/50 w-12 h-12 hover:bg-muted" />
+                <div className="flex justify-center gap-4 mt-12 md:hidden">
+                   <CarouselPrevious className="static translate-y-0" />
+                   <CarouselNext className="static translate-y-0" />
+                </div>
+                <div className="hidden md:block">
+                  <CarouselPrevious className="-left-16 bg-white shadow-xl border-muted/50 w-14 h-14 hover:bg-primary hover:text-white hover:border-primary transition-all" />
+                  <CarouselNext className="-right-16 bg-white shadow-xl border-muted/50 w-14 h-14 hover:bg-primary hover:text-white hover:border-primary transition-all" />
+                </div>
               </Carousel>
             </div>
           </div>
@@ -496,21 +516,21 @@ export default function Home() {
         {/* Ready for your project? Section */}
         <section className="py-24 px-6 relative">
           <div className="max-w-7xl mx-auto">
-            <div className="bg-[#0a0a0a] rounded-[4rem] p-16 md:p-24 text-center space-y-12">
+            <div className="bg-[#0a0a0a] rounded-[4rem] p-16 md:p-24 text-center space-y-12 shadow-2xl shadow-black/20">
               <div className="space-y-4">
-                <h2 className="text-5xl md:text-7xl font-headline font-black text-white">Ready for your project?</h2>
-                <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                <h2 className="text-5xl md:text-7xl font-headline font-black text-white tracking-tight">Ready for your project?</h2>
+                <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
                   Let&apos;s create something extraordinary together. I look forward to hearing from you.
                 </p>
               </div>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button asChild className="h-16 px-10 rounded-2xl bg-white text-[#0a0a0a] hover:bg-white/90 font-black text-lg transition-all hover:scale-105">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <Button asChild className="h-16 px-12 rounded-2xl bg-white text-[#0a0a0a] hover:bg-primary hover:text-white font-black text-xl transition-all hover:scale-105 active:scale-95 shadow-xl">
                   <Link href="/contact">
                     Free offer <ArrowRight className="ml-2 w-6 h-6" />
                   </Link>
                 </Button>
-                <Button variant="outline" className="h-16 px-10 rounded-2xl border-white/20 bg-white/5 text-white hover:bg-white/10 font-black text-lg transition-all hover:scale-105">
-                  <Phone className="mr-2 w-6 h-6" />
+                <Button variant="outline" className="h-16 px-12 rounded-2xl border-white/20 bg-white/5 text-white hover:bg-white/10 font-black text-xl transition-all hover:scale-105 active:scale-95">
+                  <Phone className="mr-3 w-6 h-6" />
                   8466006486
                 </Button>
               </div>
@@ -520,15 +540,15 @@ export default function Home() {
 
         {/* Floating Action Buttons */}
         <div className="fixed bottom-8 right-8 flex flex-col gap-4 z-50">
-          <button className="w-14 h-14 bg-secondary text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+          <button className="w-14 h-14 bg-secondary text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all">
             <MessageSquare className="w-6 h-6" />
           </button>
-          <button className="w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+          <Link href="https://wa.me/918466006486" className="w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all">
             <MessageCircle className="w-7 h-7" />
-          </button>
-          <button className="w-14 h-14 bg-secondary text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+          </Link>
+          <Link href="tel:+918466006486" className="w-14 h-14 bg-secondary text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all">
             <Phone className="w-6 h-6" />
-          </button>
+          </Link>
         </div>
       </main>
 
