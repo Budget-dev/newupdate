@@ -144,6 +144,8 @@ const processSteps = [
 ];
 
 export default function Home() {
+  const getFreeDraftText = "Get a free draft";
+
   return (
     <div className="flex flex-col min-h-screen bg-background relative">
       <div className="absolute inset-0 grid-pattern pointer-events-none -z-0" />
@@ -164,11 +166,21 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col items-center gap-12 pt-8 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200">
-              <Button size="lg" asChild className="h-16 px-12 text-lg glass-button text-white hover:scale-105 transition-all duration-300 rounded-[2rem] shadow-2xl font-bold group">
-                <Link href="/contact" className="flex items-center gap-3">
-                  <Sparkles className="w-5 h-5" /> Get a free draft
+              {/* Custom Sparkle Button */}
+              <div className="sparkle-btn-wrapper">
+                <Link href="/contact" className="sparkle-btn group">
+                  <svg className="sparkle-btn-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+                  </svg>
+                  <div className="sparkle-txt-wrapper">
+                    <div className="sparkle-txt-1">
+                      {getFreeDraftText.split("").map((char, i) => (
+                        <span key={i} className="sparkle-btn-letter">{char === " " ? "\u00A0" : char}</span>
+                      ))}
+                    </div>
+                  </div>
                 </Link>
-              </Button>
+              </div>
 
               <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
                 <div className="flex items-baseline gap-2">
