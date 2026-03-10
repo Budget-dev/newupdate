@@ -12,12 +12,13 @@ import {
   ArrowUpRight,
   CheckCircle2,
   Globe,
-  Palette
+  Palette,
+  ArrowRight,
+  Zap
 } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { cn } from "@/lib/utils";
 
-// Tech logos as inline SVGs for cleaner look
 const TechLogos = [
   { name: "HTML5", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg> },
   { name: "CSS3", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm17.09 4.413L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H18.59l-.423-4.471h-9.13L8.85 9.75h8.927l-.423-4.471z"/></svg> },
@@ -69,31 +70,41 @@ const references = [
 
 const pricingPlans = [
   {
-    name: "Basic",
+    name: "Corporate",
     price: "₹3,500",
-    description: "A professional website with a contact form and basic SEO setup. Fast online launch.",
-    badge: "CHEAP",
-    badgeColor: "bg-[#00E699] text-white",
-    features: ["1 Landing Page", "Contact Form", "Basic SEO", "Mobile Optimized", "Domain Setup"],
-    buttonColor: "bg-[#00E699] hover:bg-[#00CC88]",
+    oldPrice: "₹10,000",
+    monthly: "₹150",
+    description: "Perfect for established companies with higher demands on design and functionality.",
+    theme: "light",
+    buttonClass: "bg-black text-white hover:bg-black/90",
+    textClass: "text-secondary",
+    mutedText: "text-muted-foreground",
+    lineColor: "bg-muted"
   },
   {
     name: "Enterprise",
     price: "₹13,500",
-    description: "Perfect for growing businesses. Includes multiple pages and custom functionality.",
-    badge: "POPULAR",
-    badgeColor: "bg-[#2563EB] text-white",
-    features: ["Up to 5 Pages", "CMS Integration", "Google Analytics", "Premium Support", "SSL Certificate"],
-    buttonColor: "bg-[#2563EB] hover:bg-[#1D4ED8]",
+    oldPrice: "₹30,000",
+    monthly: "₹500",
+    description: "For established companies looking to scale. High-end solutions with full support.",
+    theme: "dark",
+    buttonClass: "bg-white text-secondary hover:bg-white/90",
+    textClass: "text-white",
+    mutedText: "text-white/60",
+    lineColor: "bg-white/20"
   },
   {
-    name: "Advanced Ultra Premium",
+    name: "Ultra Platinum",
     price: "₹25,000",
-    description: "The ultimate solution for high-end digital presence. Custom features and strategy.",
-    badge: "ELITE",
-    badgeColor: "bg-secondary text-white",
-    features: ["Unlimited Pages", "Custom Backend", "E-commerce Ready", "Dedicated Manager", "Weekly Reports"],
-    buttonColor: "bg-secondary hover:bg-secondary/90",
+    oldPrice: "₹1,50,000",
+    monthly: "₹1,500",
+    description: "All-in-one AI system for maximum growth. Premium service at the highest level.",
+    theme: "premium",
+    badge: "PREMIUM",
+    buttonClass: "bg-orange-500 text-white hover:bg-orange-600",
+    textClass: "text-amber-400",
+    mutedText: "text-amber-400/60",
+    lineColor: "bg-amber-400/20"
   }
 ];
 
@@ -124,7 +135,6 @@ export default function Home() {
                 </Link>
               </Button>
 
-              {/* Stats Section */}
               <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
                 <div className="flex items-baseline gap-2">
                   <span className="text-3xl font-black text-secondary">92+</span>
@@ -148,7 +158,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Scrolling Tech Marquee */}
               <div className="w-full max-w-4xl overflow-hidden relative mt-8">
                 <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-background to-transparent z-10" />
                 <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-background to-transparent z-10" />
@@ -213,78 +222,82 @@ export default function Home() {
 
         {/* Prices Section */}
         <section className="py-24 px-6 relative">
-          <div className="max-w-7xl mx-auto bg-white rounded-[4rem] border border-muted/50 shadow-2xl shadow-black/5 p-12 md:p-20 overflow-hidden space-y-20">
+          <div className="max-w-7xl mx-auto bg-white rounded-[4rem] border border-muted/50 shadow-2xl shadow-black/5 p-12 md:p-20 overflow-hidden space-y-16">
             <div className="space-y-6">
               <div className="flex flex-col md:flex-row md:items-baseline gap-6">
                 <h2 className="text-6xl md:text-8xl font-headline font-black text-secondary">Prices.</h2>
                 <p className="text-muted-foreground font-medium text-lg italic">Transparent costs. ROI-first approach.</p>
               </div>
               <div className="w-full h-px bg-muted" />
-              
-              <div className="flex flex-wrap gap-4 pt-4">
-                <button className="flex items-center gap-2 px-6 py-2.5 rounded-full border border-secondary bg-secondary text-white font-bold text-sm">
-                  <Globe className="w-4 h-4" /> websites
-                </button>
-                <button className="flex items-center gap-2 px-6 py-2.5 rounded-full border border-muted text-muted-foreground font-bold text-sm hover:border-secondary hover:text-secondary transition-all">
-                  <Palette className="w-4 h-4" /> Graphic design & printing
-                </button>
-              </div>
-            </div>
-
-            {/* Info Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-muted/30 p-8 rounded-[2rem] flex items-start gap-6">
-                <div className="w-10 h-10 rounded-lg bg-black text-white flex items-center justify-center font-black text-sm shrink-0">1</div>
-                <div>
-                  <h4 className="font-black text-secondary">One-time payment</h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">The project is paid for directly — you become the owner immediately and own all assets.</p>
-                </div>
-              </div>
-              <div className="bg-muted/30 p-8 rounded-[2rem] flex items-start gap-6">
-                <div className="w-10 h-10 rounded-lg bg-primary text-white flex items-center justify-center font-black text-sm shrink-0">2</div>
-                <div>
-                  <h4 className="font-black text-secondary">Monthly rent</h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">Rent a website for 24 months — including maintenance and updates. After that, it's yours.</p>
-                </div>
-              </div>
             </div>
 
             {/* Pricing Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {pricingPlans.map((plan, idx) => (
-                <div key={idx} className="relative group bg-white border border-muted/50 rounded-[2.5rem] p-10 flex flex-col space-y-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
-                  <div className="flex justify-between items-start">
-                    <h3 className="text-4xl font-black text-secondary">{plan.name}</h3>
-                    <span className={cn("text-[10px] font-black px-3 py-1 rounded-full", plan.badgeColor)}>
-                      {plan.badge}
-                    </span>
+                <div key={idx} className={cn(
+                  "relative group rounded-[2.5rem] p-10 flex flex-col space-y-12 shadow-sm transition-all duration-500",
+                  plan.theme === "light" && "bg-white border border-muted/50 hover:shadow-2xl",
+                  plan.theme === "dark" && "bg-[#0a0a0a] text-white hover:shadow-2xl",
+                  plan.theme === "premium" && "bg-gradient-to-br from-[#1c1917] to-[#44403c] text-amber-400 hover:shadow-2xl"
+                )}>
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center">
+                      <h3 className="text-4xl font-black">{plan.name}</h3>
+                      {plan.badge && (
+                        <span className="text-[10px] font-black px-3 py-1 rounded-full bg-orange-500 text-white">
+                          {plan.badge}
+                        </span>
+                      )}
+                    </div>
+                    <p className={cn("text-sm leading-relaxed", plan.mutedText)}>
+                      {plan.description}
+                    </p>
                   </div>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{plan.description}</p>
-                  
-                  <div className="space-y-1">
-                    <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">one-time payment</p>
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-5xl font-black text-secondary">{plan.price}</span>
-                      <span className="text-muted-foreground line-through text-sm">₹{parseInt(plan.price.replace(/[^\d]/g, '')) * 1.5}</span>
+
+                  <div className="space-y-8">
+                    {/* One Time */}
+                    <div className="space-y-2">
+                      <p className={cn("text-[10px] font-black uppercase tracking-[0.2em]", plan.mutedText)}>one-time payment</p>
+                      <div className="flex items-baseline gap-3">
+                        <span className={cn("text-5xl font-black", plan.textClass)}>{plan.price}</span>
+                        <span className={cn("line-through text-sm opacity-40", plan.mutedText)}>{plan.oldPrice}</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-4">
+                      <div className={cn("flex-1 h-px", plan.lineColor)} />
+                      <span className={cn("text-[10px] font-black uppercase opacity-40 whitespace-nowrap", plan.mutedText)}>or rent</span>
+                      <div className={cn("flex-1 h-px", plan.lineColor)} />
+                    </div>
+
+                    {/* Monthly */}
+                    <div className="space-y-4">
+                      <p className={cn("text-[10px] font-black uppercase tracking-[0.2em]", plan.mutedText)}>monthly</p>
+                      <div className="space-y-1">
+                        <div className="flex items-baseline gap-2">
+                          <span className={cn("text-3xl font-black", plan.theme === "light" ? "text-[#00E699]" : plan.textClass)}>from {plan.monthly}</span>
+                          <span className={cn("text-sm font-medium", plan.mutedText)}>/ Month</span>
+                        </div>
+                        <p className={cn("text-[10px] font-medium opacity-60", plan.mutedText)}>24-month term, including maintenance</p>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="w-full h-px bg-muted" />
-
-                  <div className="space-y-4 flex-1">
-                    {plan.features.map((feature, fIdx) => (
-                      <div key={fIdx} className="flex items-center gap-3">
-                        <CheckCircle2 className="w-4 h-4 text-primary" />
-                        <span className="text-xs font-bold text-secondary">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <Button className={cn("w-full h-14 rounded-2xl font-black text-white shadow-lg transition-all", plan.buttonColor)}>
-                    View details <ArrowUpRight className="ml-2 w-4 h-4" />
+                  <Button className={cn("w-full h-14 rounded-2xl font-black shadow-lg transition-all", plan.buttonClass)}>
+                    View details <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </div>
               ))}
+            </div>
+
+            {/* Bottom Section Info */}
+            <div className="pt-8 flex flex-col md:flex-row items-center justify-center gap-6 text-center">
+               <p className="text-muted-foreground text-sm font-medium">
+                  Free initial consultation • Guaranteed response within 12 hours • No-obligation quote
+               </p>
+               <Button variant="outline" className="rounded-full bg-muted/30 border-none flex items-center gap-2 text-xs font-bold px-6 h-10">
+                  <Zap className="w-3 h-3 text-secondary" /> This is how I work <ArrowRight className="w-3 h-3" />
+               </Button>
             </div>
           </div>
         </section>
