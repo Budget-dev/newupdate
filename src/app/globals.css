@@ -10,19 +10,19 @@
     --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
-    --primary: 221.2 83.2% 53.3%;
+    --primary: 160 84% 39%; /* The requested Emerald Green rgb(16, 185, 129) */
     --primary-foreground: 0 0% 100%;
     --secondary: 222 47% 11%;
     --secondary-foreground: 210 40% 98%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 221.2 83.2% 53.3%;
+    --accent: 160 84% 39%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
+    --ring: 160 84% 39%;
     --radius: 1rem;
   }
 }
@@ -72,7 +72,7 @@
   bottom: -0.1em;
   width: 100%;
   height: 0.2em;
-  background: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10C20 10 30 2 50 2C70 2 80 18 100 18' stroke='%233b82f6' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
+  background: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10C20 10 30 2 50 2C70 2 80 18 100 18' stroke='%2310b981' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
   background-size: 100% 100%;
   z-index: -1;
 }
@@ -105,7 +105,7 @@
   --padding: 4px;
   --transition: 0.4s;
   --button-color: #111827;
-  --highlight-color-hue: 221deg; /* BudgetDev Blue */
+  --highlight-color-hue: 160deg; /* Emerald Green */
 
   user-select: none;
   display: flex;
