@@ -406,13 +406,6 @@ export default function Home() {
             <Phone className="w-6 h-6" />
           </button>
         </div>
-
-        {/* Side Badge */}
-        <div className="fixed left-0 top-1/2 -translate-y-1/2 flex flex-col items-center bg-black text-white px-2 py-8 rounded-r-xl z-50 text-[10px] font-bold tracking-widest uppercase [writing-mode:vertical-lr] gap-4">
-           <span>Nominee</span>
-           <div className="w-4 h-px bg-white/20" />
-           <span className="text-sm">W.</span>
-        </div>
       </main>
 
       <Footer />
