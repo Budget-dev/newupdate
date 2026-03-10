@@ -9,9 +9,13 @@ import {
   MessageSquare,
   Phone,
   MessageCircle,
-  ArrowUpRight
+  ArrowUpRight,
+  CheckCircle2,
+  Globe,
+  Palette
 } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { cn } from "@/lib/utils";
 
 // Tech logos as inline SVGs for cleaner look
 const TechLogos = [
@@ -22,7 +26,6 @@ const TechLogos = [
   { name: "Firebase", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M3.89 15.672L6.255.461A.534.534 0 0 1 7.27.275l2.458 4.608-2.458 8.441a1.2 1.2 0 0 0 .504.148h.001c.144 0 .285-.027.42-.078l2.67-1.006L8.136 5.856l1.96-1.745 5.518 9.84a1.2 1.2 0 0 0 1.521.493l2.855-1.076-2.583 4.887a1.2 1.2 0 0 0 .513.142h.001a1.2 1.2 0 0 0 .61-.17l3.618-1.365a.534.534 0 0 0 .245-.724l-3.328-6.305-1.666 3.161L3.89 15.672zm11.724-4.825L13.116 6.04l-2.003-3.755a.534.534 0 0 0-.964.03l-1.013 3.475 2.502 4.498 3.972-2.441z"/></svg> },
   { name: "Next.js", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.735 18.91l-4.8-6.178V18.15h-1.35V7.477h1.35l4.8 6.177V7.477h1.35v10.673h-1.35zm-5.735-8.24l-2.025 2.625V13.8L12 11.2V10.67zm0 0l-2.025 2.625V13.8L12 11.2V10.67z"/></svg> },
   { name: "Tailwind", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8 1.026.257 1.759.99 2.57 1.801.83.832 1.663 1.66 3.23 1.66 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.566-.881-2.275-1.589-.785-.785-1.531-1.532-3.325-1.532zm-6 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8 1.027.257 1.76.99 2.571 1.801.831.832 1.664 1.66 3.231 1.66 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.566-.881-2.275-1.589-.785-.785-1.531-1.532-3.326-1.532z"/></svg> },
-  { name: "OpenAI", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5153-4.9022 6.0462 6.0462 0 0 0-3.9998-2.8271 6.0417 6.0417 0 0 0-5.1928 1.0683 6.058 6.058 0 0 0-4.6235-2.0118 6.051 6.051 0 0 0-5.0427 2.7317 6.052 6.052 0 0 0-.9658 5.0221 6.051 6.051 0 0 0-2.8262 4.0039 6.0473 6.0473 0 0 0 1.0686 5.1989 6.0261 6.0261 0 0 0 4.6212 2.0121 6.04 6.04 0 0 0 5.0428-2.733 6.0396 6.0396 0 0 0 4.9682 2.733 6.0423 6.0423 0 0 0 5.0428-2.733 6.051 6.051 0 0 0 3.8682 1.8282 6.0423 6.0423 0 0 0 4.6212-2.0121 6.0396 6.0396 0 0 0 1.0686-5.1989 6.0473 6.0473 0 0 0-2.8262-4.0039zm-10.2819 12.0121a4.8143 4.8143 0 0 1-4.0157-2.176l.1042-.0604 4.5445-2.6247a.5416.5416 0 0 0 .2708-.4688V10.165l2.4278 1.4013v5.6291a.1354.1354 0 0 1-.0677.1172l-3.264 1.8864z"/></svg> },
 ];
 
 const references = [
@@ -61,6 +64,36 @@ const references = [
     tag: "Automotive",
     description: "High-end automotive paint shop portal showcasing precision and quality craft.",
     image: PlaceHolderImages.find(img => img.id === 'project-1')
+  }
+];
+
+const pricingPlans = [
+  {
+    name: "Basic",
+    price: "₹3,500",
+    description: "A professional website with a contact form and basic SEO setup. Fast online launch.",
+    badge: "CHEAP",
+    badgeColor: "bg-[#00E699] text-white",
+    features: ["1 Landing Page", "Contact Form", "Basic SEO", "Mobile Optimized", "Domain Setup"],
+    buttonColor: "bg-[#00E699] hover:bg-[#00CC88]",
+  },
+  {
+    name: "Enterprise",
+    price: "₹13,500",
+    description: "Perfect for growing businesses. Includes multiple pages and custom functionality.",
+    badge: "POPULAR",
+    badgeColor: "bg-[#2563EB] text-white",
+    features: ["Up to 5 Pages", "CMS Integration", "Google Analytics", "Premium Support", "SSL Certificate"],
+    buttonColor: "bg-[#2563EB] hover:bg-[#1D4ED8]",
+  },
+  {
+    name: "Advanced Ultra Premium",
+    price: "₹25,000",
+    description: "The ultimate solution for high-end digital presence. Custom features and strategy.",
+    badge: "ELITE",
+    badgeColor: "bg-secondary text-white",
+    features: ["Unlimited Pages", "Custom Backend", "E-commerce Ready", "Dedicated Manager", "Weekly Reports"],
+    buttonColor: "bg-secondary hover:bg-secondary/90",
   }
 ];
 
@@ -172,6 +205,84 @@ export default function Home() {
                       {ref.description}
                     </p>
                   </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Prices Section */}
+        <section className="py-24 px-6 relative">
+          <div className="max-w-7xl mx-auto bg-white rounded-[4rem] border border-muted/50 shadow-2xl shadow-black/5 p-12 md:p-20 overflow-hidden space-y-20">
+            <div className="space-y-6">
+              <div className="flex flex-col md:flex-row md:items-baseline gap-6">
+                <h2 className="text-6xl md:text-8xl font-headline font-black text-secondary">Prices.</h2>
+                <p className="text-muted-foreground font-medium text-lg italic">Transparent costs. ROI-first approach.</p>
+              </div>
+              <div className="w-full h-px bg-muted" />
+              
+              <div className="flex flex-wrap gap-4 pt-4">
+                <button className="flex items-center gap-2 px-6 py-2.5 rounded-full border border-secondary bg-secondary text-white font-bold text-sm">
+                  <Globe className="w-4 h-4" /> websites
+                </button>
+                <button className="flex items-center gap-2 px-6 py-2.5 rounded-full border border-muted text-muted-foreground font-bold text-sm hover:border-secondary hover:text-secondary transition-all">
+                  <Palette className="w-4 h-4" /> Graphic design & printing
+                </button>
+              </div>
+            </div>
+
+            {/* Info Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-muted/30 p-8 rounded-[2rem] flex items-start gap-6">
+                <div className="w-10 h-10 rounded-lg bg-black text-white flex items-center justify-center font-black text-sm shrink-0">1</div>
+                <div>
+                  <h4 className="font-black text-secondary">One-time payment</h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">The project is paid for directly — you become the owner immediately and own all assets.</p>
+                </div>
+              </div>
+              <div className="bg-muted/30 p-8 rounded-[2rem] flex items-start gap-6">
+                <div className="w-10 h-10 rounded-lg bg-primary text-white flex items-center justify-center font-black text-sm shrink-0">2</div>
+                <div>
+                  <h4 className="font-black text-secondary">Monthly rent</h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">Rent a website for 24 months — including maintenance and updates. After that, it's yours.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Pricing Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {pricingPlans.map((plan, idx) => (
+                <div key={idx} className="relative group bg-white border border-muted/50 rounded-[2.5rem] p-10 flex flex-col space-y-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
+                  <div className="flex justify-between items-start">
+                    <h3 className="text-4xl font-black text-secondary">{plan.name}</h3>
+                    <span className={cn("text-[10px] font-black px-3 py-1 rounded-full", plan.badgeColor)}>
+                      {plan.badge}
+                    </span>
+                  </div>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{plan.description}</p>
+                  
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">one-time payment</p>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-5xl font-black text-secondary">{plan.price}</span>
+                      <span className="text-muted-foreground line-through text-sm">₹{parseInt(plan.price.replace(/[^\d]/g, '')) * 1.5}</span>
+                    </div>
+                  </div>
+
+                  <div className="w-full h-px bg-muted" />
+
+                  <div className="space-y-4 flex-1">
+                    {plan.features.map((feature, fIdx) => (
+                      <div key={fIdx} className="flex items-center gap-3">
+                        <CheckCircle2 className="w-4 h-4 text-primary" />
+                        <span className="text-xs font-bold text-secondary">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <Button className={cn("w-full h-14 rounded-2xl font-black text-white shadow-lg transition-all", plan.buttonColor)}>
+                    View details <ArrowUpRight className="ml-2 w-4 h-4" />
+                  </Button>
                 </div>
               ))}
             </div>
