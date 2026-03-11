@@ -52,7 +52,7 @@ const TechLogos = [
   { name: "CSS3", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm17.09 4.413L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H18.59l-.423-4.471h-9.13L8.85 9.75h8.927l-.423-4.471z"/></svg> },
   { name: "JavaScript", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M0 0h24v24H0V0zm22.034 18.268c0-2.037-1.474-3.112-3.462-3.112-2.015 0-3.417 1.066-3.417 3.112 0 2.058 1.402 3.112 3.417 3.112 2.022 0 3.462-1.054 3.462-3.112zm-4.814 0c0-1.042.66-1.554 1.352-1.554.68 0 1.351.512 1.351 1.554 0 1.053-.671 1.554-1.351 1.554-.692 0-1.352-.501-1.352-1.554zm-1.838 4.732h4.512v-1.74h-4.512v1.74zM10.8 11.026c0-1.475-1.144-2.318-2.618-2.318-1.516 0-2.686.843-2.686 2.318 0 1.474 1.17 2.318 2.686 2.318 1.474 0 2.618-.844 2.618-2.318zm-3.66 0c0-.75.467-1.159.982-1.159.525 0 .972.41.972 1.159 0 .749-.447 1.159-.972 1.159-.515 0-.982-.41-.982-1.159zm-1.396 3.614h4.082V12.9h-4.082v1.74z"/></svg> },
   { name: "React", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM10.622 8.415l4.879 2.817a.75.75 0 0 1 0 1.298l-4.879 2.817a.75.75 0 0 1-1.122-.649V9.064a.75.75 0 0 1 1.122-.649z"/></svg> },
-  { name: "Firebase", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M3.89 15.672L6.255.461A.534.534 0 0 1 7.27.275l2.458 4.608-2.458 8.441a1.2 1.2 0 0 0 .504.148h.001c.144 0 .285-.027.42-.078l2.67-1.006L8.136 5.856l1.96-1.745 5.518 9.84a1.2 1.2 0 0 0 {1.521}.493l2.855-1.076-2.583 4.887a1.2 1.2 0 0 0 .513.142h.001a1.2 1.2 0 0 0 .61-.17l3.618-1.365a.534.534 0 0 0 .245-.724l-3.328-6.305-1.666 3.161L3.89 15.672zm11.724-4.825L13.116 6.04l-2.003-3.755a.534.534 0 0 0-.964.03l-1.013 3.475 2.502 4.498 3.972-2.441z"/></svg> },
+  { name: "Firebase", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M3.89 15.672L6.255.461A.534.534 0 0 1 7.27.275l2.458 4.608-2.458 8.441a1.2 1.2 0 0 0 .504.148h.001c.144 0 .285-.027.42-.078l2.67-1.006L8.136 5.856l1.96-1.745 5.518 9.84a1.2 1.2 0 0 0 1.521.493l2.855-1.076-2.583 4.887a1.2 1.2 0 0 0 .513.142h.001a1.2 1.2 0 0 0 .61-.17l3.618-1.365a.534.534 0 0 0 .245-.724l-3.328-6.305-1.666 3.161L3.89 15.672zm11.724-4.825L13.116 6.04l-2.003-3.755a.534.534 0 0 0-.964.03l-1.013 3.475 2.502 4.498 3.972-2.441z"/></svg> },
   { name: "Next.js", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.735 18.91l-4.8-6.178V18.15h-1.35V7.477h1.35l4.8 6.177V7.477h1.35v10.673h-1.35zm-5.735-8.24l-2.025 2.625V13.8L12 11.2V10.67zm0 0l-2.025 2.625V13.8L12 11.2V10.67z"/></svg> },
 ];
 
@@ -61,8 +61,8 @@ const completedProjects = [
     title: "Srinika Spices",
     tag: "E-commerce",
     description: "High-quality spice distribution platform with seamless ordering and inventory management.",
-    link: "https://srinikaspice.in",
-    imageUrl: "https://s0.wp.com/mshots/v1/https://srinikaspice.in?w=800&h=600"
+    link: "https://srinikaspices.in",
+    imageUrl: "https://s0.wp.com/mshots/v1/https://srinikaspices.in?w=800&h=600"
   },
   {
     title: "Gurucharan Interiors",
@@ -80,57 +80,30 @@ const completedProjects = [
   }
 ];
 
-const processSteps = [
-  {
-    title: "1. Briefing & Requirements",
-    description: "Gather important information about goals, audience, and preferences.",
-    icon: <FileText className="w-5 h-5" />
-  },
-  {
-    title: "2. Kick-off Meeting",
-    description: "Discuss your project details in a quick call.",
-    icon: <Users className="w-5 h-5" />
-  },
-  {
-    title: "3. Design & Development",
-    description: "Iterative design and development process with regular updates.",
-    icon: <Sparkles className="w-5 h-5" />
-  },
-  {
-    title: "4. Launch & Support",
-    description: "Go live with full dashboard support and maintenance.",
-    icon: <Rocket className="w-5 h-5" />
-  }
-];
-
 const reviews = [
   {
-    name: "Srinivas Rao",
-    location: "Vijayawada, AP",
-    date: "2 weeks ago",
-    text: "Excellent service and clean implementation. All requirements were met with high precision.",
-    avatar: "https://picsum.photos/seed/srinivas/100/100",
+    name: "Suresh Kumar",
+    location: "Vizianagaram",
+    text: "Venkatesh built a fantastic website for my spice business. The page speed is incredible!",
+    avatar: "https://picsum.photos/seed/rev1/100/100"
+  },
+  {
+    name: "Priya Sharma",
+    location: "Visakhapatnam",
+    text: "BudgetDev transformed our interior design portfolio. Highly recommended for any local business.",
+    avatar: "https://picsum.photos/seed/rev2/100/100"
+  },
+  {
+    name: "Rajesh Rao",
+    location: "Hyderabad",
+    text: "Professional, fast, and very technical. The Next.js implementation is top-notch.",
+    avatar: "https://picsum.photos/seed/rev3/100/100"
   },
   {
     name: "Anitha Reddy",
-    location: "Visakhapatnam, AP",
-    date: "1 month ago",
-    text: "BudgetDev transformed our business portal. The modern design and speed are phenomenal.",
-    avatar: "https://picsum.photos/seed/anitha/100/100",
-  },
-  {
-    name: "Venkatesh Babu",
-    location: "Guntur, AP",
-    date: "3 months ago",
-    text: "Very reliable and creative. They helped us scale our custom software needs on a budget.",
-    avatar: "https://picsum.photos/seed/venkat/100/100",
-  },
-  {
-    name: "Sai Krishna",
-    location: "Vizianagaram, AP",
-    date: "2 months ago",
-    text: "Top-notch performance. Our new platform load times are under 1 second. Highly recommended.",
-    avatar: "https://picsum.photos/seed/sai/100/100",
+    location: "Vizianagaram",
+    text: "Finally a developer who understands modern design and SEO. Great results!",
+    avatar: "https://picsum.photos/seed/rev4/100/100"
   }
 ];
 
@@ -368,7 +341,7 @@ export default function Home() {
                     </div>
                     <h4 className="font-black text-base italic">Individually?</h4>
                   </div>
-                  <p className="text-white/60 text-[10px] leading-relaxed">
+                  <p className="text-white/60 text-[10px] leaning-relaxed">
                     I would be happy to create a customized offer for online shops or complex software.
                   </p>
                   <Link href="/contact" className="inline-flex items-center gap-2 text-[9px] font-black uppercase tracking-widest hover:text-primary transition-colors">
