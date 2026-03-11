@@ -69,7 +69,7 @@ const deliverables = [
 ];
 
 const faqs = [
-  { q: "How much does professional web design cost?", a: "Costs vary depending on the scope. My corporate packages start at ₹3,500 for high-end custom designs." },
+  { q: "How much does professional web design cost?", a: "Costs vary depending on the scope. We provide custom quotes based on high-end custom designs and specific business needs." },
   { q: "How long does a web design project take?", a: "A typical project takes 2-4 weeks from discovery to final prototyping." },
   { q: "Can I edit my website myself later?", a: "Yes, I build on modern CMS platforms that allow you to manage your content effortlessly." }
 ];

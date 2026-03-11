@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
@@ -78,46 +77,6 @@ const completedProjects = [
     description: "Professional personal branding portal for specialized career development.",
     link: "https://yasodha.in",
     imageUrl: "https://s0.wp.com/mshots/v1/https://yasodha.in?w=800&h=600"
-  }
-];
-
-const pricingPlans = [
-  {
-    name: "Corporate",
-    price: "₹3,500",
-    oldPrice: "₹10,000",
-    monthly: "₹150",
-    description: "Perfect for established companies with higher demands on design and functionality.",
-    theme: "light",
-    buttonClass: "bg-black text-white hover:bg-black/90",
-    textClass: "text-secondary",
-    mutedText: "text-muted-foreground",
-    lineColor: "bg-muted"
-  },
-  {
-    name: "Enterprise",
-    price: "₹13,500",
-    oldPrice: "₹30,000",
-    monthly: "₹500",
-    description: "For established companies looking to scale. High-end solutions with full support.",
-    theme: "dark",
-    buttonClass: "bg-white text-secondary hover:bg-white/90",
-    textClass: "text-white",
-    mutedText: "text-white/60",
-    lineColor: "bg-white/20"
-  },
-  {
-    name: "Ultra Platinum",
-    price: "₹25,000",
-    oldPrice: "₹1,50,000",
-    monthly: "₹1,500",
-    description: "All-in-one AI system for maximum growth. Premium service at the highest level.",
-    theme: "premium",
-    badge: "PREMIUM",
-    buttonClass: "bg-primary text-white hover:bg-primary/90",
-    textClass: "text-primary",
-    mutedText: "text-primary/60",
-    lineColor: "bg-primary/20"
   }
 ];
 
@@ -299,111 +258,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Prices Section */}
-        <section id="prices" className="py-4 px-6 relative">
-          <div className="max-w-7xl mx-auto main-section-container overflow-hidden space-y-6">
-            <div className="space-y-2">
-              <div className="flex flex-col md:flex-row md:items-baseline gap-2">
-                <h2 className="text-3xl md:text-4xl font-headline font-black text-secondary">Prices.</h2>
-                <p className="text-muted-foreground font-medium text-xs italic">Transparent costs. ROI-first approach.</p>
-              </div>
-              <div className="w-full h-px bg-muted" />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {pricingPlans.map((plan, idx) => (
-                <div key={idx} className={cn(
-                  "relative group rounded-[1.5rem] p-5 flex flex-col space-y-5 shadow-sm transition-all duration-500",
-                  plan.theme === "light" && "bg-white border border-muted/50 hover:shadow-lg",
-                  plan.theme === "dark" && "bg-[#0a0a0a] text-white hover:shadow-lg",
-                  plan.theme === "premium" && "bg-gradient-to-br from-[#1c1917] to-[#44403c] text-primary hover:shadow-lg"
-                )}>
-                  <div className="space-y-1">
-                    <div className="flex justify-between items-center">
-                      <h3 className="text-xl font-black">{plan.name}</h3>
-                      {plan.badge && (
-                        <span className="text-[7px] font-black px-1.5 py-0.5 rounded-full bg-primary text-white">
-                          {plan.badge}
-                        </span>
-                      )}
-                    </div>
-                    <p className={cn("text-[10px] leading-relaxed", plan.mutedText)}>
-                      {plan.description}
-                    </p>
-                  </div>
-
-                  <div className="space-y-3">
-                    <div className="space-y-0.5">
-                      <p className={cn("text-[7px] font-black uppercase tracking-[0.1em]", plan.mutedText)}>one-time</p>
-                      <div className="flex items-baseline gap-1.5">
-                        <span className={cn("text-2xl font-black", plan.textClass)}>{plan.price}</span>
-                        <span className={cn("line-through text-[9px] opacity-40", plan.mutedText)}>{plan.oldPrice}</span>
-                      </div>
-                    </div>
-                    <div className="space-y-0.5">
-                      <p className={cn("text-[7px] font-black uppercase tracking-[0.1em]", plan.mutedText)}>monthly rent</p>
-                      <div className="flex items-baseline gap-1">
-                        <span className={cn("text-lg font-black", plan.theme === "light" ? "text-primary" : plan.textClass)}>from {plan.monthly}</span>
-                        <span className={cn("text-[8px] font-medium", plan.mutedText)}>/ Month</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <Button className={cn("w-full h-9 rounded-lg font-black text-[11px]", plan.buttonClass)}>
-                    View details <ArrowRight className="ml-1.5 w-3 h-3" />
-                  </Button>
-                </div>
-              ))}
-            </div>
-
-            <div className="pt-1 flex flex-col md:flex-row items-center justify-center gap-3 text-center">
-               <p className="text-muted-foreground text-[9px] font-medium">
-                  Free consultation • 12h Response • No-obligation
-               </p>
-               <Dialog>
-                  <DialogTrigger asChild>
-                    <Button variant="outline" className="rounded-full bg-muted/30 border-none flex items-center gap-1.5 text-[8px] font-bold px-3 h-6">
-                      <Zap className="w-2.5 h-2.5" /> This is how I work <ArrowRight className="w-2.5 h-2.5" />
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-lg rounded-[2rem] p-0 overflow-hidden border-none shadow-2xl">
-                    <div className="p-6 md:p-8 bg-white space-y-6">
-                      <DialogHeader className="space-y-1 relative">
-                        <DialogTitle className="text-2xl font-headline font-black text-secondary">This is how I work</DialogTitle>
-                        <p className="text-muted-foreground text-xs font-medium">From booking to launch</p>
-                      </DialogHeader>
-
-                      <div className="space-y-4">
-                        {processSteps.map((step, idx) => (
-                          <div key={idx} className="flex gap-3 group">
-                            <div className="w-8 h-8 rounded-lg bg-secondary text-white flex items-center justify-center shrink-0 shadow-md">
-                              {step.icon}
-                            </div>
-                            <div className="space-y-0.5">
-                              <h3 className="text-base font-bold text-secondary tracking-tight">{step.title}</h3>
-                              <p className="text-muted-foreground text-[11px] leading-relaxed">{step.description}</p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-
-                      <div className="bg-primary/5 border border-primary/10 rounded-xl p-3 flex items-center gap-3">
-                        <Check className="w-4 h-4 text-primary" />
-                        <p className="font-bold text-secondary text-[11px]">Average project duration: 2-4 weeks</p>
-                      </div>
-
-                      <DialogClose asChild>
-                        <Button className="w-full h-12 rounded-xl bg-secondary text-white font-black text-sm shadow-xl hover:scale-[1.01] transition-all">
-                          Understood <Check className="ml-1.5 w-3 h-3" />
-                        </Button>
-                      </DialogClose>
-                    </div>
-                  </DialogContent>
-               </Dialog>
-            </div>
-          </div>
-        </section>
-
         {/* Results Section */}
         <ResultsSection />
 
@@ -478,7 +332,6 @@ export default function Home() {
                 {[
                   { q: "Why BudgetDev?", a: "We combine high-end design with technical excellence at a fair price. No hidden costs, just results." },
                   { q: "How long does it take?", a: "An average website takes 2-4 weeks. Complex web apps can take 2-3 months depending on the scope." },
-                  { q: "How much does a website cost with BudgetDev?", a: "Our packages start at ₹3,500 for corporate sites. We provide fixed-price quotes after the initial briefing." },
                   { q: "What technologies does BudgetDev use?", a: "We primarily use Next.js, React, TypeScript, and Firebase for scalable, lightning-fast performance." },
                   { q: "Are BudgetDev websites SEO-optimized?", a: "Yes, every project includes on-page SEO best practices to ensure you are visible on Google from day one." },
                   { q: "Does BudgetDev also offer on-site consulting in Vizianagaram?", a: "Absolutely! We love meeting local clients in Vizianagaram to discuss their digital vision in person." },

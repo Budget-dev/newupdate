@@ -39,7 +39,6 @@ const comparisonData = [
   { criterion: "Lighthouse Score", nextjs: "100/100 possible", wordpress: "40-70 / 100 typical" },
   { criterion: "Security", nextjs: "No plugins = no vulnerabilities", wordpress: "Many plugins = security risks" },
   { criterion: "Maintenance", nextjs: "Automated", wordpress: "Manual, prone to error" },
-  { criterion: "Hosting costs", nextjs: "₹0 (up to 10k visitors)", wordpress: "₹800-4,000/month" },
   { criterion: "Scaling", nextjs: "Automatic, limitless", wordpress: "Manual, expensive" },
   { criterion: "SEO", nextjs: "100% optimized for Google", wordpress: "Often slow, bloated" }
 ];
@@ -53,7 +52,6 @@ const whatIDevelop = [
 const faqs = [
   { q: "Why Next.js instead of WordPress?", a: "Next.js offers superior performance, security, and scalability. It's built for modern speed requirements and provides a much better user experience." },
   { q: "Can I edit content myself?", a: "Yes, we integrate modern Headless CMS solutions like Sanity or Contentful that allow you to manage your content effortlessly." },
-  { q: "How much does development with Next.js cost?", a: "Costs are based on project complexity. We provide transparent, fixed-price quotes after the initial briefing." },
   { q: "How long does the development process take?", a: "Typical projects take 2-6 weeks depending on requirements and integrations." }
 ];
 

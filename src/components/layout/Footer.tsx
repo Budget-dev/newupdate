@@ -26,7 +26,6 @@ export default function Footer() {
     company: [
       { name: "About Me", href: "/about" },
       { name: "Portfolio", href: "/portfolio" },
-      { name: "Pricing", href: "/#prices" },
       { name: "Journal", href: "/blog" },
     ],
     legal: [

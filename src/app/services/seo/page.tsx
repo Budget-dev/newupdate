@@ -92,7 +92,6 @@ const importanceReasons = [
 
 const faqs = [
   { q: "How long does it take for SEO to show results?", a: "SEO is a long-term strategy. Typically, significant improvements are seen after 3-6 months, depending on competition and starting point." },
-  { q: "How much does SEO optimization cost?", a: "Costs depend on the scope and competition. I offer project-based or monthly packages starting at affordable rates for Indian businesses." },
   { q: "Do you guarantee top rankings?", a: "No reputable SEO can guarantee #1 rankings as Google's algorithm is complex and external. However, I guarantee best practices that significantly improve your chances." },
   { q: "Is SEO worth it for small businesses?", a: "Absolutely. Especially for local businesses in Vizianagaram, local SEO is the most cost-effective way to get discovered by nearby customers." },
   { q: "SEO or Google Ads - which is better?", a: "Google Ads gives instant results but costs money per click. SEO takes time but provides long-term, free traffic. A combination of both is often ideal." }
