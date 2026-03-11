@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Globe, Menu, X, ChevronDown, Layout, Code, Search, Sparkles } from "lucide-react";
+import { Globe, Menu, X, ChevronDown } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,32 +16,27 @@ const SERVICES = [
   {
     title: "Web design & UI/UX",
     description: "Conversion-optimized websites",
-    icon: <Layout className="w-4 h-4" />,
     href: "/services",
   },
   {
     title: "Web development",
     description: "Next.js, React, TypeScript",
-    icon: <Code className="w-4 h-4" />,
     href: "/services",
   },
   {
     title: "SEO optimization",
     description: "Better Google rankings",
-    icon: <Search className="w-4 h-4" />,
     href: "/services",
   },
   {
     title: "AI integration",
     description: "Intelligent solutions & automation",
-    icon: <Sparkles className="w-4 h-4" />,
     href: "/services",
   },
 ];
 
 const NAV_ITEMS = [
   { name: { en: "Blog", in: "Journal" }, href: "/blog" },
-  { name: { en: "Locations", in: "Locations" }, href: "#" },
   { name: { en: "Portfolio", in: "Portfolio" }, href: "/portfolio" },
   { name: { en: "Prices", in: "Pricing" }, href: "/#prices" },
   { name: { en: "About me", in: "Founder" }, href: "/#about" },
@@ -81,22 +76,17 @@ export default function Navbar() {
             <DropdownMenuTrigger className="text-[13px] font-semibold text-secondary/70 hover:text-secondary transition-colors flex items-center gap-1 focus:outline-none">
               Services <ChevronDown className="w-3 h-3" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-72 p-2 rounded-2xl shadow-xl border-muted/50 mt-2 bg-white animate-in fade-in slide-in-from-top-2 duration-200">
+            <DropdownMenuContent className="w-64 p-2 rounded-2xl shadow-xl border-muted/50 mt-2 bg-white animate-in fade-in slide-in-from-top-2 duration-200">
               {SERVICES.map((service) => (
                 <DropdownMenuItem key={service.title} asChild>
                   <Link
                     href={service.href}
-                    className="flex flex-col items-start gap-1 p-3 rounded-xl hover:bg-muted/50 cursor-pointer transition-colors focus:bg-muted/50"
+                    className="flex flex-col items-start gap-0.5 p-3 rounded-xl hover:bg-muted/50 cursor-pointer transition-colors focus:bg-muted/50"
                   >
-                    <div className="flex items-center gap-2">
-                      <div className="p-1 rounded bg-primary/10 text-primary">
-                        {service.icon}
-                      </div>
-                      <span className="font-bold text-secondary text-sm">
-                        {service.title}
-                      </span>
-                    </div>
-                    <span className="text-[11px] text-muted-foreground ml-7">
+                    <span className="font-bold text-secondary text-sm">
+                      {service.title}
+                    </span>
+                    <span className="text-[10px] text-muted-foreground">
                       {service.description}
                     </span>
                   </Link>
@@ -169,17 +159,14 @@ export default function Navbar() {
                 key={service.title}
                 href={service.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted transition-colors"
+                className="flex flex-col gap-0.5 p-2 rounded-lg hover:bg-muted transition-colors"
               >
-                <div className="text-primary">{service.icon}</div>
-                <div>
-                  <p className="text-sm font-bold text-secondary">
-                    {service.title}
-                  </p>
-                  <p className="text-[10px] text-muted-foreground">
-                    {service.description}
-                  </p>
-                </div>
+                <p className="text-sm font-bold text-secondary">
+                  {service.title}
+                </p>
+                <p className="text-[10px] text-muted-foreground">
+                  {service.description}
+                </p>
               </Link>
             ))}
           </div>
