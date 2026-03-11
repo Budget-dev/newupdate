@@ -49,7 +49,7 @@ const NAV_ITEMS = [
   { name: { en: "Blog", in: "Journal" }, href: "/blog" },
   { name: { en: "Portfolio", in: "Portfolio" }, href: "/portfolio" },
   { name: { en: "Prices", in: "Pricing" }, href: "/#prices" },
-  { name: { en: "About me", in: "Founder" }, href: "/#about" },
+  { name: { en: "About me", in: "Founder" }, href: "/about" },
 ];
 
 export default function Navbar() {
