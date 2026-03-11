@@ -1,3 +1,4 @@
+
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
@@ -63,7 +64,7 @@ const completedProjects = [
     tag: "E-commerce",
     description: "High-quality spice distribution platform with seamless ordering and inventory management.",
     link: "https://srinikaspices.in",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'project-1')?.imageUrl || "https://picsum.photos/seed/project1/800/600",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'project-srinika')?.imageUrl || "https://s0.wp.com/mshots/v1/https://srinikaspices.in?w=800&h=600",
     imageHint: "spice shop"
   },
   {
@@ -71,7 +72,7 @@ const completedProjects = [
     tag: "Interior Design",
     description: "Elegant portfolio for a leading interior design firm showcasing premium projects.",
     link: "https://gurucharaninteriors.in",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'project-5')?.imageUrl || "https://picsum.photos/seed/project2/800/600",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'project-gurucharan')?.imageUrl || "https://s0.wp.com/mshots/v1/https://gurucharaninteriors.in?w=800&h=600",
     imageHint: "interior design"
   },
   {
@@ -79,7 +80,7 @@ const completedProjects = [
     tag: "Portfolio",
     description: "Professional personal branding portal for specialized career development.",
     link: "https://yasodha.in",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'project-6')?.imageUrl || "https://picsum.photos/seed/project3/800/600",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'project-yasodha')?.imageUrl || "https://s0.wp.com/mshots/v1/https://yasodha.in?w=800&h=600",
     imageHint: "personal portfolio"
   }
 ];
@@ -206,6 +207,7 @@ export default function Home() {
                       fill 
                       data-ai-hint={ref.imageHint}
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      unoptimized={ref.imageUrl.includes('s0.wp.com')}
                     />
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                        <Link href={ref.link} target="_blank" className="bg-white text-secondary px-4 py-2 rounded-full text-xs font-black flex items-center gap-2 shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-transform">
