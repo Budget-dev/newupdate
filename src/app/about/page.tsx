@@ -19,7 +19,8 @@ import {
   Code2,
   Cpu,
   Globe,
-  Star
+  Star,
+  Rocket
 } from "lucide-react";
 
 const stats = [
