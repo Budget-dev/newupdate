@@ -4,15 +4,47 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Globe, Menu, X, ChevronDown } from "lucide-react";
+import { Globe, Menu, X, ChevronDown, Layout, Code, Search, Sparkles } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+const SERVICES = [
+  {
+    title: "Web design & UI/UX",
+    description: "Conversion-optimized websites",
+    icon: <Layout className="w-4 h-4" />,
+    href: "/services",
+  },
+  {
+    title: "Web development",
+    description: "Next.js, React, TypeScript",
+    icon: <Code className="w-4 h-4" />,
+    href: "/services",
+  },
+  {
+    title: "SEO optimization",
+    description: "Better Google rankings",
+    icon: <Search className="w-4 h-4" />,
+    href: "/services",
+  },
+  {
+    title: "AI integration",
+    description: "Intelligent solutions & automation",
+    icon: <Sparkles className="w-4 h-4" />,
+    href: "/services",
+  },
+];
 
 const NAV_ITEMS = [
-  { name: { en: "Services", in: "Services" }, href: "/services", hasSub: true },
-  { name: { en: "Blog", in: "Journal" }, href: "/blog", hasSub: true },
-  { name: { en: "Locations", in: "Locations" }, href: "#", hasSub: true },
+  { name: { en: "Blog", in: "Journal" }, href: "/blog" },
+  { name: { en: "Locations", in: "Locations" }, href: "#" },
   { name: { en: "Portfolio", in: "Portfolio" }, href: "/portfolio" },
-  { name: { en: "Prices", in: "Pricing" }, href: "#" },
-  { name: { en: "About me", in: "Founder" }, href: "#about" },
+  { name: { en: "Prices", in: "Pricing" }, href: "/#prices" },
+  { name: { en: "About me", in: "Founder" }, href: "/#about" },
 ];
 
 export default function Navbar() {
@@ -26,14 +58,16 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleLang = () => setLang(l => (l === "en" ? "in" : "en"));
+  const toggleLang = () => setLang((l) => (l === "en" ? "in" : "en"));
 
   return (
-    <nav className={cn(
-      "fixed top-6 left-6 right-6 z-50 transition-all duration-300",
-      "mx-auto max-w-7xl px-8 py-3 rounded-2xl border bg-white/90 backdrop-blur-sm shadow-sm",
-      isScrolled ? "py-2 shadow-md" : ""
-    )}>
+    <nav
+      className={cn(
+        "fixed top-6 left-6 right-6 z-50 transition-all duration-300",
+        "mx-auto max-w-7xl px-8 py-3 rounded-2xl border bg-white/95 backdrop-blur-md shadow-sm",
+        isScrolled ? "py-2 shadow-md border-muted/50" : ""
+      )}
+    >
       <div className="flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
           <span className="font-headline font-black text-2xl tracking-tight text-secondary italic">
@@ -43,30 +77,60 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-8">
+          <DropdownMenu>
+            <DropdownMenuTrigger className="text-[13px] font-semibold text-secondary/70 hover:text-secondary transition-colors flex items-center gap-1 focus:outline-none">
+              Services <ChevronDown className="w-3 h-3" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-72 p-2 rounded-2xl shadow-xl border-muted/50 mt-2 bg-white animate-in fade-in slide-in-from-top-2 duration-200">
+              {SERVICES.map((service) => (
+                <DropdownMenuItem key={service.title} asChild>
+                  <Link
+                    href={service.href}
+                    className="flex flex-col items-start gap-1 p-3 rounded-xl hover:bg-muted/50 cursor-pointer transition-colors focus:bg-muted/50"
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="p-1 rounded bg-primary/10 text-primary">
+                        {service.icon}
+                      </div>
+                      <span className="font-bold text-secondary text-sm">
+                        {service.title}
+                      </span>
+                    </div>
+                    <span className="text-[11px] text-muted-foreground ml-7">
+                      {service.description}
+                    </span>
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
           {NAV_ITEMS.map((item) => (
-            <Link 
-              key={item.name.en} 
+            <Link
+              key={item.name.en}
               href={item.href}
-              className="text-[13px] font-semibold text-secondary/70 hover:text-secondary transition-colors flex items-center gap-1"
+              className="text-[13px] font-semibold text-secondary/70 hover:text-secondary transition-colors"
             >
               {item.name[lang]}
-              {item.hasSub && <ChevronDown className="w-3 h-3" />}
             </Link>
           ))}
         </div>
 
         <div className="hidden md:flex items-center gap-4">
-          <Button asChild className="rounded-xl px-6 bg-secondary text-white hover:bg-secondary/90 transition-all duration-300 font-bold text-xs h-9">
+          <Button
+            asChild
+            className="rounded-xl px-6 bg-secondary text-white hover:bg-secondary/90 transition-all duration-300 font-bold text-xs h-9"
+          >
             <Link href="/contact">
               {lang === "en" ? "Offer" : "Get Free Quote"}
             </Link>
           </Button>
-          
+
           <div className="flex items-center gap-3 ml-2">
-            <button className="text-secondary/50 hover:text-secondary transition-colors">
+            <button className="text-secondary/50 hover:text-secondary transition-colors focus:outline-none">
               <Globe className="w-4 h-4" />
             </button>
-            <button 
+            <button
               onClick={toggleLang}
               className="flex items-center gap-1.5 focus:outline-none"
               title="Toggle Locale"
@@ -85,7 +149,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Menu Toggle */}
-        <button 
+        <button
           className="lg:hidden p-2 text-secondary"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
@@ -96,9 +160,35 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="absolute top-full left-0 mt-4 w-full bg-white rounded-2xl border shadow-xl p-8 flex flex-col gap-6 lg:hidden animate-in fade-in slide-in-from-top-4 duration-300">
+          <div className="space-y-4">
+            <p className="text-xs font-black text-muted-foreground uppercase tracking-widest">
+              Services
+            </p>
+            {SERVICES.map((service) => (
+              <Link
+                key={service.title}
+                href={service.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted transition-colors"
+              >
+                <div className="text-primary">{service.icon}</div>
+                <div>
+                  <p className="text-sm font-bold text-secondary">
+                    {service.title}
+                  </p>
+                  <p className="text-[10px] text-muted-foreground">
+                    {service.description}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="h-px bg-muted" />
+
           {NAV_ITEMS.map((item) => (
-            <Link 
-              key={item.name.en} 
+            <Link
+              key={item.name.en}
               href={item.href}
               onClick={() => setMobileMenuOpen(false)}
               className="text-lg font-bold text-secondary hover:text-primary transition-colors"
@@ -106,7 +196,11 @@ export default function Navbar() {
               {item.name[lang]}
             </Link>
           ))}
-          <Button asChild size="lg" className="w-full rounded-xl bg-secondary text-white font-bold h-14 mt-4">
+          <Button
+            asChild
+            size="lg"
+            className="w-full rounded-xl bg-secondary text-white font-bold h-14 mt-4"
+          >
             <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
               {lang === "en" ? "Get Offer" : "Get Free Quote"}
             </Link>
