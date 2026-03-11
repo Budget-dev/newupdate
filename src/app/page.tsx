@@ -552,31 +552,19 @@ export default function Home() {
 
             <div className="space-y-4">
               <h3 className="text-xl font-black text-secondary">Our services</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                 {[
-                  { 
-                    title: "Web design & UI/UX", 
-                    desc: "Conversion-optimized designs that not only look good, but sell.",
-                    icon: <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary"><Layout className="w-4 h-4" /></div>
-                  },
-                  { 
-                    title: "Web development", 
-                    desc: "Next.js, React, TypeScript — state-of-the-art technologies for maximum performance.",
-                    icon: <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary"><Code className="w-4 h-4" /></div>
-                  },
-                  { 
-                    title: "Web Apps & Software", 
-                    desc: "Customized applications, dashboards and automated systems.",
-                    icon: <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary"><Zap className="w-4 h-4" /></div>
-                  },
-                  { 
-                    title: "AI integration", 
-                    desc: "Intelligent chatbots, automations and AI-powered features.",
-                    icon: <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary"><Sparkles className="w-4 h-4" /></div>
-                  }
+                  { title: "Web design & UI/UX", desc: "Conversion-optimized designs." },
+                  { title: "Web development", desc: "Next.js, React, TypeScript." },
+                  { title: "SEO optimization", desc: "Better Google rankings." },
+                  { title: "AI integration", desc: "ChatGPT, Automation, Bots." },
+                  { title: "AI systems", desc: "Individual AI solutions." },
+                  { title: "Software development", desc: "Custom applications." }
                 ].map((service, i) => (
                   <Card key={i} className="p-4 rounded-[1.25rem] border border-muted/50 flex items-start gap-3">
-                    {service.icon}
+                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                      <Check className="w-4 h-4" />
+                    </div>
                     <div className="space-y-0.5">
                       <h4 className="font-bold text-secondary text-sm">{service.title}</h4>
                       <p className="text-[10px] text-muted-foreground leading-relaxed">{service.desc}</p>

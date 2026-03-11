@@ -30,7 +30,17 @@ const SERVICES = [
   },
   {
     title: "AI integration",
-    description: "Intelligent solutions & automation",
+    description: "ChatGPT, Automation, Bots",
+    href: "/services",
+  },
+  {
+    title: "AI systems",
+    description: "Individual AI solutions",
+    href: "/services",
+  },
+  {
+    title: "Software development",
+    description: "Tailor-made applications",
     href: "/services",
   },
 ];
@@ -76,22 +86,24 @@ export default function Navbar() {
             <DropdownMenuTrigger className="text-[13px] font-semibold text-secondary/70 hover:text-secondary transition-colors flex items-center gap-1 focus:outline-none">
               Services <ChevronDown className="w-3 h-3" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-64 p-2 rounded-2xl shadow-xl border-muted/50 mt-2 bg-white animate-in fade-in slide-in-from-top-2 duration-200">
-              {SERVICES.map((service) => (
-                <DropdownMenuItem key={service.title} asChild>
-                  <Link
-                    href={service.href}
-                    className="flex flex-col items-start gap-0.5 p-3 rounded-xl hover:bg-muted/50 cursor-pointer transition-colors focus:bg-muted/50"
-                  >
-                    <span className="font-bold text-secondary text-sm">
-                      {service.title}
-                    </span>
-                    <span className="text-[10px] text-muted-foreground">
-                      {service.description}
-                    </span>
-                  </Link>
-                </DropdownMenuItem>
-              ))}
+            <DropdownMenuContent className="w-64 p-2 rounded-[2rem] shadow-2xl border-muted/30 mt-4 bg-white animate-in fade-in slide-in-from-top-2 duration-300">
+              <div className="flex flex-col py-2">
+                {SERVICES.map((service) => (
+                  <DropdownMenuItem key={service.title} asChild className="focus:bg-transparent p-0">
+                    <Link
+                      href={service.href}
+                      className="flex flex-col items-start gap-1 px-6 py-4 hover:bg-muted/30 transition-colors w-full"
+                    >
+                      <span className="font-bold text-secondary text-[15px]">
+                        {service.title}
+                      </span>
+                      <span className="text-[11px] text-muted-foreground/80 font-medium">
+                        {service.description}
+                      </span>
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </div>
             </DropdownMenuContent>
           </DropdownMenu>
 
@@ -117,15 +129,12 @@ export default function Navbar() {
           </Button>
 
           <div className="flex items-center gap-3 ml-2">
-            <button className="text-secondary/50 hover:text-secondary transition-colors focus:outline-none">
-              <Globe className="w-4 h-4" />
-            </button>
             <button
               onClick={toggleLang}
-              className="flex items-center gap-1.5 focus:outline-none"
+              className="flex items-center gap-1.5 focus:outline-none group"
               title="Toggle Locale"
             >
-              <div className="w-5 h-3.5 border border-muted/20 rounded-sm relative overflow-hidden bg-white shadow-sm">
+              <div className="w-5 h-3.5 border border-muted/20 rounded-sm relative overflow-hidden bg-white shadow-sm transition-transform group-hover:scale-110">
                 <div className="absolute top-0 left-0 w-full h-[33.3%] bg-[#FF9933]" />
                 <div className="absolute top-[33.3%] left-0 w-full h-[33.3%] bg-white flex items-center justify-center">
                   <div className="w-1.5 h-1.5 rounded-full border-[0.5px] border-[#000080] flex items-center justify-center">
@@ -159,7 +168,7 @@ export default function Navbar() {
                 key={service.title}
                 href={service.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex flex-col gap-0.5 p-2 rounded-lg hover:bg-muted transition-colors"
+                className="flex flex-col gap-1 p-2 rounded-lg hover:bg-muted transition-colors"
               >
                 <p className="text-sm font-bold text-secondary">
                   {service.title}
