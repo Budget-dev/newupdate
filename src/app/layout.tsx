@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
+import BudgetDevChat from "@/components/chat/BudgetDevChat";
 
 export const metadata: Metadata = {
   title: 'The BudgetDev | High-Quality Digital Solutions',
@@ -21,6 +22,7 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased">
         {children}
+        <BudgetDevChat />
         <Toaster />
       </body>
     </html>
