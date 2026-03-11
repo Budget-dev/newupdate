@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Globe, Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,27 +21,27 @@ const SERVICES = [
   {
     title: "Web development",
     description: "Next.js, React, TypeScript",
-    href: "/services",
+    href: "/contact",
   },
   {
     title: "SEO optimization",
     description: "Better Google rankings",
-    href: "/services",
+    href: "/contact",
   },
   {
     title: "AI integration",
     description: "ChatGPT, Automation, Bots",
-    href: "/services",
+    href: "/contact",
   },
   {
     title: "AI systems",
     description: "Individual AI solutions",
-    href: "/services",
+    href: "/contact",
   },
   {
     title: "Software development",
     description: "Tailor-made applications",
-    href: "/services",
+    href: "/contact",
   },
 ];
 
