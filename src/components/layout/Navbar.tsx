@@ -16,12 +16,12 @@ const SERVICES = [
   {
     title: "Web design & UI/UX",
     description: "Conversion-optimized websites",
-    href: "/services",
+    href: "/services/web-design",
   },
   {
     title: "Web development",
     description: "Next.js, React, TypeScript",
-    href: "/contact",
+    href: "/services/web-development",
   },
   {
     title: "SEO optimization",
@@ -109,7 +109,7 @@ export default function Navbar() {
 
           {NAV_ITEMS.map((item) => (
             <Link
-              key={item.name.en}
+              key={item.href}
               href={item.href}
               className="text-[13px] font-semibold text-secondary/70 hover:text-secondary transition-colors"
             >
@@ -184,7 +184,7 @@ export default function Navbar() {
 
           {NAV_ITEMS.map((item) => (
             <Link
-              key={item.name.en}
+              key={item.href}
               href={item.href}
               onClick={() => setMobileMenuOpen(false)}
               className="text-lg font-bold text-secondary hover:text-primary transition-colors"
