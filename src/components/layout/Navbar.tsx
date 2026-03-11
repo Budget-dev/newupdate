@@ -26,7 +26,7 @@ const SERVICES = [
   {
     title: "SEO optimization",
     description: "Better Google rankings",
-    href: "/contact",
+    href: "/services/seo",
   },
   {
     title: "AI integration",
