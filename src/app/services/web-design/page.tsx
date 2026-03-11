@@ -78,14 +78,14 @@ export default function WebDesignServicePage() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Navbar />
-      <main className="flex-1 pt-32 pb-12 px-6">
+      <main className="flex-1 pt-32 md:pt-40 pb-12 px-6">
         <div className="max-w-7xl mx-auto space-y-12">
           
           <section className="space-y-6 max-w-4xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest">
                Web Design & UI/UX
             </div>
-            <h1 className="text-4xl md:text-6xl font-headline font-black text-secondary leading-tight tracking-tight">
+            <h1 className="text-3xl md:text-6xl font-headline font-black text-secondary leading-tight tracking-tight">
               Professional web design that turns visitors into customers
             </h1>
             <p className="text-base text-muted-foreground leading-relaxed max-w-2xl font-medium">
@@ -108,7 +108,7 @@ export default function WebDesignServicePage() {
 
           <section className="main-section-container grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div className="space-y-6">
-              <h2 className="text-3xl font-black text-secondary">What is web design?</h2>
+              <h2 className="text-2xl md:text-3xl font-black text-secondary">What is web design?</h2>
               <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
                 <p>Web design encompasses the visual design and structural planning of websites. Professional web design combines aesthetics with functionality.</p>
               </div>
@@ -127,7 +127,7 @@ export default function WebDesignServicePage() {
           </section>
 
           <section className="main-section-container space-y-8">
-            <h2 className="text-3xl font-black text-secondary">Why is professional web design so important?</h2>
+            <h2 className="text-2xl md:text-3xl font-black text-secondary">Why is professional web design so important?</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {importanceReasons.map((item, i) => (
                 <div key={i} className="bg-[#F8FAF9] p-6 rounded-2xl space-y-4">
@@ -142,7 +142,7 @@ export default function WebDesignServicePage() {
           </section>
 
           <section className="main-section-container space-y-8">
-            <h2 className="text-3xl font-black text-secondary">My web design process</h2>
+            <h2 className="text-2xl md:text-3xl font-black text-secondary">My web design process</h2>
             <div className="space-y-4">
               {processSteps.map((step, i) => (
                 <div key={i} className="flex gap-6 items-start border-b border-muted/50 pb-8 last:border-0 last:pb-0">
@@ -159,7 +159,7 @@ export default function WebDesignServicePage() {
           </section>
 
           <section className="bg-secondary rounded-[2.5rem] p-10 md:p-14 space-y-8 text-white">
-            <h2 className="text-3xl font-black italic">What you will receive from me</h2>
+            <h2 className="text-2xl md:text-3xl font-black italic">What you will receive from me</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
               {deliverables.map((item, i) => (
                 <div key={i} className="flex items-center gap-3">
@@ -170,29 +170,18 @@ export default function WebDesignServicePage() {
             </div>
           </section>
 
-          <section className="main-section-container space-y-8">
-            <h2 className="text-3xl font-black text-secondary">FAQ</h2>
-            <Accordion type="single" collapsible className="w-full space-y-3">
-              {faqs.map((item, i) => (
-                <AccordionItem key={i} value={`item-${i}`} className="bg-[#F8FAF9] rounded-xl border-none px-6">
-                  <AccordionTrigger className="text-xs font-bold py-4 text-secondary">{item.q}</AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground text-[11px] pb-4">{item.a}</AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </section>
-
+          {/* Special CTA for this page */}
           <section className="rounded-[2.5rem] bg-[#0a0a0a] p-10 md:p-16 overflow-hidden relative shadow-2xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
               <div className="space-y-8 text-white">
-                <h2 className="text-5xl font-black leading-tight">Ready for your project?</h2>
+                <h2 className="text-4xl md:text-5xl font-black leading-tight">Ready for your project?</h2>
                 <Button asChild className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 h-12">
                   <Link href="/contact">Get started now <ArrowRight className="ml-2 w-4 h-4" /></Link>
                 </Button>
               </div>
-              <Card className="bg-white/5 border-white/10 p-8 text-white rounded-[2rem]">
-                <h3 className="text-xl font-bold">BudgetDev.agency</h3>
-                <p className="text-white/40 text-xs">Available for new projects</p>
+              <Card className="bg-white/5 border-white/10 p-8 text-white rounded-[2rem] hidden md:block">
+                <h3 className="text-xl font-bold italic tracking-tight">BudgetDev.agency</h3>
+                <p className="text-white/40 text-xs uppercase font-bold tracking-widest mt-1">Web design & development</p>
               </Card>
             </div>
           </section>

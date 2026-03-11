@@ -52,7 +52,7 @@ const TechLogos = [
   { name: "CSS3", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm17.09 4.413L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H18.59l-.423-4.471h-9.13L8.85 9.75h8.927l-.423-4.471z"/></svg> },
   { name: "JavaScript", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M0 0h24v24H0V0zm22.034 18.268c0-2.037-1.474-3.112-3.462-3.112-2.015 0-3.417 1.066-3.417 3.112 0 2.058 1.402 3.112 3.417 3.112 2.022 0 3.462-1.054 3.462-3.112zm-4.814 0c0-1.042.66-1.554 1.352-1.554.68 0 1.351.512 1.351 1.554 0 1.053-.671 1.554-1.351 1.554-.692 0-1.352-.501-1.352-1.554zm-1.838 4.732h4.512v-1.74h-4.512v1.74zM10.8 11.026c0-1.475-1.144-2.318-2.618-2.318-1.516 0-2.686.843-2.686 2.318 0 1.474 1.17 2.318 2.686 2.318 1.474 0 2.618-.844 2.618-2.318zm-3.66 0c0-.75.467-1.159.982-1.159.525 0 .972.41.972 1.159 0 .749-.447 1.159-.972 1.159-.515 0-.982-.41-.982-1.159zm-1.396 3.614h4.082V12.9h-4.082v1.74z"/></svg> },
   { name: "React", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM10.622 8.415l4.879 2.817a.75.75 0 0 1 0 1.298l-4.879 2.817a.75.75 0 0 1-1.122-.649V9.064a.75.75 0 0 1 1.122-.649z"/></svg> },
-  { name: "Firebase", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M3.89 15.672L6.255.461A.534.534 0 0 1 7.27.275l2.458 4.608-2.458 8.441a1.2 1.2 0 0 0 .504.148h.001c.144 0 .285-.027.42-.078l2.67-1.006L8.136 5.856l1.96-1.745 5.518 9.84a1.2 1.2 0 0 0 1.521.493l2.855-1.076-2.583 4.887a1.2 1.2 0 0 0 .513.142h.001a1.2 1.2 0 0 0 .61-.17l3.618-1.365a.534.534 0 0 0 .245-.724l-3.328-6.305-1.666 3.161L3.89 15.672zm11.724-4.825L13.116 6.04l-2.003-3.755a.534.534 0 0 0-.964.03l-1.013 3.475 2.502 4.498 3.972-2.441z"/></svg> },
+  { name: "Firebase", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M3.89 15.672L6.255.461A.534.534 0 0 1 7.27.275l2.458 4.608-2.458 8.441a1.2 1.2 0 0 0 .504.148h.001c.144 0 .285-.027.42-.078l2.67-1.006L8.136 5.856l1.96-1.745 5.518 9.84a1.2 1.2 0 0 0 {1.521}.493l2.855-1.076-2.583 4.887a1.2 1.2 0 0 0 .513.142h.001a1.2 1.2 0 0 0 .61-.17l3.618-1.365a.534.534 0 0 0 .245-.724l-3.328-6.305-1.666 3.161L3.89 15.672zm11.724-4.825L13.116 6.04l-2.003-3.755a.534.534 0 0 0-.964.03l-1.013 3.475 2.502 4.498 3.972-2.441z"/></svg> },
   { name: "Next.js", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.735 18.91l-4.8-6.178V18.15h-1.35V7.477h1.35l4.8 6.177V7.477h1.35v10.673h-1.35zm-5.735-8.24l-2.025 2.625V13.8L12 11.2V10.67zm0 0l-2.025 2.625V13.8L12 11.2V10.67z"/></svg> },
 ];
 
@@ -184,11 +184,11 @@ export default function Home() {
       
       <main className="flex-1 relative z-10">
         {/* Hero Section */}
-        <section className="relative pt-12 pb-4 md:pt-20 md:pb-6 overflow-hidden">
+        <section className="relative pt-32 pb-4 md:pt-40 md:pb-6 overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 text-center space-y-4">
             <div className="space-y-3 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-              <h1 className="text-4xl md:text-[56px] font-headline font-black text-secondary leading-[1.1] tracking-tight">
-                We build what you <br />
+              <h1 className="text-[32px] md:text-[56px] font-headline font-black text-secondary leading-[1.2] md:leading-[1.1] tracking-tight">
+                We build what you <br className="hidden md:block" />
                 <span className="squiggle-underline">digital success</span>
               </h1>
               <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed font-medium">
@@ -299,7 +299,7 @@ export default function Home() {
         </section>
 
         {/* Prices Section */}
-        <section className="py-4 px-6 relative">
+        <section id="prices" className="py-4 px-6 relative">
           <div className="max-w-7xl mx-auto main-section-container overflow-hidden space-y-6">
             <div className="space-y-2">
               <div className="flex flex-col md:flex-row md:items-baseline gap-2">
@@ -465,7 +465,7 @@ export default function Home() {
         <section className="py-4 px-6 relative">
           <div className="max-w-7xl mx-auto main-section-container space-y-6">
             <div className="flex flex-col md:flex-row md:items-baseline gap-3 border-b pb-4">
-              <h2 className="text-5xl md:text-6xl font-headline font-black text-secondary">FAQ.</h2>
+              <h2 className="text-4xl md:text-6xl font-headline font-black text-secondary">FAQ.</h2>
               <p className="text-muted-foreground font-medium text-[10px] max-w-[200px] leading-tight">
                 Plain language instead of technical jargon. The most important answers.
               </p>
@@ -530,7 +530,7 @@ export default function Home() {
         <section className="py-4 px-6 relative">
           <div className="max-w-7xl mx-auto main-section-container space-y-8">
             <div className="flex flex-col md:flex-row md:items-baseline gap-3 border-b pb-4">
-              <h2 className="text-5xl md:text-6xl font-headline font-black text-secondary">Expertise.</h2>
+              <h2 className="text-4xl md:text-6xl font-headline font-black text-secondary">Expertise.</h2>
               <p className="text-muted-foreground font-medium text-[10px] max-w-[200px] leading-tight">
                 What we do in Vizianagaram and throughout Andhra Pradesh.
               </p>
@@ -595,7 +595,7 @@ export default function Home() {
         <section id="about" className="py-4 px-6 relative">
           <div className="max-w-7xl mx-auto main-section-container space-y-8">
             <div className="flex flex-col md:flex-row md:items-baseline gap-4 border-b pb-4">
-              <h2 className="text-5xl md:text-6xl font-headline font-black text-secondary">About me.</h2>
+              <h2 className="text-4xl md:text-6xl font-headline font-black text-secondary">About me.</h2>
               <p className="text-muted-foreground font-medium text-[10px] max-w-[200px] leading-tight">
                 The mastermind behind BudgetDev.
               </p>
@@ -626,7 +626,7 @@ export default function Home() {
 
               <div className="lg:col-span-3 space-y-8 py-4">
                 <div className="space-y-6">
-                  <h3 className="text-3xl font-black text-secondary leading-tight">One head, clear visions.</h3>
+                  <h3 className="text-2xl md:text-3xl font-black text-secondary leading-tight">One head, clear visions.</h3>
                   <div className="space-y-4 text-[13px] text-muted-foreground leading-relaxed max-w-xl">
                     <p>
                       I&apos;m Venkatesh Choppa – the sole driving force behind BudgetDev, your web design agency in Vizianagaram. 
@@ -645,7 +645,7 @@ export default function Home() {
                     { label: "Satisfied entrepreneurs", value: "100%" }
                   ].map((stat, i) => (
                     <div key={i} className="space-y-1">
-                      <p className="text-xl font-black text-secondary">{stat.value}</p>
+                      <p className="text-lg md:text-xl font-black text-secondary">{stat.value}</p>
                       <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest leading-tight">{stat.label}</p>
                     </div>
                   ))}
@@ -670,7 +670,7 @@ export default function Home() {
               <div className="space-y-8">
                 <div className="space-y-4">
                   <span className="text-primary text-xs font-black uppercase tracking-widest">make contact</span>
-                  <h2 className="text-5xl md:text-7xl font-headline font-black text-white leading-tight">Ready for your project?</h2>
+                  <h2 className="text-4xl md:text-7xl font-headline font-black text-white leading-tight">Ready for your project?</h2>
                   <p className="text-white/60 text-base md:text-lg max-w-md font-medium">
                     Let&apos;s get started together. Send me an inquiry and receive a response within 12 hours.
                   </p>
@@ -712,7 +712,7 @@ export default function Home() {
         {/* Map Section */}
         <section className="py-4 px-6 relative mb-8">
           <div className="max-w-7xl mx-auto rounded-[2.5rem] bg-[#0a0a0a] p-8 md:p-12 space-y-8 border border-white/5">
-            <div className="flex justify-between items-end">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
               <div className="space-y-2">
                 <span className="text-primary text-xs font-black uppercase tracking-widest">Vizianagaram location</span>
                 <p className="text-white text-base font-bold">Fort City, Vizianagaram, Andhra Pradesh 535003</p>
@@ -722,7 +722,7 @@ export default function Home() {
               </Link>
             </div>
             
-            <div className="relative h-[400px] w-full rounded-[2rem] overflow-hidden grayscale invert opacity-80 hover:grayscale-0 hover:invert-0 hover:opacity-100 transition-all duration-700">
+            <div className="relative h-[300px] md:h-[400px] w-full rounded-[2rem] overflow-hidden grayscale invert opacity-80 hover:grayscale-0 hover:invert-0 hover:opacity-100 transition-all duration-700">
                <iframe 
                 width="100%" 
                 height="100%" 
