@@ -1,3 +1,4 @@
+
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
@@ -46,7 +47,6 @@ import {
 } from "@/components/ui/accordion";
 import { Card } from "@/components/ui/card";
 import { ResultsSection } from "@/components/sections/ResultsSection";
-import WhatsAppButton from "@/components/ui/whatsapp-button";
 
 const TechLogos = [
   { name: "HTML5", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg> },
@@ -737,13 +737,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        <div className="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
-          <WhatsAppButton />
-          <Link href="tel:+918466006486" className="w-[45px] h-[45px] bg-secondary text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all">
-            <Phone className="w-5 h-5" />
-          </Link>
-        </div>
       </main>
 
       <Footer />
