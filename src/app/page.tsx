@@ -46,6 +46,7 @@ import {
 } from "@/components/ui/accordion";
 import { Card } from "@/components/ui/card";
 import { ResultsSection } from "@/components/sections/ResultsSection";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const TechLogos = [
   { name: "HTML5", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg> },
@@ -62,21 +63,24 @@ const completedProjects = [
     tag: "E-commerce",
     description: "High-quality spice distribution platform with seamless ordering and inventory management.",
     link: "https://srinikaspices.in",
-    imageUrl: "https://s0.wp.com/mshots/v1/https://srinikaspices.in?w=800&h=600"
+    imageUrl: PlaceHolderImages.find(img => img.id === 'project-1')?.imageUrl || "https://picsum.photos/seed/project1/800/600",
+    imageHint: "spice shop"
   },
   {
     title: "Gurucharan Interiors",
     tag: "Interior Design",
     description: "Elegant portfolio for a leading interior design firm showcasing premium projects.",
     link: "https://gurucharaninteriors.in",
-    imageUrl: "https://s0.wp.com/mshots/v1/https://gurucharaninteriors.in?w=800&h=600"
+    imageUrl: PlaceHolderImages.find(img => img.id === 'project-5')?.imageUrl || "https://picsum.photos/seed/project2/800/600",
+    imageHint: "interior design"
   },
   {
     title: "Yasodha.in",
     tag: "Portfolio",
     description: "Professional personal branding portal for specialized career development.",
     link: "https://yasodha.in",
-    imageUrl: "https://s0.wp.com/mshots/v1/https://yasodha.in?w=800&h=600"
+    imageUrl: PlaceHolderImages.find(img => img.id === 'project-6')?.imageUrl || "https://picsum.photos/seed/project3/800/600",
+    imageHint: "personal portfolio"
   }
 ];
 
@@ -200,7 +204,7 @@ export default function Home() {
                       src={ref.imageUrl} 
                       alt={ref.title} 
                       fill 
-                      unoptimized
+                      data-ai-hint={ref.imageHint}
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
