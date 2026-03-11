@@ -46,6 +46,7 @@ import {
 } from "@/components/ui/accordion";
 import { Card } from "@/components/ui/card";
 import { ResultsSection } from "@/components/sections/ResultsSection";
+import WhatsAppButton from "@/components/ui/whatsapp-button";
 
 const TechLogos = [
   { name: "HTML5", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg> },
@@ -184,10 +185,10 @@ export default function Home() {
       
       <main className="flex-1 relative z-10">
         {/* Hero Section */}
-        <section className="relative pt-32 pb-4 md:pt-40 md:pb-6 overflow-hidden">
+        <section className="relative pt-40 pb-4 md:pt-48 md:pb-6 overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 text-center space-y-4">
             <div className="space-y-3 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-              <h1 className="text-[32px] md:text-[56px] font-headline font-black text-secondary leading-[1.2] md:leading-[1.1] tracking-tight">
+              <h1 className="text-[36px] md:text-[64px] font-headline font-black text-secondary leading-[1.2] md:leading-[1.1] tracking-tight">
                 We build what you <br className="hidden md:block" />
                 <span className="squiggle-underline">digital success</span>
               </h1>
@@ -693,7 +694,7 @@ export default function Home() {
               </div>
 
               <div className="flex justify-end">
-                <Card className="w-full max-w-sm bg-white/5 border-white/10 rounded-[2rem] p-8 space-y-4 backdrop-blur-xl">
+                <Card className="w-full max-sm bg-white/5 border-white/10 rounded-[2rem] p-8 space-y-4 backdrop-blur-xl">
                   <div className="space-y-1">
                     <h3 className="text-2xl font-black text-white italic tracking-tight">BudgetDev.agency</h3>
                     <p className="text-white/40 text-[11px] font-bold uppercase tracking-wider">Web design & software development</p>
@@ -738,11 +739,9 @@ export default function Home() {
         </section>
 
         <div className="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
-          <Link href="https://wa.me/918466006486" className="w-10 h-10 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all">
-            <MessageCircle className="w-5 h-5" />
-          </Link>
-          <Link href="tel:+918466006486" className="w-10 h-10 bg-secondary text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all">
-            <Phone className="w-4 h-4" />
+          <WhatsAppButton />
+          <Link href="tel:+918466006486" className="w-[45px] h-[45px] bg-secondary text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all">
+            <Phone className="w-5 h-5" />
           </Link>
         </div>
       </main>
