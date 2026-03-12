@@ -1,8 +1,8 @@
-
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import BudgetDevChat from "@/components/chat/BudgetDevChat";
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'The BudgetDev | High-Quality Digital Solutions',
@@ -23,8 +23,25 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        {/* Preload critical hero images if needed here */}
       </head>
       <body className="font-body antialiased">
+        {/* Google Tag (gtag.js) */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-D5D81KPGQT"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-D5D81KPGQT');
+          `}
+        </Script>
+        
         {children}
         <BudgetDevChat />
         <Toaster />
