@@ -122,7 +122,7 @@ export default function Navbar() {
             className="rounded-xl px-6 bg-secondary text-white hover:bg-secondary/90 transition-all duration-300 font-bold text-xs h-9"
           >
             <Link href="/contact">
-              {lang === "en" ? "Offer" : "Get Free Quote"}
+              {lang === "en" ? "Contact" : "Contact Us"}
             </Link>
           </Button>
 
@@ -196,7 +196,7 @@ export default function Navbar() {
             className="w-full rounded-xl bg-secondary text-white font-bold h-14 mt-4"
           >
             <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-              {lang === "en" ? "Get Offer" : "Get Free Quote"}
+              {lang === "en" ? "Contact Us" : "Get Free Quote"}
             </Link>
           </Button>
         </div>

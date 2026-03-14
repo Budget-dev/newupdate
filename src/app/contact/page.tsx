@@ -14,14 +14,37 @@ import { Send, CheckCircle } from "lucide-react";
 export default function ContactPage() {
   const { toast } = useToast();
   const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    service: "web-app",
+    message: ""
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Construct WhatsApp message
+    const waMessage = `*New Inquiry from BudgetDev Website*%0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email}%0A*Service:* ${formData.service}%0A*Message:* ${formData.message}`;
+    const whatsappUrl = `https://wa.me/918466006486?text=${waMessage}`;
+    
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, "_blank");
+    
     setSubmitted(true);
     toast({
-      title: "Request Sent!",
-      description: "We'll get back to you with a free project draft within 24 hours.",
+      title: "Opening WhatsApp...",
+      description: "Redirecting you to our direct line for a fast response.",
     });
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
+
+  const handleServiceChange = (value: string) => {
+    setFormData(prev => ({ ...prev, service: value }));
   };
 
   if (submitted) {
@@ -33,9 +56,9 @@ export default function ContactPage() {
             <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center text-primary mx-auto">
               <CheckCircle className="w-12 h-12" />
             </div>
-            <h1 className="text-4xl font-headline font-bold text-secondary">Thank You!</h1>
+            <h1 className="text-4xl font-headline font-bold text-secondary">Message Sent!</h1>
             <p className="text-muted-foreground">
-              Your request has been received. Our team is already brainstorming your project's initial draft. You'll hear from us soon.
+              Thank you for contacting us via WhatsApp. If the message didn't send automatically, please check your WhatsApp tab or try again.
             </p>
             <Button variant="outline" className="rounded-full" onClick={() => setSubmitted(false)}>
               Send another request
@@ -56,7 +79,7 @@ export default function ContactPage() {
             <div className="space-y-4">
               <h1 className="text-5xl md:text-6xl font-headline font-bold text-secondary">Let's build your <span className="text-primary italic">next big thing</span>.</h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Fill out the form to get a free project draft. We'll analyze your requirements and provide a visual concept and a roadmap.
+                Fill out the form to get started. We'll analyze your requirements and provide a visual concept and a roadmap via WhatsApp.
               </p>
             </div>
             
@@ -66,8 +89,8 @@ export default function ContactPage() {
                   <CheckCircle className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg">Free Initial Draft</h3>
-                  <p className="text-muted-foreground">Receive a basic design and concept proposal at no cost.</p>
+                  <h3 className="font-bold text-lg">Direct WhatsApp Support</h3>
+                  <p className="text-muted-foreground">Get an instant response from our lead developer.</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -76,7 +99,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-bold text-lg">Fast Response</h3>
-                  <p className="text-muted-foreground">We typically reply within one business day.</p>
+                  <p className="text-muted-foreground">We typically reply within minutes on WhatsApp.</p>
                 </div>
               </div>
             </div>
@@ -87,17 +110,36 @@ export default function ContactPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <Label htmlFor="name">Full Name</Label>
-                  <Input id="name" placeholder="John Doe" required className="rounded-xl h-12" />
+                  <Input 
+                    id="name" 
+                    placeholder="John Doe" 
+                    required 
+                    className="rounded-xl h-12" 
+                    value={formData.name}
+                    onChange={handleInputChange}
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Email Address</Label>
-                  <Input id="email" type="email" placeholder="john@example.com" required className="rounded-xl h-12" />
+                  <Input 
+                    id="email" 
+                    type="email" 
+                    placeholder="john@example.com" 
+                    required 
+                    className="rounded-xl h-12" 
+                    value={formData.email}
+                    onChange={handleInputChange}
+                  />
                 </div>
               </div>
 
               <div className="space-y-4">
                 <Label>What do you need?</Label>
-                <RadioGroup defaultValue="web-app" className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <RadioGroup 
+                  defaultValue="web-app" 
+                  onValueChange={handleServiceChange}
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                >
                   <div className="flex items-center space-x-2 border p-4 rounded-xl cursor-pointer hover:bg-muted/50 transition-colors">
                     <RadioGroupItem value="web-design" id="web-design" />
                     <Label htmlFor="web-design" className="cursor-pointer">Web Design</Label>
@@ -119,11 +161,18 @@ export default function ContactPage() {
 
               <div className="space-y-2">
                 <Label htmlFor="message">Project Description</Label>
-                <Textarea id="message" placeholder="Tell us about your project goals and requirements..." className="min-h-[150px] rounded-xl" required />
+                <Textarea 
+                  id="message" 
+                  placeholder="Tell us about your project goals and requirements..." 
+                  className="min-h-[150px] rounded-xl" 
+                  required 
+                  value={formData.message}
+                  onChange={handleInputChange}
+                />
               </div>
 
               <Button type="submit" size="lg" className="w-full bg-secondary text-secondary-foreground h-14 rounded-xl text-lg font-bold shadow-xl shadow-secondary/10">
-                Request Free Draft <Send className="ml-2 w-5 h-5" />
+                Send to WhatsApp <Send className="ml-2 w-5 h-5" />
               </Button>
             </form>
           </div>
