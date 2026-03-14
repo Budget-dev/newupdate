@@ -63,31 +63,13 @@ const values = [
   }
 ];
 
-const timeline = [
-  {
-    year: "2024",
-    title: "BudgetDev was founded",
-    desc: "Built a professional agency, completed over 92 projects, and scaled to enterprise level."
-  },
-  {
-    year: "2025",
-    title: "Scaling & AI",
-    desc: "AI integrations, automation and enterprise projects reaching 7.5M+ users."
-  }
-];
-
 const techStack = [
   { name: "Next.js", desc: "React Framework" },
   { name: "React", desc: "UI Library" },
   { name: "TypeScript", desc: "Type Safety" },
   { name: "Tailwind CSS", desc: "Styling" },
-  { name: "Supabase", desc: "Database & Auth" },
-  { name: "Prisma", desc: "ORM" },
-  { name: "Vercel", desc: "Hosting & CI/CD" },
-  { name: "Stripe", desc: "Payments" },
-  { name: "OpenAI", desc: "AI Integration" },
-  { name: "Claude", desc: "AI Assistant" },
-  { name: "Cloudflare", desc: "Security & DNS" },
+  { name: "Firebase", desc: "Auth & DB" },
+  { name: "Vercel", desc: "Hosting" },
   { name: "shadcn/ui", desc: "UI Components" }
 ];
 
@@ -105,8 +87,10 @@ export default function AboutPage() {
               <div className="relative aspect-square md:aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl bg-[#1A1A1A]">
                 <Image 
                   src="https://yasodha.in/assets/venkatesh-profile.png" 
-                  alt="Venkatesh Choppa" 
+                  alt="Venkatesh Choppa - BudgetDev Founder" 
                   fill 
+                  priority // Critical for LCP mobile score
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover object-top"
                 />
                 <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/90 via-black/20 to-transparent">
@@ -132,9 +116,6 @@ export default function AboutPage() {
                 <p className="text-lg text-muted-foreground leading-relaxed font-medium">
                   I'm Venkatesh Choppa – the sole mind behind BudgetDev. No large team, no unnecessary meetings, no wasted hours. As a developer with innovative thinking, I work efficiently, with high quality, and quickly.
                 </p>
-                <p className="text-base text-muted-foreground/80 leading-relaxed font-medium">
-                  I personally manage and execute everything to deliver the best possible result. No 500 hours of work on things that simply need to work. I am the best partner you will find when it comes to excellence.
-                </p>
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -149,11 +130,6 @@ export default function AboutPage() {
               <div className="flex flex-wrap gap-4 pt-4">
                 <Button asChild className="rounded-xl h-12 px-8 bg-secondary text-white font-black hover:scale-[1.02] transition-transform">
                   <Link href="/contact">Start project <ArrowRight className="ml-2 w-4 h-4" /></Link>
-                </Button>
-                <Button variant="outline" asChild className="rounded-xl h-12 px-8 border-muted/20 font-black hover:bg-muted/50 text-secondary">
-                  <Link href="https://github.com/venkateshchoppa" target="_blank" className="flex items-center gap-2">
-                    @budgetdev.agency
-                  </Link>
                 </Button>
               </div>
             </div>
@@ -181,27 +157,6 @@ export default function AboutPage() {
             </div>
           </section>
 
-          {/* My path Section */}
-          <section className="main-section-container space-y-12">
-            <div className="flex flex-col md:flex-row md:items-baseline gap-4 border-b pb-6">
-              <h2 className="text-5xl md:text-7xl font-headline font-black text-secondary">My path.</h2>
-              <p className="text-muted-foreground font-medium text-xs">From the first line of code to the present day.</p>
-            </div>
-
-            <div className="space-y-8 pl-4">
-              {timeline.map((item, i) => (
-                <div key={i} className="relative pl-8 border-l-2 border-primary/20 group pb-4 last:pb-0">
-                  <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-white border-4 border-primary group-hover:scale-125 transition-transform" />
-                  <div className="space-y-2">
-                    <span className="text-primary text-[10px] font-black tracking-widest uppercase">{item.year}</span>
-                    <h3 className="text-xl font-black text-secondary">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground max-w-2xl leading-relaxed">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
           {/* Tech Stack Section */}
           <section className="main-section-container space-y-12">
             <div className="flex flex-col md:flex-row md:items-baseline gap-4 border-b pb-6">
@@ -222,23 +177,7 @@ export default function AboutPage() {
             </div>
           </section>
 
-          {/* Small Dark CTA Block */}
-          <section className="rounded-[2.5rem] bg-[#0a0a0a] p-12 md:p-16 text-center space-y-8 shadow-2xl">
-            <div className="space-y-4">
-              <h2 className="text-3xl md:text-4xl font-headline font-black text-white leading-tight">Ready for your project?</h2>
-              <p className="text-white/60 text-sm max-w-xl mx-auto font-medium">Let's create something extraordinary together. I look forward to hearing from you.</p>
-            </div>
-            <div className="flex flex-col md:flex-row justify-center items-center gap-4">
-              <Button asChild className="rounded-xl h-12 px-10 bg-white text-secondary font-black hover:bg-white/90">
-                <Link href="/contact">Free offer <ArrowRight className="ml-2 w-4 h-4" /></Link>
-              </Button>
-              <Link href="tel:+918466006486" className="flex items-center gap-2 text-white/40 text-[11px] font-bold uppercase tracking-widest hover:text-white transition-colors">
-                <div className="w-2 h-2 rounded-full bg-primary animate-pulse" /> +91 8466006486
-              </Link>
-            </div>
-          </section>
-
-          {/* Large Dark Contact/Map Section */}
+          {/* Large Dark Contact Section */}
           <section className="rounded-[2.5rem] bg-[#0a0a0a] p-10 md:p-16 overflow-hidden relative shadow-2xl space-y-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
               <div className="space-y-8 text-white">
@@ -262,45 +201,6 @@ export default function AboutPage() {
                     </div>
                   </div>
                 </Link>
-              </div>
-
-              <div className="flex justify-end">
-                <Card className="w-full max-w-sm bg-white/5 border-white/10 rounded-[2rem] p-8 space-y-4 backdrop-blur-xl">
-                  <div className="space-y-1">
-                    <h3 className="text-2xl font-black text-white italic tracking-tight">BudgetDev.agency</h3>
-                    <p className="text-white/40 text-[11px] font-bold uppercase tracking-wider">Web design & software development</p>
-                  </div>
-                  <div className="pt-4">
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-black uppercase tracking-widest">
-                       <div className="w-2 h-2 rounded-full bg-primary animate-pulse" /> Available: +91 8466006486
-                    </div>
-                  </div>
-                </Card>
-              </div>
-            </div>
-
-            <div className="space-y-8 border-t border-white/10 pt-12">
-              <div className="flex justify-between items-end">
-                <div className="space-y-2">
-                  <span className="text-primary text-xs font-black uppercase tracking-widest">Vizianagaram location</span>
-                  <p className="text-white text-base font-bold">Fort City, Vizianagaram, Andhra Pradesh 535003</p>
-                </div>
-                <Link href="https://maps.google.com" target="_blank" className="text-white/40 text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 hover:text-white transition-colors">
-                  Open in Google Maps <ExternalLink className="w-3 h-3" />
-                </Link>
-              </div>
-              
-              <div className="relative h-[400px] w-full rounded-[2rem] overflow-hidden grayscale invert opacity-80 hover:grayscale-0 hover:invert-0 hover:opacity-100 transition-all duration-700">
-                 <iframe 
-                  width="100%" 
-                  height="100%" 
-                  frameBorder="0" 
-                  scrolling="no" 
-                  marginHeight={0} 
-                  marginWidth={0} 
-                  src="https://www.openstreetmap.org/export/embed.html?bbox=83.3900%2C18.1100%2C83.4100%2C18.1300&amp;layer=mapnik&amp;marker=18.1200%2C83.4000" 
-                  className="filter contrast-125 border-none"
-                />
               </div>
             </div>
           </section>
