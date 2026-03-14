@@ -30,17 +30,7 @@ const SERVICES = [
   },
   {
     title: "AI integration",
-    description: "ChatGPT, Automation, Bots",
-    href: "/contact",
-  },
-  {
-    title: "AI systems",
-    description: "Individual AI solutions",
-    href: "/contact",
-  },
-  {
-    title: "Software development",
-    description: "Tailor-made applications",
+    description: "Bot interaction and many more services",
     href: "/contact",
   },
 ];
@@ -81,7 +71,7 @@ export default function Navbar() {
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-8">
           <DropdownMenu>
-            <DropdownMenuTrigger className="text-[13px] font-semibold text-secondary/70 hover:text-secondary transition-colors flex items-center gap-1 focus:outline-none">
+            <DropdownMenuTrigger className="text-[13px] font-semibold text-secondary/70 hover:text-secondary transition-colors flex items-center gap-1 focus:outline-none min-w-[80px]">
               Services <ChevronDown className="w-3 h-3" />
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-64 p-2 rounded-[2rem] shadow-2xl border-muted/30 mt-4 bg-white animate-in fade-in slide-in-from-top-2 duration-300">
@@ -132,10 +122,10 @@ export default function Navbar() {
               className="flex items-center gap-1.5 focus:outline-none group transition-transform hover:scale-105"
               title="Toggle Locale"
             >
-              <div className="relative w-6 h-4 rounded-[2px] overflow-hidden shadow-sm border border-muted/20">
+              <div className="relative w-7 h-5 rounded-[2px] overflow-hidden shadow-sm border border-muted/20">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 225 150" className="w-full h-full">
-                  <rect width="225" height="150" fill="#f93"/>
-                  <rect width="225" height="100" y="50" fill="#fff"/>
+                  <rect width="225" height="150" fill="#FF9933"/>
+                  <rect width="225" height="100" y="50" fill="#FFFFFF"/>
                   <rect width="225" height="50" y="100" fill="#128807"/>
                   <g transform="translate(112.5 75)">
                     <circle r="20" fill="none" stroke="#000080" strokeWidth="2"/>

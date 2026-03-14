@@ -21,7 +21,6 @@ export default function Footer() {
       { name: "Web Development", href: "/services/web-development" },
       { name: "SEO Optimization", href: "/services/seo" },
       { name: "AI Integration", href: "/contact" },
-      { name: "Software Development", href: "/contact" },
     ],
     company: [
       { name: "About Me", href: "/about" },
