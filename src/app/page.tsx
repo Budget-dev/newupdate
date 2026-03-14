@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
@@ -21,7 +20,10 @@ import {
   Code,
   ShieldCheck,
   ExternalLink,
-  ArrowUpRight
+  ArrowUpRight,
+  Palette,
+  Cpu,
+  Bot
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
@@ -64,7 +66,7 @@ const completedProjects = [
     tag: "E-commerce",
     description: "High-quality spice distribution platform with seamless ordering and inventory management.",
     link: "https://srinikaspices.in",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'project-srinika')?.imageUrl || "https://s0.wp.com/mshots/v1/https://srinikaspices.in?w=800&h=600",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'project-srinika')?.imageUrl || "",
     imageHint: "spice shop"
   },
   {
@@ -72,7 +74,7 @@ const completedProjects = [
     tag: "Interior Design",
     description: "Elegant portfolio for a leading interior design firm showcasing premium projects.",
     link: "https://gurucharaninteriors.in",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'project-gurucharan')?.imageUrl || "https://s0.wp.com/mshots/v1/https://gurucharaninteriors.in?w=800&h=600",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'project-gurucharan')?.imageUrl || "",
     imageHint: "interior design"
   },
   {
@@ -80,7 +82,7 @@ const completedProjects = [
     tag: "Portfolio",
     description: "Professional personal branding portal for specialized career development.",
     link: "https://yasodha.in",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'project-yasodha')?.imageUrl || "https://s0.wp.com/mshots/v1/https://yasodha.in?w=800&h=600",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'project-yasodha')?.imageUrl || "",
     imageHint: "personal portfolio"
   }
 ];
@@ -240,6 +242,88 @@ export default function Home() {
         {/* Results Section */}
         <ResultsSection />
 
+        {/* Expertise Section */}
+        <section className="py-12 px-6 relative">
+          <div className="max-w-7xl mx-auto main-section-container space-y-12">
+            <div className="flex flex-col md:flex-row md:items-baseline gap-3 border-b pb-6">
+              <h2 className="text-6xl md:text-7xl font-headline font-black text-secondary">Expertise.</h2>
+              <p className="text-muted-foreground font-medium text-xs max-w-sm leading-tight">
+                What we do in Vizianagaram and throughout Andhra Pradesh.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { label: "Projects realized", value: "50+" },
+                { label: "Users reached", value: "7.5M+" },
+                { label: "Customer satisfaction", value: "100%" },
+                { label: "Average response time", value: "24h" }
+              ].map((stat, i) => (
+                <Card key={i} className="p-8 rounded-[2rem] border-none bg-[#F8FAF9] flex flex-col items-center justify-center text-center space-y-1">
+                  <span className="text-3xl font-black text-secondary">{stat.value}</span>
+                  <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{stat.label}</span>
+                </Card>
+              ))}
+            </div>
+
+            <div className="space-y-8">
+              <h3 className="text-3xl font-black text-secondary">Our services</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {[
+                  { title: "Web design & UI/UX", desc: "Conversion-optimized designs that not only look good, but sell.", icon: <Palette className="w-6 h-6" /> },
+                  { title: "Web development", desc: "Next.js, React, TypeScript – state-of-the-art technologies for maximum performance.", icon: <Code className="w-6 h-6" /> },
+                  { title: "Web Apps & Software", desc: "Customized applications, dashboards and automated systems.", icon: <Cpu className="w-6 h-6" /> },
+                  { title: "AI integration", desc: "Intelligent chatbots, automations and AI-powered features.", icon: <Bot className="w-6 h-6" /> }
+                ].map((service, i) => (
+                  <Card key={i} className="p-8 rounded-[2rem] border border-muted/50 flex items-start gap-6 hover:shadow-xl hover:shadow-primary/5 transition-all group">
+                    <div className="w-14 h-14 rounded-2xl bg-primary/5 flex items-center justify-center text-primary shrink-0 group-hover:bg-primary/10 transition-colors">
+                      {service.icon}
+                    </div>
+                    <div className="space-y-1">
+                      <h4 className="font-black text-secondary text-lg">{service.title}</h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{service.desc}</p>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <h3 className="text-3xl font-black text-secondary">Industry experience</h3>
+              <div className="flex flex-wrap gap-3">
+                {[
+                  { label: "Gastronomy", count: "8+ projects" },
+                  { label: "Automotive", count: "6+ projects" },
+                  { label: "Finance", count: "3+ projects" },
+                  { label: "E-commerce", count: "5+ projects" },
+                  { label: "Healthcare", count: "4+ projects" },
+                  { label: "B2B Services", count: "10+ projects" }
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-2 px-5 py-2.5 bg-muted/30 border border-muted rounded-full">
+                    <span className="text-xs font-bold text-secondary">{item.label}</span>
+                    <span className="text-[10px] font-bold text-primary">{item.count}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-6">
+              <div className="space-y-1">
+                <h4 className="text-xs font-black text-secondary uppercase tracking-widest">State-of-the-art technologies</h4>
+                <p className="text-[11px] text-muted-foreground font-medium">Next.js, React, TypeScript, Tailwind CSS, Supabase, Vercel</p>
+              </div>
+              <div className="flex gap-3">
+                <div className="flex items-center gap-2 bg-[#1A1A1A] text-white px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest shadow-lg">
+                   <Rocket className="w-3.5 h-3.5 text-white" /> PageSpeed 100/100
+                </div>
+                <div className="flex items-center gap-2 bg-[#00d757] text-white px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest shadow-lg">
+                   <ShieldCheck className="w-3.5 h-3.5" /> GDPR compliant
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Reviews Section */}
         <section className="py-4 px-6 relative bg-white overflow-hidden">
           <div className="max-w-7xl mx-auto flex flex-col items-center space-y-5">
@@ -359,71 +443,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Expertise Section */}
-        <section className="py-4 px-6 relative">
-          <div className="max-w-7xl mx-auto main-section-container space-y-8">
-            <div className="flex flex-col md:flex-row md:items-baseline gap-3 border-b pb-4">
-              <h2 className="text-4xl md:text-6xl font-headline font-black text-secondary">Expertise.</h2>
-              <p className="text-muted-foreground font-medium text-[10px] max-w-[200px] leading-tight">
-                What we do in Vizianagaram and throughout Andhra Pradesh.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {[
-                { label: "Projects realized", value: "50+" },
-                { label: "Users reached", value: "7.5M+" },
-                { label: "Customer satisfaction", value: "100%" },
-                { label: "Average response time", value: "24h" }
-              ].map((stat, i) => (
-                <Card key={i} className="p-5 rounded-[1.25rem] border-none bg-[#F8FAF9] flex flex-col items-center justify-center text-center space-y-1">
-                  <span className="text-2xl font-black text-secondary">{stat.value}</span>
-                  <span className="text-[8px] font-medium text-muted-foreground uppercase tracking-widest">{stat.label}</span>
-                </Card>
-              ))}
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="text-xl font-black text-secondary">Our services</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                {[
-                  { title: "Web design & UI/UX", desc: "Conversion-optimized designs." },
-                  { title: "Web development", desc: "Next.js, React, TypeScript." },
-                  { title: "SEO optimization", desc: "Better Google rankings." },
-                  { title: "AI integration", desc: "ChatGPT, Automation, Bots." },
-                  { title: "AI systems", desc: "Individual AI solutions." },
-                  { title: "Software development", desc: "Custom applications." }
-                ].map((service, i) => (
-                  <Card key={i} className="p-4 rounded-[1.25rem] border border-muted/50 flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                      <Check className="w-4 h-4" />
-                    </div>
-                    <div className="space-y-0.5">
-                      <h4 className="font-bold text-secondary text-sm">{service.title}</h4>
-                      <p className="text-[10px] text-muted-foreground leading-relaxed">{service.desc}</p>
-                    </div>
-                  </Card>
-                ))}
-              </div>
-            </div>
-
-            <div className="pt-4 border-t flex flex-col md:flex-row justify-between items-center gap-4">
-              <div className="space-y-0.5">
-                <h4 className="text-[9px] font-black text-secondary uppercase tracking-widest">State-of-the-art technologies</h4>
-                <p className="text-[8px] text-muted-foreground font-medium">Next.js, React, TypeScript, Tailwind CSS, Firebase</p>
-              </div>
-              <div className="flex gap-2">
-                <div className="flex items-center gap-1.5 bg-secondary text-white px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest">
-                   <Rocket className="w-2.5 h-2.5" /> PageSpeed 100/100
-                </div>
-                <div className="flex items-center gap-1.5 bg-primary text-white px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest">
-                   <ShieldCheck className="w-2.5 h-2.5" /> GDPR compliant
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* About me Section */}
         <section id="about" className="py-4 px-6 relative">
           <div className="max-w-7xl mx-auto main-section-container space-y-8">
@@ -442,6 +461,7 @@ export default function Home() {
                     alt="Venkatesh Choppa" 
                     fill 
                     className="object-cover object-top"
+                    priority
                   />
                   <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
                     <div className="space-y-2">
