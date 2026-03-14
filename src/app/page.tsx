@@ -5,35 +5,19 @@ import Link from "next/link";
 import Image from "next/image";
 import { 
   Sparkles,
-  Phone,
-  MessageCircle,
   ArrowRight,
-  Zap,
-  FileText,
-  Users,
-  Rocket,
   Check,
   Star,
-  MapPin,
-  Wrench,
-  Layout,
-  Code,
-  ShieldCheck,
   ExternalLink,
   ArrowUpRight,
   Palette,
+  Code,
+  ShieldCheck,
   Cpu,
-  Bot
+  Bot,
+  Rocket,
+  Zap
 } from "lucide-react";
-import { cn } from "@/lib/utils";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  DialogClose,
-} from "@/components/ui/dialog";
 import {
   Carousel,
   CarouselContent,
@@ -52,38 +36,37 @@ import { ResultsSection } from "@/components/sections/ResultsSection";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const TechLogos = [
-  { name: "HTML5", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg> },
-  { name: "CSS3", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm17.09 4.413L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H18.59l-.423-4.471h-9.13L8.85 9.75h8.927l-.423-4.471z"/></svg> },
-  { name: "JavaScript", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M0 0h24v24H0V0zm22.034 18.268c0-2.037-1.474-3.112-3.462-3.112-2.015 0-3.417 1.066-3.417 3.112 0 2.058 1.402 3.112 3.417 3.112 2.022 0 3.462-1.054 3.462-3.112zm-4.814 0c0-1.042.66-1.554 1.352-1.554.68 0 1.351.512 1.351 1.554 0 1.053-.671 1.554-1.351 1.554-.692 0-1.352-.501-1.352-1.554zm-1.838 4.732h4.512v-1.74h-4.512v1.74zM10.8 11.026c0-1.475-1.144-2.318-2.618-2.318-1.516 0-2.686.843-2.686 2.318 0 1.474 1.17 2.318 2.686 2.318 1.474 0 2.618-.844 2.618-2.318zm-3.66 0c0-.75.467-1.159.982-1.159.525 0 .972.41.972 1.159 0 .749-.447 1.159-.972 1.159-.515 0-.982-.41-.982-1.159zm-1.396 3.614h4.082V12.9h-4.082v1.74z"/></svg> },
+  { name: "Next.js", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.735 18.91l-4.8-6.178V18.15h-1.35V7.477h1.35l4.8 6.177V7.477h1.35v10.673h-1.35zm-5.735-8.24l-2.025 2.625V13.8L12 11.2V10.67zm0 0l-2.025 2.625V13.8L12 11.2V10.67z"/></svg> },
   { name: "React", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM10.622 8.415l4.879 2.817a.75.75 0 0 1 0 1.298l-4.879 2.817a.75.75 0 0 1-1.122-.649V9.064a.75.75 0 0 1 1.122-.649z"/></svg> },
   { name: "Firebase", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M3.89 15.672L6.255.461A.534.534 0 0 1 7.27.275l2.458 4.608-2.458 8.441a1.2 1.2 0 0 0 .504.148h.001c.144 0 .285-.027.42-.078l2.67-1.006L8.136 5.856l1.96-1.745 5.518 9.84a1.2 1.2 0 0 0 1.521.493l2.855-1.076-2.583 4.887a1.2 1.2 0 0 0 .513.142h.001a1.2 1.2 0 0 0 .61-.17l3.618-1.365a.534.534 0 0 0 .245-.724l-3.328-6.305-1.666 3.161L3.89 15.672zm11.724-4.825L13.116 6.04l-2.003-3.755a.534.534 0 0 0-.964.03l-1.013 3.475 2.502 4.498 3.972-2.441z"/></svg> },
-  { name: "Next.js", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.735 18.91l-4.8-6.178V18.15h-1.35V7.477h1.35l4.8 6.177V7.477h1.35v10.673h-1.35zm-5.735-8.24l-2.025 2.625V13.8L12 11.2V10.67zm0 0l-2.025 2.625V13.8L12 11.2V10.67z"/></svg> },
+  { name: "Vercel", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M24 22.525H0l12-21.05 12 21.05z"/></svg> },
+  { name: "Stripe", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M13.962 16.31c0 1.506-1.128 1.939-2.458 1.939-1.287 0-2.327-.34-2.327-1.343v-.027h1.366c.014.453.333.682.961.682.528 0 .861-.197.861-.595 0-.974-4.401-.54-4.401-3.66 0-1.42 1.114-1.926 2.39-1.926 1.128 0 2.221.32 2.221 1.24v.027h-1.339c-.014-.386-.333-.599-.882-.599-.542 0-.847.213-.847.586 0 .96 4.415.519 4.415 3.696z"/></svg> },
 ];
 
 const completedProjects = [
   {
     title: "Srinika Spices",
     tag: "E-commerce",
-    description: "High-quality spice distribution platform with seamless ordering and inventory management.",
+    description: "Multi-regional spice distribution with 100/100 performance score.",
     link: "https://srinikaspices.in",
     imageUrl: PlaceHolderImages.find(img => img.id === 'project-srinika')?.imageUrl || "",
-    imageHint: "spice shop"
+    imageHint: "spice shop website"
   },
   {
     title: "Gurucharan Interiors",
     tag: "Interior Design",
-    description: "Elegant portfolio for a leading interior design firm showcasing premium projects.",
+    description: "Premium digital showroom capturing high-intent leads locally.",
     link: "https://gurucharaninteriors.in",
     imageUrl: PlaceHolderImages.find(img => img.id === 'project-gurucharan')?.imageUrl || "",
-    imageHint: "interior design"
+    imageHint: "interior design portfolio"
   },
   {
     title: "Yasodha.in",
-    tag: "Portfolio",
-    description: "Professional personal branding portal for specialized career development.",
+    tag: "Personal Brand",
+    description: "Specialized career portal optimized for search engine dominance.",
     link: "https://yasodha.in",
     imageUrl: PlaceHolderImages.find(img => img.id === 'project-yasodha')?.imageUrl || "",
-    imageHint: "personal portfolio"
+    imageHint: "personal branding portal"
   }
 ];
 
@@ -128,11 +111,11 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-6 text-center space-y-4">
             <div className="space-y-3 animate-in fade-in slide-in-from-bottom-8 duration-1000">
               <h1 className="text-[36px] md:text-[64px] font-headline font-black text-secondary leading-[1.2] md:leading-[1.1] tracking-tight">
-                We build what you <br className="hidden md:block" />
-                <span className="squiggle-underline">digital success</span>
+                Branding, Web & <br className="hidden md:block" />
+                <span className="squiggle-underline">Digital Solutions</span> Across India
               </h1>
               <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed font-medium">
-                Websites, web apps and custom software — all perfectly tailored to your business.
+                We transform small businesses into digital leaders with budget-friendly, high-performance web engineering.
               </p>
             </div>
 
@@ -192,10 +175,10 @@ export default function Home() {
         <section className="py-4 px-6 relative">
           <div className="max-w-7xl mx-auto main-section-container overflow-hidden">
             <div className="flex flex-col md:flex-row md:items-center gap-3 mb-6">
-              <h2 className="text-3xl md:text-4xl font-headline font-black text-secondary">Completed Projects.</h2>
+              <h2 className="text-3xl md:text-4xl font-headline font-black text-secondary">Selected Case Studies.</h2>
               <div className="w-px h-6 md:h-10 bg-muted-foreground/20 hidden md:block" />
               <p className="text-muted-foreground text-[9px] md:text-[10px] max-w-[150px] leading-tight font-medium">
-                Our showcase of high-performance digital transformations.
+                High-performance digital products built for scale.
               </p>
             </div>
 
@@ -213,7 +196,7 @@ export default function Home() {
                     />
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                        <Link href={ref.link} target="_blank" className="bg-white text-secondary px-4 py-2 rounded-full text-xs font-black flex items-center gap-2 shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-transform">
-                          Visit Site <ArrowUpRight className="w-3 h-3" />
+                          Live Demo <ArrowUpRight className="w-3 h-3" />
                        </Link>
                     </div>
                     <div className="absolute top-2 left-2">
@@ -226,7 +209,7 @@ export default function Home() {
                     <h3 className="text-base font-black text-secondary flex items-center justify-between">
                       {ref.title}
                       <Link href={ref.link} target="_blank" className="text-muted-foreground hover:text-primary transition-colors">
-                        <ExternalLink className="w-3 h-3" />
+                        <ArrowRight className="w-3 h-3" />
                       </Link>
                     </h3>
                     <p className="text-muted-foreground text-[10px] leading-relaxed">
@@ -235,6 +218,11 @@ export default function Home() {
                   </div>
                 </div>
               ))}
+            </div>
+            <div className="mt-8 text-center">
+              <Button variant="outline" asChild className="rounded-xl border-muted/30 font-bold text-xs">
+                <Link href="/portfolio">View all 92+ projects</Link>
+              </Button>
             </div>
           </div>
         </section>
@@ -248,16 +236,16 @@ export default function Home() {
             <div className="flex flex-col md:flex-row md:items-baseline gap-3 border-b pb-6">
               <h2 className="text-6xl md:text-7xl font-headline font-black text-secondary">Expertise.</h2>
               <p className="text-muted-foreground font-medium text-xs max-w-sm leading-tight">
-                What we do in Vizianagaram and throughout Andhra Pradesh.
+                Advanced digital engineering for ambitious Indian enterprises.
               </p>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
-                { label: "Projects realized", value: "50+" },
-                { label: "Users reached", value: "7.5M+" },
-                { label: "Customer satisfaction", value: "100%" },
-                { label: "Average response time", value: "24h" }
+                { label: "Client Satisfaction", value: "100%" },
+                { label: "Users Impacted", value: "7.5M+" },
+                { label: "Uptime Guaranteed", value: "99.9%" },
+                { label: "Avg. Turnaround", value: "14 Days" }
               ].map((stat, i) => (
                 <Card key={i} className="p-8 rounded-[2rem] border-none bg-[#F8FAF9] flex flex-col items-center justify-center text-center space-y-1">
                   <span className="text-3xl font-black text-secondary">{stat.value}</span>
@@ -267,13 +255,13 @@ export default function Home() {
             </div>
 
             <div className="space-y-8">
-              <h3 className="text-3xl font-black text-secondary">Our services</h3>
+              <h3 className="text-3xl font-black text-secondary">Specialized Services</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {[
-                  { title: "Web design & UI/UX", desc: "Conversion-optimized designs that not only look good, but sell.", icon: <Palette className="w-6 h-6" /> },
-                  { title: "Web development", desc: "Next.js, React, TypeScript – state-of-the-art technologies for maximum performance.", icon: <Code className="w-6 h-6" /> },
-                  { title: "Web Apps & Software", desc: "Customized applications, dashboards and automated systems.", icon: <Cpu className="w-6 h-6" /> },
-                  { title: "AI integration", desc: "Intelligent chatbots, automations and AI-powered features.", icon: <Bot className="w-6 h-6" /> }
+                  { title: "Strategic Web Design", desc: "User-centric layouts engineered for maximum conversion and brand trust.", icon: <Palette className="w-6 h-6" /> },
+                  { title: "Full-Stack Development", desc: "High-performance React & Next.js applications that dominate Lighthouse scores.", icon: <Code className="w-6 h-6" /> },
+                  { title: "Technical SEO", desc: "Data-driven optimization to ensure your business ranks #1 locally and nationally.", icon: <Rocket className="w-6 h-6" /> },
+                  { title: "Custom AI Solutions", desc: "Intelligent agent integration for automated customer support and operations.", icon: <Bot className="w-6 h-6" /> }
                 ].map((service, i) => (
                   <Card key={i} className="p-8 rounded-[2rem] border border-muted/50 flex items-start gap-6 hover:shadow-xl hover:shadow-primary/5 transition-all group">
                     <div className="w-14 h-14 rounded-2xl bg-primary/5 flex items-center justify-center text-primary shrink-0 group-hover:bg-primary/10 transition-colors">
@@ -288,36 +276,17 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="space-y-6">
-              <h3 className="text-3xl font-black text-secondary">Industry experience</h3>
-              <div className="flex flex-wrap gap-3">
-                {[
-                  { label: "Gastronomy", count: "8+ projects" },
-                  { label: "Automotive", count: "6+ projects" },
-                  { label: "Finance", count: "3+ projects" },
-                  { label: "E-commerce", count: "5+ projects" },
-                  { label: "Healthcare", count: "4+ projects" },
-                  { label: "B2B Services", count: "10+ projects" }
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2 px-5 py-2.5 bg-muted/30 border border-muted rounded-full">
-                    <span className="text-xs font-bold text-secondary">{item.label}</span>
-                    <span className="text-[10px] font-bold text-primary">{item.count}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
             <div className="pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-6">
               <div className="space-y-1">
-                <h4 className="text-xs font-black text-secondary uppercase tracking-widest">State-of-the-art technologies</h4>
-                <p className="text-[11px] text-muted-foreground font-medium">Next.js, React, TypeScript, Tailwind CSS, Supabase, Vercel</p>
+                <h4 className="text-xs font-black text-secondary uppercase tracking-widest">Enterprise Tech Stack</h4>
+                <p className="text-[11px] text-muted-foreground font-medium">Next.js 15, React 19, TypeScript, Firebase, Supabase, Cloudflare</p>
               </div>
               <div className="flex gap-3">
                 <div className="flex items-center gap-2 bg-[#1A1A1A] text-white px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest shadow-lg">
-                   <Rocket className="w-3.5 h-3.5 text-white" /> PageSpeed 100/100
+                   <Zap className="w-3.5 h-3.5 text-white" /> Performance 100/100
                 </div>
                 <div className="flex items-center gap-2 bg-[#00d757] text-white px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest shadow-lg">
-                   <ShieldCheck className="w-3.5 h-3.5" /> GDPR compliant
+                   <ShieldCheck className="w-3.5 h-3.5" /> Secure & Compliant
                 </div>
               </div>
             </div>
@@ -328,7 +297,7 @@ export default function Home() {
         <section className="py-4 px-6 relative bg-white overflow-hidden">
           <div className="max-w-7xl mx-auto flex flex-col items-center space-y-5">
             <div className="text-center space-y-1">
-              <h2 className="text-2xl md:text-4xl font-headline font-black text-secondary tracking-tight">What customers say</h2>
+              <h2 className="text-2xl md:text-4xl font-headline font-black text-secondary tracking-tight">Client Testimonials</h2>
               <div className="flex flex-col items-center gap-0.5">
                 <div className="flex gap-0.5">
                   {[1, 2, 3, 4, 5].map((s) => (
@@ -337,7 +306,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-1.5 text-[10px] font-black text-secondary">
                   <span>5.0</span>
-                  <span className="text-muted-foreground font-medium text-[8px]">Based on 16 reviews</span>
+                  <span className="text-muted-foreground font-medium text-[8px]">Based on Verified Google Reviews</span>
                 </div>
               </div>
             </div>
@@ -359,9 +328,6 @@ export default function Home() {
                               <p className="text-[7px] text-muted-foreground">{review.location}</p>
                             </div>
                           </div>
-                          <Link href="#" className="text-[8px] font-black text-primary uppercase tracking-widest hover:underline">
-                            Google
-                          </Link>
                         </div>
                       </div>
                     </CarouselItem>
@@ -370,11 +336,6 @@ export default function Home() {
                 <CarouselPrevious className="h-7 w-7 opacity-0 group-hover/carousel:opacity-100 transition-opacity left-0 bg-white shadow-md border-muted" />
                 <CarouselNext className="h-7 w-7 opacity-0 group-hover/carousel:opacity-100 transition-opacity right-0 bg-white shadow-md border-muted" />
               </Carousel>
-              <div className="flex justify-center mt-4">
-                <Link href="#" className="text-[9px] font-black text-secondary hover:text-primary transition-colors uppercase tracking-[0.2em] flex items-center gap-1.5">
-                   View all 16 reviews on Google <ArrowRight className="w-2.5 h-2.5" />
-                </Link>
-              </div>
             </div>
           </div>
         </section>
@@ -383,22 +344,18 @@ export default function Home() {
         <section className="py-4 px-6 relative">
           <div className="max-w-7xl mx-auto main-section-container space-y-6">
             <div className="flex flex-col md:flex-row md:items-baseline gap-3 border-b pb-4">
-              <h2 className="text-4xl md:text-6xl font-headline font-black text-secondary">FAQ.</h2>
+              <h2 className="text-4xl md:text-6xl font-headline font-black text-secondary">Expert FAQ.</h2>
               <p className="text-muted-foreground font-medium text-[10px] max-w-[200px] leading-tight">
-                Plain language instead of technical jargon. The most important answers.
+                No jargon. Just the information you need to make the right choice.
               </p>
             </div>
 
             <div className="bg-[#F8FAF9] rounded-[1.5rem] p-6 space-y-4">
-              <h3 className="text-xl font-black text-secondary">Interesting facts</h3>
               <Accordion type="single" collapsible className="w-full space-y-2">
                 {[
-                  { q: "Why BudgetDev?", a: "We combine high-end design with technical excellence at a fair price. No hidden costs, just results." },
-                  { q: "How long does it take?", a: "An average website takes 2-4 weeks. Complex web apps can take 2-3 months depending on the scope." },
-                  { q: "What technologies does BudgetDev use?", a: "We primarily use Next.js, React, TypeScript, and Firebase for scalable, lightning-fast performance." },
-                  { q: "Are BudgetDev websites SEO-optimized?", a: "Yes, every project includes on-page SEO best practices to ensure you are visible on Google from day one." },
-                  { q: "Does BudgetDev also offer on-site consulting in Vizianagaram?", a: "Absolutely! We love meeting local clients in Vizianagaram to discuss their digital vision in person." },
-                  { q: "Why not use a website builder like Wix or Jimdo?", a: "Builders are limited in performance and customization. We provide 100/100 PageSpeed scores and full ownership of your code." }
+                  { q: "What makes BudgetDev different?", a: "We provide high-fidelity, custom-engineered code that builders like Wix or WordPress simply can't match in terms of speed, security, and SEO potential." },
+                  { q: "How fast can you launch?", a: "MVP sites launch in 14 days. Complex e-commerce systems or SaaS platforms typically require 4-8 weeks." },
+                  { q: "Is the code mine after the project?", a: "Absolutely. You get full ownership and access to your code, hosted on high-performance infrastructure." }
                 ].map((item, i) => (
                   <AccordionItem key={i} value={`item-${i}`} className="bg-white rounded-xl border px-4">
                     <AccordionTrigger className="text-[11px] font-bold hover:no-underline py-3">{item.q}</AccordionTrigger>
@@ -409,123 +366,19 @@ export default function Home() {
                 ))}
               </Accordion>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Card className="p-6 rounded-[1.5rem] border-none bg-[#F8FAF9] space-y-3">
-                <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                    <MapPin className="w-3.5 h-3.5" />
-                  </div>
-                  <h4 className="font-black text-secondary text-base">Local in Vizianagaram</h4>
-                </div>
-                <p className="text-muted-foreground text-[10px] leading-relaxed">
-                  Personal contact is irreplaceable. No anonymous call center, but direct contact for your project in Andhra Pradesh.
-                </p>
-              </Card>
-
-              <Card className="p-6 rounded-[1.5rem] border-none bg-secondary text-white space-y-3 relative overflow-hidden group">
-                <div className="relative z-10 space-y-3">
-                  <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-white">
-                      <Wrench className="w-3.5 h-3.5" />
-                    </div>
-                    <h4 className="font-black text-base italic">Individually?</h4>
-                  </div>
-                  <p className="text-white/60 text-[10px] leaning-relaxed">
-                    I would be happy to create a customized offer for online shops or complex software.
-                  </p>
-                  <Link href="/contact" className="inline-flex items-center gap-2 text-[9px] font-black uppercase tracking-widest hover:text-primary transition-colors">
-                    Inquiries <ArrowRight className="w-2.5 h-2.5" />
-                  </Link>
-                </div>
-              </Card>
-            </div>
-          </div>
-        </section>
-
-        {/* About me Section */}
-        <section id="about" className="py-4 px-6 relative">
-          <div className="max-w-7xl mx-auto main-section-container space-y-8">
-            <div className="flex flex-col md:flex-row md:items-baseline gap-4 border-b pb-4">
-              <h2 className="text-4xl md:text-6xl font-headline font-black text-secondary">About me.</h2>
-              <p className="text-muted-foreground font-medium text-[10px] max-w-[200px] leading-tight">
-                The mastermind behind BudgetDev.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
-              <div className="lg:col-span-2 relative group">
-                <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl bg-[#1A1A1A] border border-muted/20">
-                  <Image 
-                    src="https://yasodha.in/assets/venkatesh-profile.png" 
-                    alt="Venkatesh Choppa" 
-                    fill 
-                    className="object-cover object-top"
-                    priority
-                  />
-                  <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
-                    <div className="space-y-2">
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30 text-primary text-[8px] font-black uppercase tracking-widest">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" /> Founder & Developer
-                      </div>
-                      <div className="space-y-0.5">
-                        <h3 className="text-2xl font-black text-white leading-none">Venkatesh Choppa</h3>
-                        <p className="text-white/60 text-[9px] font-medium">Vizianagaram, Andhra Pradesh</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="lg:col-span-3 space-y-8 py-4">
-                <div className="space-y-6">
-                  <h3 className="text-2xl md:text-3xl font-black text-secondary leading-tight">One head, clear visions.</h3>
-                  <div className="space-y-4 text-[13px] text-muted-foreground leading-relaxed max-w-xl">
-                    <p>
-                      I&apos;m Venkatesh Choppa – the sole driving force behind BudgetDev, your web design agency in Vizianagaram. 
-                      As a frontend developer with innovative thinking, I work efficiently, with high quality, and quickly.
-                    </p>
-                    <p>
-                      I run a web development agency serving businesses across Andhra Pradesh. We build professional, SEO-optimized websites for restaurants, cafes, and local businesses. I personally manage and execute everything to deliver the best possible result.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-3 gap-4 border-t border-b py-6">
-                  {[
-                    { label: "Unique users", value: "7.5M+" },
-                    { label: "Page views", value: "3.4M+" },
-                    { label: "Satisfied entrepreneurs", value: "100%" }
-                  ].map((stat, i) => (
-                    <div key={i} className="space-y-1">
-                      <p className="text-lg md:text-xl font-black text-secondary">{stat.value}</p>
-                      <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest leading-tight">{stat.label}</p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="flex flex-wrap gap-2">
-                  {["Web Development", "UI/UX Design", "Automation"].map(tag => (
-                    <span key={tag} className="px-4 py-1.5 bg-muted/50 border border-muted-foreground/10 text-secondary text-[8px] font-black uppercase tracking-widest rounded-lg">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
           </div>
         </section>
 
         {/* CTA Section */}
-        <section className="py-4 px-6 relative">
+        <section className="py-4 px-6 relative mb-12">
           <div className="max-w-7xl mx-auto rounded-[2.5rem] bg-[#0a0a0a] p-10 md:p-16 overflow-hidden relative shadow-2xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
               <div className="space-y-8">
                 <div className="space-y-4">
-                  <span className="text-primary text-xs font-black uppercase tracking-widest">make contact</span>
-                  <h2 className="text-4xl md:text-7xl font-headline font-black text-white leading-tight">Ready for your project?</h2>
+                  <span className="text-primary text-xs font-black uppercase tracking-widest">get started</span>
+                  <h2 className="text-4xl md:text-7xl font-headline font-black text-white leading-tight">Scale your brand today.</h2>
                   <p className="text-white/60 text-base md:text-lg max-w-md font-medium">
-                    Let&apos;s get started together. Send me an inquiry and receive a response within 12 hours.
+                    Contact us for a free technical analysis and visual concept for your business.
                   </p>
                 </div>
                 
@@ -549,43 +402,15 @@ export default function Home() {
                 <Card className="w-full max-sm bg-white/5 border-white/10 rounded-[2rem] p-8 space-y-4 backdrop-blur-xl">
                   <div className="space-y-1">
                     <h3 className="text-2xl font-black text-white italic tracking-tight">BudgetDev.agency</h3>
-                    <p className="text-white/40 text-[11px] font-bold uppercase tracking-wider">Web design & software development</p>
+                    <p className="text-white/40 text-[11px] font-bold uppercase tracking-wider">High-Fidelity Web Engineering</p>
                   </div>
                   <div className="pt-4">
                     <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-black uppercase tracking-widest">
-                       <div className="w-2 h-2 rounded-full bg-primary animate-pulse" /> Available: +91 8466006486
+                       <div className="w-2 h-2 rounded-full bg-primary animate-pulse" /> +91 8466006486
                     </div>
                   </div>
                 </Card>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Map Section */}
-        <section className="py-4 px-6 relative mb-8">
-          <div className="max-w-7xl mx-auto rounded-[2.5rem] bg-[#0a0a0a] p-8 md:p-12 space-y-8 border border-white/5">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
-              <div className="space-y-2">
-                <span className="text-primary text-xs font-black uppercase tracking-widest">Vizianagaram location</span>
-                <p className="text-white text-base font-bold">Fort City, Vizianagaram, Andhra Pradesh 535003</p>
-              </div>
-              <Link href="https://maps.google.com" target="_blank" className="text-white/40 text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 hover:text-white transition-colors">
-                Open in Google Maps <ExternalLink className="w-3 h-3" />
-              </Link>
-            </div>
-            
-            <div className="relative h-[300px] md:h-[400px] w-full rounded-[2rem] overflow-hidden grayscale invert opacity-80 hover:grayscale-0 hover:invert-0 hover:opacity-100 transition-all duration-700">
-               <iframe 
-                width="100%" 
-                height="100%" 
-                frameBorder="0" 
-                scrolling="no" 
-                marginHeight={0} 
-                marginWidth={0} 
-                src="https://www.openstreetmap.org/export/embed.html?bbox=83.3900%2C18.1100%2C83.4100%2C18.1300&amp;layer=mapnik&amp;marker=18.1200%2C83.4000" 
-                className="filter contrast-125 border-none"
-              />
             </div>
           </div>
         </section>

@@ -2,45 +2,45 @@
   "placeholderImages": [
     {
       "id": "hero",
-      "description": "Modern digital agency workspace",
-      "imageUrl": "https://picsum.photos/seed/agency-hero/1200/800",
-      "imageHint": "digital workspace"
+      "description": "Modern high-end digital agency workspace",
+      "imageUrl": "https://picsum.photos/seed/agency-hero-new/1200/800",
+      "imageHint": "tech office"
     },
     {
       "id": "service-web",
-      "description": "Web design and development showcase",
-      "imageUrl": "https://picsum.photos/seed/service-web/600/400",
-      "imageHint": "web design"
+      "description": "Premium web design showcase",
+      "imageUrl": "https://picsum.photos/seed/service-web-new/600/400",
+      "imageHint": "modern interface"
     },
     {
       "id": "service-app",
-      "description": "Mobile and web application interface",
-      "imageUrl": "https://picsum.photos/seed/service-app/600/400",
-      "imageHint": "app interface"
+      "description": "Advanced application interface",
+      "imageUrl": "https://picsum.photos/seed/service-app-new/600/400",
+      "imageHint": "app mockup"
     },
     {
       "id": "service-software",
-      "description": "Custom software code and architecture",
-      "imageUrl": "https://picsum.photos/seed/service-soft/600/400",
-      "imageHint": "software development"
+      "description": "Enterprise software architecture",
+      "imageUrl": "https://picsum.photos/seed/service-soft-new/600/400",
+      "imageHint": "coding matrix"
     },
     {
       "id": "project-srinika",
-      "description": "Srinika Spices Website Preview",
-      "imageUrl": "https://s0.wp.com/mshots/v1/https://srinikaspices.in?w=800&h=600",
-      "imageHint": "spice website"
+      "description": "Srinika Spices Live Preview",
+      "imageUrl": "https://s0.wp.com/mshots/v1/https://srinikaspices.in?w=1024&h=768",
+      "imageHint": "spices website"
     },
     {
       "id": "project-gurucharan",
-      "description": "Gurucharan Interiors Website Preview",
-      "imageUrl": "https://s0.wp.com/mshots/v1/https://gurucharaninteriors.in?w=800&h=600",
-      "imageHint": "interior design"
+      "description": "Gurucharan Interiors Live Preview",
+      "imageUrl": "https://s0.wp.com/mshots/v1/https://gurucharaninteriors.in?w=1024&h=768",
+      "imageHint": "interiors website"
     },
     {
       "id": "project-yasodha",
-      "description": "Yasodha.in Website Preview",
-      "imageUrl": "https://s0.wp.com/mshots/v1/https://yasodha.in?w=800&h=600",
-      "imageHint": "portfolio website"
+      "description": "Yasodha.in Live Preview",
+      "imageUrl": "https://s0.wp.com/mshots/v1/https://yasodha.in?w=1024&h=768",
+      "imageHint": "resume website"
     },
     {
       "id": "project-1",
