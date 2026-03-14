@@ -3,6 +3,7 @@ import Footer from "@/components/layout/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, CheckCircle2, Globe, Rocket, ShieldCheck } from "lucide-react";
@@ -12,7 +13,7 @@ const projects = [
     title: "Srinika Spices",
     client: "Local Spice Merchant",
     category: "E-commerce",
-    description: "A high-performance E-commerce platform built for the spice trade. Reached thousands of local customers in Andhra Pradesh with seamless ordering and robust inventory management.",
+    description: "A high-performance E-commerce platform built for the spice trade. Reached thousands of local customers in Andhra Pradesh with seamless ordering and robust inventory management. We optimized for 100/100 PageSpeed scores to ensure users on mobile networks have a lightning-fast experience.",
     features: [
       "Real-time Inventory Syncing",
       "Secure Payment Gateway",
@@ -27,7 +28,7 @@ const projects = [
     title: "Gurucharan Interiors",
     client: "Design Firm",
     category: "Portfolio",
-    description: "Premium design showcase for a leading interior firm. Focused on high-resolution image delivery and smooth animations to reflect the elegance of their physical projects.",
+    description: "Premium design showcase for a leading interior firm. Focused on high-resolution image delivery and smooth animations to reflect the elegance of their physical projects. The site acts as a 24/7 digital showroom, capturing high-intent leads for residential and commercial projects.",
     features: [
       "Ultra-Fast Image Optimization",
       "Lead Generation Workflow",
@@ -42,7 +43,7 @@ const projects = [
     title: "Yasodha.in",
     client: "Personal Branding",
     category: "Career Portal",
-    description: "A specialized personal branding portal designed for rapid loading and search engine dominance. Helps established professionals stand out in a competitive digital landscape.",
+    description: "A specialized personal branding portal designed for rapid loading and search engine dominance. Helps established professionals stand out in a competitive digital landscape. Built with a focus on semantic HTML and structured data to ensure maximum visibility in search results.",
     features: [
       "Personal Branding SEO Strategy",
       "Responsive Layout",
@@ -69,7 +70,7 @@ export default function PortfolioPage() {
               Our <span className="text-primary italic">Portfolio.</span>
             </h1>
             <p className="text-xl text-muted-foreground font-medium leading-relaxed">
-              We don't just build websites; we create digital assets that drive growth. Explore our recent work across India.
+              We don't just build websites; we create digital assets that drive growth. Explore our recent work and the results we've delivered for businesses across India.
             </p>
           </div>
 
@@ -127,6 +128,7 @@ export default function PortfolioPage() {
                     className="object-cover transition-transform duration-1000 group-hover:scale-105"
                     data-ai-hint={project.image?.imageHint}
                     priority={idx === 0}
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
                 </div>
@@ -134,13 +136,12 @@ export default function PortfolioPage() {
             ))}
           </div>
 
-          {/* Bottom Stats Card */}
           <section className="mt-40 bg-[#0a0a0a] rounded-[3rem] p-12 md:p-20 text-center space-y-8 relative overflow-hidden">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-30" />
             <div className="space-y-4 relative z-10">
               <h2 className="text-4xl md:text-6xl font-headline font-black text-white leading-tight">Your project could be next.</h2>
               <p className="text-white/50 text-base md:text-lg max-w-2xl mx-auto font-medium">
-                We've reached over 7.5 million users through our client projects. Ready to join the elite?
+                We've reached over 7.5 million users through our client projects. Ready to build something extraordinary?
               </p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-10">
