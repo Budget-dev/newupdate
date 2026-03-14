@@ -5,6 +5,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Link from "next/link";
 import { Check, ArrowRight, MousePointer2, Zap, Layout, ExternalLink, MapPin } from "lucide-react";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Budget Website Design & UI/UX | High-End Custom Web Design',
+  description: 'Affordable, professional web design for small businesses. Get a custom, conversion-optimized website from the leading budget website designer.',
+};
 
 const stats = [
   { label: "Websites realized", value: "50+" },
@@ -69,7 +75,7 @@ const deliverables = [
 ];
 
 const faqs = [
-  { q: "How much does professional web design cost?", a: "Costs vary depending on the scope. We provide custom quotes based on high-end custom designs and specific business needs." },
+  { q: "How much does professional web design cost?", a: "We provide the best value as a budget website designer. We offer custom quotes based on high-end custom designs and specific business needs." },
   { q: "How long does a web design project take?", a: "A typical project takes 2-4 weeks from discovery to final prototyping." },
   { q: "Can I edit my website myself later?", a: "Yes, I build on modern CMS platforms that allow you to manage your content effortlessly." }
 ];

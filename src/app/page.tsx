@@ -34,6 +34,12 @@ import {
 import { Card } from "@/components/ui/card";
 import { ResultsSection } from "@/components/sections/ResultsSection";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Budget Website Designer | Web Design & SEO Services India',
+  description: 'Looking for a budget website designer? The BudgetDev is the leading affordable web design agency in Andhra Pradesh. High-performance Next.js sites for small businesses.',
+};
 
 const TechLogos = [
   { name: "Next.js", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.735 18.91l-4.8-6.178V18.15h-1.35V7.477h1.35l4.8 6.177V7.477h1.35v10.673h-1.35zm-5.735-8.24l-2.025 2.625V13.8L12 11.2V10.67zm0 0l-2.025 2.625V13.8L12 11.2V10.67z"/></svg> },
@@ -50,7 +56,7 @@ const completedProjects = [
     description: "Multi-regional spice distribution with 100/100 performance score.",
     link: "https://srinikaspices.in",
     imageUrl: PlaceHolderImages.find(img => img.id === 'project-srinika')?.imageUrl || "",
-    imageHint: "spice shop website"
+    imageHint: "budget website designer project"
   },
   {
     title: "Gurucharan Interiors",
@@ -58,7 +64,7 @@ const completedProjects = [
     description: "Premium digital showroom capturing high-intent leads locally.",
     link: "https://gurucharaninteriors.in",
     imageUrl: PlaceHolderImages.find(img => img.id === 'project-gurucharan')?.imageUrl || "",
-    imageHint: "interior design portfolio"
+    imageHint: "affordable website design showroom"
   },
   {
     title: "Yasodha.in",
@@ -66,7 +72,7 @@ const completedProjects = [
     description: "Specialized career portal optimized for search engine dominance.",
     link: "https://yasodha.in",
     imageUrl: PlaceHolderImages.find(img => img.id === 'project-yasodha')?.imageUrl || "",
-    imageHint: "personal branding portal"
+    imageHint: "budget web development portfolio"
   }
 ];
 
@@ -74,25 +80,25 @@ const reviews = [
   {
     name: "Suresh Kumar",
     location: "Vizianagaram",
-    text: "Venkatesh built a fantastic website for my spice business. The page speed is incredible!",
+    text: "Venkatesh is an amazing budget website designer. The site is fast and ranks so well on Google!",
     avatar: "https://picsum.photos/seed/rev1/100/100"
   },
   {
     name: "Priya Sharma",
     location: "Visakhapatnam",
-    text: "BudgetDev transformed our interior design portfolio. Highly recommended for any local business.",
+    text: "BudgetDev provided the best affordable web design for our business. Truly high quality.",
     avatar: "https://picsum.photos/seed/rev2/100/100"
   },
   {
     name: "Rajesh Rao",
     location: "Hyderabad",
-    text: "Professional, fast, and very technical. The Next.js implementation is top-notch.",
+    text: "If you need a budget websitedesigner who understands modern tech, this is the place.",
     avatar: "https://picsum.photos/seed/rev3/100/100"
   },
   {
     name: "Anitha Reddy",
     location: "Vizianagaram",
-    text: "Finally a developer who understands modern design and SEO. Great results!",
+    text: "Excellent results and very cost-effective. Best budget website designer in Andhra Pradesh.",
     avatar: "https://picsum.photos/seed/rev4/100/100"
   }
 ];
@@ -189,10 +195,11 @@ export default function Home() {
                     <Image 
                       src={ref.imageUrl} 
                       alt={ref.title} 
-                      fill 
-                      data-ai-hint={ref.imageHint}
+                      width={800}
+                      height={600}
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                       unoptimized={ref.imageUrl.includes('s0.wp.com')}
+                      loading="lazy"
                     />
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                        <Link href={ref.link} target="_blank" className="bg-white text-secondary px-4 py-2 rounded-full text-xs font-black flex items-center gap-2 shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-transform">
