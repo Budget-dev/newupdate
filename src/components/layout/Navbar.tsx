@@ -107,14 +107,16 @@ export default function Navbar() {
         </div>
 
         <div className="hidden md:flex items-center gap-4 shrink-0">
-          <Button
-            asChild
-            className="rounded-xl px-6 bg-secondary text-white hover:bg-secondary/90 transition-all duration-300 font-bold text-xs h-9 min-w-[110px]"
-          >
-            <Link href="/contact">
-              {lang === "en" ? "Contact Us" : "Contact Us"}
-            </Link>
-          </Button>
+          <div className="min-w-[120px] flex justify-end">
+            <Button
+              asChild
+              className="rounded-xl px-6 bg-secondary text-white hover:bg-secondary/90 transition-all duration-300 font-bold text-xs h-9 w-full"
+            >
+              <Link href="/contact">
+                {lang === "en" ? "Contact Us" : "Contact Us"}
+              </Link>
+            </Button>
+          </div>
 
           <div className="flex items-center gap-3 ml-2">
             <button
@@ -122,15 +124,15 @@ export default function Navbar() {
               className="flex items-center gap-1.5 focus:outline-none group transition-transform hover:scale-105"
               title="Toggle Locale"
             >
-              <div className="relative w-7 h-5 rounded-[2px] overflow-hidden shadow-sm border border-muted/20">
+              <div className="relative w-7 h-5 rounded-[2px] overflow-hidden shadow-sm border border-muted/20 bg-white">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 225 150" className="w-full h-full">
                   <rect width="225" height="150" fill="#FF9933"/>
                   <rect width="225" height="100" y="50" fill="#FFFFFF"/>
                   <rect width="225" height="50" y="100" fill="#128807"/>
                   <g transform="translate(112.5 75)">
-                    <circle r="20" fill="none" stroke="#000080" strokeWidth="2"/>
-                    <circle r="3.5" fill="#000080"/>
-                    <path d="M0-20V20M-20 0H20M-14.14-14.14 14.14 14.14M-14.14 14.14 14.14-14.14M-7.65-18.48 7.65 18.48M-18.48-7.65 18.48 7.65M-18.48 7.65 18.48-7.65M-7.65 18.48 7.65-18.48M-14.14-14.14 14.14 14.14" stroke="#000080" strokeWidth="0.5"/>
+                    <circle r="12" fill="none" stroke="#000080" strokeWidth="1.5"/>
+                    <circle r="2.5" fill="#000080"/>
+                    <path d="M0-12V12M-12 0H12M-8.48-8.48 8.48 8.48M-8.48 8.48 8.48-8.48" stroke="#000080" strokeWidth="0.5"/>
                   </g>
                 </svg>
               </div>
