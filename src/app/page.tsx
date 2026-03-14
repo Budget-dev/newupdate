@@ -37,16 +37,19 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Budget Website Designer | Web Design & SEO Services India',
+  title: 'Budget Website Designer | High-Quality Web Design & SEO India',
   description: 'Looking for a budget website designer? The BudgetDev is the leading affordable web design agency in Andhra Pradesh. High-performance Next.js sites for small businesses.',
 };
 
 const TechLogos = [
-  { name: "Next.js", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/80"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.735 18.91l-4.8-6.178V18.15h-1.35V7.477h1.35l4.8 6.177V7.477h1.35v10.673h-1.35zm-5.735-8.24l-2.025 2.625V13.8L12 11.2V10.67zm0 0l-2.025 2.625V13.8L12 11.2V10.67z"/></svg> },
-  { name: "React", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/80"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM10.622 8.415l4.879 2.817a.75.75 0 0 1 0 1.298l-4.879 2.817a.75.75 0 0 1-1.122-.649V9.064a.75.75 0 0 1 1.122-.649z"/></svg> },
-  { name: "Firebase", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/80"><path d="M3.89 15.672L6.255.461A.534.534 0 0 1 7.27.275l2.458 4.608-2.458 8.441a1.2 1.2 0 0 0 .504.148h.001c.144 0 .285-.027.42-.078l2.67-1.006L8.136 5.856l1.96-1.745 5.518 9.84a1.2 1.2 0 0 0 1.521.493l2.855-1.076-2.583 4.887a1.2 1.2 0 0 0 .513.142h.001a1.2 1.2 0 0 0 .61-.17l3.618-1.365a.534.534 0 0 0 .245-.724l-3.328-6.305-1.666 3.161L3.89 15.672zm11.724-4.825L13.116 6.04l-2.003-3.755a.534.534 0 0 0-.964.03l-1.013 3.475 2.502 4.498 3.972-2.441z"/></svg> },
-  { name: "Vercel", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/80"><path d="M24 22.525H0l12-21.05 12 21.05z"/></svg> },
-  { name: "Stripe", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/80"><path d="M13.962 16.31c0 1.506-1.128 1.939-2.458 1.939-1.287 0-2.327-.34-2.327-1.343v-.027h1.366c.014.453.333.682.961.682.528 0 .861-.197.861-.595 0-.974-4.401-.54-4.401-3.66 0-1.42 1.114-1.926 2.39-1.926 1.128 0 2.221.32 2.221 1.24v.027h-1.339c-.014-.386-.333-.599-.882-.599-.542 0-.847.213-.847.586 0 .96 4.415.519 4.415 3.696z"/></svg> },
+  { name: "HTML5", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-secondary/70"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg> },
+  { name: "CSS3", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-secondary/70"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm5.09 9.273l.232 2.636h8.636l-.297 3.426-3.193.804-3.193-.804-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H6.591zm-.513-4.863l.232 2.636h11.364l.232-2.636H6.078z"/></svg> },
+  { name: "JavaScript", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-secondary/70"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.732-.345-1.59-.63-1.59-1.14 0-.45.345-.615.84-.615.54 0 .945.24 1.275.765l1.62-1.035c-.465-.825-1.185-1.35-2.55-1.35-2.01 0-3.33 1.155-3.33 3.03 0 1.965 1.545 2.685 3.39 3.435.9.36 1.395.66 1.395 1.2 0 .42-.42.705-1.005.705-.885 0-1.38-.45-1.815-1.155l-1.665 1.02c.6 1.11 1.62 1.8 3.525 1.8 2.295 0 3.51-1.125 3.51-3.135zm-11.233-1.02a.843.843 0 0 0-.21-.36c-.165-.165-.39-.24-.69-.24h-1.47v4.74h1.56v-1.74h.06l1.35 1.74h1.845l-1.635-2.01c.795-.195 1.29-.75 1.29-1.605 0-.15-.015-.285-.045-.405-.045-.225-.135-.42-.255-.585z"/></svg> },
+  { name: "TypeScript", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-secondary/70"><path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0H1.125zm17.363 9.75c.612 0 1.154.037 1.627.111v2.111c-.524-.148-1.007-.222-1.447-.222-.909 0-1.364.449-1.364 1.348v.851h2.811v2.111h-2.811V24h-2.111v-8.051h-1.429v-2.111h1.429V12.98c0-2.154 1.072-3.23 3.295-3.23zM8.077 24V11.86h2.111V24H8.077zM9.133 7.69c-.623 0-1.125-.502-1.125-1.125s.502-1.125 1.125-1.125 1.125.502 1.125 1.125-.502 1.125-1.125 1.125z"/></svg> },
+  { name: "React", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-secondary/70"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM10.622 8.415l4.879 2.817a.75.75 0 0 1 0 1.298l-4.879 2.817a.75.75 0 0 1-1.122-.649V9.064a.75.75 0 0 1 1.122-.649z"/></svg> },
+  { name: "Firebase", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-secondary/70"><path d="M3.89 15.672L6.255.461A.534.534 0 0 1 7.27.275l2.458 4.608-2.458 8.441a1.2 1.2 0 0 0 .504.148h.001c.144 0 .285-.027.42-.078l2.67-1.006L8.136 5.856l1.96-1.745 5.518 9.84a1.2 1.2 0 0 0 1.521.493l2.855-1.076-2.583 4.887a1.2 1.2 0 0 0 .513.142h.001a1.2 1.2 0 0 0 .61-.17l3.618-1.365a.534.534 0 0 0 .245-.724l-3.328-6.305-1.666 3.161L3.89 15.672zm11.724-4.825L13.116 6.04l-2.003-3.755a.534.534 0 0 0-.964.03l-1.013 3.475 2.502 4.498 3.972-2.441z"/></svg> },
+  { name: "SQL", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-secondary/70"><path d="M12 2C6.48 2 2 4.02 2 6.5s4.48 4.5 10 4.5 10-2.02 10-4.5S17.52 2 12 2zm0 13c-4.14 0-7.72-1.12-9-2.73V15c0 2.48 4.48 4.5 10 4.5s10-2.02 10-4.5v-2.73c-1.28 1.61-4.86 2.73-9 2.73zm0 5c-4.14 0-7.72-1.12-9-2.73V20c0 2.48 4.48 4.5 10 4.5s10-2.02 10-4.5v-2.73c-1.28 1.61-4.86 2.73-9 2.73z"/></svg> },
+  { name: ".NET", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-secondary/70"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 21.6c-5.3 0-9.6-4.3-9.6-9.6S6.7 2.4 12 2.4s9.6 4.3 9.6 9.6-4.3 9.6-9.6 9.6zM8.4 8.4h1.2v7.2H8.4V8.4zm4.8 0h1.2v7.2h-1.2V8.4zM10.8 12h2.4v1.2h-2.4V12z"/></svg> },
 ];
 
 const completedProjects = [
@@ -164,10 +167,10 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="w-full max-w-2xl overflow-hidden relative mt-2">
-                <div className="flex gap-10 items-center animate-scroll whitespace-nowrap py-1">
+              <div className="w-full max-w-3xl overflow-hidden relative mt-4">
+                <div className="flex gap-12 items-center animate-scroll whitespace-nowrap py-2">
                   {[...TechLogos, ...TechLogos, ...TechLogos].map((logo, idx) => (
-                    <div key={idx} className="flex flex-col items-center gap-2 shrink-0 opacity-60 hover:opacity-100 transition-all duration-300">
+                    <div key={idx} className="flex flex-col items-center gap-2 shrink-0 opacity-80 hover:opacity-100 transition-all duration-300">
                       {logo.svg}
                     </div>
                   ))}
@@ -287,7 +290,7 @@ export default function Home() {
             <div className="pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-6">
               <div className="space-y-1">
                 <h4 className="text-xs font-black text-secondary uppercase tracking-widest">Enterprise Tech Stack</h4>
-                <p className="text-[11px] text-muted-foreground font-medium">Next.js 15, React 19, TypeScript, Firebase, Supabase, Cloudflare</p>
+                <p className="text-[11px] text-muted-foreground font-medium">Next.js 15, React 19, TypeScript, Firebase, SQL, .NET, Cloudflare</p>
               </div>
               <div className="flex gap-3">
                 <div className="flex items-center gap-2 bg-[#1A1A1A] text-white px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest shadow-lg">
