@@ -42,11 +42,11 @@ export const metadata: Metadata = {
 };
 
 const TechLogos = [
-  { name: "Next.js", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.735 18.91l-4.8-6.178V18.15h-1.35V7.477h1.35l4.8 6.177V7.477h1.35v10.673h-1.35zm-5.735-8.24l-2.025 2.625V13.8L12 11.2V10.67zm0 0l-2.025 2.625V13.8L12 11.2V10.67z"/></svg> },
-  { name: "React", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM10.622 8.415l4.879 2.817a.75.75 0 0 1 0 1.298l-4.879 2.817a.75.75 0 0 1-1.122-.649V9.064a.75.75 0 0 1 1.122-.649z"/></svg> },
-  { name: "Firebase", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M3.89 15.672L6.255.461A.534.534 0 0 1 7.27.275l2.458 4.608-2.458 8.441a1.2 1.2 0 0 0 .504.148h.001c.144 0 .285-.027.42-.078l2.67-1.006L8.136 5.856l1.96-1.745 5.518 9.84a1.2 1.2 0 0 0 1.521.493l2.855-1.076-2.583 4.887a1.2 1.2 0 0 0 .513.142h.001a1.2 1.2 0 0 0 .61-.17l3.618-1.365a.534.534 0 0 0 .245-.724l-3.328-6.305-1.666 3.161L3.89 15.672zm11.724-4.825L13.116 6.04l-2.003-3.755a.534.534 0 0 0-.964.03l-1.013 3.475 2.502 4.498 3.972-2.441z"/></svg> },
-  { name: "Vercel", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M24 22.525H0l12-21.05 12 21.05z"/></svg> },
-  { name: "Stripe", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/40"><path d="M13.962 16.31c0 1.506-1.128 1.939-2.458 1.939-1.287 0-2.327-.34-2.327-1.343v-.027h1.366c.014.453.333.682.961.682.528 0 .861-.197.861-.595 0-.974-4.401-.54-4.401-3.66 0-1.42 1.114-1.926 2.39-1.926 1.128 0 2.221.32 2.221 1.24v.027h-1.339c-.014-.386-.333-.599-.882-.599-.542 0-.847.213-.847.586 0 .96 4.415.519 4.415 3.696z"/></svg> },
+  { name: "Next.js", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/80"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.735 18.91l-4.8-6.178V18.15h-1.35V7.477h1.35l4.8 6.177V7.477h1.35v10.673h-1.35zm-5.735-8.24l-2.025 2.625V13.8L12 11.2V10.67zm0 0l-2.025 2.625V13.8L12 11.2V10.67z"/></svg> },
+  { name: "React", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/80"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM10.622 8.415l4.879 2.817a.75.75 0 0 1 0 1.298l-4.879 2.817a.75.75 0 0 1-1.122-.649V9.064a.75.75 0 0 1 1.122-.649z"/></svg> },
+  { name: "Firebase", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/80"><path d="M3.89 15.672L6.255.461A.534.534 0 0 1 7.27.275l2.458 4.608-2.458 8.441a1.2 1.2 0 0 0 .504.148h.001c.144 0 .285-.027.42-.078l2.67-1.006L8.136 5.856l1.96-1.745 5.518 9.84a1.2 1.2 0 0 0 1.521.493l2.855-1.076-2.583 4.887a1.2 1.2 0 0 0 .513.142h.001a1.2 1.2 0 0 0 .61-.17l3.618-1.365a.534.534 0 0 0 .245-.724l-3.328-6.305-1.666 3.161L3.89 15.672zm11.724-4.825L13.116 6.04l-2.003-3.755a.534.534 0 0 0-.964.03l-1.013 3.475 2.502 4.498 3.972-2.441z"/></svg> },
+  { name: "Vercel", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/80"><path d="M24 22.525H0l12-21.05 12 21.05z"/></svg> },
+  { name: "Stripe", svg: <svg viewBox="0 0 24 24" className="w-8 h-8 fill-muted-foreground/80"><path d="M13.962 16.31c0 1.506-1.128 1.939-2.458 1.939-1.287 0-2.327-.34-2.327-1.343v-.027h1.366c.014.453.333.682.961.682.528 0 .861-.197.861-.595 0-.974-4.401-.54-4.401-3.66 0-1.42 1.114-1.926 2.39-1.926 1.128 0 2.221.32 2.221 1.24v.027h-1.339c-.014-.386-.333-.599-.882-.599-.542 0-.847.213-.847.586 0 .96 4.415.519 4.415 3.696z"/></svg> },
 ];
 
 const completedProjects = [
@@ -167,7 +167,7 @@ export default function Home() {
               <div className="w-full max-w-2xl overflow-hidden relative mt-2">
                 <div className="flex gap-10 items-center animate-scroll whitespace-nowrap py-1">
                   {[...TechLogos, ...TechLogos, ...TechLogos].map((logo, idx) => (
-                    <div key={idx} className="flex flex-col items-center gap-2 shrink-0 opacity-20 hover:opacity-100 transition-all duration-300">
+                    <div key={idx} className="flex flex-col items-center gap-2 shrink-0 opacity-60 hover:opacity-100 transition-all duration-300">
                       {logo.svg}
                     </div>
                   ))}
@@ -199,7 +199,8 @@ export default function Home() {
                       height={600}
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                       unoptimized={ref.imageUrl.includes('s0.wp.com')}
-                      loading="lazy"
+                      loading={idx === 0 ? "eager" : "lazy"}
+                      priority={idx === 0}
                     />
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                        <Link href={ref.link} target="_blank" className="bg-white text-secondary px-4 py-2 rounded-full text-xs font-black flex items-center gap-2 shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-transform">
