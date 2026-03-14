@@ -26,7 +26,7 @@ export default function Footer() {
     company: [
       { name: "About Me", href: "/about" },
       { name: "Portfolio", href: "/portfolio" },
-      { name: "Journal", href: "/blog" },
+      { name: "Contact", href: "/contact" },
     ],
     legal: [
       { name: "Imprint", href: "#" },
@@ -77,7 +77,7 @@ export default function Footer() {
           </div>
 
           <div className="lg:flex lg:justify-end">
-            <div className="bg-white/5 border border-white/10 rounded-[2rem] p-8 space-y-6 backdrop-blur-xl w-full max-w-sm">
+            <div className="bg-white/5 border border-white/10 rounded-[2rem] p-8 space-y-6 backdrop-blur-xl w-full max-sm:max-w-none max-w-sm">
               <div className="space-y-1">
                 <p className="text-primary text-[10px] font-black uppercase tracking-widest">get in touch</p>
                 <h3 className="text-2xl font-black text-white italic">Ready to scale?</h3>
