@@ -72,7 +72,7 @@ export default function Navbar() {
       )}
     >
       <div className="flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group">
+        <Link href="/" className="flex items-center gap-2 group shrink-0">
           <span className="font-headline font-black text-2xl tracking-tight text-secondary italic">
             BudgetDev
           </span>
@@ -109,37 +109,40 @@ export default function Navbar() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-[13px] font-semibold text-secondary/70 hover:text-secondary transition-colors"
+              className="text-[13px] font-semibold text-secondary/70 hover:text-secondary transition-colors min-w-[70px] text-center"
             >
               {item.name[lang]}
             </Link>
           ))}
         </div>
 
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-4 shrink-0">
           <Button
             asChild
-            className="rounded-xl px-6 bg-secondary text-white hover:bg-secondary/90 transition-all duration-300 font-bold text-xs h-9"
+            className="rounded-xl px-6 bg-secondary text-white hover:bg-secondary/90 transition-all duration-300 font-bold text-xs h-9 min-w-[110px]"
           >
             <Link href="/contact">
-              {lang === "en" ? "Contact" : "Contact Us"}
+              {lang === "en" ? "Contact Us" : "Contact Us"}
             </Link>
           </Button>
 
           <div className="flex items-center gap-3 ml-2">
             <button
               onClick={toggleLang}
-              className="flex items-center gap-1.5 focus:outline-none group"
+              className="flex items-center gap-1.5 focus:outline-none group transition-transform hover:scale-105"
               title="Toggle Locale"
             >
-              <div className="w-5 h-3.5 border border-muted/20 rounded-sm relative overflow-hidden bg-white shadow-sm transition-transform group-hover:scale-110">
-                <div className="absolute top-0 left-0 w-full h-[33.3%] bg-[#FF9933]" />
-                <div className="absolute top-[33.3%] left-0 w-full h-[33.3%] bg-white flex items-center justify-center">
-                  <div className="w-1.5 h-1.5 rounded-full border-[0.5px] border-[#000080] flex items-center justify-center">
-                    <div className="w-[1.5px] h-[1.5px] bg-[#000080] rounded-full" />
-                  </div>
-                </div>
-                <div className="absolute bottom-0 left-0 w-full h-[33.3%] bg-[#138808]" />
+              <div className="relative w-6 h-4 rounded-[2px] overflow-hidden shadow-sm border border-muted/20">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 225 150" className="w-full h-full">
+                  <rect width="225" height="150" fill="#f93"/>
+                  <rect width="225" height="100" y="50" fill="#fff"/>
+                  <rect width="225" height="50" y="100" fill="#128807"/>
+                  <g transform="translate(112.5 75)">
+                    <circle r="20" fill="none" stroke="#000080" strokeWidth="2"/>
+                    <circle r="3.5" fill="#000080"/>
+                    <path d="M0-20V20M-20 0H20M-14.14-14.14 14.14 14.14M-14.14 14.14 14.14-14.14M-7.65-18.48 7.65 18.48M-18.48-7.65 18.48 7.65M-18.48 7.65 18.48-7.65M-7.65 18.48 7.65-18.48M-14.14-14.14 14.14 14.14" stroke="#000080" strokeWidth="0.5"/>
+                  </g>
+                </svg>
               </div>
             </button>
           </div>
@@ -196,7 +199,7 @@ export default function Navbar() {
             className="w-full rounded-xl bg-secondary text-white font-bold h-14 mt-4"
           >
             <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-              {lang === "en" ? "Contact Us" : "Get Free Quote"}
+              Contact Us
             </Link>
           </Button>
         </div>
