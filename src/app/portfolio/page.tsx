@@ -1,3 +1,4 @@
+
 "use client";
 
 import Navbar from "@/components/layout/Navbar";
@@ -156,7 +157,7 @@ const projects = [
     category: "Personal Branding",
     description: "A high-performance personal branding site engineered for maximum impact. We used modern web technologies to create a fast, interactive experience that showcases professional achievements with clear calls to action.",
     results: [
-      { label: "Global Performance", value: "100/100", icon: <Rocket className="w-4 h-4" /> },
+      { label: "Global Performance", value: "100/100", icon: <Rocket className="w-5 h-5" /> },
       { label: "Visibility", value: "Global", icon: <Globe className="w-4 h-4" /> },
       { label: "Uptime", value: "100%", icon: <ShieldCheck className="w-4 h-4" /> }
     ],
@@ -189,6 +190,26 @@ const projects = [
     image: PlaceHolderImages.find(img => img.id === 'project-roshni'),
     tags: ["Next.js", "Tailwind", "E-commerce", "Fashion"],
     link: "https://roshniboutiques.com"
+  },
+  {
+    title: "Pastels Boutique",
+    client: "Luxury Women's Wear",
+    category: "Premium Fashion E-commerce",
+    description: "A high-fidelity e-commerce experience for a luxury designer boutique. Engineered for visual dominance and sub-second page loads, focusing on high-end user conversion.",
+    results: [
+      { label: "Online Sales", value: "+210%", icon: <TrendingUp className="w-4 h-4" /> },
+      { label: "Core Web Vitals", value: "Passed", icon: <Rocket className="w-4 h-4" /> },
+      { label: "User Retention", value: "3.2x", icon: <Users className="w-4 h-4" /> }
+    ],
+    features: [
+      "Interactive Lookbooks",
+      "Edge-Network Catalog",
+      "Seamless Checkout",
+      "Mobile-First Architecture"
+    ],
+    image: PlaceHolderImages.find(img => img.id === 'project-pastels'),
+    tags: ["Next.js 15", "React 19", "E-commerce", "Luxury"],
+    link: "https://pastelsboutique.com"
   }
 ];
 

@@ -1,3 +1,4 @@
+
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
@@ -124,6 +125,14 @@ const completedProjects = [
     link: "https://roshniboutiques.com",
     imageUrl: PlaceHolderImages.find(img => img.id === 'project-roshni')?.imageUrl || "",
     imageHint: "designer boutique"
+  },
+  {
+    title: "Pastels Boutique",
+    tag: "Designer Women's Wear",
+    description: "A high-fidelity e-commerce experience for a luxury designer boutique.",
+    link: "https://pastelsboutique.com",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'project-pastels')?.imageUrl || "",
+    imageHint: "fashion boutique"
   }
 ];
 

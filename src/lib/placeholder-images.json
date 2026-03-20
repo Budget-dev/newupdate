@@ -77,6 +77,12 @@
       "description": "Roshni Boutiques Live Preview",
       "imageUrl": "https://s0.wp.com/mshots/v1/https://roshniboutiques.com?w=1024&h=768",
       "imageHint": "designer boutique"
+    },
+    {
+      "id": "project-pastels",
+      "description": "Pastels Boutique Live Preview",
+      "imageUrl": "https://s0.wp.com/mshots/v1/https://pastelsboutique.com?w=1024&h=768",
+      "imageHint": "fashion boutique"
     }
   ]
 }
