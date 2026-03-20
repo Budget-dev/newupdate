@@ -54,28 +54,28 @@ const TechLogos = [
 
 const completedProjects = [
   {
-    title: "Srinika Spices",
-    tag: "E-commerce",
-    description: "Multi-regional spice distribution with 100/100 performance score.",
-    link: "https://srinikaspices.in",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'project-srinika')?.imageUrl || "",
-    imageHint: "budget website designer project"
+    title: "Bhoomi Collections",
+    tag: "Women's Fashion",
+    description: "High-end women's dress e-commerce with custom shopping experience.",
+    link: "https://www.bhoomicollections.in",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'project-bhoomi')?.imageUrl || "",
+    imageHint: "budget website designer clothing"
   },
   {
-    title: "Gurucharan Interiors",
-    tag: "Interior Design",
-    description: "Premium digital showroom capturing high-intent leads locally.",
-    link: "https://gurucharaninteriors.in",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'project-gurucharan')?.imageUrl || "",
-    imageHint: "affordable website design showroom"
+    title: "Shreebhumi Natures Best",
+    tag: "Import & Export",
+    description: "International trade portal showcasing nature's finest products globally.",
+    link: "https://www.shreebhuminaturesbest.com",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'project-shreebhumi')?.imageUrl || "",
+    imageHint: "affordable web design business"
   },
   {
-    title: "Yasodha.in",
-    tag: "Personal Brand",
-    description: "Specialized career portal optimized for search engine dominance.",
-    link: "https://yasodha.in",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'project-yasodha')?.imageUrl || "",
-    imageHint: "budget web development portfolio"
+    title: "The Baza",
+    tag: "Men's Lifestyle",
+    description: "Modern men's clothing brand focusing on style and high-conversion.",
+    link: "https://thebaza.in",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'project-thebaza')?.imageUrl || "",
+    imageHint: "budget web development fashion"
   }
 ];
 
@@ -170,7 +170,7 @@ export default function Home() {
               <div className="w-full max-w-3xl overflow-hidden relative mt-4">
                 <div className="flex gap-12 items-center animate-scroll whitespace-nowrap py-2">
                   {[...TechLogos, ...TechLogos, ...TechLogos].map((logo, idx) => (
-                    <div key={idx} className="flex flex-col items-center gap-2 shrink-0 opacity-80 hover:opacity-100 transition-all duration-300">
+                    <div key={idx} className="flex flex-col items-center gap-2 shrink-0 opacity-60 hover:opacity-100 transition-all duration-300">
                       {logo.svg}
                     </div>
                   ))}

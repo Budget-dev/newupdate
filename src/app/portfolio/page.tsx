@@ -11,10 +11,70 @@ import { ArrowUpRight, CheckCircle2, Globe, Rocket, ShieldCheck, Zap, TrendingUp
 
 const projects = [
   {
+    title: "Bhoomi Collections",
+    client: "Premium Women's Boutique",
+    category: "Fashion E-commerce",
+    description: "A high-fidelity digital transformation for a premium women's dress store. We engineered a custom shopping experience with intuitive filtering and a seamless high-conversion checkout flow. Optimized for the Indian mobile-first market with extreme load speeds.",
+    results: [
+      { label: "Order Accuracy", value: "98%", icon: <CheckCircle2 className="w-4 h-4" /> },
+      { label: "Mobile Speed", value: "99/100", icon: <Zap className="w-4 h-4" /> },
+      { label: "Checkout Conversion", value: "+120%", icon: <TrendingUp className="w-4 h-4" /> }
+    ],
+    features: [
+      "Dynamic Product Collections",
+      "Seamless Razorpay Integration",
+      "Localized Mobile Experience",
+      "Real-time Stock Management"
+    ],
+    image: PlaceHolderImages.find(img => img.id === 'project-bhoomi'),
+    tags: ["Next.js 15", "Tailwind", "E-commerce", "Mobile First"],
+    link: "https://www.bhoomicollections.in"
+  },
+  {
+    title: "Shreebhumi Natures Best",
+    client: "International Trading Corp",
+    category: "Global Trade Portal",
+    description: "An international trade portal designed to build trust and authority for an import/export business. We focused on professional storytelling and global edge delivery to ensure the site is fast and reliable for buyers across all continents.",
+    results: [
+      { label: "Global Reach", value: "30+ Countries", icon: <Globe className="w-4 h-4" /> },
+      { label: "Domain Authority", value: "Elite", icon: <Rocket className="w-4 h-4" /> },
+      { label: "Technical Uptime", value: "99.9%", icon: <ShieldCheck className="w-4 h-4" /> }
+    ],
+    features: [
+      "Multi-Language Readiness",
+      "Global Edge Distribution",
+      "High-Resolution Asset Mgmt",
+      "Automated Trade Inquiries"
+    ],
+    image: PlaceHolderImages.find(img => img.id === 'project-shreebhumi'),
+    tags: ["Global Infrastructure", "Static Site Gen", "SEO Authority"],
+    link: "https://www.shreebhuminaturesbest.com"
+  },
+  {
+    title: "The Baza",
+    client: "Men's Lifestyle Brand",
+    category: "D2C Clothing",
+    description: "A modern men's clothing brand identity and store built for the next generation of online shoppers. We prioritized 'Visual Dominance' and extreme performance to reduce bounce rates and maximize user retention for this high-growth brand.",
+    results: [
+      { label: "Page Load Time", value: "0.3s", icon: <Zap className="w-4 h-4" /> },
+      { label: "Return Customer Rate", value: "+45%", icon: <Users className="w-4 h-4" /> },
+      { label: "Lighthouse Score", value: "100", icon: <CheckCircle2 className="w-4 h-4" /> }
+    ],
+    features: [
+      "Interative Style Guides",
+      "Edge-Network Catalog",
+      "High-Retention UX Design",
+      "Smart Recommendation Engine"
+    ],
+    image: PlaceHolderImages.find(img => img.id === 'project-thebaza'),
+    tags: ["React 19", "Framer Motion", "D2C Architecture"],
+    link: "https://thebaza.in"
+  },
+  {
     title: "Srinika Spices",
     client: "National Spice Merchant",
     category: "E-commerce & Logistics",
-    description: "A high-fidelity digital transformation for a complex spice distribution network. We engineered a custom inventory-aware shopping experience that handles thousands of daily active users with sub-second page transitions. The system integrates seamless automated ordering with localized delivery tracking.",
+    description: "A high-fidelity digital transformation for a complex spice distribution network. We engineered a custom inventory-aware shopping experience that handles thousands of daily active users with sub-second page transitions.",
     results: [
       { label: "Online Sales Growth", value: "+340%", icon: <TrendingUp className="w-4 h-4" /> },
       { label: "Mobile Page Speed", value: "100/100", icon: <Zap className="w-4 h-4" /> },
@@ -29,46 +89,6 @@ const projects = [
     image: PlaceHolderImages.find(img => img.id === 'project-srinika'),
     tags: ["Next.js 15", "Tailwind CSS", "Firebase Auth", "Stripe API"],
     link: "https://srinikaspices.in"
-  },
-  {
-    title: "Gurucharan Interiors",
-    client: "Luxury Design Firm",
-    category: "Interactive Portfolio",
-    description: "A premium digital showroom designed to capture high-intent leads for luxury interior projects. We focused on 'Visual Storytelling' using high-resolution image optimization techniques that deliver stunning clarity without sacrificing performance. The site acts as a 24/7 lead acquisition engine.",
-    results: [
-      { label: "Lead Capture Rate", value: "+85%", icon: <TrendingUp className="w-4 h-4" /> },
-      { label: "Image Clarity Score", value: "Elite", icon: <Rocket className="w-4 h-4" /> },
-      { label: "Trust Conversion", value: "94%", icon: <ShieldCheck className="w-4 h-4" /> }
-    ],
-    features: [
-      "Lossless Image Optimization",
-      "Lead Generation Automations",
-      "Interactive Project Showcases",
-      "Semantic SEO for Local Search"
-    ],
-    image: PlaceHolderImages.find(img => img.id === 'project-gurucharan'),
-    tags: ["React 19", "Framer Motion", "Cloudflare Images"],
-    link: "https://gurucharaninteriors.in"
-  },
-  {
-    title: "Yasodha.in",
-    client: "Executive Branding",
-    category: "Personal Brand Portal",
-    description: "A specialized career authority portal designed for industry leadership positioning. We built a deep-SEO architecture that ensures professional dominance across search results. The platform features integrated contact automation and high-speed delivery for global recruitment visibility.",
-    results: [
-      { label: "Search Visibility", value: "Top 0.1%", icon: <Globe className="w-4 h-4" /> },
-      { label: "Loading Time", value: "0.4s", icon: <Zap className="w-4 h-4" /> },
-      { label: "Technical SEO Score", value: "100", icon: <Rocket className="w-4 h-4" /> }
-    ],
-    features: [
-      "Structured Data for Career SEO",
-      "One-Tap Contact Integration",
-      "Global Edge Distribution",
-      "Content Authority Architecture"
-    ],
-    image: PlaceHolderImages.find(img => img.id === 'project-yasodha'),
-    tags: ["TypeScript", "Next.js", "Schema.org Markup"],
-    link: "https://yasodha.in"
   }
 ];
 
@@ -86,7 +106,7 @@ export default function PortfolioPage() {
               Case <span className="text-primary italic">Studies.</span>
             </h1>
             <p className="text-xl text-muted-foreground font-medium leading-relaxed">
-              We engineer digital assets that generate real-world ROI. From 100/100 performance scores to massive conversion growth, here is how we build success.
+              We engineer digital assets that generate real-world ROI. From 100/100 performance scores to massive conversion growth, here is how we build success for Indian businesses.
             </p>
           </div>
 

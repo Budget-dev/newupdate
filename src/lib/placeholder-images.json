@@ -43,22 +43,22 @@
       "imageHint": "resume website"
     },
     {
-      "id": "project-1",
-      "description": "E-commerce platform project",
-      "imageUrl": "https://picsum.photos/seed/project1/800/600",
-      "imageHint": "ecommerce store"
+      "id": "project-bhoomi",
+      "description": "Bhoomi Collections Live Preview",
+      "imageUrl": "https://s0.wp.com/mshots/v1/https://www.bhoomicollections.in?w=1024&h=768",
+      "imageHint": "women dress website"
     },
     {
-      "id": "project-2",
-      "description": "Fintech dashboard project",
-      "imageUrl": "https://picsum.photos/seed/project2/800/600",
-      "imageHint": "finance dashboard"
+      "id": "project-shreebhumi",
+      "description": "Shreebhumi Natures Best Live Preview",
+      "imageUrl": "https://s0.wp.com/mshots/v1/https://www.shreebhuminaturesbest.com?w=1024&h=768",
+      "imageHint": "import export business"
     },
     {
-      "id": "project-3",
-      "description": "Healthcare management system",
-      "imageUrl": "https://picsum.photos/seed/project3/800/600",
-      "imageHint": "medical app"
+      "id": "project-thebaza",
+      "description": "The Baza Live Preview",
+      "imageUrl": "https://s0.wp.com/mshots/v1/https://thebaza.in?w=1024&h=768",
+      "imageHint": "men clothing brand"
     }
   ]
 }
