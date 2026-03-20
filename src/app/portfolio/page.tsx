@@ -1,3 +1,4 @@
+
 "use client";
 
 import Navbar from "@/components/layout/Navbar";
@@ -10,6 +11,46 @@ import Link from "next/link";
 import { ArrowUpRight, CheckCircle2, Globe, Rocket, ShieldCheck, Zap, TrendingUp, Users } from "lucide-react";
 
 const projects = [
+  {
+    title: "Vidhyaly.com",
+    client: "National EdTech Provider",
+    category: "Educational LMS",
+    description: "A comprehensive Learning Management System (LMS) engineered for Indian educational institutes. Features include automated attendance, fee management, and high-performance examination portals designed to scale across thousands of concurrent users.",
+    results: [
+      { label: "Active Students", value: "10,000+", icon: <Users className="w-4 h-4" /> },
+      { label: "Uptime Rate", value: "99.99%", icon: <ShieldCheck className="w-4 h-4" /> },
+      { label: "Onboarded Schools", value: "50+", icon: <TrendingUp className="w-4 h-4" /> }
+    ],
+    features: [
+      "Automated Fee Systems",
+      "Interactive Exam Portals",
+      "Cloud-based Inventory",
+      "Mobile-Optimized Learning"
+    ],
+    image: PlaceHolderImages.find(img => img.id === 'project-vidhyaly'),
+    tags: ["LMS", "Next.js", "Firebase", "EdTech"],
+    link: "https://vidhyaly.com"
+  },
+  {
+    title: "BudgetDev.in",
+    client: "High-Fidelity Agency",
+    category: "Agency Portfolio",
+    description: "The digital engine behind our agency. Engineered with Next.js 15 and React 19, this portal is optimized for sub-second page loads and dominates the search results for 'Budget Website Designer'. Features high-fidelity AI interactions and localized SEO.",
+    results: [
+      { label: "Lighthouse Score", value: "100/100", icon: <Zap className="w-4 h-4" /> },
+      { label: "Search Ranking", value: "#1", icon: <Rocket className="w-4 h-4" /> },
+      { label: "Page Load Time", value: "0.2s", icon: <Zap className="w-4 h-4" /> }
+    ],
+    features: [
+      "AI Chat Integration",
+      "Dynamic Local SEO",
+      "Extreme Core Web Vitals",
+      "WhatsApp Lead Automation"
+    ],
+    image: PlaceHolderImages.find(img => img.id === 'project-budgetdev'),
+    tags: ["Agency", "SEO Master", "Performance", "AI"],
+    link: "https://budgetdev.in"
+  },
   {
     title: "Bhoomi Collections",
     client: "Premium Women's Boutique",

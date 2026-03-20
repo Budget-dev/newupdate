@@ -59,6 +59,18 @@
       "description": "The Baza Live Preview",
       "imageUrl": "https://s0.wp.com/mshots/v1/https://thebaza.in?w=1024&h=768",
       "imageHint": "men clothing brand"
+    },
+    {
+      "id": "project-vidhyaly",
+      "description": "Vidhyaly.com Live Preview",
+      "imageUrl": "https://s0.wp.com/mshots/v1/https://vidhyaly.com?w=1024&h=768",
+      "imageHint": "education website"
+    },
+    {
+      "id": "project-budgetdev",
+      "description": "BudgetDev.in Live Preview",
+      "imageUrl": "https://s0.wp.com/mshots/v1/https://budgetdev.in?w=1024&h=768",
+      "imageHint": "agency website"
     }
   ]
 }

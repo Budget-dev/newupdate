@@ -1,3 +1,4 @@
+
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
@@ -53,6 +54,22 @@ const TechLogos = [
 ];
 
 const completedProjects = [
+  {
+    title: "Vidhyaly.com",
+    tag: "Educational LMS",
+    description: "Modern learning management system for Indian institutes.",
+    link: "https://vidhyaly.com",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'project-vidhyaly')?.imageUrl || "",
+    imageHint: "education portal"
+  },
+  {
+    title: "BudgetDev.in",
+    tag: "Agency Portfolio",
+    description: "High-performance agency portal with extreme SEO focus.",
+    link: "https://budgetdev.in",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'project-budgetdev')?.imageUrl || "",
+    imageHint: "agency website"
+  },
   {
     title: "Bhoomi Collections",
     tag: "Women's Fashion",
