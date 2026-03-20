@@ -300,6 +300,7 @@ export default function PortfolioPage() {
                     className="object-cover transition-transform duration-1000 group-hover:scale-105"
                     data-ai-hint={project.image?.imageHint}
                     priority={idx === 0}
+                    unoptimized={project.image?.imageUrl.includes('s0.wp.com')}
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
