@@ -76,6 +76,30 @@ const completedProjects = [
     link: "https://thebaza.in",
     imageUrl: PlaceHolderImages.find(img => img.id === 'project-thebaza')?.imageUrl || "",
     imageHint: "budget web development fashion"
+  },
+  {
+    title: "Srinika Spices",
+    tag: "E-commerce & Logistics",
+    description: "National spice merchant with real-time automated inventory sync.",
+    link: "https://srinikaspices.in",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'project-srinika')?.imageUrl || "",
+    imageHint: "spices website"
+  },
+  {
+    title: "Gurucharan Interiors",
+    tag: "Architecture Portfolio",
+    description: "Visual-first portfolio for an elite interior design firm in India.",
+    link: "https://gurucharaninteriors.in",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'project-gurucharan')?.imageUrl || "",
+    imageHint: "interiors website"
+  },
+  {
+    title: "Yasodha.in",
+    tag: "Personal Branding",
+    description: "High-performance professional resume and personal branding portal.",
+    link: "https://yasodha.in",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'project-yasodha')?.imageUrl || "",
+    imageHint: "resume website"
   }
 ];
 
@@ -191,7 +215,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {completedProjects.map((ref, idx) => (
                 <div key={idx} className="group flex flex-col space-y-2">
                   <div className="relative aspect-[4/3] rounded-[1.25rem] overflow-hidden shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1 border border-muted/50 bg-muted/10">
@@ -202,8 +226,8 @@ export default function Home() {
                       height={600}
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                       unoptimized={ref.imageUrl.includes('s0.wp.com')}
-                      loading={idx === 0 ? "eager" : "lazy"}
-                      priority={idx === 0}
+                      loading={idx < 2 ? "eager" : "lazy"}
+                      priority={idx < 2}
                     />
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                        <Link href={ref.link} target="_blank" className="bg-white text-secondary px-4 py-2 rounded-full text-xs font-black flex items-center gap-2 shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-transform">
