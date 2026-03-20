@@ -61,7 +61,7 @@ const projects = [
       { label: "Lighthouse Score", value: "100", icon: <CheckCircle2 className="w-4 h-4" /> }
     ],
     features: [
-      "Interative Style Guides",
+      "Interactive Style Guides",
       "Edge-Network Catalog",
       "High-Retention UX Design",
       "Smart Recommendation Engine"
@@ -87,8 +87,48 @@ const projects = [
       "Edge-Network Content Delivery"
     ],
     image: PlaceHolderImages.find(img => img.id === 'project-srinika'),
-    tags: ["Next.js 15", "Tailwind CSS", "Firebase Auth", "Stripe API"],
+    tags: ["Next.js 15", "Tailwind CSS", "Firebase Auth", "Inventory Sync"],
     link: "https://srinikaspices.in"
+  },
+  {
+    title: "Gurucharan Interiors",
+    client: "Premium Interior Studio",
+    category: "Architecture Portfolio",
+    description: "A visual-first portfolio for an elite interior design firm. We focused on high-resolution image delivery and a minimalist UI that allows the project photography to take center stage, driving high-value lead generation.",
+    results: [
+      { label: "Image Load Speed", value: "Elite", icon: <Zap className="w-4 h-4" /> },
+      { label: "Lead Generation", value: "+85%", icon: <TrendingUp className="w-4 h-4" /> },
+      { label: "User Session Time", value: "4m+", icon: <Users className="w-4 h-4" /> }
+    ],
+    features: [
+      "High-Res Asset Optimization",
+      "Smooth Layout Transitions",
+      "Interactive Project Gallery",
+      "Mobile-Optimized UX"
+    ],
+    image: PlaceHolderImages.find(img => img.id === 'project-gurucharan'),
+    tags: ["React 19", "Image Optimization", "Lead Gen"],
+    link: "https://gurucharaninteriors.in"
+  },
+  {
+    title: "Yasodha.in",
+    client: "Professional Resume",
+    category: "Personal Branding",
+    description: "A high-performance personal branding site engineered for maximum impact. We used modern web technologies to create a fast, interactive experience that showcases professional achievements with clear calls to action.",
+    results: [
+      { label: "Global Performance", value: "100/100", icon: <Rocket className="w-4 h-4" /> },
+      { label: "Visibility", value: "Global", icon: <Globe className="w-4 h-4" /> },
+      { label: "Uptime", value: "100%", icon: <ShieldCheck className="w-4 h-4" /> }
+    ],
+    features: [
+      "Interactive Roadmap",
+      "Modern Web Engineering",
+      "SEO First Architecture",
+      "Extreme Load Speeds"
+    ],
+    image: PlaceHolderImages.find(img => img.id === 'project-yasodha'),
+    tags: ["Next.js", "TypeScript", "Personal Brand"],
+    link: "https://yasodha.in"
   }
 ];
 
