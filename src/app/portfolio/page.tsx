@@ -1,4 +1,3 @@
-
 "use client";
 
 import Navbar from "@/components/layout/Navbar";
@@ -170,6 +169,26 @@ const projects = [
     image: PlaceHolderImages.find(img => img.id === 'project-yasodha'),
     tags: ["Next.js", "TypeScript", "Personal Brand"],
     link: "https://yasodha.in"
+  },
+  {
+    title: "Roshni Boutiques",
+    client: "Premium Fashion Label",
+    category: "Designer Boutique",
+    description: "An elegant e-commerce platform for high-end designer wear. Engineered for visual impact and seamless shopping, featuring advanced filtering and a high-fidelity checkout experience.",
+    results: [
+      { label: "Sales Growth", value: "+180%", icon: <TrendingUp className="w-4 h-4" /> },
+      { label: "Mobile Speed", value: "100/100", icon: <Zap className="w-4 h-4" /> },
+      { label: "Return Rate", value: "35%", icon: <Users className="w-4 h-4" /> }
+    ],
+    features: [
+      "Custom UI Design",
+      "Seamless Razorpay Integration",
+      "Inventory Management",
+      "Performance Optimized"
+    ],
+    image: PlaceHolderImages.find(img => img.id === 'project-roshni'),
+    tags: ["Next.js", "Tailwind", "E-commerce", "Fashion"],
+    link: "https://roshniboutiques.com"
   }
 ];
 

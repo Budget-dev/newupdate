@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
@@ -105,7 +104,7 @@ const completedProjects = [
   {
     title: "Gurucharan Interiors",
     tag: "Architecture Portfolio",
-    description: "Visual-first portfolio for an elite interior design firm in India.",
+    description: "Visual-first portfolio for an interior design firm in India.",
     link: "https://gurucharaninteriors.in",
     imageUrl: PlaceHolderImages.find(img => img.id === 'project-gurucharan')?.imageUrl || "",
     imageHint: "interiors website"
@@ -117,6 +116,14 @@ const completedProjects = [
     link: "https://yasodha.in",
     imageUrl: PlaceHolderImages.find(img => img.id === 'project-yasodha')?.imageUrl || "",
     imageHint: "resume website"
+  },
+  {
+    title: "Roshni Boutiques",
+    tag: "Designer Boutique",
+    description: "Elegant e-commerce for premium designer wear, optimized for conversions.",
+    link: "https://roshniboutiques.com",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'project-roshni')?.imageUrl || "",
+    imageHint: "designer boutique"
   }
 ];
 
