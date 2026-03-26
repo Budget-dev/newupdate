@@ -38,6 +38,7 @@ const SERVICES = [
 const NAV_ITEMS = [
   { name: { en: "Portfolio", in: "Portfolio" }, href: "/portfolio" },
   { name: { en: "About me", in: "Founder" }, href: "/about" },
+  { name: { en: "Careers", in: "Careers" }, href: "/careers" },
 ];
 
 export default function Navbar() {
