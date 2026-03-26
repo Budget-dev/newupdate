@@ -20,6 +20,7 @@ import {
   CartesianGrid, 
   Tooltip 
 } from 'recharts';
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const chartData = [
@@ -52,6 +53,12 @@ const features = [
 ];
 
 export function ResultsSection() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <section className="py-12 px-6 relative">
       <div className="max-w-7xl mx-auto main-section-container space-y-12">
@@ -84,19 +91,21 @@ export function ResultsSection() {
             </div>
 
             <div className="h-[220px] w-full pt-2">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={chartData}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E2E8F0" />
-                  <Line 
-                    type="monotone" 
-                    dataKey="users" 
-                    stroke="hsl(var(--primary))" 
-                    strokeWidth={3} 
-                    dot={{ r: 4, fill: 'white', stroke: 'hsl(var(--primary))', strokeWidth: 2 }}
-                    activeDot={{ r: 6 }}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
+              {mounted && (
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={chartData}>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E2E8F0" />
+                    <Line 
+                      type="monotone" 
+                      dataKey="users" 
+                      stroke="hsl(var(--primary))" 
+                      strokeWidth={3} 
+                      dot={{ r: 4, fill: 'white', stroke: 'hsl(var(--primary))', strokeWidth: 2 }}
+                      activeDot={{ r: 6 }}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              )}
             </div>
           </Card>
 

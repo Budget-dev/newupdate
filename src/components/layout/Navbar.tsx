@@ -42,17 +42,26 @@ const NAV_ITEMS = [
 ];
 
 export default function Navbar() {
+  const [mounted, setMounted] = useState(false);
   const [lang, setLang] = useState<"en" | "in">("en");
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const toggleLang = () => setLang((l) => (l === "en" ? "in" : "en"));
+
+  // Prevent hydration errors by returning a stable shell until mounted
+  if (!mounted) {
+    return (
+      <nav className="fixed top-6 left-6 right-6 z-[100] mx-auto max-w-7xl px-8 py-3 rounded-2xl border bg-white/95 backdrop-blur-md shadow-sm h-16" />
+    );
+  }
 
   return (
     <nav
