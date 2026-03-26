@@ -29,7 +29,7 @@ const SERVICES = [
     href: "/services/seo",
   },
   {
-    title: "AI integration",
+    title: "AI Integration",
     description: "Bot interaction and many more services",
     href: "/contact",
   },
@@ -56,7 +56,7 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        "fixed top-6 left-6 right-6 z-50 transition-all duration-300",
+        "fixed top-6 left-6 right-6 z-[100] transition-all duration-300",
         "mx-auto max-w-7xl px-8 py-3 rounded-2xl border bg-white/95 backdrop-blur-md shadow-sm",
         isScrolled ? "py-2 shadow-md border-muted/50" : ""
       )}
@@ -142,16 +142,24 @@ export default function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <button
-          className="lg:hidden p-2 text-secondary"
+          className="lg:hidden p-2 text-secondary z-[110]"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          {mobileMenuOpen ? <X /> : <Menu />}
+          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="absolute top-full left-0 mt-4 w-full bg-white rounded-2xl border shadow-xl p-8 flex flex-col gap-6 lg:hidden animate-in fade-in slide-in-from-top-4 duration-300">
+        <div 
+          className="fixed inset-0 bg-black/20 backdrop-blur-sm lg:hidden z-[-1]" 
+          onClick={() => setMobileMenuOpen(false)}
+        />
+      )}
+
+      {/* Mobile Menu Content */}
+      {mobileMenuOpen && (
+        <div className="absolute top-full left-0 mt-4 w-full bg-white rounded-2xl border shadow-2xl p-8 flex flex-col gap-6 lg:hidden animate-in fade-in slide-in-from-top-4 duration-300 overflow-y-auto max-h-[70vh]">
           <div className="space-y-4">
             <p className="text-xs font-black text-muted-foreground uppercase tracking-widest">
               Services
@@ -175,16 +183,22 @@ export default function Navbar() {
 
           <div className="h-px bg-muted" />
 
-          {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-lg font-bold text-secondary hover:text-primary transition-colors"
-            >
-              {item.name[lang]}
-            </Link>
-          ))}
+          <div className="space-y-4">
+            <p className="text-xs font-black text-muted-foreground uppercase tracking-widest">
+              Explore
+            </p>
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-lg font-bold text-secondary hover:text-primary transition-colors"
+              >
+                {item.name[lang]}
+              </Link>
+            ))}
+          </div>
+
           <Button
             asChild
             size="lg"
