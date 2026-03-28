@@ -125,7 +125,7 @@ export default function AboutPage() {
                       alt={member.name} 
                       fill 
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      unoptimized={member.image.includes('i.ibb.co')}
+                      unoptimized={member.image.includes('i.ibb.co') || member.image.includes('yasodha.in')}
                     />
                   </div>
                   <div className="w-full lg:w-1/2 space-y-6">
