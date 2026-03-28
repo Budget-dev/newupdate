@@ -49,18 +49,18 @@ export default function Navbar() {
 
   useEffect(() => {
     setMounted(true);
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const toggleLang = () => setLang((l) => (l === "en" ? "in" : "en"));
-
-  if (!mounted) {
-    return (
-      <nav className="fixed top-6 left-6 right-6 z-[100] mx-auto max-w-7xl px-8 py-3 rounded-2xl border bg-white/95 backdrop-blur-md shadow-sm h-16" />
-    );
-  }
 
   return (
     <nav
@@ -77,31 +77,38 @@ export default function Navbar() {
           </span>
         </Link>
 
+        {/* Desktop Menu - Parts of it are rendered only on mount to avoid hydration issues with Radix */}
         <div className="hidden lg:flex items-center gap-8">
-          <DropdownMenu>
-            <DropdownMenuTrigger className="text-[13px] font-semibold text-secondary/70 hover:text-secondary transition-colors flex items-center gap-1 focus:outline-none min-w-[80px]">
-              Services <ChevronDown className="w-3 h-3" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-64 p-2 rounded-[2rem] shadow-2xl border-muted/30 mt-4 bg-white animate-in fade-in slide-in-from-top-2 duration-300">
-              <div className="flex flex-col py-2">
-                {SERVICES.map((service) => (
-                  <DropdownMenuItem key={service.title} asChild className="focus:bg-transparent p-0">
-                    <Link
-                      href={service.href}
-                      className="flex flex-col items-start gap-1 px-6 py-4 hover:bg-muted/30 transition-colors w-full"
-                    >
-                      <span className="font-bold text-secondary text-[15px]">
-                        {service.title}
-                      </span>
-                      <span className="text-[11px] text-muted-foreground/80 font-medium">
-                        {service.description}
-                      </span>
-                    </Link>
-                  </DropdownMenuItem>
-                ))}
-              </div>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          {mounted ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger className="text-[13px] font-semibold text-secondary/70 hover:text-secondary transition-colors flex items-center gap-1 focus:outline-none min-w-[80px]">
+                Services <ChevronDown className="w-3 h-3" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-64 p-2 rounded-[2rem] shadow-2xl border-muted/30 mt-4 bg-white animate-in fade-in slide-in-from-top-2 duration-300">
+                <div className="flex flex-col py-2">
+                  {SERVICES.map((service) => (
+                    <DropdownMenuItem key={service.title} asChild className="focus:bg-transparent p-0">
+                      <Link
+                        href={service.href}
+                        className="flex flex-col items-start gap-1 px-6 py-4 hover:bg-muted/30 transition-colors w-full"
+                      >
+                        <span className="font-bold text-secondary text-[15px]">
+                          {service.title}
+                        </span>
+                        <span className="text-[11px] text-muted-foreground/80 font-medium">
+                          {service.description}
+                        </span>
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </div>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+             <span className="text-[13px] font-semibold text-secondary/70 flex items-center gap-1 min-w-[80px]">
+                Services <ChevronDown className="w-3 h-3" />
+             </span>
+          )}
 
           {NAV_ITEMS.map((item) => (
             <Link
@@ -122,20 +129,22 @@ export default function Navbar() {
             <Link href="/contact">Contact Us</Link>
           </Button>
 
-          <button onClick={toggleLang} className="focus:outline-none">
-            <div className="relative w-7 h-5 rounded-[2px] overflow-hidden border border-muted/20 bg-white shadow-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 225 150" className="w-full h-full">
-                <rect width="225" height="150" fill="#FF9933"/>
-                <rect width="225" height="100" y="50" fill="#FFFFFF"/>
-                <rect width="225" height="50" y="100" fill="#128807"/>
-                <g transform="translate(112.5 75)">
-                  <circle r="12" fill="none" stroke="#000080" strokeWidth="1.5"/>
-                  <circle r="2.5" fill="#000080"/>
-                  <path d="M0-12V12M-12 0H12M-8.48-8.48 8.48 8.48M-8.48 8.48 8.48-8.48" stroke="#000080" strokeWidth="0.5"/>
-                </g>
-              </svg>
-            </div>
-          </button>
+          {mounted && (
+            <button onClick={toggleLang} className="focus:outline-none">
+              <div className="relative w-7 h-5 rounded-[2px] overflow-hidden border border-muted/20 bg-white shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 225 150" className="w-full h-full">
+                  <rect width="225" height="150" fill="#FF9933"/>
+                  <rect width="225" height="100" y="50" fill="#FFFFFF"/>
+                  <rect width="225" height="50" y="100" fill="#128807"/>
+                  <g transform="translate(112.5 75)">
+                    <circle r="12" fill="none" stroke="#000080" strokeWidth="1.5"/>
+                    <circle r="2.5" fill="#000080"/>
+                    <path d="M0-12V12M-12 0H12M-8.48-8.48 8.48 8.48M-8.48 8.48 8.48-8.48" stroke="#000080" strokeWidth="0.5"/>
+                  </g>
+                </svg>
+              </div>
+            </button>
+          )}
         </div>
 
         <button
@@ -146,6 +155,7 @@ export default function Navbar() {
         </button>
       </div>
 
+      {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="absolute top-full left-0 mt-4 w-full bg-white rounded-2xl border shadow-2xl p-8 flex flex-col gap-6 lg:hidden animate-in fade-in slide-in-from-top-4 duration-300 z-[100]">
           <div className="space-y-4">
