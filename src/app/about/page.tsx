@@ -84,48 +84,22 @@ export default function AboutPage() {
             </p>
           </section>
 
-          {/* How We Work Section */}
-          <section className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center border-y border-muted/50 py-24">
-            <div className="space-y-10">
-              <h2 className="text-5xl md:text-6xl font-black text-secondary leading-tight tracking-tighter">Our Approach.</h2>
-              <div className="space-y-8">
-                <p className="text-lg text-muted-foreground font-medium leading-relaxed">
-                  At BudgetDev, we don't just write code; we engineer success. Our process is rooted in a deep understanding of your business goals. We work with a <strong className="text-secondary">"Performance-First"</strong> mindset, ensuring that every mobile app or enterprise software we build is secure, stable, and ready to scale.
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                  <div className="space-y-3">
-                    <div className="w-12 h-12 rounded-2xl bg-primary/5 flex items-center justify-center text-primary shrink-0">
-                      <Code2 className="w-6 h-6" />
-                    </div>
-                    <h4 className="text-sm font-black text-secondary uppercase tracking-widest">Clean Architecture</h4>
-                    <p className="text-xs text-muted-foreground leading-relaxed">Modular, maintainable codebases built with TypeScript and Next.js.</p>
-                  </div>
-                  <div className="space-y-3">
-                    <div className="w-12 h-12 rounded-2xl bg-primary/5 flex items-center justify-center text-primary shrink-0">
-                      <Smartphone className="w-6 h-6" />
-                    </div>
-                    <h4 className="text-sm font-black text-secondary uppercase tracking-widest">Mobile Mastery</h4>
-                    <p className="text-xs text-muted-foreground leading-relaxed">High-performance iOS & Android apps that feel native and fast.</p>
-                  </div>
+          {/* Stats Section */}
+          <section className="grid grid-cols-2 md:grid-cols-4 gap-8 py-20 border-y border-muted/50">
+            {[
+              { label: "Successful Projects", value: "52+", icon: <Star className="w-4 h-4" /> },
+              { label: "Uptime Guaranteed", value: "99.9%", icon: <ShieldCheck className="w-4 h-4" /> },
+              { label: "Code Coverage", value: "95%", icon: <Code2 className="w-4 h-4" /> },
+              { label: "Global Reach", value: "30+ Countries", icon: <Globe className="w-4 h-4" /> }
+            ].map((stat, i) => (
+              <div key={i} className="text-center space-y-2">
+                <div className="flex items-center justify-center gap-2 text-primary">
+                  {stat.icon}
+                  <span className="text-3xl md:text-5xl font-black text-secondary">{stat.value}</span>
                 </div>
+                <p className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em]">{stat.label}</p>
               </div>
-            </div>
-            <div className="bg-secondary rounded-[3rem] p-12 md:p-16 text-white space-y-8 relative overflow-hidden group shadow-2xl">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -mr-20 -mt-20" />
-              <div className="relative z-10 space-y-6">
-                <div className="inline-flex p-3 rounded-2xl bg-white/5 border border-white/10 text-primary">
-                  <Heart className="w-6 h-6 fill-primary" />
-                </div>
-                <h3 className="text-4xl font-black italic tracking-tight">Our Passion.</h3>
-                <p className="text-white/60 text-base leading-relaxed font-medium">
-                  We believe that elite software shouldn't be a luxury. It should be the foundation for every ambitious startup in India. We are driven by the intersection of high-fidelity design and technical dominance, helping our clients outpace their competition through superior engineering.
-                </p>
-                <div className="pt-4 flex items-center gap-2">
-                   <div className="w-1 h-1 rounded-full bg-primary" />
-                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Dedicated to Indian Startups</span>
-                </div>
-              </div>
-            </div>
+            ))}
           </section>
 
           {/* Team Section */}
@@ -192,22 +166,48 @@ export default function AboutPage() {
             </div>
           </section>
 
-          {/* Stats Section */}
-          <section className="grid grid-cols-2 md:grid-cols-4 gap-8 py-20 border-y border-muted/50">
-            {[
-              { label: "Successful Projects", value: "52+", icon: <Star className="w-4 h-4" /> },
-              { label: "Uptime Guaranteed", value: "99.9%", icon: <ShieldCheck className="w-4 h-4" /> },
-              { label: "Code Coverage", value: "95%", icon: <Code2 className="w-4 h-4" /> },
-              { label: "Global Reach", value: "30+ Countries", icon: <Globe className="w-4 h-4" /> }
-            ].map((stat, i) => (
-              <div key={i} className="text-center space-y-2">
-                <div className="flex items-center justify-center gap-2 text-primary">
-                  {stat.icon}
-                  <span className="text-3xl md:text-5xl font-black text-secondary">{stat.value}</span>
+          {/* How We Work Section */}
+          <section className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center border-y border-muted/50 py-24">
+            <div className="space-y-10">
+              <h2 className="text-5xl md:text-6xl font-black text-secondary leading-tight tracking-tighter">Our Approach.</h2>
+              <div className="space-y-8">
+                <p className="text-lg text-muted-foreground font-medium leading-relaxed">
+                  At BudgetDev, we don't just write code; we engineer success. Our process is rooted in a deep understanding of your business goals. We work with a <strong className="text-secondary">"Performance-First"</strong> mindset, ensuring that every mobile app or enterprise software we build is secure, stable, and ready to scale.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <div className="w-12 h-12 rounded-2xl bg-primary/5 flex items-center justify-center text-primary shrink-0">
+                      <Code2 className="w-6 h-6" />
+                    </div>
+                    <h4 className="text-sm font-black text-secondary uppercase tracking-widest">Clean Architecture</h4>
+                    <p className="text-xs text-muted-foreground leading-relaxed">Modular, maintainable codebases built with TypeScript and Next.js.</p>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="w-12 h-12 rounded-2xl bg-primary/5 flex items-center justify-center text-primary shrink-0">
+                      <Smartphone className="w-6 h-6" />
+                    </div>
+                    <h4 className="text-sm font-black text-secondary uppercase tracking-widest">Mobile Mastery</h4>
+                    <p className="text-xs text-muted-foreground leading-relaxed">High-performance iOS & Android apps that feel native and fast.</p>
+                  </div>
                 </div>
-                <p className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em]">{stat.label}</p>
               </div>
-            ))}
+            </div>
+            <div className="bg-secondary rounded-[3rem] p-12 md:p-16 text-white space-y-8 relative overflow-hidden group shadow-2xl">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -mr-20 -mt-20" />
+              <div className="relative z-10 space-y-6">
+                <div className="inline-flex p-3 rounded-2xl bg-white/5 border border-white/10 text-primary">
+                  <Heart className="w-6 h-6 fill-primary" />
+                </div>
+                <h3 className="text-4xl font-black italic tracking-tight">Our Passion.</h3>
+                <p className="text-white/60 text-base leading-relaxed font-medium">
+                  We believe that elite software shouldn't be a luxury. It should be the foundation for every ambitious startup in India. We are driven by the intersection of high-fidelity design and technical dominance, helping our clients outpace their competition through superior engineering.
+                </p>
+                <div className="pt-4 flex items-center gap-2">
+                   <div className="w-1 h-1 rounded-full bg-primary" />
+                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Dedicated to Indian Startups</span>
+                </div>
+              </div>
+            </div>
           </section>
 
           {/* Values Section */}
@@ -239,7 +239,7 @@ export default function AboutPage() {
             </div>
             <div className="relative z-10">
               <Button asChild className="bg-primary hover:bg-primary/90 text-white rounded-full px-12 h-16 md:h-20 font-black text-lg md:text-xl shadow-2xl shadow-primary/30 transition-all hover:scale-105">
-                <Link href="/contact">Start Your Project <ArrowRight className="ml-2 w-6 h-6" /></Link>
+                <Link href="/contact">Start Your Project <ArrowRight className="ml-2 w-4 h-4" /></Link>
               </Button>
             </div>
           </section>
