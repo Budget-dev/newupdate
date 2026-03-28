@@ -1,6 +1,3 @@
-
-"use client";
-
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
@@ -17,6 +14,13 @@ import {
   Heart,
   Rocket
 } from "lucide-react";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'About The BudgetDev | Software Solutions Team in Vizianagaram',
+  description: 'Meet Venkatesh and Shankar, the expert engineers at BudgetDev. We provide high-performance software and mobile app solutions for startups across India.',
+  keywords: 'software developers vizianagaram, mobile app experts india, venkatesh choppa developer, shankar bojank developer, software engineering team india',
+};
 
 const team = [
   {

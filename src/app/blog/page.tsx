@@ -5,6 +5,13 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import Image from "next/image";
 import Link from "next/link";
 import { Calendar, User, ArrowRight } from "lucide-react";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Software Solutions Blog | Insights from The BudgetDev',
+  description: 'Read the latest insights on software engineering, mobile app development, and digital growth strategies for Indian startups.',
+  keywords: 'software development blog india, tech insights for startups, mobile app development tips, nextjs software engineering, budgetdev journal',
+};
 
 const blogPosts = [
   {

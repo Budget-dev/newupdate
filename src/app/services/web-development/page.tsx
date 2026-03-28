@@ -6,6 +6,13 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import Link from "next/link";
 import { Check, ArrowRight, Zap, ShieldCheck, Layers, Rocket } from "lucide-react";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Custom Web & Software Development | Next.js Experts India',
+  description: 'Scalable, secure, and lightning-fast software development services. We build high-performance web applications using Next.js and React for Indian businesses.',
+  keywords: 'custom web development india, software development andhra pradesh, nextjs developers vizianagaram, react web applications, scalable software india',
+};
 
 const techStack = [
   { name: "Next.js 15", desc: "React framework for production" },

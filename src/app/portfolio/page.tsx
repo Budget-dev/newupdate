@@ -1,5 +1,3 @@
-"use client";
-
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Badge } from "@/components/ui/badge";
@@ -8,6 +6,13 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, CheckCircle2, Globe, Rocket, ShieldCheck, Zap, TrendingUp, Users, Shield } from "lucide-react";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Software Portfolio | High-Performance App Case Studies',
+  description: 'Explore our software solutions portfolio. From cybersecurity portals to e-commerce apps, see how we build digital success for businesses in India.',
+  keywords: 'software portfolio india, trinix cybersecurity, vidhyaly LMS, custom software case studies, ios android app portfolio',
+};
 
 const projects = [
   {

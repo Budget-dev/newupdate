@@ -39,7 +39,8 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Budget Software Solutions | Custom App & Web Development India',
-  description: 'Looking for software solutions? The BudgetDev is the leading affordable app and web development house in Andhra Pradesh. High-performance iOS, Android, and Web apps.',
+  description: 'Looking for expert software solutions? The BudgetDev is the leading affordable app and web development house in Andhra Pradesh. High-performance iOS, Android, and Web apps.',
+  keywords: 'software solutions vizianagaram, budget software solutions india, app development andhra pradesh, affordable software company india, ios android developer vizianagaram',
 };
 
 const TechLogos = [
