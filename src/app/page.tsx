@@ -55,6 +55,14 @@ const TechLogos = [
 
 const completedProjects = [
   {
+    title: "Trinix Cybersecurity",
+    tag: "Security Enterprise",
+    description: "High-performance cybersecurity portal with advanced threat intelligence.",
+    link: "https://studio-trinix.vercel.app",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'project-trinix')?.imageUrl || "",
+    imageHint: "cybersecurity dashboard"
+  },
+  {
     title: "Vidhyaly.com",
     tag: "Educational LMS",
     description: "Modern learning management system for Indian institutes.",
@@ -133,21 +141,6 @@ const completedProjects = [
     link: "https://pastelsboutique.com",
     imageUrl: PlaceHolderImages.find(img => img.id === 'project-pastels')?.imageUrl || "",
     imageHint: "fashion boutique"
-  }
-];
-
-const reviews = [
-  {
-    name: "Suresh Kumar",
-    location: "Vizianagaram",
-    text: "BudgetDev is an amazing software partner. The custom app they built is fast and ranks so well!",
-    avatar: "https://picsum.photos/seed/rev1/100/100"
-  },
-  {
-    name: "Priya Sharma",
-    location: "Visakhapatnam",
-    text: "The best affordable software solutions for our business. Truly high quality mobile app dev.",
-    avatar: "https://picsum.photos/seed/rev2/100/100"
   }
 ];
 

@@ -1,4 +1,3 @@
-
 "use client";
 
 import Navbar from "@/components/layout/Navbar";
@@ -8,9 +7,29 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, CheckCircle2, Globe, Rocket, ShieldCheck, Zap, TrendingUp, Users } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Globe, Rocket, ShieldCheck, Zap, TrendingUp, Users, Shield } from "lucide-react";
 
 const projects = [
+  {
+    title: "Trinix Cybersecurity",
+    client: "Enterprise Security Firm",
+    category: "Cybersecurity Portal",
+    description: "An advanced cybersecurity management portal designed for real-time threat detection and vulnerability mitigation. Engineered with a Zero-Trust architecture to provide elite protection for global enterprise data nodes.",
+    results: [
+      { label: "Protection Rate", value: "99.9%", icon: <ShieldCheck className="w-4 h-4" /> },
+      { label: "Response Time", value: "<10ms", icon: <Zap className="w-4 h-4" /> },
+      { label: "Secure Nodes", value: "500+", icon: <Shield className="w-4 h-4" /> }
+    ],
+    features: [
+      "Real-time Threat Detection",
+      "Zero-Trust Architecture",
+      "Automated Vulnerability Scans",
+      "High-Performance Dashboard"
+    ],
+    image: PlaceHolderImages.find(img => img.id === 'project-trinix'),
+    tags: ["Cybersecurity", "Next.js", "Enterprise", "Security"],
+    link: "https://studio-trinix.vercel.app"
+  },
   {
     title: "Vidhyaly.com",
     client: "National EdTech Provider",

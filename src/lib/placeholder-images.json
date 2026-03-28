@@ -83,6 +83,12 @@
       "description": "Pastels Boutique Live Preview",
       "imageUrl": "https://s0.wp.com/mshots/v1/https://pastelsboutique.com?w=1024&h=768",
       "imageHint": "fashion boutique"
+    },
+    {
+      "id": "project-trinix",
+      "description": "Trinix Cybersecurity Live Preview",
+      "imageUrl": "https://s0.wp.com/mshots/v1/https://studio-trinix.vercel.app?w=1024&h=768",
+      "imageHint": "cybersecurity website"
     }
   ]
 }
