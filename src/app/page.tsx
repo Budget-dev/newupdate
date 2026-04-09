@@ -202,8 +202,13 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {completedProjects.map((ref, idx) => (
-                <div key={idx} className="group flex flex-col space-y-2">
-                  <div className="relative aspect-[4/3] rounded-[1.25rem] overflow-hidden shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1 border border-muted/50 bg-muted/10">
+                <Link 
+                  key={idx} 
+                  href={ref.link} 
+                  target="_blank" 
+                  className="group flex flex-col space-y-2 transition-transform active:scale-[0.98]"
+                >
+                  <div className="relative aspect-[4/3] rounded-[1.25rem] overflow-hidden shadow-sm transition-all duration-500 group-hover:shadow-xl group-hover:-translate-y-1 border border-muted/50 bg-muted/10">
                     <Image 
                       src={ref.imageUrl} 
                       alt={ref.title} 
@@ -220,10 +225,10 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="px-1 space-y-0.5">
-                    <h3 className="text-base font-black text-secondary">{ref.title}</h3>
+                    <h3 className="text-base font-black text-secondary group-hover:text-primary transition-colors">{ref.title}</h3>
                     <p className="text-muted-foreground text-[10px]">{ref.description}</p>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
