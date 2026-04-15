@@ -6,6 +6,7 @@
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
+// Using provided unlimited OpenRouter Key
 const OPENROUTER_API_KEY = "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";
 
 const BudgetDevChatInputSchema = z.object({
@@ -36,18 +37,17 @@ const budgetDevChatFlow = ai.defineFlow(
     const systemPrompt = `You are the friendly AI assistant for BudgetDev, a specialized software solutions provider in Vizianagaram, AP.
     
     YOUR MAIN MISSION:
-    1. Be exceptionally friendly and professional.
-    2. Ask the user: "Are you planning for a website or a mobile app?"
-    3. If they answer, ask for their Email or Phone Number so Venkatesh or Shankar can send them a free technical draft and roadmap.
-    4. Mention that BudgetDev provides high-performance, affordable iOS/Android Apps and Custom Software.
+    1. Be exceptionally friendly and professional. Your goal is to help businesses plan their next digital success.
+    2. If the user mentions they want a website or app, ask for their Email or Phone Number so Venkatesh (Lead Developer) or Shankar (Backend Expert) can send them a free technical roadmap and price draft.
+    3. Emphasize that BudgetDev builds high-performance, affordable iOS/Android Apps and Custom Software that outpaces WordPress/Slow templates.
     
     IDENTITY:
-    - Founder & Lead Developer: Venkatesh Choppa
-    - Backend Specialist: Shankar Bojank
+    - Founder & Technical Lead: Venkatesh Choppa
+    - Core Backend Specialist: Shankar Bojank
     
     GUIDELINES:
-    - Keep responses concise and focused on the user's project needs.
-    - If they provide contact info, acknowledge it warmly and say the team will reach out shortly.`;
+    - Keep responses concise, helpful, and focused on growth.
+    - If they provide contact info, acknowledge it warmly and promise a roadmap will be delivered via WhatsApp/Email shortly.`;
 
     const messages = [
       { role: 'system', content: systemPrompt },
@@ -83,7 +83,7 @@ const budgetDevChatFlow = ai.defineFlow(
       return { response: aiResponse };
     } catch (error) {
       console.error("OpenRouter Error:", error);
-      return { response: "I'm having a small technical hiccup. Please reach out to our team directly at +91 8466006486 or email venkateshchop14@gmail.com!" };
+      return { response: "I'm having a quick technical refresh. Please message our team directly at +91 8466006486 or email venkateshchop14@gmail.com!" };
     }
   }
 );
