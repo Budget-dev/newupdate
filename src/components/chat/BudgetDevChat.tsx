@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -10,6 +9,9 @@ import { MessageSquare, X, Send, Loader2, Sparkles, Phone } from "lucide-react";
 import { budgetDevChat } from "@/ai/flows/budget-dev-chat-flow";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
+import { signInAnonymously } from "firebase/auth";
+import { useFirebase, useUser } from "@/firebase";
 
 type Message = {
   role: "user" | "model";
@@ -17,10 +19,12 @@ type Message = {
 };
 
 export default function BudgetDevChat() {
+  const { firestore, auth } = useFirebase();
+  const { user } = useUser();
   const [isOpen, setIsOpen] = useState(false);
   const [showCallout, setShowCallout] = useState(true);
   const [messages, setMessages] = useState<Message[]>([
-    { role: "model", content: "Hi! I'm the BudgetDev AI. How can I help you build your next digital success today?" }
+    { role: "model", content: "Hi! I'm the BudgetDev AI. Are you planning for a website or a mobile app for your business?" }
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -31,6 +35,26 @@ export default function BudgetDevChat() {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [messages]);
+
+  // Ensure user is signed in anonymously to allow Firestore writes
+  useEffect(() => {
+    if (auth && !user) {
+      signInAnonymously(auth).catch(err => console.error("Anonymous Auth Error:", err));
+    }
+  }, [auth, user]);
+
+  const extractContactInfo = (text: string) => {
+    const emailRegex = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi;
+    const phoneRegex = /(\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9})/g;
+    
+    const emailMatch = text.match(emailRegex);
+    const phoneMatch = text.match(phoneRegex);
+    
+    return {
+      email: emailMatch ? emailMatch[0] : null,
+      phone: phoneMatch ? phoneMatch[0] : null
+    };
+  };
 
   const handleSend = async () => {
     if (!input.trim() || loading) return;
@@ -44,6 +68,25 @@ export default function BudgetDevChat() {
       const history = messages.map(m => ({ role: m.role, content: m.content }));
       const result = await budgetDevChat({ message: userMessage, history });
       setMessages((prev) => [...prev, { role: "model", content: result.response }]);
+
+      // Check if user provided contact info in their message
+      const contactInfo = extractContactInfo(userMessage);
+      if ((contactInfo.email || contactInfo.phone) && firestore && user) {
+        const inquiryId = `chat_lead_${Date.now()}`;
+        const docRef = doc(firestore, "inquiries", inquiryId);
+        
+        setDoc(docRef, {
+          id: inquiryId,
+          fullName: "Chat Lead",
+          email: contactInfo.email || "not provided",
+          phoneNumber: contactInfo.phone || "not provided",
+          message: `Intent: ${messages[0].content} | Last Message: ${userMessage}`,
+          submittedAt: new Date().toISOString(),
+          isHandled: false,
+          source: "ai_chat"
+        }).catch(e => console.error("Error saving lead:", e));
+      }
+
     } catch (error) {
       setMessages((prev) => [...prev, { role: "model", content: "Sorry, I encountered an error. Please contact Venkatesh directly at +91 8466006486." }]);
     } finally {
@@ -70,13 +113,13 @@ export default function BudgetDevChat() {
             </button>
             <div className="space-y-4">
               <p className="text-[14px] font-bold leading-tight pr-4">
-                Hey! 👋 Do you have any questions about our websites?
+                Hey! 👋 Are you planning for a website or mobile app?
               </p>
               <button 
                 onClick={handleStartChat}
                 className="text-primary text-[11px] font-black uppercase tracking-[0.1em] hover:brightness-110 transition-all flex items-center gap-1.5"
               >
-                START CHAT
+                START PLANNING
               </button>
             </div>
             {/* Triangle Tip */}
@@ -88,7 +131,6 @@ export default function BudgetDevChat() {
       {/* Vertical Button Stack */}
       {!isOpen && (
         <div className="flex flex-col gap-3 items-center">
-          {/* Chat Toggle Button */}
           <Button
             onClick={() => setIsOpen(true)}
             className="w-14 h-14 rounded-full bg-[#1A1A1A] text-white shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 border border-white/10"
@@ -96,7 +138,6 @@ export default function BudgetDevChat() {
             <MessageSquare className="w-6 h-6" />
           </Button>
 
-          {/* WhatsApp Button */}
           <Link 
             href="https://wa.me/918466006486" 
             target="_blank"
@@ -107,7 +148,6 @@ export default function BudgetDevChat() {
             </svg>
           </Link>
 
-          {/* Phone Button */}
           <Link 
             href="tel:+918466006486" 
             className="w-14 h-14 rounded-full bg-[#1A1A1A] flex items-center justify-center shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 border border-white/10"
@@ -127,8 +167,8 @@ export default function BudgetDevChat() {
                 <Sparkles className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="font-black text-white text-sm leading-none italic">BudgetDev AI</h3>
-                <p className="text-[10px] text-white/40 mt-1 font-bold uppercase tracking-widest">Assistant online</p>
+                <h3 className="font-black text-white text-sm leading-none italic">BudgetDev Assistant</h3>
+                <p className="text-[10px] text-white/40 mt-1 font-bold uppercase tracking-widest">Available now</p>
               </div>
             </div>
             <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)} className="text-white/40 hover:text-white">
@@ -168,7 +208,7 @@ export default function BudgetDevChat() {
           <div className="p-5 border-t bg-white">
             <div className="flex gap-2">
               <Input 
-                placeholder="Ask about services or pricing..." 
+                placeholder="Type your message..." 
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleSend()}
