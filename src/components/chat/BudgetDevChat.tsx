@@ -5,11 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { MessageSquare, X, Send, Loader2, Sparkles, Phone } from "lucide-react";
+import { MessageSquare, X, Send, Loader2, Sparkles, Phone, Smartphone, Globe } from "lucide-react";
 import { budgetDevChat } from "@/ai/flows/budget-dev-chat-flow";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { doc, setDoc, serverTimestamp } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { signInAnonymously } from "firebase/auth";
 import { useFirebase, useUser } from "@/firebase";
 
@@ -22,7 +22,7 @@ export default function BudgetDevChat() {
   const { firestore, auth } = useFirebase();
   const { user } = useUser();
   const [isOpen, setIsOpen] = useState(false);
-  const [showCallout, setShowCallout] = useState(true);
+  const [showCallout, setShowCallout] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     { role: "model", content: "Hi! I'm the BudgetDev AI. Are you planning for a website or a mobile app for your business?" }
   ]);
@@ -30,11 +30,23 @@ export default function BudgetDevChat() {
   const [loading, setLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  // Auto-scroll to bottom
   useEffect(() => {
     if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      const scrollContainer = scrollRef.current.querySelector('[data-radix-scroll-area-viewport]');
+      if (scrollContainer) {
+        scrollContainer.scrollTop = scrollContainer.scrollHeight;
+      }
     }
-  }, [messages]);
+  }, [messages, loading]);
+
+  // Show friendly card after a short delay
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowCallout(true);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Ensure user is signed in anonymously to allow Firestore writes
   useEffect(() => {
@@ -75,19 +87,21 @@ export default function BudgetDevChat() {
         const inquiryId = `chat_lead_${Date.now()}`;
         const docRef = doc(firestore, "inquiries", inquiryId);
         
+        // Save to Firestore Inquiries (Admin Panel)
         setDoc(docRef, {
           id: inquiryId,
           fullName: "Chat Lead",
           email: contactInfo.email || "not provided",
           phoneNumber: contactInfo.phone || "not provided",
-          message: `Intent: ${messages[0].content} | Last Message: ${userMessage}`,
+          message: `Last Message: ${userMessage} | Bot Context: ${result.response}`,
           submittedAt: new Date().toISOString(),
           isHandled: false,
-          source: "ai_chat"
+          inquiryType: userMessage.toLowerCase().includes('app') ? 'Mobile App' : 'Website'
         }).catch(e => console.error("Error saving lead:", e));
       }
 
     } catch (error) {
+      console.error("Chat Error:", error);
       setMessages((prev) => [...prev, { role: "model", content: "Sorry, I encountered an error. Please contact Venkatesh directly at +91 8466006486." }]);
     } finally {
       setLoading(false);
@@ -101,26 +115,53 @@ export default function BudgetDevChat() {
 
   return (
     <div className="fixed bottom-6 right-6 z-[60] flex flex-col items-end gap-4">
-      {/* Callout Bubble */}
+      {/* Friendly Lead-Capture Card */}
       {showCallout && !isOpen && (
-        <div className="relative mb-2 animate-in fade-in slide-in-from-bottom-2 duration-500">
-          <Card className="bg-[#1A1A1A] text-white p-5 rounded-[1.5rem] border-none shadow-2xl w-[260px] md:w-[280px] relative">
+        <div className="relative mb-2 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <Card className="bg-[#1A1A1A] text-white p-6 rounded-[2rem] border-none shadow-2xl w-[280px] md:w-[320px] relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-primary/20 transition-all" />
+            
             <button 
               onClick={() => setShowCallout(false)}
-              className="absolute top-4 right-4 text-white/40 hover:text-white transition-colors"
+              className="absolute top-4 right-4 text-white/40 hover:text-white transition-colors z-10"
             >
-              <X className="w-3.5 h-3.5" />
+              <X className="w-4 h-4" />
             </button>
-            <div className="space-y-4">
-              <p className="text-[14px] font-bold leading-tight pr-4">
-                Hey! 👋 Are you planning for a website or mobile app?
-              </p>
-              <button 
-                onClick={handleStartChat}
-                className="text-primary text-[11px] font-black uppercase tracking-[0.1em] hover:brightness-110 transition-all flex items-center gap-1.5"
-              >
-                START PLANNING
-              </button>
+
+            <div className="space-y-5 relative z-10">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-2xl bg-primary/20 flex items-center justify-center text-primary">
+                  <Sparkles className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-[10px] font-black text-primary uppercase tracking-widest">Project Planner</p>
+                  <p className="text-xs font-bold text-white/60">Venkatesh & Shankar</p>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <h4 className="text-lg font-black leading-tight italic">
+                  Let's build your <br /> next big thing.
+                </h4>
+                <p className="text-xs text-white/50 font-medium">
+                  Are you planning for a website or a mobile app?
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <button 
+                  onClick={handleStartChat}
+                  className="w-full h-11 bg-primary hover:bg-primary/90 text-white rounded-xl text-[11px] font-black uppercase tracking-widest transition-all flex items-center justify-center gap-2"
+                >
+                  <Globe className="w-3.5 h-3.5" /> Start Website
+                </button>
+                <button 
+                  onClick={handleStartChat}
+                  className="w-full h-11 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all flex items-center justify-center gap-2"
+                >
+                  <Smartphone className="w-3.5 h-3.5" /> Build Mobile App
+                </button>
+              </div>
             </div>
             {/* Triangle Tip */}
             <div className="absolute -bottom-1.5 right-6 w-3 h-3 bg-[#1A1A1A] rotate-45" />
@@ -128,14 +169,14 @@ export default function BudgetDevChat() {
         </div>
       )}
 
-      {/* Vertical Button Stack */}
+      {/* Main Buttons */}
       {!isOpen && (
         <div className="flex flex-col gap-3 items-center">
           <Button
             onClick={() => setIsOpen(true)}
-            className="w-14 h-14 rounded-full bg-[#1A1A1A] text-white shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 border border-white/10"
+            className="w-14 h-14 rounded-full bg-[#1A1A1A] text-white shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 border border-white/10 group"
           >
-            <MessageSquare className="w-6 h-6" />
+            <MessageSquare className="w-6 h-6 group-hover:text-primary transition-colors" />
           </Button>
 
           <Link 
@@ -185,7 +226,7 @@ export default function BudgetDevChat() {
                   msg.role === "user" ? "ml-auto items-end" : "items-start"
                 )}>
                   <div className={cn(
-                    "p-4 rounded-2xl text-xs font-medium leading-relaxed shadow-sm",
+                    "p-4 rounded-2xl text-[13px] font-medium leading-relaxed shadow-sm",
                     msg.role === "user" 
                       ? "bg-primary text-white rounded-tr-none" 
                       : "bg-white text-secondary rounded-tl-none border border-muted"
@@ -212,7 +253,7 @@ export default function BudgetDevChat() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleSend()}
-                className="rounded-xl border-muted focus-visible:ring-primary text-xs h-11"
+                className="rounded-xl border-muted focus-visible:ring-primary text-sm h-11"
               />
               <Button size="icon" onClick={handleSend} disabled={loading} className="rounded-xl bg-secondary text-white shrink-0 h-11 w-11">
                 <Send className="w-4 h-4" />

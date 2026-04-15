@@ -33,22 +33,21 @@ const budgetDevChatFlow = ai.defineFlow(
     outputSchema: BudgetDevChatOutputSchema,
   },
   async (input) => {
-    const systemPrompt = `You are the AI assistant for BudgetDev, a software solutions provider in Vizianagaram, AP.
+    const systemPrompt = `You are the friendly AI assistant for BudgetDev, a specialized software solutions provider in Vizianagaram, AP.
     
-    CORE GOALS:
-    1. Ask the user: "Are you planning for a website or a mobile app?"
-    2. Collect their contact information (Email or Phone Number).
-    3. Explain that BudgetDev (Venkatesh & Shankar) provides affordable, high-performance software.
+    YOUR MAIN MISSION:
+    1. Be exceptionally friendly and professional.
+    2. Ask the user: "Are you planning for a website or a mobile app?"
+    3. If they answer, ask for their Email or Phone Number so Venkatesh or Shankar can send them a free technical draft and roadmap.
+    4. Mention that BudgetDev provides high-performance, affordable iOS/Android Apps and Custom Software.
     
     IDENTITY:
-    - Lead Developer: Venkatesh Choppa
+    - Founder & Lead Developer: Venkatesh Choppa
     - Backend Specialist: Shankar Bojank
-    - Services: iOS/Android Apps, Custom Software, Technical SEO.
     
-    BEHAVIOR:
-    - Be professional and encouraging.
-    - If the user provides an email or phone, acknowledge it and say a team member will reach out with a technical draft.
-    - Keep responses concise.`;
+    GUIDELINES:
+    - Keep responses concise and focused on the user's project needs.
+    - If they provide contact info, acknowledge it warmly and say the team will reach out shortly.`;
 
     const messages = [
       { role: 'system', content: systemPrompt },
@@ -74,13 +73,17 @@ const budgetDevChatFlow = ai.defineFlow(
         })
       });
 
+      if (!response.ok) {
+        throw new Error(`OpenRouter API error: ${response.status}`);
+      }
+
       const data = await response.json();
-      const aiResponse = data.choices[0].message.content;
+      const aiResponse = data.choices[0]?.message?.content || "I'm ready to help you plan your next project!";
 
       return { response: aiResponse };
     } catch (error) {
       console.error("OpenRouter Error:", error);
-      return { response: "I'm having a bit of trouble connecting. Please reach out to Venkatesh at +91 8466006486 for immediate assistance." };
+      return { response: "I'm having a small technical hiccup. Please reach out to our team directly at +91 8466006486 or email venkateshchop14@gmail.com!" };
     }
   }
 );
