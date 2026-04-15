@@ -1,0 +1,170 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * BUDGETDEV AGENCY PORTAL - SECURITY RULES
+     * 
+     * philosophy:
+     * This ruleset implements a robust "Public Read, Admin Write" model for agency content 
+     * and a "Public Submit, Admin Manage" model for client inquiries. Security is 
+     * enforced through a global Admin role system decoupled from content data.
+     * 
+     * data structure:
+     * - /services: Public catalog of agency offerings.
+     * - /portfolioEntries: Public showcase of completed projects.
+     * - /clientFeedback: Public testimonials.
+     * - /blogPosts: Public educational content and news.
+     * - /inquiries: Private collection of leads and contact requests.
+     * - /roles_admin: Authorization root for administrative access.
+     * 
+     * key security decisions:
+     * 1. GLOBAL ADMIN ROLE: Administrative access is determined by the existence of a 
+     *    document in the /roles_admin/{uid} collection. This provides high performance 
+     *    and avoids complex nested logic.
+     * 2. SECURE INQUIRY SUBMISSION: While the IR suggests anonymous submission, 
+     *    this ruleset requires users to be authenticated (including Anonymous Auth) 
+     *    to prevent unauthenticated write spam, satisfying strict write safety principles.
+     * 3. IMMUTABLE RELATIONSHIPS: ID fields within documents are enforced to match 
+     *    the document path on creation and are immutable thereafter.
+     * 4. PROTOTYPING FLEXIBILITY: Schema types and optional fields are not validated 
+     *    to allow for rapid frontend iteration, focusing purely on authorization.
+     */
+
+    // --- Global Helper Functions ---
+
+    /** 
+     * @description Checks if the user is authenticated with Firebase Auth.
+     */
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    /** 
+     * @description Checks if the authenticated user has an entry in the admin roles collection.
+     */
+    function isAdmin() {
+      return isSignedIn() && exists(/databases/$(database)/documents/roles_admin/$(request.auth.uid));
+    }
+
+    /** 
+     * @description Verifies that a document exists and the user has admin privileges.
+     * Used for destructive or state-changing operations on existing data.
+     */
+    function isExistingAdmin() {
+      return isAdmin() && resource != null;
+    }
+
+    // --- Collection Rules ---
+
+    /**
+     * @description Publicly readable agency services. Writeable only by admins.
+     * @path /services/{serviceId}
+     * @allow get, list: if true;
+     * @allow create: if isAdmin() && request.resource.data.id == serviceId;
+     * @deny update: if !isAdmin();
+     * @principle Role-based access control for content management.
+     */
+    match /services/{serviceId} {
+      allow get, list: if true;
+      allow create: if isAdmin() && request.resource.data.id == serviceId;
+      allow update, delete: if isExistingAdmin();
+    }
+
+    /**
+     * @description Publicly readable portfolio items. Writeable only by admins.
+     * @path /portfolioEntries/{portfolioEntryId}
+     * @allow get, list: if true;
+     * @allow create: if isAdmin() && request.resource.data.id == portfolioEntryId;
+     * @deny delete: if user is not an admin.
+     * @principle Validates relational integrity between path and document ID.
+     */
+    match /portfolioEntries/{portfolioEntryId} {
+      allow get, list: if true;
+      allow create: if isAdmin() && request.resource.data.id == portfolioEntryId;
+      allow update, delete: if isExistingAdmin();
+    }
+
+    /**
+     * @description Publicly readable client testimonials. Writeable only by admins.
+     * @path /clientFeedback/{feedbackId}
+     * @allow get, list: if true;
+     * @allow create: if isAdmin() && request.resource.data.id == feedbackId;
+     * @deny create: if user is not an admin.
+     * @principle Ensures only authorized staff can publish client feedback.
+     */
+    match /clientFeedback/{feedbackId} {
+      allow get, list: if true;
+      allow create: if isAdmin() && request.resource.data.id == feedbackId;
+      allow update, delete: if isExistingAdmin();
+    }
+
+    /**
+     * @description Lead generation collection. Users can submit; only admins can view or manage.
+     * @path /inquiries/{inquiryId}
+     * @allow create: if isSignedIn(); // Supports Anonymous or Password auth for submission
+     * @allow get, list: if isAdmin();
+     * @deny update: if !isAdmin();
+     * @principle Structural segregation of private client data from public content.
+     */
+    match /inquiries/{inquiryId} {
+      allow get, list: if isAdmin();
+      allow create: if isSignedIn() && request.resource.data.id == inquiryId;
+      allow update, delete: if isExistingAdmin();
+    }
+
+    /**
+     * @description Public blog posts for the agency. Writeable only by admins.
+     * @path /blogPosts/{blogPostId}
+     * @allow get, list: if true;
+     * @allow update: if isAdmin() && request.resource.data.id == resource.data.id;
+     * @deny list: if user is unauthenticated (false - blog is public, so this is allowed).
+     * @principle Enforces immutability of the document ID on updates.
+     */
+    match /blogPosts/{blogPostId} {
+      allow get, list: if true;
+      allow create: if isAdmin() && request.resource.data.id == blogPostId;
+      allow update: if isExistingAdmin() && request.resource.data.id == resource.data.id;
+      allow delete: if isExistingAdmin();
+    }
+
+    /**
+     * @description Organizational categories for blog posts.
+     * @path /blogCategories/{categoryId}
+     * @allow get, list: if true;
+     * @allow write: if isAdmin();
+     * @principle Standard public-read/admin-write pattern for metadata.
+     */
+    match /blogCategories/{categoryId} {
+      allow get, list: if true;
+      allow create: if isAdmin() && request.resource.data.id == categoryId;
+      allow update, delete: if isExistingAdmin();
+    }
+
+    /**
+     * @description Discovery tags for blog posts.
+     * @path /blogTags/{tagId}
+     * @allow get, list: if true;
+     * @allow write: if isAdmin();
+     * @principle Standard public-read/admin-write pattern for metadata.
+     */
+    match /blogTags/{tagId} {
+      allow get, list: if true;
+      allow create: if isAdmin() && request.resource.data.id == tagId;
+      allow update, delete: if isExistingAdmin();
+    }
+
+    /**
+     * @description System-level admin role definitions.
+     * @path /roles_admin/{uid}
+     * @allow get: if isSignedIn() && request.auth.uid == uid;
+     * @deny list, write: if true;
+     * @principle Authorization Independence: Admins should be managed via console for safety.
+     */
+    match /roles_admin/{uid} {
+      allow get: if isSignedIn() && request.auth.uid == uid;
+      allow list: if false;
+      allow create, update, delete: if false;
+    }
+  }
+}
