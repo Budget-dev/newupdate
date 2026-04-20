@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
@@ -10,7 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, Send, History, CheckCircle2, ArrowLeft } from "lucide-react";
+import { Loader2, Send, History, CheckCircle2, ArrowLeft, MessageSquare } from "lucide-react";
 import AdminNavbar from "@/components/portal/AdminNavbar";
 import Link from "next/link";
 
@@ -65,9 +66,14 @@ export default function ProjectUpdatePage() {
     <div className="min-h-screen bg-[#F8FAF9] pb-20">
       <AdminNavbar />
       <main className="max-w-7xl mx-auto px-6 pt-32 space-y-8">
-        <Button asChild variant="ghost" className="rounded-xl text-muted-foreground font-bold hover:text-secondary -ml-4">
-          <Link href="/portal/admin/projects"><ArrowLeft className="w-4 h-4 mr-2" /> Back to Pipeline</Link>
-        </Button>
+        <div className="flex items-center justify-between">
+          <Button asChild variant="ghost" className="rounded-xl text-muted-foreground font-bold hover:text-secondary -ml-4">
+            <Link href="/portal/admin/projects"><ArrowLeft className="w-4 h-4 mr-2" /> Back to Pipeline</Link>
+          </Button>
+          <Button asChild className="rounded-xl bg-primary text-white font-bold h-11 px-6 shadow-lg shadow-primary/20">
+            <Link href={`/portal/admin/projects/${id}/chat`}><MessageSquare className="w-4 h-4 mr-2" /> Open Project Chat</Link>
+          </Button>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-8">
