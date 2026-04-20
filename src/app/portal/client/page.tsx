@@ -6,6 +6,7 @@ import { collection, query, where, orderBy, limit, doc, getDoc } from "firebase/
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 import { 
   Rocket, 
   MessageSquare, 
@@ -24,13 +25,19 @@ export default function ClientDashboard() {
   const { firestore } = useFirebase();
   const { user, isUserLoading } = useUser();
   const [roleConfirmed, setRoleConfirmed] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     if (user && !isUserLoading) {
       const confirmRole = async () => {
-        const docRef = doc(firestore, "users", user.uid);
-        const snap = await getDoc(docRef);
-        if (snap.exists()) setRoleConfirmed(true);
+        try {
+          const docRef = doc(firestore, "users", user.uid);
+          const snap = await getDoc(docRef);
+          if (snap.exists()) setRoleConfirmed(true);
+        } catch (err) {
+          console.error("Role confirmation error:", err);
+        }
       };
       confirmRole();
     }
@@ -39,7 +46,7 @@ export default function ClientDashboard() {
   // Find user's projects properly memoized and guarded by role confirmation
   const projectsQuery = useMemoFirebase(() => {
     if (!user || !roleConfirmed) return null;
-    return query(collection(firestore, "projects"), where("clientId", "==", user.uid));
+    return query(collection(firestore, "projects"), where("clientId", "==", user.uid), limit(5));
   }, [firestore, user, roleConfirmed]);
 
   const { data: projects, isLoading: projectsLoading } = useCollection(projectsQuery);
@@ -47,14 +54,19 @@ export default function ClientDashboard() {
 
   // Latest updates for active project
   const updatesQuery = useMemoFirebase(() => {
-    if (!activeProject) return null;
+    if (!activeProject?.id) return null;
     return query(collection(firestore, "projects", activeProject.id, "updates"), orderBy("date", "desc"), limit(3));
   }, [firestore, activeProject]);
 
-  // Payments for active project - specifically filtered by clientId
+  // Payments for active project - specifically filtered by clientId and limited as per security rules
   const paymentsQuery = useMemoFirebase(() => {
-    if (!user || !roleConfirmed) return null;
-    return query(collection(firestore, "payments"), where("clientId", "==", user.uid), orderBy("date", "desc"));
+    if (!user?.uid || !roleConfirmed) return null;
+    return query(
+      collection(firestore, "payments"), 
+      where("clientId", "==", user.uid), 
+      orderBy("date", "desc"),
+      limit(50)
+    );
   }, [firestore, user, roleConfirmed]);
 
   const { data: updates } = useCollection(updatesQuery);
@@ -64,7 +76,7 @@ export default function ClientDashboard() {
   const projectValue = Number(activeProject?.totalBudget || 0);
   const balanceDue = Math.max(0, projectValue - totalPaid);
 
-  if (isUserLoading || projectsLoading) {
+  if (!mounted || isUserLoading || projectsLoading) {
     return (
       <div className="min-h-screen bg-[#FDFDFD] flex items-center justify-center">
         <Loader2 className="w-8 h-8 animate-spin text-primary" />
@@ -78,7 +90,7 @@ export default function ClientDashboard() {
       <main className="max-w-7xl mx-auto px-6 pt-32 space-y-12">
         <header className="space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest border border-primary/20">
-            Welcome back, {user?.displayName || "Client"}
+            Welcome back, {user?.displayName || user?.email?.split('@')[0] || "Client"}
           </div>
           <h1 className="text-5xl md:text-7xl font-black text-secondary tracking-tighter leading-none">
             Project <span className="text-primary italic">Status.</span>
@@ -219,8 +231,14 @@ export default function ClientDashboard() {
               <Card className="border-none shadow-sm rounded-[2.5rem] bg-white p-8 space-y-4 border border-muted/50">
                  <h4 className="text-xs font-black uppercase text-muted-foreground tracking-widest">Lead Engineer</h4>
                  <div className="flex items-center gap-4">
-                   <div className="w-12 h-12 rounded-xl bg-muted overflow-hidden">
-                     <img src="https://yasodha.in/assets/venkatesh-profile.png" className="w-full h-full object-cover" alt="Venkatesh" />
+                   <div className="relative w-12 h-12 rounded-xl bg-muted overflow-hidden">
+                     <Image 
+                        src="https://yasodha.in/assets/venkatesh-profile.png" 
+                        fill
+                        className="object-cover" 
+                        alt="Venkatesh" 
+                        unoptimized
+                      />
                    </div>
                    <div>
                      <p className="font-black text-secondary">Venkatesh Choppa</p>

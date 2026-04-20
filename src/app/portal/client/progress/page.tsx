@@ -9,28 +9,43 @@ import {
   ArrowLeft,
   CheckCircle2,
   Zap,
-  Activity
+  Activity,
+  Loader2
 } from "lucide-react";
 import ClientNavbar from "@/components/portal/ClientNavbar";
+import { useState, useEffect } from "react";
 
 export default function ProjectProgressPage() {
   const { firestore } = useFirebase();
-  const { user } = useUser();
+  const { user, isUserLoading } = useUser();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const projectsQuery = useMemoFirebase(() => {
     if (!user) return null;
     return query(collection(firestore, "projects"), where("clientId", "==", user.uid));
   }, [firestore, user]);
 
-  const { data: projects } = useCollection(projectsQuery);
+  const { data: projects, isLoading: projectsLoading } = useCollection(projectsQuery);
   const activeProject = projects?.[0];
 
   const updatesQuery = useMemoFirebase(() => {
-    if (!activeProject) return null;
+    if (!activeProject?.id) return null;
     return query(collection(firestore, "projects", activeProject.id, "updates"), orderBy("date", "desc"));
   }, [firestore, activeProject]);
 
-  const { data: updates } = useCollection(updatesQuery);
+  const { data: updates, isLoading: updatesLoading } = useCollection(updatesQuery);
+
+  if (!mounted || isUserLoading || projectsLoading) {
+    return (
+      <div className="min-h-screen bg-[#FDFDFD] flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#FDFDFD] pb-20">
@@ -46,13 +61,11 @@ export default function ProjectProgressPage() {
 
         {activeProject && (
           <div className="relative space-y-12">
-            {/* Timeline Line */}
             <div className="absolute left-[1.5rem] md:left-[2.5rem] top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/50 via-primary/20 to-transparent pointer-events-none" />
 
             <div className="space-y-16">
               {updates?.map((log, idx) => (
                 <div key={log.id} className="relative flex flex-col md:flex-row gap-8 pl-12 md:pl-20 animate-in fade-in slide-in-from-left-4 duration-500" style={{ animationDelay: `${idx * 100}ms` }}>
-                  {/* Point */}
                   <div className="absolute left-[1.05rem] md:left-[2.05rem] top-2 w-4 h-4 rounded-full bg-white border-4 border-primary shadow-[0_0_10px_rgba(16,185,129,0.5)] z-10" />
                   
                   <div className="md:w-32 shrink-0 space-y-1">
@@ -78,7 +91,7 @@ export default function ProjectProgressPage() {
                   </div>
                 </div>
               ))}
-              {(!updates || updates.length === 0) && (
+              {(!updates || updates.length === 0) && !updatesLoading && (
                 <div className="pl-20 py-20 text-muted-foreground font-bold italic">
                   Project initialized. Awaiting first log entry from engineers...
                 </div>
