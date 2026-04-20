@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, LayoutDashboard } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -77,7 +77,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Desktop Menu - Parts of it are rendered only on mount to avoid hydration issues with Radix */}
+        {/* Desktop Menu */}
         <div className="hidden lg:flex items-center gap-8">
           {mounted ? (
             <DropdownMenu>
@@ -121,7 +121,17 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className="hidden md:flex items-center gap-4 shrink-0">
+        <div className="hidden md:flex items-center gap-3 shrink-0">
+          <Button
+            asChild
+            variant="ghost"
+            className="rounded-xl px-4 text-secondary/70 hover:text-secondary transition-all font-bold text-xs h-9 hover:bg-muted"
+          >
+            <Link href="/portal/login" className="flex items-center gap-2">
+              <LayoutDashboard className="w-3.5 h-3.5" /> Track Status
+            </Link>
+          </Button>
+
           <Button
             asChild
             className="rounded-xl px-6 bg-secondary text-white hover:bg-secondary/90 transition-all font-bold text-xs h-9"
@@ -130,7 +140,7 @@ export default function Navbar() {
           </Button>
 
           {mounted && (
-            <button onClick={toggleLang} className="focus:outline-none">
+            <button onClick={toggleLang} className="focus:outline-none ml-2">
               <div className="relative w-7 h-5 rounded-[2px] overflow-hidden border border-muted/20 bg-white shadow-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 225 150" className="w-full h-full">
                   <rect width="225" height="150" fill="#FF9933"/>
@@ -185,9 +195,14 @@ export default function Navbar() {
               </Link>
             ))}
           </div>
-          <Button asChild className="w-full h-14 rounded-xl bg-secondary text-white font-black">
-            <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>Contact Us</Link>
-          </Button>
+          <div className="flex flex-col gap-3">
+            <Button asChild variant="outline" className="w-full h-14 rounded-xl font-black">
+              <Link href="/portal/login" onClick={() => setMobileMenuOpen(false)}>Track Status</Link>
+            </Button>
+            <Button asChild className="w-full h-14 rounded-xl bg-secondary text-white font-black">
+              <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>Contact Us</Link>
+            </Button>
+          </div>
         </div>
       )}
     </nav>
