@@ -34,7 +34,7 @@ service cloud.firestore {
 
     // --- Projects ---
     match /projects/{projectId} {
-      allow list: if isAdmin() || isSignedIn();
+      allow list: if isAdmin() || (isSignedIn() && resource.data.clientId == request.auth.uid);
       allow get: if isAdmin() || (isSignedIn() && resource.data.clientId == request.auth.uid);
       allow write: if isAdmin();
       
@@ -49,11 +49,9 @@ service cloud.firestore {
       }
     }
 
-    // --- Payments ---
+    // --- Payments (Admin Only) ---
     match /payments/{paymentId} {
-      allow list: if isAdmin() || (isSignedIn() && request.query.limit <= 100 && request.query.where.clientId == request.auth.uid);
-      allow get: if isAdmin() || (isSignedIn() && resource.data.clientId == request.auth.uid);
-      allow write: if isAdmin();
+      allow read, write: if isAdmin();
     }
 
     // --- Inquiries (Lead Capture) ---

@@ -14,7 +14,6 @@ import {
   Zap,
   CheckCircle2,
   Clock,
-  Wallet,
   ShieldCheck,
   Loader2
 } from "lucide-react";
@@ -58,23 +57,7 @@ export default function ClientDashboard() {
     return query(collection(firestore, "projects", activeProject.id, "updates"), orderBy("date", "desc"), limit(3));
   }, [firestore, activeProject]);
 
-  // Payments for active project - specifically filtered by clientId and limited as per security rules
-  const paymentsQuery = useMemoFirebase(() => {
-    if (!user?.uid || !roleConfirmed) return null;
-    return query(
-      collection(firestore, "payments"), 
-      where("clientId", "==", user.uid), 
-      orderBy("date", "desc"),
-      limit(50)
-    );
-  }, [firestore, user, roleConfirmed]);
-
   const { data: updates } = useCollection(updatesQuery);
-  const { data: payments } = useCollection(paymentsQuery);
-
-  const totalPaid = payments?.reduce((acc, p) => acc + Number(p.amount), 0) || 0;
-  const projectValue = Number(activeProject?.totalBudget || 0);
-  const balanceDue = Math.max(0, projectValue - totalPaid);
 
   if (!mounted || isUserLoading || projectsLoading) {
     return (
@@ -141,52 +124,6 @@ export default function ClientDashboard() {
                     ))}
                   </div>
                 </CardContent>
-              </Card>
-
-              <Card className="border-none shadow-xl rounded-[2.5rem] bg-white overflow-hidden">
-                 <div className="bg-emerald-500 p-8 text-white flex justify-between items-center">
-                    <div className="space-y-1">
-                       <h3 className="text-2xl font-black italic">Financial Summary.</h3>
-                       <p className="text-xs text-white/70 font-bold uppercase tracking-widest">Project Ledger</p>
-                    </div>
-                    <Wallet className="w-10 h-10 text-white/20" />
-                 </div>
-                 <CardContent className="p-10 space-y-8">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                       <div className="space-y-1">
-                          <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">Total Value</p>
-                          <p className="text-2xl font-black text-secondary">₹{projectValue.toLocaleString()}</p>
-                       </div>
-                       <div className="space-y-1">
-                          <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">Paid to Date</p>
-                          <p className="text-2xl font-black text-emerald-600">₹{totalPaid.toLocaleString()}</p>
-                       </div>
-                       <div className="space-y-1">
-                          <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">Balance Due</p>
-                          <p className="text-2xl font-black text-amber-600">₹{balanceDue.toLocaleString()}</p>
-                       </div>
-                    </div>
-
-                    <div className="space-y-4">
-                       <h4 className="text-xs font-black uppercase text-muted-foreground tracking-[0.2em]">Transaction History</h4>
-                       <div className="divide-y divide-muted/50">
-                          {payments?.map((payment) => (
-                             <div key={payment.id} className="py-4 flex justify-between items-center">
-                                <div className="space-y-1">
-                                   <p className="text-sm font-bold text-secondary">Payment Received</p>
-                                   <p className="text-[10px] font-medium text-muted-foreground">{new Date(payment.date).toLocaleDateString()}</p>
-                                </div>
-                                <div className="text-right space-y-1">
-                                   <p className="text-sm font-black text-emerald-600">+₹{payment.amount.toLocaleString()}</p>
-                                   <p className="text-[9px] font-black text-emerald-500 uppercase flex items-center justify-end gap-1">
-                                      <ShieldCheck className="w-3 h-3" /> Verified
-                                   </p>
-                                </div>
-                             </div>
-                          ))}
-                       </div>
-                    </div>
-                 </CardContent>
               </Card>
 
               <div className="space-y-6">
