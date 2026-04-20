@@ -1,532 +1,94 @@
+
 {
   "entities": {
-    "Service": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "Service",
+    "AppUser": {
+      "title": "AppUser",
+      "description": "Represents a user of the portal (Admin or Client).",
       "type": "object",
-      "description": "Represents a digital service offered by BudgetDev, such as web design, web apps, or custom software.",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the Service entity."
-        },
-        "nameEnglish": {
-          "type": "string",
-          "description": "The name of the service in English."
-        },
-        "nameGerman": {
-          "type": "string",
-          "description": "The name of the service in German."
-        },
-        "shortDescriptionEnglish": {
-          "type": "string",
-          "description": "A brief overview of the service in English."
-        },
-        "shortDescriptionGerman": {
-          "type": "string",
-          "description": "A brief overview of the service in German."
-        },
-        "longDescriptionEnglish": {
-          "type": "string",
-          "description": "A detailed description of the service in English."
-        },
-        "longDescriptionGerman": {
-          "type": "string",
-          "description": "A detailed description of the service in German."
-        },
-        "iconUrl": {
-          "type": "string",
-          "description": "URL to an icon representing the service.",
-          "format": "uri"
-        },
-        "imageUrl": {
-          "type": "string",
-          "description": "URL to a main image for the service.",
-          "format": "uri"
-        },
-        "displayOrder": {
-          "type": "number",
-          "description": "The order in which the service should be displayed on the website."
-        },
-        "portfolioEntryIds": {
-          "type": "array",
-          "description": "References to PortfolioEntry entities that showcase this service. (Relationship: Service N:N PortfolioEntry)",
-          "items": {
-            "type": "string"
-          }
-        }
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "role": { "type": "string", "enum": ["admin", "client"] },
+        "createdAt": { "type": "string", "format": "date-time" }
       },
-      "required": [
-        "id",
-        "nameEnglish",
-        "nameGerman",
-        "shortDescriptionEnglish",
-        "shortDescriptionGerman",
-        "longDescriptionEnglish",
-        "longDescriptionGerman",
-        "iconUrl",
-        "imageUrl",
-        "displayOrder"
-      ]
+      "required": ["uid", "name", "email", "role"]
     },
-    "PortfolioEntry": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "PortfolioEntry",
+    "ClientProfile": {
+      "title": "ClientProfile",
+      "description": "Additional details for a client user.",
       "type": "object",
-      "description": "Represents a project or case study showcasing BudgetDev's work.",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the PortfolioEntry entity."
-        },
-        "titleEnglish": {
-          "type": "string",
-          "description": "The title of the project in English."
-        },
-        "titleGerman": {
-          "type": "string",
-          "description": "The title of the project in German."
-        },
-        "descriptionEnglish": {
-          "type": "string",
-          "description": "A detailed description of the project, including problem and solution, in English."
-        },
-        "descriptionGerman": {
-          "type": "string",
-          "description": "A detailed description of the project, including problem and solution, in German."
-        },
-        "clientName": {
-          "type": "string",
-          "description": "The name of the client for this project."
-        },
-        "projectUrl": {
-          "type": "string",
-          "description": "URL to the live project or a detailed case study page.",
-          "format": "uri"
-        },
-        "thumbnailUrl": {
-          "type": "string",
-          "description": "URL for a thumbnail image representing the project.",
-          "format": "uri"
-        },
-        "displayOrder": {
-          "type": "number",
-          "description": "The order in which the project should be displayed on the portfolio page."
-        },
-        "serviceIds": {
-          "type": "array",
-          "description": "References to Service entities that were part of this project. (Relationship: PortfolioEntry N:N Service)",
-          "items": {
-            "type": "string"
-          }
-        },
-        "clientFeedbackId": {
-          "type": "string",
-          "description": "Reference to a ClientFeedback entity related to this project. (Relationship: PortfolioEntry 1:1 ClientFeedback)"
-        }
+        "userId": { "type": "string" },
+        "companyName": { "type": "string" },
+        "phoneNumber": { "type": "string" }
       },
-      "required": [
-        "id",
-        "titleEnglish",
-        "titleGerman",
-        "descriptionEnglish",
-        "descriptionGerman",
-        "clientName",
-        "thumbnailUrl",
-        "displayOrder",
-        "serviceIds"
-      ]
+      "required": ["userId", "companyName"]
     },
-    "ClientFeedback": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "ClientFeedback",
+    "Project": {
+      "title": "Project",
+      "description": "Represents a software project assigned to a client.",
       "type": "object",
-      "description": "Represents a testimonial or feedback provided by a client for BudgetDev's services.",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the ClientFeedback entity."
-        },
-        "clientName": {
-          "type": "string",
-          "description": "The name of the client providing the feedback."
-        },
-        "clientTitle": {
-          "type": "string",
-          "description": "The client's job title or role."
-        },
-        "companyName": {
-          "type": "string",
-          "description": "The name of the client's company."
-        },
-        "feedbackEnglish": {
-          "type": "string",
-          "description": "The actual feedback or testimonial text in English."
-        },
-        "feedbackGerman": {
-          "type": "string",
-          "description": "The actual feedback or testimonial text in German."
-        },
-        "imageUrl": {
-          "type": "string",
-          "description": "URL to the client's photo or company logo.",
-          "format": "uri"
-        }
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "clientId": { "type": "string" },
+        "progress": { "type": "number" },
+        "status": { "type": "string", "enum": ["Not Started", "In Progress", "Completed"] },
+        "createdAt": { "type": "string", "format": "date-time" }
       },
-      "required": [
-        "id",
-        "clientName",
-        "feedbackEnglish",
-        "feedbackGerman"
-      ]
+      "required": ["id", "name", "clientId", "progress", "status"]
     },
-    "Inquiry": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "Inquiry",
+    "ProjectUpdate": {
+      "title": "ProjectUpdate",
+      "description": "A daily log or status update for a project.",
       "type": "object",
-      "description": "Represents a contact request or quote inquiry submitted by a potential client through the BudgetDev Agency Portal.",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the Inquiry entity."
-        },
-        "fullName": {
-          "type": "string",
-          "description": "The full name of the person making the inquiry."
-        },
-        "email": {
-          "type": "string",
-          "description": "The email address of the inquirer.",
-          "format": "email"
-        },
-        "phoneNumber": {
-          "type": "string",
-          "description": "The phone number of the inquirer."
-        },
-        "companyName": {
-          "type": "string",
-          "description": "The optional company name of the inquirer."
-        },
-        "message": {
-          "type": "string",
-          "description": "The detailed message or question from the inquirer (e.g., 'Are you planning for a website or app?')."
-        },
-        "inquiryType": {
-          "type": "string",
-          "description": "Categorization of the inquiry (e.g., 'Website', 'Mobile App', 'Custom Software', 'General')."
-        },
-        "submittedAt": {
-          "type": "string",
-          "description": "The date and time when the inquiry was submitted.",
-          "format": "date-time"
-        },
-        "isHandled": {
-          "type": "boolean",
-          "description": "A boolean indicating whether the inquiry has been processed by the agency."
-        }
+        "id": { "type": "string" },
+        "projectId": { "type": "string" },
+        "date": { "type": "string", "format": "date-time" },
+        "message": { "type": "string" }
       },
-      "required": [
-        "id",
-        "fullName",
-        "email",
-        "phoneNumber",
-        "message",
-        "submittedAt",
-        "isHandled"
-      ]
+      "required": ["id", "projectId", "date", "message"]
     },
-    "BlogPost": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "BlogPost",
+    "Payment": {
+      "title": "Payment",
+      "description": "Financial record of a transaction.",
       "type": "object",
-      "description": "Represents a blog post published on the BudgetDev Agency Portal.",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the BlogPost entity."
-        },
-        "titleEnglish": {
-          "type": "string",
-          "description": "The title of the blog post in English."
-        },
-        "titleGerman": {
-          "type": "string",
-          "description": "The title of the blog post in German."
-        },
-        "slugEnglish": {
-          "type": "string",
-          "description": "A URL-friendly slug for the blog post in English."
-        },
-        "slugGerman": {
-          "type": "string",
-          "description": "A URL-friendly slug for the blog post in German."
-        },
-        "summaryEnglish": {
-          "type": "string",
-          "description": "A short summary or excerpt of the blog post in English."
-        },
-        "summaryGerman": {
-          "type": "string",
-          "description": "A short summary or excerpt of the blog post in German."
-        },
-        "contentEnglish": {
-          "type": "string",
-          "description": "The full HTML content of the blog post in English."
-        },
-        "contentGerman": {
-          "type": "string",
-          "description": "The full HTML content of the blog post in German."
-        },
-        "featuredImageUrl": {
-          "type": "string",
-          "description": "URL to a featured image for the blog post.",
-          "format": "uri"
-        },
-        "publishedAt": {
-          "type": "string",
-          "description": "The date and time when the blog post was published.",
-          "format": "date-time"
-        },
-        "authorName": {
-          "type": "string",
-          "description": "The name of the author of the blog post."
-        },
-        "categoryId": {
-          "type": "string",
-          "description": "Reference to the BlogCategory this post belongs to. (Relationship: BlogCategory 1:N BlogPost)"
-        },
-        "tagIds": {
-          "type": "array",
-          "description": "References to BlogTag entities associated with this post. (Relationship: BlogTag N:N BlogPost)",
-          "items": {
-            "type": "string"
-          }
-        }
+        "id": { "type": "string" },
+        "clientId": { "type": "string" },
+        "amount": { "type": "number" },
+        "status": { "type": "string", "enum": ["paid", "pending"] },
+        "date": { "type": "string", "format": "date-time" }
       },
-      "required": [
-        "id",
-        "titleEnglish",
-        "titleGerman",
-        "slugEnglish",
-        "slugGerman",
-        "summaryEnglish",
-        "summaryGerman",
-        "contentEnglish",
-        "contentGerman",
-        "featuredImageUrl",
-        "publishedAt",
-        "authorName",
-        "categoryId"
-      ]
+      "required": ["id", "clientId", "amount", "status", "date"]
     },
-    "BlogCategory": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "BlogCategory",
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "description": "A real-time message in a project chat.",
       "type": "object",
-      "description": "Represents a category for organizing blog posts on the BudgetDev Agency Portal.",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the BlogCategory entity."
-        },
-        "nameEnglish": {
-          "type": "string",
-          "description": "The name of the blog category in English."
-        },
-        "nameGerman": {
-          "type": "string",
-          "description": "The name of the blog category in German."
-        },
-        "slugEnglish": {
-          "type": "string",
-          "description": "A URL-friendly slug for the blog category in English."
-        },
-        "slugGerman": {
-          "type": "string",
-          "description": "A URL-friendly slug for the blog category in German."
-        }
+        "id": { "type": "string" },
+        "projectId": { "type": "string" },
+        "senderId": { "type": "string" },
+        "message": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
       },
-      "required": [
-        "id",
-        "nameEnglish",
-        "nameGerman",
-        "slugEnglish",
-        "slugGerman"
-      ]
-    },
-    "BlogTag": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "BlogTag",
-      "type": "object",
-      "description": "Represents a tag for further classification and discoverability of blog posts on the BudgetDev Agency Portal.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the BlogTag entity."
-        },
-        "nameEnglish": {
-          "type": "string",
-          "description": "The name of the blog tag in English."
-        },
-        "nameGerman": {
-          "type": "string",
-          "description": "The name of the blog tag in German."
-        },
-        "slugEnglish": {
-          "type": "string",
-          "description": "A URL-friendly slug for the blog tag in English."
-        },
-        "slugGerman": {
-          "type": "string",
-          "description": "A URL-friendly slug for the blog tag in German."
-        }
-      },
-      "required": [
-        "id",
-        "nameEnglish",
-        "nameGerman",
-        "slugEnglish",
-        "slugGerman"
-      ]
+      "required": ["id", "projectId", "senderId", "message", "timestamp"]
     }
   },
   "auth": {
-    "providers": [
-      "password",
-      "anonymous"
-    ]
+    "providers": ["password", "anonymous"]
   },
   "firestore": {
     "structure": [
-      {
-        "path": "/services/{serviceId}",
-        "definition": {
-          "entityName": "Service",
-          "schema": {
-            "$ref": "#/backend/entities/Service"
-          },
-          "description": "Stores information about BudgetDev's services. Publicly readable by all users, writeable only by authenticated administrators.",
-          "params": [
-            {
-              "name": "serviceId",
-              "description": "Unique identifier for a service."
-            }
-          ]
-        }
-      },
-      {
-        "path": "/portfolioEntries/{portfolioEntryId}",
-        "definition": {
-          "entityName": "PortfolioEntry",
-          "schema": {
-            "$ref": "#/backend/entities/PortfolioEntry"
-          },
-          "description": "Stores projects and case studies showcasing BudgetDev's work. Publicly readable by all users, writeable only by authenticated administrators.",
-          "params": [
-            {
-              "name": "portfolioEntryId",
-              "description": "Unique identifier for a portfolio entry."
-            }
-          ]
-        }
-      },
-      {
-        "path": "/clientFeedback/{feedbackId}",
-        "definition": {
-          "entityName": "ClientFeedback",
-          "schema": {
-            "$ref": "#/backend/entities/ClientFeedback"
-          },
-          "description": "Stores client testimonials and feedback. Publicly readable by all users, writeable only by authenticated administrators.",
-          "params": [
-            {
-              "name": "feedbackId",
-              "description": "Unique identifier for client feedback."
-            }
-          ]
-        }
-      },
-      {
-        "path": "/inquiries/{inquiryId}",
-        "definition": {
-          "entityName": "Inquiry",
-          "schema": {
-            "$ref": "#/backend/entities/Inquiry"
-          },
-          "description": "Stores contact and quote requests from potential clients. Writable by any user (authenticated or unauthenticated) for submission. Readable and updateable only by authenticated administrators. Supports QAPs by segregating read/write access based on user type.",
-          "params": [
-            {
-              "name": "inquiryId",
-              "description": "Unique identifier for an inquiry."
-            }
-          ]
-        }
-      },
-      {
-        "path": "/blogPosts/{blogPostId}",
-        "definition": {
-          "entityName": "BlogPost",
-          "schema": {
-            "$ref": "#/backend/entities/BlogPost"
-          },
-          "description": "Stores blog posts published by BudgetDev. Publicly readable by all users, writeable only by authenticated administrators.",
-          "params": [
-            {
-              "name": "blogPostId",
-              "description": "Unique identifier for a blog post."
-            }
-          ]
-        }
-      },
-      {
-        "path": "/blogCategories/{categoryId}",
-        "definition": {
-          "entityName": "BlogCategory",
-          "schema": {
-            "$ref": "#/backend/entities/BlogCategory"
-          },
-          "description": "Stores categories for organizing blog posts. Publicly readable by all users, writeable only by authenticated administrators.",
-          "params": [
-            {
-              "name": "categoryId",
-              "description": "Unique identifier for a blog category."
-            }
-          ]
-        }
-      },
-      {
-        "path": "/blogTags/{tagId}",
-        "definition": {
-          "entityName": "BlogTag",
-          "schema": {
-            "$ref": "#/backend/entities/BlogTag"
-          },
-          "description": "Stores tags for classifying blog posts. Publicly readable by all users, writeable only by authenticated administrators.",
-          "params": [
-            {
-              "name": "tagId",
-              "description": "Unique identifier for a blog tag."
-            }
-          ]
-        }
-      },
-      {
-        "path": "/roles_admin/{uid}",
-        "definition": {
-          "entityName": "AdminRole",
-          "schema": {
-            "$ref": "#/backend/entities/AdminRole"
-          },
-          "description": "Defines users with administrative privileges. The mere existence of a document for a user's UID in this collection grants admin role, ensuring Authorization Independence for global roles.",
-          "params": [
-            {
-              "name": "uid",
-              "description": "The Firebase Authentication UID of the user who is an administrator."
-            }
-          ]
-        }
-      }
-    ],
-    "reasoning": "The Firestore structure for the BudgetDev Agency Portal is designed with a strong emphasis on Authorization Independence, Structural Segregation, and adherence to QAPs (Queries Are Not Filters).\n\nAuthorization Independence:\nThe design primarily utilizes top-level collections for all content, ensuring that authorization for any document does not depend on data from other documents (e.g., parent documents or related entities) accessed via `get()` operations in security rules.\n\nFor public content collections (Service, PortfolioEntry, ClientFeedback, BlogPost, BlogCategory, BlogTag), the authorization model is \"public read, admin write.\" Read access is universally granted, eliminating any need for complex rule logic. Write access is restricted to authenticated administrators, whose role is determined by the independent `roles_admin` collection, thereby avoiding hierarchical authorization dependencies.\n\nThe `/inquiries/{inquiryId}` collection is structured for anonymous submissions but restricted admin access. Admin privileges are verified through an independent `roles_admin` collection, ensuring that authorization for an inquiry document is self-contained or relies on a global role rather than attributes of another document.\n\nStructural Segregation (Homogeneous Security Posture):\nEach collection is purpose-built to hold documents with a uniform security posture, significantly simplifying security rules and enhancing clarity.\n\nPublic Collections: `services`, `portfolioEntries`, `clientFeedback`, `blogPosts`, `blogCategories`, `blogTags` strictly contain publicly readable documents. This clear separation prevents mixing public-facing data with private or admin-only content within the same collection.\nPrivate/Admin Collection: `inquiries` is designated for sensitive client inquiries. While writable by any user for submission, it is exclusively readable and updateable by authenticated administrators. This strict segregation ensures unauthorized users cannot access inquiries.\nGlobal Roles Collection: `roles_admin` is a dedicated collection for defining administrator UIDs. Its existence-based authorization (`exists(/databases/$(database)/documents/roles_admin/$(request.auth.uid))`) is a clean, independent mechanism for granting administrative privileges.\n\nQAPs (Queries Are Not Filters):\nThe structure inherently supports efficient and secure `list` operations by avoiding the anti-pattern of security rules acting as data filters.\n\nPublic `list` operations: For all public content collections (e.g., `/services`, `/blogPosts`), clients can perform `list` queries directly. Security rules permit universal `read` access, ensuring that any query returns all relevant documents without requiring server-side filtering by rules.\nAdmin `list` operations: For the `/inquiries` collection, `list` operations are only permitted for authenticated administrators. Rules check the `request.auth.uid` against the `roles_admin` collection. If authorized, the admin's `list` query retrieves all inquiries as intended, without any filtering logic being applied by the rules. Unauthorized users cannot `list` inquiries at all, maintaining security without performance overhead.\n\nThis design minimizes rule complexity, improves debuggability, and enhances the overall security and scalability of the BudgetDev Agency Portal."
+      { "path": "/users/{uid}", "definition": { "entityName": "AppUser", "description": "Global user roles and details." } },
+      { "path": "/clients/{uid}", "definition": { "entityName": "ClientProfile", "description": "Extended profile for clients." } },
+      { "path": "/projects/{projectId}", "definition": { "entityName": "Project", "description": "Software project records." } },
+      { "path": "/projects/{projectId}/updates/{updateId}", "definition": { "entityName": "ProjectUpdate", "description": "Subcollection for project logs." } },
+      { "path": "/payments/{paymentId}", "definition": { "entityName": "Payment", "description": "Admin-only financial ledger." } },
+      { "path": "/messages/{messageId}", "definition": { "entityName": "ChatMessage", "description": "Centralized chat messages." } }
+    ]
   }
 }
