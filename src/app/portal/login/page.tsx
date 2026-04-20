@@ -9,10 +9,11 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, ShieldCheck, User } from "lucide-react";
+import { Loader2, ShieldCheck, User, Settings } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
+import Link from "next/link";
 
 export default function LoginPage() {
   const { auth, firestore, user, isUserLoading } = useFirebase();
@@ -61,51 +62,60 @@ export default function LoginPage() {
     <div className="min-h-screen bg-muted/30 flex flex-col">
       <Navbar />
       <div className="flex-1 flex items-center justify-center p-6">
-        <Card className="w-full max-w-md shadow-2xl rounded-[2.5rem] border-none overflow-hidden animate-in fade-in zoom-in duration-500">
-          <div className="bg-secondary p-8 text-center text-white space-y-2">
-            <ShieldCheck className="w-12 h-12 text-primary mx-auto mb-2" />
-            <h1 className="text-2xl font-black italic tracking-tighter">BudgetDev Portal</h1>
-            <p className="text-xs text-white/50 uppercase font-bold tracking-widest">Client & Admin Access</p>
-          </div>
-          <CardContent className="p-8 space-y-6">
-            <form onSubmit={handleLogin} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="email">Email Address</Label>
-                <Input 
-                  id="email" 
-                  type="email" 
-                  placeholder="name@budgetdev.in" 
-                  required 
-                  className="rounded-xl h-12"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <Label htmlFor="password">Password</Label>
-                </div>
-                <Input 
-                  id="password" 
-                  type="password" 
-                  required 
-                  className="rounded-xl h-12"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <Button type="submit" disabled={loading} className="w-full h-12 rounded-xl bg-secondary text-white font-black hover:scale-[1.02] transition-transform">
-                {loading ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : <User className="w-4 h-4 mr-2" />}
-                Sign In to Portal
-              </Button>
-            </form>
-            <div className="text-center">
-              <p className="text-xs text-muted-foreground">
-                Having trouble? Contact support on WhatsApp.
-              </p>
+        <div className="w-full max-w-md space-y-6">
+          <Card className="shadow-2xl rounded-[2.5rem] border-none overflow-hidden animate-in fade-in zoom-in duration-500">
+            <div className="bg-secondary p-8 text-center text-white space-y-2">
+              <ShieldCheck className="w-12 h-12 text-primary mx-auto mb-2" />
+              <h1 className="text-2xl font-black italic tracking-tighter">BudgetDev Portal</h1>
+              <p className="text-xs text-white/50 uppercase font-bold tracking-widest">Client & Admin Access</p>
             </div>
-          </CardContent>
-        </Card>
+            <CardContent className="p-8 space-y-6">
+              <form onSubmit={handleLogin} className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email Address</Label>
+                  <Input 
+                    id="email" 
+                    type="email" 
+                    placeholder="name@budgetdev.in" 
+                    required 
+                    className="rounded-xl h-12"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <Label htmlFor="password">Password</Label>
+                  </div>
+                  <Input 
+                    id="password" 
+                    type="password" 
+                    required 
+                    className="rounded-xl h-12"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
+                <Button type="submit" disabled={loading} className="w-full h-12 rounded-xl bg-secondary text-white font-black hover:scale-[1.02] transition-transform">
+                  {loading ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : <User className="w-4 h-4 mr-2" />}
+                  Sign In to Portal
+                </Button>
+              </form>
+              <div className="text-center">
+                <p className="text-xs text-muted-foreground">
+                  Having trouble? Contact support on WhatsApp.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Link 
+            href="/portal/init" 
+            className="flex items-center justify-center gap-2 text-[10px] font-black uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
+          >
+            <Settings className="w-3 h-3" /> Initialize Admin Account
+          </Link>
+        </div>
       </div>
     </div>
   );

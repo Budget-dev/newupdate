@@ -13,7 +13,10 @@ service cloud.firestore {
     }
     
     function isAdmin() {
-      return isSignedIn() && (getUserData().role == 'admin' || exists(/databases/$(database)/documents/roles_admin/$(request.auth.uid)));
+      return isSignedIn() && (
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin') || 
+        request.auth.token.email == 'venkateshchop14@gmail.com'
+      );
     }
 
     function isClient(uid) {
@@ -23,7 +26,9 @@ service cloud.firestore {
     // --- Users & Profiles ---
     match /users/{uid} {
       allow read: if isSignedIn();
-      allow write: if isAdmin();
+      // Allow the root admin to create their profile, or any admin to create others
+      allow create: if isSignedIn() && (request.auth.token.email == 'venkateshchop14@gmail.com' || isAdmin());
+      allow update, delete: if isAdmin();
     }
     
     match /clients/{uid} {
@@ -45,22 +50,26 @@ service cloud.firestore {
     // --- Payments ---
     match /payments/{paymentId} {
       allow read, write: if isAdmin();
-      allow list, get: if false; // Clients never see payments
+      allow list, get: if false; 
     }
 
     // --- Messages ---
     match /messages/{messageId} {
       allow create: if isSignedIn();
       allow list, get: if isAdmin() || (isSignedIn() && (resource.data.senderId == request.auth.uid || request.auth.uid == get(/databases/$(database)/documents/projects/$(resource.data.projectId)).data.clientId));
-      // Simplified message rule for prototyping: Allow list if the message is for a project the user belongs to
       allow list: if isAdmin() || isSignedIn(); 
+    }
+
+    // --- Inquiries (Lead Capture) ---
+    match /inquiries/{id} {
+      allow create: if true; // Public lead capture
+      allow read, update, delete: if isAdmin();
     }
 
     // --- Original Content Rules ---
     match /services/{id} { allow read: if true; allow write: if isAdmin(); }
     match /portfolioEntries/{id} { allow read: if true; allow write: if isAdmin(); }
     match /clientFeedback/{id} { allow read: if true; allow write: if isAdmin(); }
-    match /inquiries/{id} { allow create: if true; allow read, update: if isAdmin(); }
     match /blogPosts/{id} { allow read: if true; allow write: if isAdmin(); }
     match /roles_admin/{uid} { allow get: if isSignedIn() && request.auth.uid == uid; }
   }
