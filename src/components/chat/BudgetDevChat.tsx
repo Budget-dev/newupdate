@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -46,7 +47,7 @@ export default function BudgetDevChat() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowCallout(true);
-    }, 2500);
+    }, 3500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -130,18 +131,24 @@ export default function BudgetDevChat() {
     <div className="fixed bottom-6 right-6 z-[60] flex flex-col items-end gap-4">
       {/* Friendly Project Planner Card */}
       {showCallout && !isOpen && (
-        <div className="relative mb-2 animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <Card className="bg-[#1A1A1A] text-white p-6 rounded-[2rem] border-none shadow-2xl w-[280px] md:w-[320px] relative overflow-hidden group">
+        <div className="relative mb-2 animate-in fade-in slide-in-from-bottom-4 duration-700 max-w-[calc(100vw-3rem)]">
+          <Card 
+            onClick={() => handleStartChat()}
+            className="bg-[#1A1A1A] text-white p-6 rounded-[2rem] border-none shadow-2xl w-[260px] md:w-[320px] relative overflow-hidden group cursor-pointer hover:bg-[#222] transition-colors"
+          >
             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-primary/20 transition-all" />
             
             <button 
-              onClick={() => setShowCallout(false)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowCallout(false);
+              }}
               className="absolute top-4 right-4 text-white/40 hover:text-white transition-colors z-10"
             >
               <X className="w-4 h-4" />
             </button>
 
-            <div className="space-y-5 relative z-10">
+            <div className="space-y-4 relative z-10">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-2xl bg-primary/20 flex items-center justify-center text-primary">
                   <Sparkles className="w-5 h-5" />
@@ -157,23 +164,12 @@ export default function BudgetDevChat() {
                   Let's build your <br /> next big thing.
                 </h4>
                 <p className="text-xs text-white/50 font-medium leading-relaxed">
-                  Are you planning for a website or a mobile app? We'll prepare a free roadmap for you.
+                  Planning for a website or a mobile app? We'll prepare a free roadmap for you.
                 </p>
               </div>
-
-              <div className="flex flex-col gap-2">
-                <button 
-                  onClick={() => handleStartChat("I'm interested in building a website.")}
-                  className="w-full h-11 bg-primary hover:bg-primary/90 text-white rounded-xl text-[11px] font-black uppercase tracking-widest transition-all flex items-center justify-center gap-2"
-                >
-                  <Globe className="w-3.5 h-3.5" /> Start Website
-                </button>
-                <button 
-                  onClick={() => handleStartChat("I want to build a mobile app.")}
-                  className="w-full h-11 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all flex items-center justify-center gap-2"
-                >
-                  <Smartphone className="w-3.5 h-3.5" /> Build Mobile App
-                </button>
+              
+              <div className="flex items-center gap-2 text-[9px] font-black text-primary uppercase tracking-widest pt-1">
+                <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" /> Click to chat
               </div>
             </div>
             {/* Triangle Tip */}
