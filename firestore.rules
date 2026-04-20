@@ -44,13 +44,15 @@ service cloud.firestore {
       }
 
       match /messages/{messageId} {
-        allow read, create: if isAdmin() || (isSignedIn() && get(/databases/$(database)/documents/projects/$(projectId)).data.clientId == request.auth.uid);
+        allow read: if isAdmin() || (isSignedIn() && get(/databases/$(database)/documents/projects/$(projectId)).data.clientId == request.auth.uid);
+        allow create: if isAdmin() || (isSignedIn() && get(/databases/$(database)/documents/projects/$(projectId)).data.clientId == request.auth.uid);
       }
     }
 
     // --- Payments ---
     match /payments/{paymentId} {
-      allow read, write: if isAdmin();
+      allow read: if isAdmin() || (isSignedIn() && resource.data.clientId == request.auth.uid);
+      allow write: if isAdmin();
     }
 
     // --- Inquiries (Lead Capture) ---

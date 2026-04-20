@@ -12,7 +12,10 @@ import {
   ArrowRight,
   Zap,
   CheckCircle2,
-  Clock
+  Clock,
+  IndianRupee,
+  Wallet,
+  ShieldCheck
 } from "lucide-react";
 import ClientNavbar from "@/components/portal/ClientNavbar";
 
@@ -29,13 +32,24 @@ export default function ClientDashboard() {
   const { data: projects } = useCollection(projectsQuery);
   const activeProject = projects?.[0];
 
-  // Latest updates for active project properly memoized
+  // Latest updates for active project
   const updatesQuery = useMemoFirebase(() => {
     if (!activeProject) return null;
     return query(collection(firestore, "projects", activeProject.id, "updates"), orderBy("date", "desc"), limit(3));
   }, [firestore, activeProject]);
 
+  // Payments for active project
+  const paymentsQuery = useMemoFirebase(() => {
+    if (!user) return null;
+    return query(collection(firestore, "payments"), where("clientId", "==", user.uid), orderBy("date", "desc"));
+  }, [firestore, user]);
+
   const { data: updates } = useCollection(updatesQuery);
+  const { data: payments } = useCollection(paymentsQuery);
+
+  const totalPaid = payments?.reduce((acc, p) => acc + Number(p.amount), 0) || 0;
+  const projectValue = Number(activeProject?.totalBudget || 0);
+  const balanceDue = projectValue - totalPaid;
 
   return (
     <div className="min-h-screen bg-[#FDFDFD] pb-20">
@@ -60,7 +74,7 @@ export default function ClientDashboard() {
                     <div className="space-y-2">
                       <h2 className="text-3xl font-black text-secondary tracking-tight">{activeProject.name}</h2>
                       <div className="flex items-center gap-2 text-xs font-bold text-muted-foreground uppercase tracking-widest">
-                        <Clock className="w-3.5 h-3.5" /> Est. Deployment: Q2 2026
+                        <Clock className="w-3.5 h-3.5" /> Build Phase: Active Engineering
                       </div>
                     </div>
                     <div className="px-6 py-3 rounded-2xl bg-secondary text-white font-black italic text-lg shadow-xl shadow-secondary/10">
@@ -95,6 +109,56 @@ export default function ClientDashboard() {
                     ))}
                   </div>
                 </CardContent>
+              </Card>
+
+              {/* Financial Overview Card */}
+              <Card className="border-none shadow-xl rounded-[2.5rem] bg-white overflow-hidden">
+                 <div className="bg-emerald-500 p-8 text-white flex justify-between items-center">
+                    <div className="space-y-1">
+                       <h3 className="text-2xl font-black italic">Financial Summary.</h3>
+                       <p className="text-xs text-white/70 font-bold uppercase tracking-widest">Project Ledger</p>
+                    </div>
+                    <Wallet className="w-10 h-10 text-white/20" />
+                 </div>
+                 <CardContent className="p-10 space-y-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                       <div className="space-y-1">
+                          <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">Total Value</p>
+                          <p className="text-2xl font-black text-secondary">₹{projectValue.toLocaleString()}</p>
+                       </div>
+                       <div className="space-y-1">
+                          <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">Paid to Date</p>
+                          <p className="text-2xl font-black text-emerald-600">₹{totalPaid.toLocaleString()}</p>
+                       </div>
+                       <div className="space-y-1">
+                          <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">Balance Due</p>
+                          <p className="text-2xl font-black text-amber-600">₹{balanceDue.toLocaleString()}</p>
+                       </div>
+                    </div>
+
+                    <div className="space-y-4">
+                       <h4 className="text-xs font-black uppercase text-muted-foreground tracking-[0.2em]">Transaction History</h4>
+                       <div className="divide-y divide-muted/50">
+                          {payments?.map((payment) => (
+                             <div key={payment.id} className="py-4 flex justify-between items-center">
+                                <div className="space-y-1">
+                                   <p className="text-sm font-bold text-secondary">Payment Received</p>
+                                   <p className="text-[10px] font-medium text-muted-foreground">{new Date(payment.date).toLocaleDateString()}</p>
+                                </div>
+                                <div className="text-right space-y-1">
+                                   <p className="text-sm font-black text-emerald-600">+₹{payment.amount.toLocaleString()}</p>
+                                   <p className="text-[9px] font-black text-emerald-500 uppercase flex items-center justify-end gap-1">
+                                      <ShieldCheck className="w-3 h-3" /> Verified
+                                   </p>
+                                </div>
+                             </div>
+                          ))}
+                          {(!payments || payments.length === 0) && (
+                             <p className="py-6 text-sm text-muted-foreground italic">No payments logged yet.</p>
+                          )}
+                       </div>
+                    </div>
+                 </CardContent>
               </Card>
 
               <div className="space-y-6">

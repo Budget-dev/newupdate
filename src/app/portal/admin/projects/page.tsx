@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -36,7 +37,8 @@ export default function ProjectManagement() {
   const [formData, setFormData] = useState({
     name: "",
     clientId: "",
-    status: "Not Started"
+    status: "Not Started",
+    totalBudget: ""
   });
 
   const handleCreateProject = async (e: React.FormEvent) => {
@@ -52,12 +54,13 @@ export default function ProjectManagement() {
         clientId: formData.clientId,
         progress: 0,
         status: formData.status,
+        totalBudget: Number(formData.totalBudget) || 0,
         createdAt: new Date().toISOString()
       });
 
       toast({ title: "Project Created", description: `${formData.name} is now live.` });
       setOpen(false);
-      setFormData({ name: "", clientId: "", status: "Not Started" });
+      setFormData({ name: "", clientId: "", status: "Not Started", totalBudget: "" });
     } catch (err: any) {
       toast({ title: "Error", description: err.message, variant: "destructive" });
     } finally {
@@ -90,6 +93,10 @@ export default function ProjectManagement() {
                 <div className="space-y-2">
                   <Label>Project Name</Label>
                   <Input placeholder="E-commerce App v1" required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="rounded-xl" />
+                </div>
+                <div className="space-y-2">
+                  <Label>Total Budget (INR)</Label>
+                  <Input type="number" placeholder="50000" required value={formData.totalBudget} onChange={e => setFormData({...formData, totalBudget: e.target.value})} className="rounded-xl" />
                 </div>
                 <div className="space-y-2">
                   <Label>Assign to Client</Label>
@@ -129,6 +136,17 @@ export default function ProjectManagement() {
                     <Button variant="ghost" size="icon" className="rounded-full h-8 w-8 text-muted-foreground">
                       <MoreHorizontal className="w-4 h-4" />
                     </Button>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4 border-y py-4 border-muted/50">
+                    <div className="space-y-0.5">
+                       <p className="text-[9px] font-black text-muted-foreground uppercase tracking-widest">Budget</p>
+                       <p className="text-sm font-black text-secondary">₹{Number(project.totalBudget || 0).toLocaleString()}</p>
+                    </div>
+                    <div className="space-y-0.5 text-right">
+                       <p className="text-[9px] font-black text-muted-foreground uppercase tracking-widest">Build ID</p>
+                       <p className="text-[9px] font-mono text-muted-foreground truncate">{project.id}</p>
+                    </div>
                   </div>
 
                   <div className="space-y-2">
