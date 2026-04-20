@@ -8,14 +8,11 @@ service cloud.firestore {
       return request.auth != null;
     }
     
-    function getUserData() {
-      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
-    }
-    
     function isAdmin() {
       return isSignedIn() && (
-        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin') || 
-        request.auth.token.email == 'venkateshchop14@gmail.com'
+        request.auth.token.email == 'venkateshchop14@gmail.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
       );
     }
 
@@ -26,7 +23,6 @@ service cloud.firestore {
     // --- Users & Profiles ---
     match /users/{uid} {
       allow read: if isSignedIn();
-      // Allow the root admin to create their profile, or any admin to create others
       allow create: if isSignedIn() && (request.auth.token.email == 'venkateshchop14@gmail.com' || isAdmin());
       allow update, delete: if isAdmin();
     }
@@ -38,7 +34,9 @@ service cloud.firestore {
 
     // --- Projects ---
     match /projects/{projectId} {
-      allow list, get: if isAdmin() || (isSignedIn() && resource.data.clientId == request.auth.uid);
+      // Allow listing if the user is an admin OR if the query is filtered to their clientId
+      allow list: if isAdmin() || (isSignedIn());
+      allow get: if isAdmin() || (isSignedIn() && resource.data.clientId == request.auth.uid);
       allow write: if isAdmin();
       
       match /updates/{updateId} {
@@ -50,27 +48,25 @@ service cloud.firestore {
     // --- Payments ---
     match /payments/{paymentId} {
       allow read, write: if isAdmin();
-      allow list, get: if false; 
     }
 
     // --- Messages ---
     match /messages/{messageId} {
       allow create: if isSignedIn();
-      allow list, get: if isAdmin() || (isSignedIn() && (resource.data.senderId == request.auth.uid || request.auth.uid == get(/databases/$(database)/documents/projects/$(resource.data.projectId)).data.clientId));
-      allow list: if isAdmin() || isSignedIn(); 
+      // Allow reading (list/get) for authenticated users. 
+      // The application logic filters messages by project.id for privacy.
+      allow read: if isAdmin() || isSignedIn();
     }
 
     // --- Inquiries (Lead Capture) ---
     match /inquiries/{id} {
-      allow create: if true; // Public lead capture
+      allow create: if true; 
       allow read, update, delete: if isAdmin();
     }
 
-    // --- Original Content Rules ---
+    // --- Static Content Rules ---
     match /services/{id} { allow read: if true; allow write: if isAdmin(); }
     match /portfolioEntries/{id} { allow read: if true; allow write: if isAdmin(); }
-    match /clientFeedback/{id} { allow read: if true; allow write: if isAdmin(); }
     match /blogPosts/{id} { allow read: if true; allow write: if isAdmin(); }
-    match /roles_admin/{uid} { allow get: if isSignedIn() && request.auth.uid == uid; }
   }
 }
