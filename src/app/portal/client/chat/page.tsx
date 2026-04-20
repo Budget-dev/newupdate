@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -17,27 +16,27 @@ import { FirestorePermissionError } from "@/firebase/errors";
 
 export default function ClientChatPage() {
   const { firestore } = useFirebase();
-  const { user } = useUser();
+  const { user, isUserLoading } = useUser();
   const [input, setInput] = useState("");
   const [sending, setLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Get client's project
+  // 1. Get client's project first
   const projectsQuery = useMemoFirebase(() => {
     if (!user) return null;
     return query(collection(firestore, "projects"), where("clientId", "==", user.uid));
-  }, [firestore, user]);
+  }, [firestore, user?.uid]);
   
   const { data: projects, isLoading: projectsLoading } = useCollection(projectsQuery);
   const project = projects?.[0];
 
-  // Get messages for this project - only run if project is found
+  // 2. Only query messages if we have a valid project ID
   const messagesQuery = useMemoFirebase(() => {
     if (!project?.id) return null;
     return query(collection(firestore, "messages"), where("projectId", "==", project.id), orderBy("timestamp", "asc"));
   }, [firestore, project?.id]);
   
-  const { data: messages } = useCollection(messagesQuery);
+  const { data: messages, isLoading: messagesLoading } = useCollection(messagesQuery);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -46,7 +45,7 @@ export default function ClientChatPage() {
         scrollContainer.scrollTop = scrollContainer.scrollHeight;
       }
     }
-  }, [messages]);
+  }, [messages?.length]);
 
   const handleSend = (e: React.FormEvent) => {
     e.preventDefault();
@@ -61,7 +60,6 @@ export default function ClientChatPage() {
 
     setInput("");
     
-    // Non-blocking write
     addDoc(collection(firestore, "messages"), messageData)
       .catch(async (err) => {
         errorEmitter.emit('permission-error', new FirestorePermissionError({
@@ -71,6 +69,15 @@ export default function ClientChatPage() {
         }));
       });
   };
+
+  // Prevent rendering if user is still being determined
+  if (isUserLoading) {
+    return (
+      <div className="min-h-screen bg-[#F8FAF9] flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#F8FAF9] flex flex-col">
@@ -86,7 +93,7 @@ export default function ClientChatPage() {
         </div>
 
         {!project && !projectsLoading ? (
-          <Card className="p-12 text-center space-y-6 rounded-[3rem] border-none shadow-xl">
+          <Card className="p-12 text-center space-y-6 rounded-[3rem] border-none shadow-xl bg-white">
              <AlertCircle className="w-16 h-16 text-amber-500 mx-auto" />
              <div className="space-y-2">
                <h2 className="text-2xl font-black text-secondary">Awaiting Project Initialization</h2>
@@ -97,7 +104,7 @@ export default function ClientChatPage() {
              </Button>
           </Card>
         ) : (
-          <Card className="flex-1 border-none shadow-2xl rounded-[3rem] bg-white overflow-hidden flex flex-col">
+          <Card className="flex-1 border-none shadow-2xl rounded-[3rem] bg-white overflow-hidden flex flex-col min-h-[500px]">
             <div className="bg-secondary p-8 text-white flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center text-primary">
@@ -112,6 +119,13 @@ export default function ClientChatPage() {
 
             <ScrollArea className="flex-1 p-8" ref={scrollRef}>
               <div className="space-y-6">
+                {(projectsLoading || messagesLoading) && !messages && (
+                  <div className="flex flex-col items-center justify-center py-20 gap-3">
+                    <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
+                    <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Syncing Messages...</p>
+                  </div>
+                )}
+                
                 {messages?.map((msg) => (
                   <div key={msg.id} className={cn(
                     "flex flex-col max-w-[80%]",
@@ -130,7 +144,8 @@ export default function ClientChatPage() {
                     </span>
                   </div>
                 ))}
-                {(!messages || messages.length === 0) && (
+
+                {messages && messages.length === 0 && !messagesLoading && (
                   <div className="text-center py-20 text-muted-foreground italic text-sm">
                     Start the conversation with your engineering team.
                   </div>
@@ -145,8 +160,9 @@ export default function ClientChatPage() {
                   className="rounded-2xl h-14 bg-white border-none focus-visible:ring-primary shadow-sm px-6"
                   value={input}
                   onChange={e => setInput(e.target.value)}
+                  disabled={!project?.id}
                 />
-                <Button type="submit" disabled={sending} className="w-14 h-14 rounded-2xl bg-secondary text-white shadow-xl shadow-secondary/10 shrink-0">
+                <Button type="submit" disabled={sending || !project?.id} className="w-14 h-14 rounded-2xl bg-secondary text-white shadow-xl shadow-secondary/10 shrink-0">
                   {sending ? <Loader2 className="w-5 h-5 animate-spin" /> : <Send className="w-5 h-5" />}
                 </Button>
               </div>

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -17,22 +16,26 @@ import { errorEmitter } from "@/firebase/error-emitter";
 import { FirestorePermissionError } from "@/firebase/errors";
 
 export default function AdminProjectChatPage() {
-  const { id } = useParams();
-  const { firestore, user } = useFirebase();
+  const params = useParams();
+  const projectId = params?.id as string;
+  const { firestore, user, isUserLoading } = useFirebase();
   const [input, setInput] = useState("");
   const [sending, setLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const projectRef = useMemoFirebase(() => doc(firestore, "projects", id as string), [firestore, id]);
+  const projectRef = useMemoFirebase(() => {
+    if (!projectId) return null;
+    return doc(firestore, "projects", projectId);
+  }, [firestore, projectId]);
+  
   const { data: project } = useDoc(projectRef);
 
-  // Get messages for this project - only run if ID is present
   const messagesQuery = useMemoFirebase(() => {
-    if (!id) return null;
-    return query(collection(firestore, "messages"), where("projectId", "==", id), orderBy("timestamp", "asc"));
-  }, [firestore, id]);
+    if (!projectId) return null;
+    return query(collection(firestore, "messages"), where("projectId", "==", projectId), orderBy("timestamp", "asc"));
+  }, [firestore, projectId]);
   
-  const { data: messages } = useCollection(messagesQuery);
+  const { data: messages, isLoading: messagesLoading } = useCollection(messagesQuery);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -41,14 +44,14 @@ export default function AdminProjectChatPage() {
         scrollContainer.scrollTop = scrollContainer.scrollHeight;
       }
     }
-  }, [messages]);
+  }, [messages?.length]);
 
   const handleSend = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!input.trim() || !id || !user || sending) return;
+    if (!input.trim() || !projectId || !user || sending) return;
 
     const messageData = {
-      projectId: id,
+      projectId: projectId,
       senderId: user.uid,
       message: input.trim(),
       timestamp: serverTimestamp()
@@ -66,20 +69,28 @@ export default function AdminProjectChatPage() {
       });
   };
 
+  if (isUserLoading) {
+    return (
+      <div className="min-h-screen bg-[#F8FAF9] flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#F8FAF9] flex flex-col">
       <AdminNavbar />
       <main className="flex-1 max-w-4xl w-full mx-auto px-6 pt-32 pb-10 flex flex-col space-y-6">
         <div className="flex items-center justify-between">
           <Button asChild variant="ghost" className="rounded-xl text-muted-foreground font-bold hover:text-secondary -ml-4">
-            <Link href={`/portal/admin/projects/${id}`}><ArrowLeft className="w-4 h-4 mr-2" /> Project Management</Link>
+            <Link href={`/portal/admin/projects/${projectId}`}><ArrowLeft className="w-4 h-4 mr-2" /> Project Management</Link>
           </Button>
           <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest border border-primary/20">
             <ShieldCheck className="w-3 h-3" /> Admin Build Line
           </div>
         </div>
 
-        <Card className="flex-1 border-none shadow-2xl rounded-[3rem] bg-white overflow-hidden flex flex-col">
+        <Card className="flex-1 border-none shadow-2xl rounded-[3rem] bg-white overflow-hidden flex flex-col min-h-[500px]">
           <div className="bg-secondary p-8 text-white flex items-center justify-between">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center text-primary">
@@ -94,6 +105,13 @@ export default function AdminProjectChatPage() {
 
           <ScrollArea className="flex-1 p-8" ref={scrollRef}>
             <div className="space-y-6">
+              {messagesLoading && !messages && (
+                <div className="flex flex-col items-center justify-center py-20 gap-3">
+                  <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
+                  <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Syncing Line...</p>
+                </div>
+              )}
+
               {messages?.map((msg) => (
                 <div key={msg.id} className={cn(
                   "flex flex-col max-w-[80%]",
@@ -112,7 +130,8 @@ export default function AdminProjectChatPage() {
                   </span>
                 </div>
               ))}
-              {(!messages || messages.length === 0) && (
+
+              {messages && messages.length === 0 && !messagesLoading && (
                 <div className="text-center py-20 text-muted-foreground italic text-sm">
                   Send a welcome message to the client.
                 </div>
@@ -128,7 +147,7 @@ export default function AdminProjectChatPage() {
                 value={input}
                 onChange={e => setInput(e.target.value)}
               />
-              <Button type="submit" disabled={sending} className="w-14 h-14 rounded-2xl bg-primary text-white shadow-xl shadow-primary/10 shrink-0">
+              <Button type="submit" disabled={sending || !projectId} className="w-14 h-14 rounded-2xl bg-primary text-white shadow-xl shadow-primary/10 shrink-0">
                 <Send className="w-5 h-5" />
               </Button>
             </div>
