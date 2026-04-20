@@ -34,8 +34,7 @@ service cloud.firestore {
 
     // --- Projects ---
     match /projects/{projectId} {
-      // Allow listing if the user is an admin OR if the query is filtered to their clientId
-      allow list: if isAdmin() || (isSignedIn());
+      allow list: if isAdmin() || isSignedIn();
       allow get: if isAdmin() || (isSignedIn() && resource.data.clientId == request.auth.uid);
       allow write: if isAdmin();
       
@@ -53,9 +52,9 @@ service cloud.firestore {
     // --- Messages ---
     match /messages/{messageId} {
       allow create: if isSignedIn();
-      // Allow reading (list/get) for authenticated users. 
-      // The application logic filters messages by project.id for privacy.
-      allow read: if isAdmin() || isSignedIn();
+      // Split read into get and list for better query validation
+      allow get: if isAdmin() || isSignedIn();
+      allow list: if isAdmin() || isSignedIn();
     }
 
     // --- Inquiries (Lead Capture) ---

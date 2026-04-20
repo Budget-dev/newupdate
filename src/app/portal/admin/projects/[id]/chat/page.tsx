@@ -26,11 +26,12 @@ export default function AdminProjectChatPage() {
   const projectRef = useMemoFirebase(() => doc(firestore, "projects", id as string), [firestore, id]);
   const { data: project } = useDoc(projectRef);
 
-  // Get messages for this project
+  // Get messages for this project - only run if ID is present
   const messagesQuery = useMemoFirebase(() => {
     if (!id) return null;
     return query(collection(firestore, "messages"), where("projectId", "==", id), orderBy("timestamp", "asc"));
   }, [firestore, id]);
+  
   const { data: messages } = useCollection(messagesQuery);
 
   useEffect(() => {
@@ -107,7 +108,7 @@ export default function AdminProjectChatPage() {
                     {msg.message}
                   </div>
                   <span className="mt-2 text-[9px] font-black text-muted-foreground uppercase tracking-widest">
-                    {msg.timestamp ? new Date(msg.timestamp?.seconds * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Sending...'}
+                    {msg.timestamp?.seconds ? new Date(msg.timestamp.seconds * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Sending...'}
                   </span>
                 </div>
               ))}

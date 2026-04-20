@@ -27,14 +27,16 @@ export default function ClientChatPage() {
     if (!user) return null;
     return query(collection(firestore, "projects"), where("clientId", "==", user.uid));
   }, [firestore, user]);
+  
   const { data: projects, isLoading: projectsLoading } = useCollection(projectsQuery);
   const project = projects?.[0];
 
-  // Get messages for this project
+  // Get messages for this project - only run if project is found
   const messagesQuery = useMemoFirebase(() => {
-    if (!project) return null;
+    if (!project?.id) return null;
     return query(collection(firestore, "messages"), where("projectId", "==", project.id), orderBy("timestamp", "asc"));
-  }, [firestore, project]);
+  }, [firestore, project?.id]);
+  
   const { data: messages } = useCollection(messagesQuery);
 
   useEffect(() => {
@@ -48,7 +50,7 @@ export default function ClientChatPage() {
 
   const handleSend = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!input.trim() || !project || !user || sending) return;
+    if (!input.trim() || !project?.id || !user || sending) return;
 
     const messageData = {
       projectId: project.id,
@@ -124,7 +126,7 @@ export default function ClientChatPage() {
                       {msg.message}
                     </div>
                     <span className="mt-2 text-[9px] font-black text-muted-foreground uppercase tracking-widest">
-                      {msg.timestamp ? new Date(msg.timestamp?.seconds * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Sending...'}
+                      {msg.timestamp?.seconds ? new Date(msg.timestamp.seconds * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Sending...'}
                     </span>
                   </div>
                 ))}
