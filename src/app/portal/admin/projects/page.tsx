@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Briefcase, Plus, Loader2, MoreHorizontal } from "lucide-react";
@@ -15,13 +15,20 @@ import AdminNavbar from "@/components/portal/AdminNavbar";
 import Link from "next/link";
 
 export default function ProjectManagement() {
-  const { firestore } = useFirebase();
+  const { firestore, user } = useFirebase();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
 
-  const projectsQuery = useMemoFirebase(() => query(collection(firestore, "projects"), orderBy("createdAt", "desc")), [firestore]);
-  const clientsQuery = useMemoFirebase(() => query(collection(firestore, "users"), where("role", "==", "client")), [firestore]);
+  const projectsQuery = useMemoFirebase(() => {
+    if (!user) return null;
+    return query(collection(firestore, "projects"), orderBy("createdAt", "desc"));
+  }, [firestore, user]);
+
+  const clientsQuery = useMemoFirebase(() => {
+    if (!user) return null;
+    return query(collection(firestore, "users"), where("role", "==", "client"));
+  }, [firestore, user]);
 
   const { data: projects } = useCollection(projectsQuery);
   const { data: clients } = useCollection(clientsQuery);

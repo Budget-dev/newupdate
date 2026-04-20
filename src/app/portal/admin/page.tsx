@@ -1,10 +1,12 @@
 "use client";
 
-import { useFirebase, useCollection, useMemoFirebase } from "@/firebase";
-import { collection, query, where, orderBy, limit } from "firebase/firestore";
+import { useFirebase, useCollection, useUser, useMemoFirebase } from "@/firebase";
+import { collection, query, where, orderBy, limit, doc, getDoc } from "firebase/firestore";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { 
   Users, 
   Briefcase, 
@@ -13,21 +15,63 @@ import {
   Plus, 
   ArrowRight,
   IndianRupee,
-  Activity
+  Activity,
+  Loader2
 } from "lucide-react";
 import AdminNavbar from "@/components/portal/AdminNavbar";
 
 export default function AdminDashboard() {
-  const { firestore } = useFirebase();
+  const { firestore, user, isUserLoading } = useFirebase();
+  const router = useRouter();
+  const [isVerifying, setIsVerifying] = useState(true);
 
-  // Queries properly memoized for Firebase hooks
-  const clientsQuery = useMemoFirebase(() => query(collection(firestore, "users"), where("role", "==", "client")), [firestore]);
-  const projectsQuery = useMemoFirebase(() => query(collection(firestore, "projects"), limit(5)), [firestore]);
-  const paymentsQuery = useMemoFirebase(() => query(collection(firestore, "payments"), orderBy("date", "desc"), limit(5)), [firestore]);
+  // Security: Verify Admin Role
+  useEffect(() => {
+    if (!isUserLoading) {
+      if (!user) {
+        router.push("/portal/login");
+        return;
+      }
+      
+      const checkAdmin = async () => {
+        const userDoc = await getDoc(doc(firestore, "users", user.uid));
+        if (!userDoc.exists() || userDoc.data().role !== "admin") {
+          router.push("/");
+        } else {
+          setIsVerifying(false);
+        }
+      };
+      checkAdmin();
+    }
+  }, [user, isUserLoading, firestore, router]);
+
+  // Queries properly memoized and conditional on user
+  const clientsQuery = useMemoFirebase(() => {
+    if (!user || isVerifying) return null;
+    return query(collection(firestore, "users"), where("role", "==", "client"));
+  }, [firestore, user, isVerifying]);
+
+  const projectsQuery = useMemoFirebase(() => {
+    if (!user || isVerifying) return null;
+    return query(collection(firestore, "projects"), limit(5));
+  }, [firestore, user, isVerifying]);
+
+  const paymentsQuery = useMemoFirebase(() => {
+    if (!user || isVerifying) return null;
+    return query(collection(firestore, "payments"), orderBy("date", "desc"), limit(5));
+  }, [firestore, user, isVerifying]);
 
   const { data: clients } = useCollection(clientsQuery);
   const { data: projects } = useCollection(projectsQuery);
   const { data: payments } = useCollection(paymentsQuery);
+
+  if (isUserLoading || isVerifying) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#F8FAF9]">
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      </div>
+    );
+  }
 
   const stats = [
     { label: "Total Clients", value: clients?.length || 0, icon: <Users className="w-5 h-5" />, color: "text-blue-500", bg: "bg-blue-500/10" },
@@ -48,7 +92,7 @@ export default function AdminDashboard() {
           </div>
           <div className="flex gap-3">
             <Button asChild className="rounded-xl bg-secondary text-white h-11 px-6 font-bold shadow-lg shadow-secondary/10">
-              <Link href="/portal/admin/projects/new"><Plus className="w-4 h-4 mr-2" /> New Project</Link>
+              <Link href="/portal/admin/projects"><Plus className="w-4 h-4 mr-2" /> New Project</Link>
             </Button>
           </div>
         </header>
@@ -70,7 +114,6 @@ export default function AdminDashboard() {
         </section>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Recent Projects */}
           <Card className="lg:col-span-2 border-none shadow-sm rounded-[2.5rem] overflow-hidden">
             <CardHeader className="bg-white border-b px-8 py-6 flex flex-row items-center justify-between">
               <CardTitle className="text-xl font-black text-secondary">Active Projects</CardTitle>
@@ -99,14 +142,13 @@ export default function AdminDashboard() {
                 ))}
                 {(!projects || projects.length === 0) && (
                   <div className="p-12 text-center text-muted-foreground italic text-sm">
-                    No projects found. Create your first one above.
+                    No projects found. Create your first one in the Pipeline.
                   </div>
                 )}
               </div>
             </CardContent>
           </Card>
 
-          {/* Recent Revenue */}
           <Card className="border-none shadow-sm rounded-[2.5rem] overflow-hidden">
             <CardHeader className="bg-white border-b px-8 py-6">
               <CardTitle className="text-xl font-black text-secondary">Recent Revenue</CardTitle>
@@ -132,7 +174,6 @@ export default function AdminDashboard() {
             </CardContent>
           </Card>
         </div>
-
       </main>
     </div>
   );

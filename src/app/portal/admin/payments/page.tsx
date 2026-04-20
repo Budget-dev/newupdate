@@ -14,12 +14,19 @@ import { IndianRupee, Plus, Loader2 } from "lucide-react";
 import AdminNavbar from "@/components/portal/AdminNavbar";
 
 export default function PaymentsPage() {
-  const { firestore } = useFirebase();
+  const { firestore, user } = useFirebase();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
-  const paymentsQuery = useMemoFirebase(() => query(collection(firestore, "payments"), orderBy("date", "desc")), [firestore]);
-  const clientsQuery = useMemoFirebase(() => query(collection(firestore, "users"), where("role", "==", "client")), [firestore]);
+  const paymentsQuery = useMemoFirebase(() => {
+    if (!user) return null;
+    return query(collection(firestore, "payments"), orderBy("date", "desc"));
+  }, [firestore, user]);
+
+  const clientsQuery = useMemoFirebase(() => {
+    if (!user) return null;
+    return query(collection(firestore, "users"), where("role", "==", "client"));
+  }, [firestore, user]);
 
   const { data: payments } = useCollection(paymentsQuery);
   const { data: clients } = useCollection(clientsQuery);
