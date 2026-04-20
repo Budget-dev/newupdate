@@ -13,7 +13,8 @@ import {
   Briefcase, 
   IndianRupee, 
   LogOut,
-  ShieldCheck
+  ShieldCheck,
+  Mail
 } from "lucide-react";
 
 export default function AdminNavbar() {
@@ -30,6 +31,7 @@ export default function AdminNavbar() {
     { name: "Dashboard", href: "/portal/admin", icon: <LayoutDashboard className="w-4 h-4" /> },
     { name: "Clients", href: "/portal/admin/clients", icon: <Users className="w-4 h-4" /> },
     { name: "Pipeline", href: "/portal/admin/projects", icon: <Briefcase className="w-4 h-4" /> },
+    { name: "Leads", href: "/portal/admin/inquiries", icon: <Mail className="w-4 h-4" /> },
     { name: "Ledger", href: "/portal/admin/payments", icon: <IndianRupee className="w-4 h-4" /> },
   ];
 
