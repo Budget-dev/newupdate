@@ -1,9 +1,8 @@
-
 "use client";
 
-import { useState, useMemo } from "react";
-import { useFirebase, useCollection } from "@/firebase";
-import { collection, query, orderBy, doc, setDoc } from "firebase/firestore";
+import { useState } from "react";
+import { useFirebase, useCollection, useMemoFirebase } from "@/firebase";
+import { collection, query, orderBy, doc, setDoc, where } from "firebase/firestore";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,7 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useToast } from "@/hooks/use-toast";
-import { IndianRupee, Plus, Loader2, ArrowUpRight, Calendar as CalendarIcon } from "lucide-react";
+import { IndianRupee, Plus, Loader2 } from "lucide-react";
 import AdminNavbar from "@/components/portal/AdminNavbar";
 
 export default function PaymentsPage() {
@@ -19,11 +18,11 @@ export default function PaymentsPage() {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
-  const paymentsQuery = useMemo(() => query(collection(firestore, "payments"), orderBy("date", "desc")), [firestore]);
-  const clientsQuery = useMemo(() => query(collection(firestore, "users"), collection(firestore, "users").where("role", "==", "client")));
+  const paymentsQuery = useMemoFirebase(() => query(collection(firestore, "payments"), orderBy("date", "desc")), [firestore]);
+  const clientsQuery = useMemoFirebase(() => query(collection(firestore, "users"), where("role", "==", "client")), [firestore]);
 
   const { data: payments } = useCollection(paymentsQuery);
-  const { data: clients } = useCollection(useMemo(() => collection(firestore, "users"), [firestore]));
+  const { data: clients } = useCollection(clientsQuery);
 
   const [formData, setFormData] = useState({
     clientId: "",
@@ -31,9 +30,7 @@ export default function PaymentsPage() {
     status: "paid"
   });
 
-  const totalEarnings = useMemo(() => {
-    return payments?.reduce((acc, p) => acc + Number(p.amount), 0) || 0;
-  }, [payments]);
+  const totalEarnings = payments?.reduce((acc, p) => acc + Number(p.amount), 0) || 0;
 
   const handleAddPayment = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -95,7 +92,7 @@ export default function PaymentsPage() {
                         <SelectValue placeholder="Choose client..." />
                       </SelectTrigger>
                       <SelectContent className="rounded-xl">
-                        {clients?.filter(u => u.role === 'client').map(client => (
+                        {clients?.map(client => (
                           <SelectItem key={client.id} value={client.id}>{client.name}</SelectItem>
                         ))}
                       </SelectContent>

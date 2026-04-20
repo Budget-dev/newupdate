@@ -1,7 +1,6 @@
-
 "use client";
 
-import { useFirebase, useCollection } from "@/firebase";
+import { useFirebase, useCollection, useMemoFirebase } from "@/firebase";
 import { collection, query, where, orderBy, limit } from "firebase/firestore";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -17,15 +16,14 @@ import {
   Activity
 } from "lucide-react";
 import AdminNavbar from "@/components/portal/AdminNavbar";
-import { useMemo } from "react";
 
 export default function AdminDashboard() {
   const { firestore } = useFirebase();
 
-  // Queries
-  const clientsQuery = useMemo(() => query(collection(firestore, "users"), where("role", "==", "client")), [firestore]);
-  const projectsQuery = useMemo(() => query(collection(firestore, "projects"), limit(5)), [firestore]);
-  const paymentsQuery = useMemo(() => query(collection(firestore, "payments"), orderBy("date", "desc"), limit(5)), [firestore]);
+  // Queries properly memoized for Firebase hooks
+  const clientsQuery = useMemoFirebase(() => query(collection(firestore, "users"), where("role", "==", "client")), [firestore]);
+  const projectsQuery = useMemoFirebase(() => query(collection(firestore, "projects"), limit(5)), [firestore]);
+  const paymentsQuery = useMemoFirebase(() => query(collection(firestore, "payments"), orderBy("date", "desc"), limit(5)), [firestore]);
 
   const { data: clients } = useCollection(clientsQuery);
   const { data: projects } = useCollection(projectsQuery);

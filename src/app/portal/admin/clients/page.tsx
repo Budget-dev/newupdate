@@ -1,8 +1,7 @@
-
 "use client";
 
 import { useState } from "react";
-import { useFirebase, useCollection } from "@/firebase";
+import { useFirebase, useCollection, useMemoFirebase } from "@/firebase";
 import { collection, query, where, doc, setDoc } from "firebase/firestore";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,9 +10,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, UserPlus, Mail, Building, Phone, Loader2 } from "lucide-react";
+import { UserPlus, Loader2 } from "lucide-react";
 import AdminNavbar from "@/components/portal/AdminNavbar";
-import { useMemo } from "react";
 
 export default function ClientManagement() {
   const { firestore } = useFirebase();
@@ -21,7 +19,7 @@ export default function ClientManagement() {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
 
-  const clientsQuery = useMemo(() => query(collection(firestore, "users"), where("role", "==", "client")), [firestore]);
+  const clientsQuery = useMemoFirebase(() => query(collection(firestore, "users"), where("role", "==", "client")), [firestore]);
   const { data: clients, isLoading } = useCollection(clientsQuery);
 
   const [formData, setFormData] = useState({
@@ -35,8 +33,6 @@ export default function ClientManagement() {
     e.preventDefault();
     setLoading(true);
     try {
-      // In a real app with Auth Admin, we'd create the Auth user here.
-      // For this prototype, we create the User Document.
       const userId = `user_${Date.now()}`;
       await setDoc(doc(firestore, "users", userId), {
         uid: userId,

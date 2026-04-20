@@ -1,25 +1,22 @@
-
 "use client";
 
-import { useFirebase, useCollection, useUser } from "@/firebase";
+import { useFirebase, useCollection, useUser, useMemoFirebase } from "@/firebase";
 import { collection, query, where, orderBy } from "firebase/firestore";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { 
   ArrowLeft,
   CheckCircle2,
-  Calendar as CalendarIcon,
   Zap,
   Activity
 } from "lucide-react";
 import ClientNavbar from "@/components/portal/ClientNavbar";
-import { useMemo } from "react";
 
 export default function ProjectProgressPage() {
   const { firestore } = useFirebase();
   const { user } = useUser();
 
-  const projectsQuery = useMemo(() => {
+  const projectsQuery = useMemoFirebase(() => {
     if (!user) return null;
     return query(collection(firestore, "projects"), where("clientId", "==", user.uid));
   }, [firestore, user]);
@@ -27,7 +24,7 @@ export default function ProjectProgressPage() {
   const { data: projects } = useCollection(projectsQuery);
   const activeProject = projects?.[0];
 
-  const updatesQuery = useMemo(() => {
+  const updatesQuery = useMemoFirebase(() => {
     if (!activeProject) return null;
     return query(collection(firestore, "projects", activeProject.id, "updates"), orderBy("date", "desc"));
   }, [firestore, activeProject]);

@@ -1,9 +1,8 @@
-
 "use client";
 
 import { useState } from "react";
-import { useFirebase, useCollection } from "@/firebase";
-import { collection, query, orderBy, doc, setDoc } from "firebase/firestore";
+import { useFirebase, useCollection, useMemoFirebase } from "@/firebase";
+import { collection, query, orderBy, doc, setDoc, where } from "firebase/firestore";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,9 +10,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { Briefcase, Plus, Search, Filter, Loader2, MoreHorizontal } from "lucide-react";
+import { Briefcase, Plus, Loader2, MoreHorizontal } from "lucide-react";
 import AdminNavbar from "@/components/portal/AdminNavbar";
-import { useMemo } from "react";
 import Link from "next/link";
 
 export default function ProjectManagement() {
@@ -22,11 +20,11 @@ export default function ProjectManagement() {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
 
-  const projectsQuery = useMemo(() => query(collection(firestore, "projects"), orderBy("createdAt", "desc")), [firestore]);
-  const clientsQuery = useMemo(() => query(collection(firestore, "users"), collection(firestore, "users").where("role", "==", "client"))); // Fixed below
+  const projectsQuery = useMemoFirebase(() => query(collection(firestore, "projects"), orderBy("createdAt", "desc")), [firestore]);
+  const clientsQuery = useMemoFirebase(() => query(collection(firestore, "users"), where("role", "==", "client")), [firestore]);
 
   const { data: projects } = useCollection(projectsQuery);
-  const { data: clients } = useCollection(useMemo(() => collection(firestore, "users"), [firestore])); 
+  const { data: clients } = useCollection(clientsQuery);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -93,7 +91,7 @@ export default function ProjectManagement() {
                       <SelectValue placeholder="Select a client" />
                     </SelectTrigger>
                     <SelectContent className="rounded-xl">
-                      {clients?.filter(u => u.role === 'client').map(client => (
+                      {clients?.map(client => (
                         <SelectItem key={client.id} value={client.id}>{client.name} ({client.email})</SelectItem>
                       ))}
                     </SelectContent>

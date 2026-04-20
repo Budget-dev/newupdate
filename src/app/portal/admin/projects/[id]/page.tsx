@@ -1,12 +1,10 @@
-
 "use client";
 
-import { useState, useMemo } from "react";
-import { useParams, useRouter } from "next/navigation";
-import { useFirebase, useDoc, useCollection } from "@/firebase";
+import { useState, useMemo, useEffect } from "react";
+import { useParams } from "next/navigation";
+import { useFirebase, useDoc, useCollection, useMemoFirebase } from "@/firebase";
 import { doc, collection, query, orderBy, setDoc, updateDoc } from "firebase/firestore";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -22,17 +20,16 @@ export default function ProjectUpdatePage() {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [progress, setProgress] = useState(0);
 
-  const projectRef = useMemo(() => doc(firestore, "projects", id as string), [firestore, id]);
-  const updatesQuery = useMemo(() => query(collection(projectRef, "updates"), orderBy("date", "desc")), [projectRef]);
+  const projectRef = useMemoFirebase(() => doc(firestore, "projects", id as string), [firestore, id]);
+  const updatesQuery = useMemoFirebase(() => query(collection(projectRef, "updates"), orderBy("date", "desc")), [projectRef]);
 
   const { data: project } = useDoc(projectRef);
   const { data: updates } = useCollection(updatesQuery);
 
-  const [progress, setProgress] = useState(0);
-
   // Sync initial progress
-  useMemo(() => {
+  useEffect(() => {
     if (project) setProgress(project.progress);
   }, [project]);
 
@@ -42,7 +39,6 @@ export default function ProjectUpdatePage() {
     
     setLoading(true);
     try {
-      // 1. Add Log Entry
       const updateId = `upd_${Date.now()}`;
       await setDoc(doc(projectRef, "updates", updateId), {
         id: updateId,
@@ -51,7 +47,6 @@ export default function ProjectUpdatePage() {
         message: message
       });
 
-      // 2. Update Project Progress/Status
       await updateDoc(projectRef, {
         progress: progress,
         status: progress === 100 ? "Completed" : "In Progress"

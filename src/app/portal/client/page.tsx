@@ -1,38 +1,35 @@
-
 "use client";
 
-import { useFirebase, useCollection, useUser } from "@/firebase";
+import { useFirebase, useCollection, useUser, useMemoFirebase } from "@/firebase";
 import { collection, query, where, orderBy, limit } from "firebase/firestore";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { 
   Rocket, 
   MessageSquare, 
-  History, 
   ArrowRight,
   Zap,
   CheckCircle2,
   Clock
 } from "lucide-react";
 import ClientNavbar from "@/components/portal/ClientNavbar";
-import { useMemo } from "react";
 
 export default function ClientDashboard() {
   const { firestore } = useFirebase();
   const { user } = useUser();
 
-  // Find user's projects
-  const projectsQuery = useMemo(() => {
+  // Find user's projects properly memoized
+  const projectsQuery = useMemoFirebase(() => {
     if (!user) return null;
     return query(collection(firestore, "projects"), where("clientId", "==", user.uid));
   }, [firestore, user]);
 
   const { data: projects } = useCollection(projectsQuery);
-  const activeProject = projects?.[0]; // Usually one project per client for now
+  const activeProject = projects?.[0];
 
-  // Latest updates for active project
-  const updatesQuery = useMemo(() => {
+  // Latest updates for active project properly memoized
+  const updatesQuery = useMemoFirebase(() => {
     if (!activeProject) return null;
     return query(collection(firestore, "projects", activeProject.id, "updates"), orderBy("date", "desc"), limit(3));
   }, [firestore, activeProject]);

@@ -1,12 +1,11 @@
-
 "use client";
 
-import { useState, useMemo, useRef, useEffect } from "react";
-import { useFirebase, useUser, useCollection } from "@/firebase";
-import { collection, query, where, orderBy, addDoc, serverTimestamp, doc } from "firebase/firestore";
+import { useState, useRef, useEffect } from "react";
+import { useFirebase, useUser, useCollection, useMemoFirebase } from "@/firebase";
+import { collection, query, where, orderBy, addDoc, serverTimestamp } from "firebase/firestore";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Send, Loader2, MessageSquare, ArrowLeft, ShieldCheck } from "lucide-react";
 import ClientNavbar from "@/components/portal/ClientNavbar";
@@ -21,7 +20,7 @@ export default function ClientChatPage() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   // Get client's project
-  const projectsQuery = useMemo(() => {
+  const projectsQuery = useMemoFirebase(() => {
     if (!user) return null;
     return query(collection(firestore, "projects"), where("clientId", "==", user.uid));
   }, [firestore, user]);
@@ -29,7 +28,7 @@ export default function ClientChatPage() {
   const project = projects?.[0];
 
   // Get messages for this project
-  const messagesQuery = useMemo(() => {
+  const messagesQuery = useMemoFirebase(() => {
     if (!project) return null;
     return query(collection(firestore, "messages"), where("projectId", "==", project.id), orderBy("timestamp", "asc"));
   }, [firestore, project]);
