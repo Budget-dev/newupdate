@@ -2,7 +2,7 @@
 "use client";
 
 import { useFirebase, useCollection, useUser, useMemoFirebase } from "@/firebase";
-import { collection, query, where, orderBy, limit } from "firebase/firestore";
+import { collection, query, where, orderBy, limit, doc, getDoc } from "firebase/firestore";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -13,23 +13,36 @@ import {
   Zap,
   CheckCircle2,
   Clock,
-  IndianRupee,
   Wallet,
-  ShieldCheck
+  ShieldCheck,
+  Loader2
 } from "lucide-react";
 import ClientNavbar from "@/components/portal/ClientNavbar";
+import { useEffect, useState } from "react";
 
 export default function ClientDashboard() {
   const { firestore } = useFirebase();
-  const { user } = useUser();
+  const { user, isUserLoading } = useUser();
+  const [roleConfirmed, setRoleConfirmed] = useState(false);
 
-  // Find user's projects properly memoized
+  useEffect(() => {
+    if (user && !isUserLoading) {
+      const confirmRole = async () => {
+        const docRef = doc(firestore, "users", user.uid);
+        const snap = await getDoc(docRef);
+        if (snap.exists()) setRoleConfirmed(true);
+      };
+      confirmRole();
+    }
+  }, [user, isUserLoading, firestore]);
+
+  // Find user's projects properly memoized and guarded by role confirmation
   const projectsQuery = useMemoFirebase(() => {
-    if (!user) return null;
+    if (!user || !roleConfirmed) return null;
     return query(collection(firestore, "projects"), where("clientId", "==", user.uid));
-  }, [firestore, user]);
+  }, [firestore, user, roleConfirmed]);
 
-  const { data: projects } = useCollection(projectsQuery);
+  const { data: projects, isLoading: projectsLoading } = useCollection(projectsQuery);
   const activeProject = projects?.[0];
 
   // Latest updates for active project
@@ -38,24 +51,31 @@ export default function ClientDashboard() {
     return query(collection(firestore, "projects", activeProject.id, "updates"), orderBy("date", "desc"), limit(3));
   }, [firestore, activeProject]);
 
-  // Payments for active project
+  // Payments for active project - specifically filtered by clientId
   const paymentsQuery = useMemoFirebase(() => {
-    if (!user) return null;
+    if (!user || !roleConfirmed) return null;
     return query(collection(firestore, "payments"), where("clientId", "==", user.uid), orderBy("date", "desc"));
-  }, [firestore, user]);
+  }, [firestore, user, roleConfirmed]);
 
   const { data: updates } = useCollection(updatesQuery);
   const { data: payments } = useCollection(paymentsQuery);
 
   const totalPaid = payments?.reduce((acc, p) => acc + Number(p.amount), 0) || 0;
   const projectValue = Number(activeProject?.totalBudget || 0);
-  const balanceDue = projectValue - totalPaid;
+  const balanceDue = Math.max(0, projectValue - totalPaid);
+
+  if (isUserLoading || projectsLoading) {
+    return (
+      <div className="min-h-screen bg-[#FDFDFD] flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#FDFDFD] pb-20">
       <ClientNavbar />
       <main className="max-w-7xl mx-auto px-6 pt-32 space-y-12">
-        
         <header className="space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest border border-primary/20">
             Welcome back, {user?.displayName || "Client"}
@@ -88,7 +108,7 @@ export default function ClientDashboard() {
                       <span className="text-3xl font-black text-primary italic">{activeProject.progress}%</span>
                     </div>
                     <div className="h-4 w-full bg-muted rounded-full overflow-hidden p-1 shadow-inner">
-                      <div className="h-full bg-primary rounded-full transition-all duration-1000 shadow-[0_0_15px_rgba(16,185,129,0.4)]" style={{ width: `${activeProject.progress}%` }} />
+                      <div className="h-full bg-primary rounded-full transition-all duration-1000" style={{ width: `${activeProject.progress}%` }} />
                     </div>
                   </div>
 
@@ -111,7 +131,6 @@ export default function ClientDashboard() {
                 </CardContent>
               </Card>
 
-              {/* Financial Overview Card */}
               <Card className="border-none shadow-xl rounded-[2.5rem] bg-white overflow-hidden">
                  <div className="bg-emerald-500 p-8 text-white flex justify-between items-center">
                     <div className="space-y-1">
@@ -153,9 +172,6 @@ export default function ClientDashboard() {
                                 </div>
                              </div>
                           ))}
-                          {(!payments || payments.length === 0) && (
-                             <p className="py-6 text-sm text-muted-foreground italic">No payments logged yet.</p>
-                          )}
                        </div>
                     </div>
                  </CardContent>
@@ -204,7 +220,7 @@ export default function ClientDashboard() {
                  <h4 className="text-xs font-black uppercase text-muted-foreground tracking-widest">Lead Engineer</h4>
                  <div className="flex items-center gap-4">
                    <div className="w-12 h-12 rounded-xl bg-muted overflow-hidden">
-                     <img src="https://yasodha.in/assets/venkatesh-profile.png" className="w-full h-full object-cover" />
+                     <img src="https://yasodha.in/assets/venkatesh-profile.png" className="w-full h-full object-cover" alt="Venkatesh" />
                    </div>
                    <div>
                      <p className="font-black text-secondary">Venkatesh Choppa</p>
@@ -215,8 +231,8 @@ export default function ClientDashboard() {
             </div>
           </div>
         ) : (
-          <div className="py-40 text-center space-y-4 animate-pulse">
-            <Rocket className="w-12 h-12 mx-auto text-muted-foreground" />
+          <div className="py-40 text-center space-y-4">
+            <Rocket className="w-12 h-12 mx-auto text-muted-foreground opacity-20" />
             <p className="text-xl font-bold italic text-muted-foreground">Initializing your project dashboard...</p>
           </div>
         )}

@@ -45,13 +45,14 @@ service cloud.firestore {
 
       match /messages/{messageId} {
         allow read: if isAdmin() || (isSignedIn() && get(/databases/$(database)/documents/projects/$(projectId)).data.clientId == request.auth.uid);
-        allow create: if isAdmin() || (isSignedIn() && get(/databases/$(database)/documents/projects/$(projectId)).data.clientId == request.auth.uid);
+        allow create: if isSignedIn();
       }
     }
 
     // --- Payments ---
     match /payments/{paymentId} {
-      allow read: if isAdmin() || (isSignedIn() && resource.data.clientId == request.auth.uid);
+      allow list: if isAdmin() || (isSignedIn() && request.query.limit <= 100 && request.query.where.clientId == request.auth.uid);
+      allow get: if isAdmin() || (isSignedIn() && resource.data.clientId == request.auth.uid);
       allow write: if isAdmin();
     }
 

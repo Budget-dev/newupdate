@@ -1,9 +1,9 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useFirebase, useCollection, useMemoFirebase } from "@/firebase";
-import { collection, query, orderBy, doc, setDoc, where, deleteDoc } from "firebase/firestore";
+import { collection, query, orderBy, doc, setDoc, where, deleteDoc, getDoc } from "firebase/firestore";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,33 +11,55 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useToast } from "@/hooks/use-toast";
-import { IndianRupee, Plus, Loader2, Trash2, TrendingUp, Wallet } from "lucide-react";
+import { IndianRupee, Plus, Loader2, Trash2 } from "lucide-react";
 import AdminNavbar from "@/components/portal/AdminNavbar";
+import { useRouter } from "next/navigation";
 
 export default function PaymentsPage() {
-  const { firestore, user } = useFirebase();
+  const { firestore, user, isUserLoading } = useFirebase();
   const { toast } = useToast();
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isVerifying, setIsVerifying] = useState(true);
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
+  useEffect(() => {
+    if (!isUserLoading) {
+      if (!user) {
+        router.push("/portal/login");
+        return;
+      }
+      const checkAdmin = async () => {
+        try {
+          const userDoc = await getDoc(doc(firestore, "users", user.uid));
+          if (userDoc.exists() && userDoc.data().role === "admin") {
+            setIsAdmin(true);
+          } else {
+            router.push("/portal/client");
+          }
+        } catch (err) {
+          router.push("/");
+        } finally {
+          setIsVerifying(false);
+        }
+      };
+      checkAdmin();
+    }
+  }, [user, isUserLoading, firestore, router]);
+
   const paymentsQuery = useMemoFirebase(() => {
-    if (!user) return null;
+    if (!user || !isAdmin || isVerifying) return null;
     return query(collection(firestore, "payments"), orderBy("date", "desc"));
-  }, [firestore, user]);
+  }, [firestore, user, isAdmin, isVerifying]);
 
   const projectsQuery = useMemoFirebase(() => {
-    if (!user) return null;
+    if (!user || !isAdmin || isVerifying) return null;
     return query(collection(firestore, "projects"));
-  }, [firestore, user]);
-
-  const clientsQuery = useMemoFirebase(() => {
-    if (!user) return null;
-    return query(collection(firestore, "users"), where("role", "==", "client"));
-  }, [firestore, user]);
+  }, [firestore, user, isAdmin, isVerifying]);
 
   const { data: payments } = useCollection(paymentsQuery);
   const { data: projects } = useCollection(projectsQuery);
-  const { data: clients } = useCollection(clientsQuery);
 
   const [formData, setFormData] = useState({
     projectId: "",
@@ -88,6 +110,16 @@ export default function PaymentsPage() {
     }
   };
 
+  if (isUserLoading || isVerifying) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#F8FAF9]">
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  if (!isAdmin) return null;
+
   return (
     <div className="min-h-screen bg-[#F8FAF9] pb-20">
       <AdminNavbar />
@@ -108,7 +140,6 @@ export default function PaymentsPage() {
           </Card>
         </div>
 
-        {/* Project Balance Matrix */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
            {projects?.map(project => {
              const projectPayments = payments?.filter(p => p.projectId === project.id) || [];
@@ -214,7 +245,7 @@ export default function PaymentsPage() {
                 <TableHeader>
                   <TableRow>
                     <TableHead className="px-8 text-[10px] font-black uppercase tracking-widest text-muted-foreground">Date</TableHead>
-                    <TableHead className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Project / Client</TableHead>
+                    <TableHead className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Project</TableHead>
                     <TableHead className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Status</TableHead>
                     <TableHead className="text-right text-[10px] font-black uppercase tracking-widest text-muted-foreground">Amount</TableHead>
                     <TableHead className="px-8 text-right"></TableHead>
@@ -223,17 +254,13 @@ export default function PaymentsPage() {
                 <TableBody>
                   {payments?.map((payment) => {
                     const proj = projects?.find(p => p.id === payment.projectId);
-                    const client = clients?.find(c => c.id === payment.clientId);
                     return (
                       <TableRow key={payment.id} className="hover:bg-muted/30">
                         <TableCell className="px-8 py-6 text-xs font-bold text-muted-foreground">
                           {new Date(payment.date).toLocaleDateString()}
                         </TableCell>
                         <TableCell>
-                          <div className="flex flex-col">
-                             <span className="font-bold text-secondary">{proj?.name || 'Unknown Project'}</span>
-                             <span className="text-[9px] font-bold text-muted-foreground uppercase">{client?.name}</span>
-                          </div>
+                          <span className="font-bold text-secondary">{proj?.name || 'Unknown Project'}</span>
                         </TableCell>
                         <TableCell>
                           <span className={`px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest ${payment.status === 'paid' ? 'bg-emerald-500/10 text-emerald-600' : 'bg-amber-500/10 text-amber-600'}`}>
@@ -257,13 +284,6 @@ export default function PaymentsPage() {
                       </TableRow>
                     );
                   })}
-                  {(!payments || payments.length === 0) && (
-                    <TableRow>
-                      <TableCell colSpan={5} className="py-20 text-center text-muted-foreground italic">
-                        No transactions recorded.
-                      </TableCell>
-                    </TableRow>
-                  )}
                 </TableBody>
               </Table>
             </CardContent>

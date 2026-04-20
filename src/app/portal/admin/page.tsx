@@ -1,6 +1,7 @@
+
 "use client";
 
-import { useFirebase, useCollection, useUser, useMemoFirebase } from "@/firebase";
+import { useFirebase, useCollection, useMemoFirebase } from "@/firebase";
 import { collection, query, where, orderBy, limit, doc, getDoc } from "firebase/firestore";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -10,8 +11,6 @@ import { useRouter } from "next/navigation";
 import { 
   Users, 
   Briefcase, 
-  TrendingUp, 
-  Clock, 
   Plus, 
   ArrowRight,
   IndianRupee,
@@ -23,9 +22,9 @@ import AdminNavbar from "@/components/portal/AdminNavbar";
 export default function AdminDashboard() {
   const { firestore, user, isUserLoading } = useFirebase();
   const router = useRouter();
+  const [isAdmin, setIsAdmin] = useState(false);
   const [isVerifying, setIsVerifying] = useState(true);
 
-  // Security: Verify Admin Role
   useEffect(() => {
     if (!isUserLoading) {
       if (!user) {
@@ -34,10 +33,17 @@ export default function AdminDashboard() {
       }
       
       const checkAdmin = async () => {
-        const userDoc = await getDoc(doc(firestore, "users", user.uid));
-        if (!userDoc.exists() || userDoc.data().role !== "admin") {
+        try {
+          const userDoc = await getDoc(doc(firestore, "users", user.uid));
+          if (userDoc.exists() && userDoc.data().role === "admin") {
+            setIsAdmin(true);
+          } else {
+            router.push("/portal/client");
+          }
+        } catch (err) {
+          console.error(err);
           router.push("/");
-        } else {
+        } finally {
           setIsVerifying(false);
         }
       };
@@ -45,21 +51,20 @@ export default function AdminDashboard() {
     }
   }, [user, isUserLoading, firestore, router]);
 
-  // Queries properly memoized and conditional on user
   const clientsQuery = useMemoFirebase(() => {
-    if (!user || isVerifying) return null;
+    if (!user || !isAdmin || isVerifying) return null;
     return query(collection(firestore, "users"), where("role", "==", "client"));
-  }, [firestore, user, isVerifying]);
+  }, [firestore, user, isAdmin, isVerifying]);
 
   const projectsQuery = useMemoFirebase(() => {
-    if (!user || isVerifying) return null;
-    return query(collection(firestore, "projects"), limit(5));
-  }, [firestore, user, isVerifying]);
+    if (!user || !isAdmin || isVerifying) return null;
+    return query(collection(firestore, "projects"), limit(10));
+  }, [firestore, user, isAdmin, isVerifying]);
 
   const paymentsQuery = useMemoFirebase(() => {
-    if (!user || isVerifying) return null;
-    return query(collection(firestore, "payments"), orderBy("date", "desc"), limit(5));
-  }, [firestore, user, isVerifying]);
+    if (!user || !isAdmin || isVerifying) return null;
+    return query(collection(firestore, "payments"), orderBy("date", "desc"), limit(10));
+  }, [firestore, user, isAdmin, isVerifying]);
 
   const { data: clients } = useCollection(clientsQuery);
   const { data: projects } = useCollection(projectsQuery);
@@ -73,6 +78,8 @@ export default function AdminDashboard() {
     );
   }
 
+  if (!isAdmin) return null;
+
   const stats = [
     { label: "Total Clients", value: clients?.length || 0, icon: <Users className="w-5 h-5" />, color: "text-blue-500", bg: "bg-blue-500/10" },
     { label: "Active Projects", value: projects?.filter(p => p.status === "In Progress").length || 0, icon: <Briefcase className="w-5 h-5" />, color: "text-emerald-500", bg: "bg-emerald-500/10" },
@@ -84,14 +91,13 @@ export default function AdminDashboard() {
     <div className="min-h-screen bg-[#F8FAF9] pb-20">
       <AdminNavbar />
       <main className="max-w-7xl mx-auto px-6 pt-32 space-y-12">
-        
         <header className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-1">
             <h1 className="text-4xl font-black text-secondary tracking-tight">Admin <span className="text-primary italic">Command.</span></h1>
             <p className="text-muted-foreground font-medium uppercase text-[10px] tracking-widest">Enterprise Software Management</p>
           </div>
           <div className="flex gap-3">
-            <Button asChild className="rounded-xl bg-secondary text-white h-11 px-6 font-bold shadow-lg shadow-secondary/10">
+            <Button asChild className="rounded-xl bg-secondary text-white h-11 px-6 font-bold shadow-lg">
               <Link href="/portal/admin/projects"><Plus className="w-4 h-4 mr-2" /> New Project</Link>
             </Button>
           </div>
@@ -140,11 +146,6 @@ export default function AdminDashboard() {
                     </div>
                   </div>
                 ))}
-                {(!projects || projects.length === 0) && (
-                  <div className="p-12 text-center text-muted-foreground italic text-sm">
-                    No projects found. Create your first one in the Pipeline.
-                  </div>
-                )}
               </div>
             </CardContent>
           </Card>
