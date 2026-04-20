@@ -87,8 +87,8 @@
       { "path": "/clients/{uid}", "definition": { "entityName": "ClientProfile", "description": "Extended profile for clients." } },
       { "path": "/projects/{projectId}", "definition": { "entityName": "Project", "description": "Software project records." } },
       { "path": "/projects/{projectId}/updates/{updateId}", "definition": { "entityName": "ProjectUpdate", "description": "Subcollection for project logs." } },
-      { "path": "/payments/{paymentId}", "definition": { "entityName": "Payment", "description": "Admin-only financial ledger." } },
-      { "path": "/messages/{messageId}", "definition": { "entityName": "ChatMessage", "description": "Centralized chat messages." } }
+      { "path": "/projects/{projectId}/messages/{messageId}", "definition": { "entityName": "ChatMessage", "description": "Subcollection for project-specific chat." } },
+      { "path": "/payments/{paymentId}", "definition": { "entityName": "Payment", "description": "Admin-only financial ledger." } }
     ]
   }
 }

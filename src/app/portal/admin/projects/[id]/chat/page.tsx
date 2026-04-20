@@ -1,9 +1,10 @@
+
 "use client";
 
 import { useState, useRef, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { useFirebase, useDoc, useCollection, useMemoFirebase } from "@/firebase";
-import { collection, query, where, orderBy, addDoc, serverTimestamp, doc } from "firebase/firestore";
+import { collection, query, orderBy, addDoc, serverTimestamp, doc } from "firebase/firestore";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
@@ -32,7 +33,7 @@ export default function AdminProjectChatPage() {
 
   const messagesQuery = useMemoFirebase(() => {
     if (!projectId) return null;
-    return query(collection(firestore, "messages"), where("projectId", "==", projectId), orderBy("timestamp", "asc"));
+    return query(collection(firestore, "projects", projectId, "messages"), orderBy("timestamp", "asc"));
   }, [firestore, projectId]);
   
   const { data: messages, isLoading: messagesLoading } = useCollection(messagesQuery);
@@ -59,10 +60,10 @@ export default function AdminProjectChatPage() {
 
     setInput("");
     
-    addDoc(collection(firestore, "messages"), messageData)
+    addDoc(collection(firestore, "projects", projectId, "messages"), messageData)
       .catch(async (err) => {
         errorEmitter.emit('permission-error', new FirestorePermissionError({
-          path: 'messages',
+          path: `projects/${projectId}/messages`,
           operation: 'create',
           requestResourceData: messageData
         }));

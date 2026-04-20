@@ -42,19 +42,15 @@ service cloud.firestore {
         allow read: if isAdmin() || (isSignedIn() && get(/databases/$(database)/documents/projects/$(projectId)).data.clientId == request.auth.uid);
         allow write: if isAdmin();
       }
+
+      match /messages/{messageId} {
+        allow read, create: if isAdmin() || (isSignedIn() && get(/databases/$(database)/documents/projects/$(projectId)).data.clientId == request.auth.uid);
+      }
     }
 
     // --- Payments ---
     match /payments/{paymentId} {
       allow read, write: if isAdmin();
-    }
-
-    // --- Messages ---
-    match /messages/{messageId} {
-      allow create: if isSignedIn();
-      // Split read into get and list for better query validation
-      allow get: if isAdmin() || isSignedIn();
-      allow list: if isAdmin() || isSignedIn();
     }
 
     // --- Inquiries (Lead Capture) ---

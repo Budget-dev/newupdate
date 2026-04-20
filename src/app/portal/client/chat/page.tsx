@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -30,10 +31,10 @@ export default function ClientChatPage() {
   const { data: projects, isLoading: projectsLoading } = useCollection(projectsQuery);
   const project = projects?.[0];
 
-  // 2. Only query messages if we have a valid project ID
+  // 2. Query messages from subcollection
   const messagesQuery = useMemoFirebase(() => {
     if (!project?.id) return null;
-    return query(collection(firestore, "messages"), where("projectId", "==", project.id), orderBy("timestamp", "asc"));
+    return query(collection(firestore, "projects", project.id, "messages"), orderBy("timestamp", "asc"));
   }, [firestore, project?.id]);
   
   const { data: messages, isLoading: messagesLoading } = useCollection(messagesQuery);
@@ -60,17 +61,16 @@ export default function ClientChatPage() {
 
     setInput("");
     
-    addDoc(collection(firestore, "messages"), messageData)
+    addDoc(collection(firestore, "projects", project.id, "messages"), messageData)
       .catch(async (err) => {
         errorEmitter.emit('permission-error', new FirestorePermissionError({
-          path: 'messages',
+          path: `projects/${project.id}/messages`,
           operation: 'create',
           requestResourceData: messageData
         }));
       });
   };
 
-  // Prevent rendering if user is still being determined
   if (isUserLoading) {
     return (
       <div className="min-h-screen bg-[#F8FAF9] flex items-center justify-center">
