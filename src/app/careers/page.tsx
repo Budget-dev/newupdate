@@ -1,4 +1,3 @@
-
 "use client";
 
 import Navbar from "@/components/layout/Navbar";
@@ -13,34 +12,35 @@ import {
   Phone, 
   ArrowRight, 
   Zap, 
-  MousePointer2, 
   Heart, 
-  Coffee, 
   Globe, 
   DollarSign,
   Sparkles,
-  CheckCircle2
+  CheckCircle2,
+  Users,
+  Megaphone,
+  Smartphone
 } from "lucide-react";
 
 const perks = [
   {
     title: "Flexible Working Hours",
-    desc: "Our families and lives outside of our jobs are very important to us; our schedules are flexible to reflect and support that.",
+    desc: "Work from anywhere with flexible shifts that respect your personal life and growth.",
     icon: <Clock className="w-5 h-5 text-primary" />
   },
   {
     title: "Remote First",
-    desc: "Most of our team is based across India. We believe in results and quality of work over physical presence in an office.",
+    desc: "Join a distributed team building high-performance software for the modern Indian market.",
     icon: <Globe className="w-5 h-5 text-primary" />
   },
   {
-    title: "Compensation",
-    desc: "We offer competitive hourly rates for creative minds, ensuring you are rewarded fairly for your high-fidelity contributions.",
+    title: "Competitive Pay",
+    desc: "We offer competitive rates for creative and engineering talent that drives results.",
     icon: <DollarSign className="w-5 h-5 text-primary" />
   },
   {
     title: "Modern Tech Stack",
-    desc: "Work with the latest tools like Next.js 15, React 19, and advanced AI agents to build world-class digital solutions.",
+    desc: "Work with Next.js 15, React 19, and advanced AI agents to build world-class solutions.",
     icon: <Zap className="w-5 h-5 text-primary" />
   }
 ];
@@ -49,7 +49,7 @@ const values = [
   { num: "01", title: "We are principled.", desc: "We believe in transparency and high-quality engineering." },
   { num: "02", title: "We're bold.", desc: "We take risks and push the boundaries of web design." },
   { num: "03", title: "We're team-oriented.", desc: "Collaboration is at the heart of everything we build." },
-  { num: "04", title: "We are committed to our shared values.", desc: "Excellence is not an act, but a habit for us." }
+  { num: "04", title: "We are committed to excellence.", desc: "Excellence is not an act, but a habit for us." }
 ];
 
 export default function CareersPage() {
@@ -70,16 +70,106 @@ export default function CareersPage() {
                 Work With <span className="text-primary italic">Us.</span>
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl font-medium leading-relaxed">
-                We are looking for elite creative talent to help us redefine digital experiences for Indian brands.
+                We are looking for elite creative and management talent to help us redefine digital experiences for Indian brands.
               </p>
             </div>
 
             <div className="space-y-6 pt-8">
-              <h2 className="text-2xl font-black text-secondary uppercase tracking-widest">Open Positions (1)</h2>
+              <h2 className="text-2xl font-black text-secondary uppercase tracking-widest">Open Positions (2)</h2>
               
               <div className="p-1 rounded-[2.5rem] bg-gradient-to-br from-primary/20 to-transparent">
                 <div className="bg-white rounded-[2.4rem] border border-muted shadow-xl overflow-hidden">
                   <Accordion type="single" collapsible className="w-full">
+                    {/* Client Co-ordinator Position */}
+                    <AccordionItem value="coordinator" className="border-b border-muted/50">
+                      <div className="p-8 md:p-12">
+                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                          <div className="space-y-2">
+                            <h3 className="text-3xl md:text-4xl font-black text-secondary">Client Co-ordinator</h3>
+                            <p className="text-primary font-bold text-lg">క్లయింట్ కోఆర్డినేటర్ అవసరం</p>
+                            <div className="flex flex-wrap gap-4 text-muted-foreground font-bold text-xs uppercase tracking-widest">
+                              <span className="flex items-center gap-1.5"><Clock className="w-4 h-4" /> Part-Time / Flexible</span>
+                              <span className="flex items-center gap-1.5"><Globe className="w-4 h-4" /> Work from Anywhere</span>
+                            </div>
+                          </div>
+                          <AccordionTrigger className="w-auto px-8 h-14 bg-secondary text-white rounded-2xl font-black text-sm hover:no-underline hover:scale-105 transition-transform">
+                            View Role Details
+                          </AccordionTrigger>
+                        </div>
+                      </div>
+
+                      <AccordionContent className="bg-[#F8FAF9] p-8 md:p-12 border-t border-muted/50">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                          <div className="space-y-10">
+                            <div className="space-y-6">
+                              <h4 className="text-xl font-black text-secondary flex items-center gap-2">
+                                <Users className="w-5 h-5 text-primary" /> Key Responsibilities:
+                              </h4>
+                              <ul className="space-y-4">
+                                {[
+                                  "Interact with clients via calls, meetings & messages",
+                                  "Explain services, pricing & project details confidently",
+                                  "Coordinate with the engineering team to deliver updates",
+                                  "Provide daily progress reports to clients",
+                                  "Handle Instagram & YouTube accounts (@budgetdev_)",
+                                  "Build strong and lasting client relationships"
+                                ].map((req, i) => (
+                                  <li key={i} className="flex items-start gap-3 text-sm font-bold text-secondary/80">
+                                    <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                                    {req}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                            
+                            <div className="space-y-6">
+                              <h4 className="text-xl font-black text-secondary flex items-center gap-2">
+                                <Megaphone className="w-5 h-5 text-primary" /> Skills & Requirements:
+                              </h4>
+                              <ul className="space-y-4">
+                                {[
+                                  "Good communication in English & Telugu",
+                                  "Basic knowledge of coding (HTML/CSS/WordPress is a plus)",
+                                  "Knowledge of website pricing & packages",
+                                  "Experience in dealing with clients confidently",
+                                  "Self-motivated and responsible attitude"
+                                ].map((req, i) => (
+                                  <li key={i} className="flex items-start gap-3 text-sm font-bold text-secondary/80">
+                                    <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                                    {req}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+
+                          <div className="space-y-8 bg-white p-8 rounded-3xl shadow-sm border border-muted/50 h-fit sticky top-4">
+                            <div className="space-y-2">
+                              <p className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">Immediate Opening</p>
+                              <h5 className="text-xl font-black text-secondary">Interested?</h5>
+                              <p className="text-xs text-muted-foreground font-medium leading-relaxed">
+                                Join our creative team and be the face of BudgetDev. We're looking for someone who can help businesses plan their next digital success.
+                              </p>
+                            </div>
+                            
+                            <div className="flex flex-col gap-3">
+                              <Button asChild className="h-14 rounded-2xl bg-[#00d757] text-white font-black text-sm shadow-lg shadow-[#00d757]/10">
+                                <Link href="https://wa.me/918466006486" target="_blank">
+                                  Apply via WhatsApp <Phone className="ml-2 w-4 h-4" />
+                                </Link>
+                              </Button>
+                              <Button asChild variant="outline" className="h-14 rounded-2xl border-muted-foreground/20 text-secondary font-black text-sm">
+                                <Link href="mailto:venkateshchop14@gmail.com">
+                                  Email Resume <Mail className="ml-2 w-4 h-4" />
+                                </Link>
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+
+                    {/* UI/UX Designer Position */}
                     <AccordionItem value="uiux" className="border-none">
                       <div className="p-8 md:p-12">
                         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -129,7 +219,7 @@ export default function CareersPage() {
                             
                             <div className="flex flex-col gap-3">
                               <Button asChild className="h-14 rounded-2xl bg-[#00d757] text-white font-black text-sm shadow-lg shadow-[#00d757]/10">
-                                <Link href="https://wa.me/918331004675" target="_blank">
+                                <Link href="https://wa.me/918466006486" target="_blank">
                                   Apply via WhatsApp <Phone className="ml-2 w-4 h-4" />
                                 </Link>
                               </Button>
@@ -204,13 +294,13 @@ export default function CareersPage() {
               <span className="text-primary text-xs font-black uppercase tracking-widest">Join the Tribe</span>
               <h2 className="text-4xl md:text-6xl font-headline font-black text-white leading-tight">Ready to build the future?</h2>
               <p className="text-white/40 text-base md:text-lg max-w-2xl mx-auto font-medium">
-                We are always looking for creative UI/UX designers and high-performance engineers. If you have a portfolio of creative landing pages, we want to see it.
+                We are always looking for creative talent and organized management. If you have the drive to grow with us, we want to hear from you.
               </p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
               <Link 
-                href="https://wa.me/918331004675" 
+                href="https://wa.me/918466006486" 
                 target="_blank"
                 className="flex items-center gap-4 p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all group"
               >
@@ -219,7 +309,7 @@ export default function CareersPage() {
                 </div>
                 <div className="text-left">
                   <p className="text-[10px] font-black text-[#00d757] uppercase tracking-widest">WhatsApp Us</p>
-                  <p className="text-base font-black text-white">8331004675</p>
+                  <p className="text-base font-black text-white">8466006486</p>
                 </div>
               </Link>
 
@@ -231,7 +321,7 @@ export default function CareersPage() {
                   <Mail className="w-6 h-6" />
                 </div>
                 <div className="text-left">
-                  <p className="text-[10px] font-black text-primary uppercase tracking-widest">Email Portfolio</p>
+                  <p className="text-[10px] font-black text-primary uppercase tracking-widest">Email Resume</p>
                   <p className="text-base font-black text-white">venkateshchop14@gmail.com</p>
                 </div>
               </Link>
