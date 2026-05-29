@@ -89,6 +89,12 @@
       "description": "Trinix Cybersecurity Live Preview",
       "imageUrl": "https://s0.wp.com/mshots/v1/https://studio-trinix.vercel.app?w=1024&h=768",
       "imageHint": "cybersecurity website"
+    },
+    {
+      "id": "project-garagedoctors",
+      "description": "The Garage Doctors Live Preview",
+      "imageUrl": "https://s0.wp.com/mshots/v1/https://thegaragedoctors.in?w=1024&h=768",
+      "imageHint": "automotive website"
     }
   ]
 }

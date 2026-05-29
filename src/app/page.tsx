@@ -1,3 +1,4 @@
+
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
@@ -56,6 +57,14 @@ const TechLogos = [
 
 const completedProjects = [
   {
+    title: "The Garage Doctors",
+    tag: "Automotive Startup (₹10L Funding)",
+    description: "Scalable car garage service booking engine that helped secure seed funding.",
+    link: "https://thegaragedoctors.in/",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'project-garagedoctors')?.imageUrl || "",
+    imageHint: "automotive booking website"
+  },
+  {
     title: "Trinix Cybersecurity",
     tag: "Security Enterprise",
     description: "High-performance cybersecurity portal with advanced threat intelligence.",
@@ -102,46 +111,6 @@ const completedProjects = [
     link: "https://thebaza.in",
     imageUrl: PlaceHolderImages.find(img => img.id === 'project-thebaza')?.imageUrl || "",
     imageHint: "budget web development fashion"
-  },
-  {
-    title: "Srinika Spices",
-    tag: "E-commerce & Logistics",
-    description: "National spice merchant with real-time automated inventory sync.",
-    link: "https://srinikaspices.in",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'project-srinika')?.imageUrl || "",
-    imageHint: "spices website"
-  },
-  {
-    title: "Gurucharan Interiors",
-    tag: "Architecture Portfolio",
-    description: "Visual-first portfolio for an interior design firm in India.",
-    link: "https://gurucharaninteriors.in",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'project-gurucharan')?.imageUrl || "",
-    imageHint: "interiors website"
-  },
-  {
-    title: "Yasodha.in",
-    tag: "Personal Branding",
-    description: "High-performance professional resume and personal branding portal.",
-    link: "https://yasodha.in",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'project-yasodha')?.imageUrl || "",
-    imageHint: "resume website"
-  },
-  {
-    title: "Roshni Boutiques",
-    tag: "Designer Boutique",
-    description: "Elegant e-commerce for premium designer wear, optimized for conversions.",
-    link: "https://roshniboutiques.com",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'project-roshni')?.imageUrl || "",
-    imageHint: "designer boutique"
-  },
-  {
-    title: "Pastels Boutique",
-    tag: "Designer Women's Wear",
-    description: "A high-fidelity e-commerce experience for a luxury designer boutique.",
-    link: "https://pastelsboutique.com",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'project-pastels')?.imageUrl || "",
-    imageHint: "fashion boutique"
   }
 ];
 

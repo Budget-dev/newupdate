@@ -1,3 +1,4 @@
+
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Badge } from "@/components/ui/badge";
@@ -5,7 +6,7 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, CheckCircle2, Globe, Rocket, ShieldCheck, Zap, TrendingUp, Users, Shield } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Globe, Rocket, ShieldCheck, Zap, TrendingUp, Users, Shield, Car, Wallet } from "lucide-react";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -15,6 +16,26 @@ export const metadata: Metadata = {
 };
 
 const projects = [
+  {
+    title: "The Garage Doctors",
+    client: "Automotive Startup",
+    category: "Service Booking Engine",
+    description: "A high-performance car service booking platform for a growing automotive startup. Our scalable architecture and professional UI helped the founders secure ₹10 Lakhs in seed funding to expand their operations across India.",
+    results: [
+      { label: "Funding Secured", value: "₹10 Lakhs", icon: <Wallet className="w-4 h-4" /> },
+      { label: "Booking Speed", value: "0.4s", icon: <Zap className="w-4 h-4" /> },
+      { label: "Growth Index", value: "250%+", icon: <TrendingUp className="w-4 h-4" /> }
+    ],
+    features: [
+      "Advanced Service Scheduler",
+      "Real-time Mechanic Tracking",
+      "Multi-payment Integration",
+      "Automated Booking Logs"
+    ],
+    image: PlaceHolderImages.find(img => img.id === 'project-garagedoctors'),
+    tags: ["Automotive Startup", "Booking Engine", "Next.js", "Venture Funded"],
+    link: "https://thegaragedoctors.in/"
+  },
   {
     title: "Trinix Cybersecurity",
     client: "Enterprise Security Firm",
