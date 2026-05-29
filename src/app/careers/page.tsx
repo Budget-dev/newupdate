@@ -75,100 +75,11 @@ export default function CareersPage() {
             </div>
 
             <div className="space-y-6 pt-8">
-              <h2 className="text-2xl font-black text-secondary uppercase tracking-widest">Open Positions (2)</h2>
+              <h2 className="text-2xl font-black text-secondary uppercase tracking-widest">Open Positions (1)</h2>
               
               <div className="p-1 rounded-[2.5rem] bg-gradient-to-br from-primary/20 to-transparent">
                 <div className="bg-white rounded-[2.4rem] border border-muted shadow-xl overflow-hidden">
                   <Accordion type="single" collapsible className="w-full">
-                    {/* Client Co-ordinator Position */}
-                    <AccordionItem value="coordinator" className="border-b border-muted/50">
-                      <div className="p-8 md:p-12">
-                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                          <div className="space-y-2">
-                            <h3 className="text-3xl md:text-4xl font-black text-secondary">Client Co-ordinator</h3>
-                            <p className="text-primary font-bold text-lg">క్లయింట్ కోఆర్డినేటర్ అవసరం</p>
-                            <div className="flex flex-wrap gap-4 text-muted-foreground font-bold text-xs uppercase tracking-widest">
-                              <span className="flex items-center gap-1.5"><Clock className="w-4 h-4" /> Part-Time / Flexible</span>
-                              <span className="flex items-center gap-1.5"><Globe className="w-4 h-4" /> Work from Anywhere</span>
-                            </div>
-                          </div>
-                          <AccordionTrigger className="w-auto px-8 h-14 bg-secondary text-white rounded-2xl font-black text-sm hover:no-underline hover:scale-105 transition-transform">
-                            View Role Details
-                          </AccordionTrigger>
-                        </div>
-                      </div>
-
-                      <AccordionContent className="bg-[#F8FAF9] p-8 md:p-12 border-t border-muted/50">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                          <div className="space-y-10">
-                            <div className="space-y-6">
-                              <h4 className="text-xl font-black text-secondary flex items-center gap-2">
-                                <Users className="w-5 h-5 text-primary" /> Key Responsibilities:
-                              </h4>
-                              <ul className="space-y-4">
-                                {[
-                                  "Interact with clients via calls, meetings & messages",
-                                  "Explain services, pricing & project details confidently",
-                                  "Coordinate with the engineering team to deliver updates",
-                                  "Provide daily progress reports to clients",
-                                  "Handle Instagram & YouTube accounts (@budgetdev_)",
-                                  "Build strong and lasting client relationships"
-                                ].map((req, i) => (
-                                  <li key={i} className="flex items-start gap-3 text-sm font-bold text-secondary/80">
-                                    <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                                    {req}
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                            
-                            <div className="space-y-6">
-                              <h4 className="text-xl font-black text-secondary flex items-center gap-2">
-                                <Megaphone className="w-5 h-5 text-primary" /> Skills & Requirements:
-                              </h4>
-                              <ul className="space-y-4">
-                                {[
-                                  "Good communication in English & Telugu",
-                                  "Basic knowledge of coding (HTML/CSS/WordPress is a plus)",
-                                  "Knowledge of website pricing & packages",
-                                  "Experience in dealing with clients confidently",
-                                  "Self-motivated and responsible attitude"
-                                ].map((req, i) => (
-                                  <li key={i} className="flex items-start gap-3 text-sm font-bold text-secondary/80">
-                                    <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                                    {req}
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          </div>
-
-                          <div className="space-y-8 bg-white p-8 rounded-3xl shadow-sm border border-muted/50 h-fit sticky top-4">
-                            <div className="space-y-2">
-                              <p className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">Immediate Opening</p>
-                              <h5 className="text-xl font-black text-secondary">Interested?</h5>
-                              <p className="text-xs text-muted-foreground font-medium leading-relaxed">
-                                Join our creative team and be the face of BudgetDev. We're looking for someone who can help businesses plan their next digital success.
-                              </p>
-                            </div>
-                            
-                            <div className="flex flex-col gap-3">
-                              <Button asChild className="h-14 rounded-2xl bg-[#00d757] text-white font-black text-sm shadow-lg shadow-[#00d757]/10">
-                                <Link href="https://wa.me/918466006486" target="_blank">
-                                  Apply via WhatsApp <Phone className="ml-2 w-4 h-4" />
-                                </Link>
-                              </Button>
-                              <Button asChild variant="outline" className="h-14 rounded-2xl border-muted-foreground/20 text-secondary font-black text-sm">
-                                <Link href="mailto:venkateshchop14@gmail.com">
-                                  Email Resume <Mail className="ml-2 w-4 h-4" />
-                                </Link>
-                              </Button>
-                            </div>
-                          </div>
-                        </div>
-                      </AccordionContent>
-                    </AccordionItem>
-
                     {/* UI/UX Designer Position */}
                     <AccordionItem value="uiux" className="border-none">
                       <div className="p-8 md:p-12">
