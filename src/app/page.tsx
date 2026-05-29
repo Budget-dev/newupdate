@@ -65,6 +65,14 @@ const completedProjects = [
     imageHint: "automotive booking website"
   },
   {
+    title: "Inance School",
+    tag: "Student Trading Portal",
+    description: "High-performance trading platform for students to master the financial markets.",
+    link: "https://inancechool.vercel.app/",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'project-inance')?.imageUrl || "",
+    imageHint: "trading dashboard"
+  },
+  {
     title: "Trinix Cybersecurity",
     tag: "Security Enterprise",
     description: "High-performance cybersecurity portal with advanced threat intelligence.",

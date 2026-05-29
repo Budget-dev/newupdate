@@ -95,6 +95,12 @@
       "description": "The Garage Doctors Live Preview",
       "imageUrl": "https://s0.wp.com/mshots/v1/https://thegaragedoctors.in?w=1024&h=768",
       "imageHint": "automotive website"
+    },
+    {
+      "id": "project-inance",
+      "description": "Inance School Live Preview",
+      "imageUrl": "https://s0.wp.com/mshots/v1/https://inancechool.vercel.app/?w=1024&h=768",
+      "imageHint": "trading charts dashboard"
     }
   ]
 }

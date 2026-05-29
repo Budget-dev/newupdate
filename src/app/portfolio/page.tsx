@@ -6,7 +6,7 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, CheckCircle2, Globe, Rocket, ShieldCheck, Zap, TrendingUp, Users, Shield, Car, Wallet } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Globe, Rocket, ShieldCheck, Zap, TrendingUp, Users, Shield, Car, Wallet, BookOpen } from "lucide-react";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -35,6 +35,26 @@ const projects = [
     image: PlaceHolderImages.find(img => img.id === 'project-garagedoctors'),
     tags: ["Automotive Startup", "Booking Engine", "Next.js", "Venture Funded"],
     link: "https://thegaragedoctors.in/"
+  },
+  {
+    title: "Inance School",
+    client: "Student Trading Community",
+    category: "EdTech & Trading Platform",
+    description: "A specialized trading education platform engineered for students to master the financial markets. Features high-fidelity charts, risk-free simulations, and a comprehensive performance tracking dashboard for emerging traders.",
+    results: [
+      { label: "Active Students", value: "5,000+", icon: <Users className="w-4 h-4" /> },
+      { label: "Latency", value: "0.3s", icon: <Zap className="w-4 h-4" /> },
+      { label: "Engagement", value: "95%", icon: <TrendingUp className="w-4 h-4" /> }
+    ],
+    features: [
+      "Real-time Market Data",
+      "Interactive Trading Sim",
+      "Student Analytics Engine",
+      "Resource Library Access"
+    ],
+    image: PlaceHolderImages.find(img => img.id === 'project-inance'),
+    tags: ["Trading Platform", "EdTech", "React 19", "Real-time Data"],
+    link: "https://inancechool.vercel.app/"
   },
   {
     title: "Trinix Cybersecurity",
@@ -390,18 +410,20 @@ export default function PortfolioPage() {
               ))}
             </div>
             <div className="pt-8">
-              <Link href="/contact" className="sparkle-btn group mx-auto">
-                <svg className="sparkle-btn-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
-                </svg>
-                <div className="sparkle-txt-wrapper">
-                  <div className="sparkle-txt-1">
-                    {"START PROJECT".split("").map((char, i) => (
-                      <span key={i} className="sparkle-btn-letter">{char === " " ? "\u00A0" : char}</span>
-                    ))}
+              <div className="sparkle-btn-wrapper">
+                <Link href="/contact" className="sparkle-btn group mx-auto">
+                  <svg className="sparkle-btn-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+                  </svg>
+                  <div className="sparkle-txt-wrapper">
+                    <div className="sparkle-txt-1">
+                      {"START PROJECT".split("").map((char, i) => (
+                        <span key={i} className="sparkle-btn-letter">{char === " " ? "\u00A0" : char}</span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             </div>
           </section>
         </div>
