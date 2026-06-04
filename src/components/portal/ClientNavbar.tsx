@@ -26,17 +26,17 @@ export default function ClientNavbar() {
   };
 
   const navItems = [
-    { name: "Overview", href: "/portal/client", icon: <LayoutDashboard className="w-4 h-4" /> },
-    { name: "Timeline", href: "/portal/client/progress", icon: <Activity className="w-4 h-4" /> },
-    { name: "Chat", href: "/portal/client/chat", icon: <MessageSquare className="w-4 h-4" /> },
+    { name: "Overview", href: "/portal/client", icon: <LayoutDashboard className="w-3.5 h-3.5" /> },
+    { name: "Timeline", href: "/portal/client/progress", icon: <Activity className="w-3.5 h-3.5" /> },
+    { name: "Chat", href: "/portal/client/chat", icon: <MessageSquare className="w-3.5 h-3.5" /> },
   ];
 
   return (
-    <nav className="fixed top-4 left-6 right-6 z-[100] mx-auto max-w-7xl px-8 py-0.5 rounded-2xl border bg-white/95 backdrop-blur-md shadow-md">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
+    <nav className="fixed top-4 left-6 right-6 z-[100] mx-auto max-w-7xl px-6 py-0 rounded-2xl border bg-white/95 backdrop-blur-md shadow-md">
+      <div className="flex items-center justify-between h-12">
+        <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center shrink-0 group">
-            <div className="relative w-16 h-16 -ml-3">
+            <div className="relative w-10 h-10 -ml-2">
               <Image 
                 src="https://aquasaferoworks.sirv.com/Spins/file_00000000d04c71fdb822983b3f730fc7.png"
                 alt="BudgetDev Logo"
@@ -44,17 +44,17 @@ export default function ClientNavbar() {
                 className="object-contain transition-transform group-hover:scale-110"
               />
             </div>
-            <span className="font-headline font-black text-xl tracking-tight text-secondary italic -ml-4">
+            <span className="font-headline font-black text-lg tracking-tight text-secondary italic -ml-2.5">
               BudgetDev<span className="text-primary">.client</span>
             </span>
           </Link>
-          <div className="hidden md:flex items-center gap-6 ml-4">
+          <div className="hidden md:flex items-center gap-4 ml-2">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "text-[11px] font-black uppercase tracking-widest transition-colors flex items-center gap-2",
+                  "text-[10px] font-black uppercase tracking-widest transition-colors flex items-center gap-1.5",
                   pathname === item.href ? "text-primary" : "text-secondary/60 hover:text-secondary"
                 )}
               >
@@ -64,12 +64,12 @@ export default function ClientNavbar() {
           </div>
         </div>
 
-        <div className="flex items-center gap-4">
-          <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-[9px] font-black uppercase tracking-widest">
-            <User className="w-3.5 h-3.5" /> Client Access
+        <div className="flex items-center gap-3">
+          <div className="hidden sm:flex items-center gap-1.5 px-2 py-1 rounded-lg bg-primary/10 text-primary text-[8px] font-black uppercase tracking-widest">
+            <User className="w-3 h-3" /> Client Access
           </div>
-          <Button onClick={handleLogout} variant="ghost" size="icon" className="text-muted-foreground hover:text-destructive h-8 w-8">
-            <LogOut className="w-4 h-4" />
+          <Button onClick={handleLogout} variant="ghost" size="icon" className="text-muted-foreground hover:text-destructive h-7 w-7">
+            <LogOut className="w-3.5 h-3.5" />
           </Button>
         </div>
       </div>

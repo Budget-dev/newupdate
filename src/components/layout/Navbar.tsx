@@ -67,13 +67,13 @@ export default function Navbar() {
     <nav
       className={cn(
         "fixed top-4 left-6 right-6 z-[100] transition-all duration-300",
-        "mx-auto max-w-7xl px-8 py-0.5 rounded-2xl border bg-white/95 backdrop-blur-md shadow-sm",
-        isScrolled ? "py-0 shadow-md border-muted/50" : ""
+        "mx-auto max-w-7xl px-6 py-0 rounded-2xl border bg-white/95 backdrop-blur-md shadow-sm",
+        isScrolled ? "shadow-md border-muted/50" : ""
       )}
     >
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between h-12">
         <Link href="/" className="flex items-center group shrink-0">
-          <div className="relative w-20 h-20 -ml-4">
+          <div className="relative w-12 h-12 -ml-2">
             <Image 
               src="https://aquasaferoworks.sirv.com/Spins/file_00000000d04c71fdb822983b3f730fc7.png"
               alt="BudgetDev Logo"
@@ -81,30 +81,30 @@ export default function Navbar() {
               className="object-contain transition-transform duration-300 group-hover:scale-110"
             />
           </div>
-          <span className="font-headline font-black text-2xl tracking-tight text-secondary italic -ml-5">
+          <span className="font-headline font-black text-xl tracking-tight text-secondary italic -ml-3">
             BudgetDev
           </span>
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-6">
           {mounted ? (
             <DropdownMenu>
-              <DropdownMenuTrigger className="text-[13px] font-semibold text-secondary/70 hover:text-secondary transition-colors flex items-center gap-1 focus:outline-none min-w-[80px]">
+              <DropdownMenuTrigger className="text-[12px] font-semibold text-secondary/70 hover:text-secondary transition-colors flex items-center gap-1 focus:outline-none">
                 Services <ChevronDown className="w-3 h-3" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-64 p-2 rounded-[2rem] shadow-2xl border-muted/30 mt-4 bg-white animate-in fade-in slide-in-from-top-2 duration-300">
-                <div className="flex flex-col py-2">
+              <DropdownMenuContent className="w-64 p-2 rounded-[1.5rem] shadow-2xl border-muted/30 mt-2 bg-white animate-in fade-in slide-in-from-top-2 duration-300">
+                <div className="flex flex-col py-1">
                   {SERVICES.map((service) => (
                     <DropdownMenuItem key={service.title} asChild className="focus:bg-transparent p-0">
                       <Link
                         href={service.href}
-                        className="flex flex-col items-start gap-1 px-6 py-4 hover:bg-muted/30 transition-colors w-full"
+                        className="flex flex-col items-start gap-0.5 px-4 py-3 hover:bg-muted/30 transition-colors w-full"
                       >
-                        <span className="font-bold text-secondary text-[15px]">
+                        <span className="font-bold text-secondary text-[14px]">
                           {service.title}
                         </span>
-                        <span className="text-[11px] text-muted-foreground/80 font-medium">
+                        <span className="text-[10px] text-muted-foreground/80 font-medium">
                           {service.description}
                         </span>
                       </Link>
@@ -114,7 +114,7 @@ export default function Navbar() {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-             <span className="text-[13px] font-semibold text-secondary/70 flex items-center gap-1 min-w-[80px]">
+             <span className="text-[12px] font-semibold text-secondary/70 flex items-center gap-1">
                 Services <ChevronDown className="w-3 h-3" />
              </span>
           )}
@@ -123,34 +123,34 @@ export default function Navbar() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-[13px] font-semibold text-secondary/70 hover:text-secondary transition-colors min-w-[70px] text-center"
+              className="text-[12px] font-semibold text-secondary/70 hover:text-secondary transition-colors"
             >
               {item.name[lang]}
             </Link>
           ))}
         </div>
 
-        <div className="hidden md:flex items-center gap-3 shrink-0">
+        <div className="hidden md:flex items-center gap-2 shrink-0">
           <Button
             asChild
             variant="ghost"
-            className="rounded-xl px-4 text-secondary/70 hover:text-secondary transition-all font-bold text-xs h-9 hover:bg-muted"
+            className="rounded-lg px-3 text-secondary/70 hover:text-secondary transition-all font-bold text-[11px] h-8 hover:bg-muted"
           >
-            <Link href="/portal/login" className="flex items-center gap-2">
-              <LayoutDashboard className="w-3.5 h-3.5" /> Track Status
+            <Link href="/portal/login" className="flex items-center gap-1.5">
+              <LayoutDashboard className="w-3 h-3" /> Track Status
             </Link>
           </Button>
 
           <Button
             asChild
-            className="rounded-xl px-6 bg-secondary text-white hover:bg-secondary/90 transition-all font-bold text-xs h-9"
+            className="rounded-lg px-4 bg-secondary text-white hover:bg-secondary/90 transition-all font-bold text-[11px] h-8"
           >
             <Link href="/contact">Contact Us</Link>
           </Button>
 
           {mounted && (
-            <button onClick={toggleLang} className="focus:outline-none ml-2">
-              <div className="relative w-7 h-5 rounded-[2px] overflow-hidden border border-muted/20 bg-white shadow-sm">
+            <button onClick={toggleLang} className="focus:outline-none ml-1">
+              <div className="relative w-6 h-4 rounded-[2px] overflow-hidden border border-muted/20 bg-white shadow-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 225 150" className="w-full h-full">
                   <rect width="225" height="150" fill="#FF9933"/>
                   <rect width="225" height="100" y="50" fill="#FFFFFF"/>
@@ -170,45 +170,45 @@ export default function Navbar() {
           className="lg:hidden p-2 text-secondary z-[110]"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="absolute top-full left-0 mt-4 w-full bg-white rounded-2xl border shadow-2xl p-8 flex flex-col gap-6 lg:hidden animate-in fade-in slide-in-from-top-4 duration-300 z-[100]">
-          <div className="space-y-4">
-            <p className="text-xs font-black text-muted-foreground uppercase tracking-widest">Services</p>
+        <div className="absolute top-full left-0 mt-2 w-full bg-white rounded-xl border shadow-2xl p-6 flex flex-col gap-4 lg:hidden animate-in fade-in slide-in-from-top-2 duration-300 z-[100]">
+          <div className="space-y-3">
+            <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">Services</p>
             {SERVICES.map((service) => (
               <Link
                 key={service.title}
                 href={service.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex flex-col gap-1 p-2 rounded-lg hover:bg-muted"
+                className="flex flex-col gap-0.5 p-2 rounded-lg hover:bg-muted"
               >
                 <p className="text-sm font-bold text-secondary">{service.title}</p>
-                <p className="text-[10px] text-muted-foreground">{service.description}</p>
+                <p className="text-[9px] text-muted-foreground">{service.description}</p>
               </Link>
             ))}
           </div>
           <div className="h-px bg-muted" />
-          <div className="space-y-4">
+          <div className="space-y-3">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block text-lg font-bold text-secondary"
+                className="block text-base font-bold text-secondary"
               >
                 {item.name[lang]}
               </Link>
             ))}
           </div>
-          <div className="flex flex-col gap-3">
-            <Button asChild variant="outline" className="w-full h-14 rounded-xl font-black">
+          <div className="flex flex-col gap-2">
+            <Button asChild variant="outline" className="w-full h-10 rounded-lg font-black text-xs">
               <Link href="/portal/login" onClick={() => setMobileMenuOpen(false)}>Track Status</Link>
             </Button>
-            <Button asChild className="w-full h-14 rounded-xl bg-secondary text-white font-black">
+            <Button asChild className="w-full h-10 rounded-lg bg-secondary text-white font-black text-xs">
               <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>Contact Us</Link>
             </Button>
           </div>
