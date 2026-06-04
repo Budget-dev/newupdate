@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { 
   Instagram, 
   Linkedin, 
@@ -43,6 +44,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div className="space-y-6">
             <Link href="/" className="font-headline font-black text-3xl tracking-tighter text-white italic group flex items-center gap-2">
+              <Image 
+                src="https://aquasaferoworks.sirv.com/Spins/file_00000000d04c71fdb822983b3f730fc7.png"
+                alt="BudgetDev Logo"
+                width={40}
+                height={40}
+                className="object-contain"
+              />
               BudgetDev<span className="text-primary">.</span>
             </Link>
             <p className="text-white/50 text-base max-w-md leading-relaxed font-medium">

@@ -1,7 +1,7 @@
-
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useFirebase } from "@/firebase";
 import { signOut } from "firebase/auth";
 import { useRouter, usePathname } from "next/navigation";
@@ -39,7 +39,14 @@ export default function AdminNavbar() {
     <nav className="fixed top-6 left-6 right-6 z-[100] mx-auto max-w-7xl px-8 py-3 rounded-2xl border bg-white/95 backdrop-blur-md shadow-md">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-8">
-          <Link href="/" className="shrink-0">
+          <Link href="/" className="flex items-center gap-2 shrink-0">
+            <Image 
+              src="https://aquasaferoworks.sirv.com/Spins/file_00000000d04c71fdb822983b3f730fc7.png"
+              alt="BudgetDev Logo"
+              width={24}
+              height={24}
+              className="object-contain"
+            />
             <span className="font-headline font-black text-xl tracking-tight text-secondary italic">
               BudgetDev<span className="text-primary">.admin</span>
             </span>

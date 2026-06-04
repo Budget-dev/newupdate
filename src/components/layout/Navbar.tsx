@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -72,6 +73,13 @@ export default function Navbar() {
     >
       <div className="flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group shrink-0">
+          <Image 
+            src="https://aquasaferoworks.sirv.com/Spins/file_00000000d04c71fdb822983b3f730fc7.png"
+            alt="BudgetDev Logo"
+            width={32}
+            height={32}
+            className="object-contain"
+          />
           <span className="font-headline font-black text-2xl tracking-tight text-secondary italic">
             BudgetDev
           </span>
