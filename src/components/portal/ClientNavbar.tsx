@@ -32,7 +32,7 @@ export default function ClientNavbar() {
   ];
 
   return (
-    <nav className="fixed top-6 left-6 right-6 z-[100] mx-auto max-w-7xl px-8 py-2 md:py-3 rounded-2xl border bg-white/95 backdrop-blur-md shadow-md">
+    <nav className="fixed top-6 left-6 right-6 z-[100] mx-auto max-w-7xl px-8 py-1 md:py-2 rounded-2xl border bg-white/95 backdrop-blur-md shadow-md">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Link href="/" className="flex items-center shrink-0 group">
@@ -68,8 +68,8 @@ export default function ClientNavbar() {
           <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-[9px] font-black uppercase tracking-widest">
             <User className="w-3.5 h-3.5" /> Client Access
           </div>
-          <Button onClick={handleLogout} variant="ghost" size="icon" className="text-muted-foreground hover:text-destructive">
-            <LogOut className="w-5 h-5" />
+          <Button onClick={handleLogout} variant="ghost" size="icon" className="text-muted-foreground hover:text-destructive h-8 w-8">
+            <LogOut className="w-4 h-4" />
           </Button>
         </div>
       </div>
