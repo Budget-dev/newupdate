@@ -40,7 +40,7 @@ export default function AdminNavbar() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Link href="/" className="flex items-center shrink-0 group">
-            <div className="relative w-14 h-14 -ml-2">
+            <div className="relative w-16 h-16 -ml-3">
               <Image 
                 src="https://aquasaferoworks.sirv.com/Spins/file_00000000d04c71fdb822983b3f730fc7.png"
                 alt="BudgetDev Logo"
@@ -48,7 +48,7 @@ export default function AdminNavbar() {
                 className="object-contain transition-transform group-hover:scale-110"
               />
             </div>
-            <span className="font-headline font-black text-xl tracking-tight text-secondary italic -ml-2">
+            <span className="font-headline font-black text-xl tracking-tight text-secondary italic -ml-4">
               BudgetDev<span className="text-primary">.admin</span>
             </span>
           </Link>

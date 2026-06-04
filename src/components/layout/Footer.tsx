@@ -44,7 +44,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div className="space-y-6">
             <Link href="/" className="font-headline font-black text-3xl tracking-tighter text-white italic group flex items-center">
-              <div className="relative w-20 h-20 -ml-4">
+              <div className="relative w-28 h-28 -ml-6">
                 <Image 
                   src="https://aquasaferoworks.sirv.com/Spins/file_00000000d04c71fdb822983b3f730fc7.png"
                   alt="BudgetDev Logo"
@@ -52,7 +52,7 @@ export default function Footer() {
                   className="object-contain transition-transform group-hover:scale-105"
                 />
               </div>
-              <span className="-ml-3">BudgetDev</span><span className="text-primary">.</span>
+              <span className="-ml-8">BudgetDev</span><span className="text-primary">.</span>
             </Link>
             <p className="text-white/50 text-base max-w-md leading-relaxed font-medium">
               High-performance software solutions and mobile app engineering for ambitious businesses across India.
