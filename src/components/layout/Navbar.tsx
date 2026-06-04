@@ -66,9 +66,9 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        "fixed top-6 left-6 right-6 z-[100] transition-all duration-300",
-        "mx-auto max-w-7xl px-8 py-1.5 rounded-2xl border bg-white/95 backdrop-blur-md shadow-sm",
-        isScrolled ? "py-1 shadow-md border-muted/50" : ""
+        "fixed top-4 left-6 right-6 z-[100] transition-all duration-300",
+        "mx-auto max-w-7xl px-8 py-0.5 rounded-2xl border bg-white/95 backdrop-blur-md shadow-sm",
+        isScrolled ? "py-0 shadow-md border-muted/50" : ""
       )}
     >
       <div className="flex items-center justify-between">

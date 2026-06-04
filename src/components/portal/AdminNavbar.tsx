@@ -36,7 +36,7 @@ export default function AdminNavbar() {
   ];
 
   return (
-    <nav className="fixed top-6 left-6 right-6 z-[100] mx-auto max-w-7xl px-8 py-1 md:py-2 rounded-2xl border bg-white/95 backdrop-blur-md shadow-md">
+    <nav className="fixed top-4 left-6 right-6 z-[100] mx-auto max-w-7xl px-8 py-0.5 rounded-2xl border bg-white/95 backdrop-blur-md shadow-md">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Link href="/" className="flex items-center shrink-0 group">
