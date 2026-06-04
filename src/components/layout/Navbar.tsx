@@ -72,15 +72,16 @@ export default function Navbar() {
       )}
     >
       <div className="flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-1 group shrink-0">
-          <Image 
-            src="https://aquasaferoworks.sirv.com/Spins/file_00000000d04c71fdb822983b3f730fc7.png"
-            alt="BudgetDev Logo"
-            width={48}
-            height={48}
-            className="object-contain transition-transform duration-300 group-hover:scale-110"
-          />
-          <span className="font-headline font-black text-2xl tracking-tight text-secondary italic -ml-1">
+        <Link href="/" className="flex items-center group shrink-0">
+          <div className="relative w-16 h-16 -ml-2">
+            <Image 
+              src="https://aquasaferoworks.sirv.com/Spins/file_00000000d04c71fdb822983b3f730fc7.png"
+              alt="BudgetDev Logo"
+              fill
+              className="object-contain transition-transform duration-300 group-hover:scale-110"
+            />
+          </div>
+          <span className="font-headline font-black text-2xl tracking-tight text-secondary italic -ml-3">
             BudgetDev
           </span>
         </Link>

@@ -34,20 +34,21 @@ export default function ClientNavbar() {
   return (
     <nav className="fixed top-6 left-6 right-6 z-[100] mx-auto max-w-7xl px-8 py-2 md:py-3 rounded-2xl border bg-white/95 backdrop-blur-md shadow-md">
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-6">
-          <Link href="/" className="flex items-center gap-1 shrink-0 group">
-            <Image 
-              src="https://aquasaferoworks.sirv.com/Spins/file_00000000d04c71fdb822983b3f730fc7.png"
-              alt="BudgetDev Logo"
-              width={40}
-              height={40}
-              className="object-contain transition-transform group-hover:scale-110"
-            />
-            <span className="font-headline font-black text-xl tracking-tight text-secondary italic -ml-1">
+        <div className="flex items-center gap-4">
+          <Link href="/" className="flex items-center shrink-0 group">
+            <div className="relative w-14 h-14 -ml-2">
+              <Image 
+                src="https://aquasaferoworks.sirv.com/Spins/file_00000000d04c71fdb822983b3f730fc7.png"
+                alt="BudgetDev Logo"
+                fill
+                className="object-contain transition-transform group-hover:scale-110"
+              />
+            </div>
+            <span className="font-headline font-black text-xl tracking-tight text-secondary italic -ml-2">
               BudgetDev<span className="text-primary">.client</span>
             </span>
           </Link>
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-6 ml-4">
             {navItems.map((item) => (
               <Link
                 key={item.href}
