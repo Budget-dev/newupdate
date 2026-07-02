@@ -199,7 +199,7 @@ export default function Home() {
       <main className="flex-1 relative z-10">
         <HeroParallax products={parallaxProducts} />
 
-        <section className="py-4 px-6 relative -mt-32 md:-mt-64 z-20">
+        <section className="py-20 px-6 relative z-20 -mt-10">
           <div className="max-w-7xl mx-auto main-section-container overflow-hidden bg-white/80 backdrop-blur-lg">
             <div className="flex flex-col md:flex-row md:items-center gap-3 mb-6">
               <h2 className="text-3xl md:text-4xl font-headline font-black text-secondary">Software Case Studies.</h2>
