@@ -32,11 +32,11 @@ export default function ClientNavbar() {
   ];
 
   return (
-    <nav className="fixed top-4 left-6 right-6 z-[100] mx-auto max-w-7xl px-6 py-0 rounded-2xl border bg-white/95 backdrop-blur-md shadow-md">
-      <div className="flex items-center justify-between h-12">
+    <nav className="fixed top-4 left-6 right-6 z-[100] mx-auto max-w-7xl px-5 py-0 rounded-2xl border bg-white/95 backdrop-blur-md shadow-md">
+      <div className="flex items-center justify-between h-11">
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center shrink-0 group">
-            <div className="relative w-10 h-10 -ml-2">
+            <div className="relative w-11 h-11 -ml-3">
               <Image 
                 src="https://aquasaferoworks.sirv.com/Spins/file_00000000d04c71fdb822983b3f730fc7.png"
                 alt="BudgetDev Logo"
@@ -44,7 +44,7 @@ export default function ClientNavbar() {
                 className="object-contain transition-transform group-hover:scale-110"
               />
             </div>
-            <span className="font-headline font-black text-lg tracking-tight text-secondary italic -ml-2.5">
+            <span className="font-headline font-black text-lg tracking-tight text-secondary italic -ml-4">
               BudgetDev<span className="text-primary">.client</span>
             </span>
           </Link>
@@ -54,7 +54,7 @@ export default function ClientNavbar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "text-[10px] font-black uppercase tracking-widest transition-colors flex items-center gap-1.5",
+                  "text-[9px] font-black uppercase tracking-widest transition-colors flex items-center gap-1.5",
                   pathname === item.href ? "text-primary" : "text-secondary/60 hover:text-secondary"
                 )}
               >
