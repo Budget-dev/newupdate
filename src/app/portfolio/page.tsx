@@ -6,7 +6,7 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, CheckCircle2, Globe, Rocket, ShieldCheck, Zap, TrendingUp, Users, Shield, Car, Wallet, BookOpen } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Globe, Rocket, ShieldCheck, Zap, TrendingUp, Users, Shield, Car, Wallet, BookOpen, GraduationCap } from "lucide-react";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -16,6 +16,26 @@ export const metadata: Metadata = {
 };
 
 const projects = [
+  {
+    title: "NCFE Schools",
+    client: "National Center For Excellence",
+    category: "Institutional Portal",
+    description: "A comprehensive digital transformation for a premier multi-campus school system. We engineered a unified institutional portal that manages student admissions, high-fidelity campus storytelling, and automated notice boards across various school branches.",
+    results: [
+      { label: "Campus Reach", value: "Multi-Campus", icon: <GraduationCap className="w-4 h-4" /> },
+      { label: "Enrollment Upswing", value: "+40%", icon: <TrendingUp className="w-4 h-4" /> },
+      { label: "Global Uptime", value: "99.9%", icon: <ShieldCheck className="w-4 h-4" /> }
+    ],
+    features: [
+      "Dynamic Branch Management",
+      "Interactive Campus Roadmaps",
+      "Automated Enrollment Engine",
+      "Real-time Parent Notice Board"
+    ],
+    image: PlaceHolderImages.find(img => img.id === 'project-ncfe'),
+    tags: ["Institutional", "Next.js", "Education", "Enterprise"],
+    link: "https://ncfeschools.com/"
+  },
   {
     title: "The Garage Doctors",
     client: "Automotive Startup",
@@ -115,166 +135,6 @@ const projects = [
     image: PlaceHolderImages.find(img => img.id === 'project-budgetdev'),
     tags: ["Agency", "SEO Master", "Performance", "AI"],
     link: "https://budgetdev.in"
-  },
-  {
-    title: "Bhoomi Collections",
-    client: "Premium Women's Boutique",
-    category: "Fashion E-commerce",
-    description: "A high-fidelity digital transformation for a premium women's dress store. We engineered a custom shopping experience with intuitive filtering and a seamless high-conversion checkout flow. Optimized for the Indian mobile-first market with extreme load speeds.",
-    results: [
-      { label: "Order Accuracy", value: "98%", icon: <CheckCircle2 className="w-4 h-4" /> },
-      { label: "Mobile Speed", value: "99/100", icon: <Zap className="w-4 h-4" /> },
-      { label: "Checkout Conversion", value: "+120%", icon: <TrendingUp className="w-4 h-4" /> }
-    ],
-    features: [
-      "Dynamic Product Collections",
-      "Seamless Razorpay Integration",
-      "Localized Mobile Experience",
-      "Real-time Stock Management"
-    ],
-    image: PlaceHolderImages.find(img => img.id === 'project-bhoomi'),
-    tags: ["Next.js 15", "Tailwind", "E-commerce", "Mobile First"],
-    link: "https://www.bhoomicollections.in"
-  },
-  {
-    title: "Shreebhumi Natures Best",
-    client: "International Trading Corp",
-    category: "Global Trade Portal",
-    description: "An international trade portal designed to build trust and authority for an import/export business. We focused on professional storytelling and global edge delivery to ensure the site is fast and reliable for buyers across all continents.",
-    results: [
-      { label: "Global Reach", value: "30+ Countries", icon: <Globe className="w-4 h-4" /> },
-      { label: "Domain Authority", value: "Elite", icon: <Rocket className="w-4 h-4" /> },
-      { label: "Technical Uptime", value: "99.9%", icon: <ShieldCheck className="w-4 h-4" /> }
-    ],
-    features: [
-      "Multi-Language Readiness",
-      "Global Edge Distribution",
-      "High-Resolution Asset Mgmt",
-      "Automated Trade Inquiries"
-    ],
-    image: PlaceHolderImages.find(img => img.id === 'project-shreebhumi'),
-    tags: ["Global Infrastructure", "Static Site Gen", "SEO Authority"],
-    link: "https://www.shreebhuminaturesbest.com"
-  },
-  {
-    title: "The Baza",
-    client: "Men's Lifestyle Brand",
-    category: "D2C Clothing",
-    description: "A modern men's clothing brand identity and store built for the next generation of online shoppers. We prioritized 'Visual Dominance' and extreme performance to reduce bounce rates and maximize user retention for this high-growth brand.",
-    results: [
-      { label: "Page Load Time", value: "0.3s", icon: <Zap className="w-4 h-4" /> },
-      { label: "Return Customer Rate", value: "+45%", icon: <Users className="w-4 h-4" /> },
-      { label: "Lighthouse Score", value: "100", icon: <CheckCircle2 className="w-4 h-4" /> }
-    ],
-    features: [
-      "Interactive Style Guides",
-      "Edge-Network Catalog",
-      "High-Retention UX Design",
-      "Smart Recommendation Engine"
-    ],
-    image: PlaceHolderImages.find(img => img.id === 'project-thebaza'),
-    tags: ["React 19", "Framer Motion", "D2C Architecture"],
-    link: "https://thebaza.in"
-  },
-  {
-    title: "Srinika Spices",
-    client: "National Spice Merchant",
-    category: "E-commerce & Logistics",
-    description: "A high-fidelity digital transformation for a complex spice distribution network. We engineered a custom inventory-aware shopping experience that handles thousands of daily active users with sub-second page transitions.",
-    results: [
-      { label: "Online Sales Growth", value: "+340%", icon: <TrendingUp className="w-4 h-4" /> },
-      { label: "Mobile Page Speed", value: "100/100", icon: <Zap className="w-4 h-4" /> },
-      { label: "User Engagement", value: "2.5x", icon: <Users className="w-4 h-4" /> }
-    ],
-    features: [
-      "Real-time Automated Inventory Sync",
-      "Dynamic GST-ready Checkout Flow",
-      "High-Conversion Product Architecture",
-      "Edge-Network Content Delivery"
-    ],
-    image: PlaceHolderImages.find(img => img.id === 'project-srinika'),
-    tags: ["Next.js 15", "Tailwind CSS", "Firebase Auth", "Inventory Sync"],
-    link: "https://srinikaspices.in"
-  },
-  {
-    title: "Gurucharan Interiors",
-    client: "Premium Interior Studio",
-    category: "Architecture Portfolio",
-    description: "A visual-first portfolio for an elite interior design firm. We focused on high-resolution image delivery and a minimalist UI that allows the project photography to take center stage, driving high-value lead generation.",
-    results: [
-      { label: "Image Load Speed", value: "Elite", icon: <Zap className="w-4 h-4" /> },
-      { label: "Lead Generation", value: "+85%", icon: <TrendingUp className="w-4 h-4" /> },
-      { label: "User Session Time", value: "4m+", icon: <Users className="w-4 h-4" /> }
-    ],
-    features: [
-      "High-Res Asset Optimization",
-      "Smooth Layout Transitions",
-      "Interactive Project Gallery",
-      "Mobile-Optimized UX"
-    ],
-    image: PlaceHolderImages.find(img => img.id === 'project-gurucharan'),
-    tags: ["React 19", "Image Optimization", "Lead Gen"],
-    link: "https://gurucharaninteriors.in"
-  },
-  {
-    title: "Yasodha.in",
-    client: "Professional Resume",
-    category: "Personal Branding",
-    description: "A high-performance personal branding site engineered for maximum impact. We used modern web technologies to create a fast, interactive experience that showcases professional achievements with clear calls to action.",
-    results: [
-      { label: "Global Performance", value: "100/100", icon: <Rocket className="w-5 h-5" /> },
-      { label: "Visibility", value: "Global", icon: <Globe className="w-4 h-4" /> },
-      { label: "Uptime", value: "100%", icon: <ShieldCheck className="w-4 h-4" /> }
-    ],
-    features: [
-      "Interactive Roadmap",
-      "Modern Web Engineering",
-      "SEO First Architecture",
-      "Extreme Load Speeds"
-    ],
-    image: PlaceHolderImages.find(img => img.id === 'project-yasodha'),
-    tags: ["Next.js", "TypeScript", "Personal Brand"],
-    link: "https://yasodha.in"
-  },
-  {
-    title: "Roshni Boutiques",
-    client: "Premium Fashion Label",
-    category: "Designer Boutique",
-    description: "An elegant e-commerce platform for high-end designer wear. Engineered for visual impact and seamless shopping, featuring advanced filtering and a high-fidelity checkout experience.",
-    results: [
-      { label: "Sales Growth", value: "+180%", icon: <TrendingUp className="w-4 h-4" /> },
-      { label: "Mobile Speed", value: "100/100", icon: <Zap className="w-4 h-4" /> },
-      { label: "Return Rate", value: "35%", icon: <Users className="w-4 h-4" /> }
-    ],
-    features: [
-      "Custom UI Design",
-      "Seamless Razorpay Integration",
-      "Inventory Management",
-      "Performance Optimized"
-    ],
-    image: PlaceHolderImages.find(img => img.id === 'project-roshni'),
-    tags: ["Next.js", "Tailwind", "E-commerce", "Fashion"],
-    link: "https://roshniboutiques.com"
-  },
-  {
-    title: "Pastels Boutique",
-    client: "Luxury Women's Wear",
-    category: "Premium Fashion E-commerce",
-    description: "A high-fidelity e-commerce experience for a luxury designer boutique. Engineered for visual dominance and sub-second page loads, focusing on high-end user conversion.",
-    results: [
-      { label: "Online Sales", value: "+210%", icon: <TrendingUp className="w-4 h-4" /> },
-      { label: "Core Web Vitals", value: "Passed", icon: <Rocket className="w-4 h-4" /> },
-      { label: "User Retention", value: "3.2x", icon: <Users className="w-4 h-4" /> }
-    ],
-    features: [
-      "Interactive Lookbooks",
-      "Edge-Network Catalog",
-      "Seamless Checkout",
-      "Mobile-First Architecture"
-    ],
-    image: PlaceHolderImages.find(img => img.id === 'project-pastels'),
-    tags: ["Next.js 15", "React 19", "E-commerce", "Luxury"],
-    link: "https://pastelsboutique.com"
   }
 ];
 

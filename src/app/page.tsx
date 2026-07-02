@@ -1,3 +1,4 @@
+
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
@@ -45,6 +46,11 @@ export const metadata: Metadata = {
 };
 
 const parallaxProducts = [
+  {
+    title: "NCFE Schools",
+    link: "https://ncfeschools.com/",
+    thumbnail: PlaceHolderImages.find(img => img.id === 'project-ncfe')?.imageUrl || ""
+  },
   {
     title: "The Garage Doctors",
     link: "https://thegaragedoctors.in/",
@@ -111,11 +117,6 @@ const parallaxProducts = [
     thumbnail: PlaceHolderImages.find(img => img.id === 'project-pastels')?.imageUrl || ""
   },
   {
-    title: "Elite Web Engine",
-    link: "/contact",
-    thumbnail: PlaceHolderImages.find(img => img.id === 'service-web')?.imageUrl || ""
-  },
-  {
     title: "Custom Software Solutions",
     link: "/services/web-development",
     thumbnail: PlaceHolderImages.find(img => img.id === 'service-software')?.imageUrl || ""
@@ -123,6 +124,14 @@ const parallaxProducts = [
 ];
 
 const completedProjects = [
+  {
+    title: "NCFE Schools",
+    tag: "Institutional Portal",
+    description: "Unified institutional portal for multi-campus school management and admissions.",
+    link: "https://ncfeschools.com/",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'project-ncfe')?.imageUrl || "",
+    imageHint: "school campus website"
+  },
   {
     title: "The Garage Doctors",
     tag: "Automotive Startup (₹10L Funding)",
@@ -178,14 +187,6 @@ const completedProjects = [
     link: "https://www.shreebhuminaturesbest.com",
     imageUrl: PlaceHolderImages.find(img => img.id === 'project-shreebhumi')?.imageUrl || "",
     imageHint: "affordable web design business"
-  },
-  {
-    title: "The Baza",
-    tag: "Men's Lifestyle",
-    description: "Modern men's clothing brand focusing on style and high-conversion.",
-    link: "https://thebaza.in",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'project-thebaza')?.imageUrl || "",
-    imageHint: "budget web development fashion"
   }
 ];
 
