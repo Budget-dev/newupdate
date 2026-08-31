@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -9,27 +10,26 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import Image from "next/image";
 import { 
   CheckCircle2, 
-  Rocket, 
   Target, 
   LockOpen, 
   Bot, 
   TrendingUp, 
   Phone, 
-  AlertCircle,
-  Timer,
+  Timer, 
   ArrowRight,
   ShieldCheck,
   UserCheck,
-  Clock,
-  Layout,
   Code2,
-  Database,
-  BarChart3,
   Search,
-  Users
+  Briefcase,
+  Layout,
+  Zap,
+  Clock,
+  Heart,
+  Smartphone,
+  GraduationCap
 } from "lucide-react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 
 // Custom Highlight Box component for the interactive feel
 const HighlightBox = ({ icon: Icon, title, desc }: { icon: any, title: string, desc: string }) => (
@@ -258,7 +258,7 @@ export default function CoursePage() {
                 <p className="text-[#FFB800] text-sm font-black uppercase tracking-widest">Founder, BudgetDev</p>
               </div>
               
-              <div className="space-y-6 text-xl md:text-2xl text-white/80 leading-relaxed italic">
+              <div className="space-y-6 text-xl md:text-2xl text-white/80 leading-relaxed italic border-l-4 border-[#FF6B00] pl-8 py-4 bg-white/5 rounded-r-3xl">
                 <p>&quot;I was exactly where you are. I spent an entire year with skills but no clients. I tried everything, and I wasted over ₹40,000 on courses from big influencers that were just pure theory.&quot;</p>
                 <p>&quot;I built this masterclass because I lived the pain. I found the loopholes. I know how to get paid safely. This isn&apos;t just a course — it&apos;s the system I wish I had from day one.&quot;</p>
               </div>
@@ -291,21 +291,21 @@ export default function CoursePage() {
         {/* SECTION 6 — INCLUDED */}
         <section className="py-32 px-6 bg-[#121212]">
           <div className="max-w-4xl mx-auto space-y-20">
-            <h2 className="text-4xl md:text-6xl font-black text-white text-center uppercase font-anton">Everything Inside</h2>
+            <h2 className="text-4xl md:text-6xl font-black text-white text-center uppercase font-anton">We Build Your Career.</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
-                { label: "3 Weeks Live Classes", icon: <CheckCircle2 className="w-5 h-5" />, detail: "Monday to Friday sessions." },
-                { label: "6 Months Mentorship", icon: <CheckCircle2 className="w-5 h-5" />, detail: "Continued guidance." },
-                { label: "1-on-1 Phone Access", icon: <CheckCircle2 className="w-5 h-5" />, detail: "Call Venkatesh anytime." },
-                { label: "Personalized Backup", icon: <CheckCircle2 className="w-5 h-5" />, detail: "Dedicated recovery calls if you miss class." },
-                { label: "Profile Audits", icon: <CheckCircle2 className="w-5 h-5" />, detail: "Unlimited reviews." },
-                { label: "Real Project Practice", icon: <CheckCircle2 className="w-5 h-5" />, detail: "No boring slides only." }
+                { label: "Personal Portfolio Build", icon: <Layout className="w-5 h-5" />, detail: "We guide you in building a high-fidelity personal portfolio that converts." },
+                { label: "Real Project Overflow", icon: <Briefcase className="w-5 h-5" />, detail: "Top students get access to our real agency project pipeline for pay." },
+                { label: "3 Weeks Live Classes", icon: <CheckCircle2 className="w-5 h-5" />, detail: "Monday to Friday sessions. No boring slides." },
+                { label: "6 Months Mentorship", icon: <CheckCircle2 className="w-5 h-5" />, detail: "Continued guidance as you scale your business." },
+                { label: "1-on-1 Phone Access", icon: <Phone className="w-5 h-5" />, detail: "Call Venkatesh anytime for real-world advice." },
+                { label: "Personalized Backup", icon: <UserCheck className="w-5 h-5" />, detail: "Dedicated recovery calls if you miss a live class." }
               ].map((item, i) => (
-                <div key={i} className="p-6 bg-[#0D0D0D] border border-white/5 rounded-2xl flex items-start gap-4">
-                  <div className="text-[#FF6B00] mt-1">{item.icon}</div>
+                <div key={i} className="p-8 bg-[#0D0D0D] border-2 border-white/5 rounded-[2.5rem] flex flex-col gap-4 group hover:border-[#FF6B00]/30 transition-all">
+                  <div className="text-[#FF6B00] group-hover:scale-110 transition-transform">{item.icon}</div>
                   <div>
-                    <h5 className="text-base font-bold text-white uppercase tracking-tight">{item.label}</h5>
-                    <p className="text-white/40 text-xs">{item.detail}</p>
+                    <h5 className="text-lg font-bold text-white uppercase tracking-tight mb-2">{item.label}</h5>
+                    <p className="text-white/40 text-sm leading-relaxed">{item.detail}</p>
                   </div>
                 </div>
               ))}
@@ -348,12 +348,13 @@ export default function CoursePage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-12 border-y border-white/10 py-10">
                   {[
+                    "Guided Personal Portfolio Build",
+                    "Real Project Overflow Access",
                     "3 Weeks Live Training",
                     "6 Months Mentorship",
                     "1-on-1 Phone Access",
                     "Personalized Backup Support",
                     "MERN Stack + AI Skills",
-                    "Client Getting System",
                     "Full Refund Guarantee"
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-3">
@@ -422,7 +423,7 @@ export default function CoursePage() {
               One Week From Now You Could Have Your First Proposal Sent. <br />
               One Month From Now You Could Have Your First Client.
             </h2>
-            <p className="text-2xl md:text-3xl text-white font-medium italic italic">
+            <p className="text-2xl md:text-3xl text-white font-medium italic">
               The only question is — will you start?
             </p>
             <div className="pt-8">
@@ -454,19 +455,3 @@ export default function CoursePage() {
     </div>
   );
 }
-
-const GraduationCap = ({ className }: { className?: string }) => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round" 
-    className={className}
-  >
-    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-  </svg>
-);
