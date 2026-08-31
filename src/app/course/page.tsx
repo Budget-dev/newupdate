@@ -27,7 +27,8 @@ import {
   Clock,
   Heart,
   Smartphone,
-  GraduationCap
+  GraduationCap,
+  AlertCircle
 } from "lucide-react";
 import Link from "next/link";
 
@@ -66,11 +67,11 @@ export default function CoursePage() {
         <section className="min-h-screen flex flex-col items-center justify-center pt-32 pb-20 px-6 text-center">
           <div className="max-w-5xl space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-1000">
             <h1 className="text-[42px] md:text-[80px] font-black text-[#FF6B00] leading-[1.05] tracking-tight font-anton uppercase">
-              From Zero to ₹10,000 a Month. <br />
+              From Zero to First Client. <br />
               No Degree. No Office. No Excuse.
             </h1>
             <p className="text-xl md:text-2xl text-white max-w-2xl mx-auto font-medium">
-              India&apos;s most practical freelancing course — built for students who are tired of waiting.
+              India&apos;s most practical freelancing course — built for students who are tired of waiting for a placement.
             </p>
             <div className="space-y-6 pt-4">
               <Button asChild className="h-16 md:h-24 px-12 md:px-20 rounded-full bg-[#FF6B00] hover:bg-[#FF8533] text-white font-black text-xl md:text-3xl shadow-[0_0_40px_rgba(255,107,0,0.4)] transition-all hover:scale-105 active:scale-95">
@@ -105,9 +106,9 @@ export default function CoursePage() {
             <h2 className="text-4xl md:text-6xl font-black text-white text-center uppercase font-anton">Does This Sound Like You?</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
-                "You got placed. ₹8,000 salary. But rent, food, and data burn it before the 20th. You call home. Again.",
-                "You know how to code. But you have zero clients, zero portfolio, and zero idea where to start.",
-                "You've tried Fiverr and Upwork. Got ignored. Lost hope. Thought maybe freelancing isn't for you."
+                "You're stuck in the ₹8,000 trap. Rent, food, and petrol finish your salary by the 15th. You call home for money. Again.",
+                "You have the skills. You know how to code. But you have zero clients, zero portfolio, and zero idea where to start.",
+                "You've tried Fiverr and Upwork. You applied for 100 jobs and got ignored. You think maybe freelancing isn't for you."
               ].map((pain, i) => (
                 <div key={i} className="bg-[#0D0D0D] p-10 border-l-8 border-[#FF6B00] rounded-r-3xl space-y-6">
                   <p className="text-xl md:text-2xl font-black italic text-white/90 leading-relaxed">
@@ -117,7 +118,7 @@ export default function CoursePage() {
               ))}
             </div>
             <p className="text-[#FFB800] text-2xl md:text-4xl font-black text-center italic tracking-tight">
-              It is for you. You just didn&apos;t have the right system.
+              It is for you. You just didn&apos;t have the right system to escape.
             </p>
           </div>
         </section>
@@ -260,7 +261,7 @@ export default function CoursePage() {
               
               <div className="space-y-6 text-xl md:text-2xl text-white/80 leading-relaxed italic border-l-4 border-[#FF6B00] pl-8 py-4 bg-white/5 rounded-r-3xl">
                 <p>&quot;I was exactly where you are. I spent an entire year with skills but no clients. I tried everything, and I wasted over ₹40,000 on courses from big influencers that were just pure theory.&quot;</p>
-                <p>&quot;I built this masterclass because I lived the pain. I found the loopholes. I know how to get paid safely. This isn&apos;t just a course — it&apos;s the system I wish I had from day one.&quot;</p>
+                <p>&quot;I built this masterclass because I lived the pain of the ₹8,000 salary trap. I found the loopholes. I know how to get paid safely. This isn&apos;t just a course — it&apos;s the system I wish I had from day one.&quot;</p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
