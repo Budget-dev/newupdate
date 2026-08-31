@@ -6,33 +6,45 @@ import {
   Bot,
   Target,
   TrendingUp,
+  Users,
+  Zap
 } from "lucide-react";
 
 export function CourseHighlights() {
   const highlights = [
     {
       title: "The Freelancer.com Loophole",
-      description: "How beginners beat experienced freelancers every day. Our secret weapon.",
+      description: "How beginners beat experienced freelancers every day. Our secret weapon for winning bids.",
       icon: <LockOpen className="w-8 h-8 text-[#FF6B00]" />,
     },
     {
       title: "AI + Full Stack Dev",
-      description: "MERN stack from system design to live deployment using power of AI.",
+      description: "MERN stack from system design to live deployment using the efficiency of AI agents.",
       icon: <Bot className="w-8 h-8 text-[#FF6B00]" />,
     },
     {
       title: "Client Getting System",
-      description: "Find, pitch, close, and get paid — step by step with real scripts.",
+      description: "Find, pitch, close, and get paid — step by step with real scripts that convert in 2025.",
       icon: <Target className="w-8 h-8 text-[#FF6B00]" />,
     },
     {
       title: "Profile Domination",
-      description: "Fiverr, Upwork, Instagram — all optimized for maximum conversion.",
+      description: "Fiverr, Upwork, and Social Media — all optimized for maximum organic conversion.",
       icon: <TrendingUp className="w-8 h-8 text-[#FF6B00]" />,
+    },
+    {
+      title: "Special Makeup Classes",
+      description: "No recordings. If you miss a class, we hold a dedicated session to catch you up personally.",
+      icon: <Users className="w-8 h-8 text-[#FF6B00]" />,
+    },
+    {
+      title: "Technical SEO Dominance",
+      description: "Engineered speed and SEO structure that makes your portfolio rank #1 on local searches.",
+      icon: <Zap className="w-8 h-8 text-[#FF6B00]" />,
     },
   ];
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 relative z-10 py-10 max-w-7xl mx-auto border border-white/10 rounded-3xl overflow-hidden">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative z-10 py-10 max-w-7xl mx-auto border border-white/10 rounded-3xl overflow-hidden">
       {highlights.map((highlight, index) => (
         <Highlight key={highlight.title} {...highlight} index={index} />
       ))}
@@ -55,8 +67,10 @@ const Highlight = ({
     <div
       className={cn(
         "flex flex-col py-12 px-10 relative group/feature border-white/10",
-        index % 2 === 0 ? "md:border-r" : "",
-        index < 2 ? "border-b" : ""
+        (index % 3 !== 2) ? "lg:border-r" : "",
+        (index < 3) ? "lg:border-b" : "",
+        (index % 2 === 0) ? "md:border-r lg:border-r-0" : "", // Responsive borders
+        "border-b md:border-b"
       )}
     >
       <div className="opacity-0 group-hover/feature:opacity-100 transition duration-300 absolute inset-0 h-full w-full bg-gradient-to-t from-[#FF6B00]/10 to-transparent pointer-events-none" />
