@@ -67,16 +67,17 @@ export default function CoursePage() {
           <div className="max-w-5xl space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-1000">
             <div className="space-y-4">
               <span className="inline-block px-4 py-1 rounded-full bg-white/5 border border-white/10 text-[#FFB800] text-[10px] md:text-xs font-black uppercase tracking-widest animate-pulse">
-                Batch Opening: Land Your First Client in 3 Weeks
+                Batch Opening: Land Your First Client in Under 3 Weeks
               </span>
               <h1 className="text-[42px] md:text-[80px] font-black text-[#FF6B00] leading-[1.05] tracking-tight font-anton uppercase">
-                From Zero to First Client. <br />
-                No Degree. No Office. No Excuse.
+                First Client in 3 Weeks. <br />
+                6 Months of Guidance. <br />
+                No Excuses.
               </h1>
             </div>
             
             <p className="text-xl md:text-2xl text-white max-w-2xl mx-auto font-medium">
-              India's most practical freelancing course — built for students who are tired of waiting for a placement.
+              India's most practical freelancing intensive. Built for those who are done with theory and ready for the grind.
             </p>
 
             <div className="space-y-6 pt-4">
@@ -87,7 +88,7 @@ export default function CoursePage() {
               </Button>
               <div className="flex flex-col items-center gap-2">
                 <p className="text-[#FFB800] text-sm md:text-base font-black uppercase tracking-widest flex items-center justify-center gap-2">
-                  <Timer className="w-5 h-5 animate-pulse" /> ⚡ Full refund if you don't get a client in 6 months
+                  <Timer className="w-5 h-5 animate-pulse" /> ⚡ Land a client in 3 weeks or Full Refund (6 Mo. Guarantee)
                 </p>
                 <div className="flex gap-4 text-[10px] font-black text-white/40 uppercase tracking-widest">
                   <div className="flex gap-1.5 items-center">
@@ -105,7 +106,7 @@ export default function CoursePage() {
               {[
                 { icon: <GraduationCap className="w-5 h-5" />, text: "Mon-Fri Live Training" },
                 { icon: <PhoneCall className="w-5 h-5" />, text: "Daily Update Calls" },
-                { icon: <ShieldCheck className="w-5 h-5" />, text: "Client Guarantee" },
+                { icon: <ShieldCheck className="w-5 h-5" />, text: "6 Months Guidance" },
                 { icon: <UserCheck className="w-5 h-5" />, text: "1:1 Strategy Sessions" }
               ].map((item, i) => (
                 <div key={i} className="flex flex-col items-center gap-3">
@@ -120,12 +121,12 @@ export default function CoursePage() {
         {/* SECTION 2 — THE PAIN */}
         <section className="py-32 px-6 bg-[#121212]">
           <div className="max-w-7xl mx-auto space-y-20">
-            <h2 className="text-4xl md:text-6xl font-black text-white text-center uppercase font-anton">Does This Sound Like You?</h2>
+            <h2 className="text-4xl md:text-6xl font-black text-white text-center uppercase font-anton">The Reality Check</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
-                "You got placed. ₹8,000 salary. Rent, food, and petrol finish it by the 15th. You call home for money. Again.",
-                "You have the skills. You know how to code. But you have zero clients, zero portfolio, and zero idea where to start.",
-                "You've tried Fiverr and Upwork. You applied for 100 jobs and got ignored. You think maybe freelancing isn't for you."
+                "You finished your degree. Now you're in an 8k salary trap. Rent, petrol, and food kill it by the 15th. You're calling home for money again.",
+                "You have skills, but zero clients. You spend your nights watching tutorials instead of actually getting paid. You're stuck in the loop.",
+                "You tried bidding. You applied for 100 jobs and got ignored. You think you need a degree or an office. You just need a system."
               ].map((pain, i) => (
                 <div key={i} className="bg-[#0D0D0D] p-10 border-l-8 border-[#FF6B00] rounded-r-3xl space-y-6">
                   <p className="text-xl md:text-2xl font-black italic text-white/90 leading-relaxed">
@@ -144,9 +145,9 @@ export default function CoursePage() {
         <section className="py-32 px-6 bg-[#0D0D0D]">
           <div className="max-w-7xl mx-auto space-y-20">
             <div className="text-center space-y-6">
-              <h2 className="text-4xl md:text-7xl font-black text-[#FF6B00] uppercase font-anton leading-none">Introducing the <br /> BudgetDev Masterclass</h2>
+              <h2 className="text-4xl md:text-7xl font-black text-[#FF6B00] uppercase font-anton leading-none">The Intensive Sprint</h2>
               <p className="text-xl md:text-2xl text-white font-medium max-w-3xl mx-auto">
-                3 weeks. Live sessions. Real projects. Real clients. <br className="hidden md:block" /> One system that actually works.
+                3 weeks of pure hustle. 6 months of elite guidance. <br className="hidden md:block" /> One system designed to win.
               </p>
             </div>
             
@@ -154,32 +155,32 @@ export default function CoursePage() {
               <HighlightBox 
                 icon={LockOpen} 
                 title="The Loophole" 
-                desc="How beginners beat experienced freelancers every day using hidden research methods." 
+                desc="Beat freelancers with 500+ reviews using our 'In-Depth Research' bidding system." 
               />
               <HighlightBox 
                 icon={Code2} 
                 title="AI + Full Stack" 
-                desc="MERN stack from system design to live deployment using zero-cost professional tools." 
+                desc="Learn MERN stack delivery specifically for high-paying freelance projects." 
               />
               <HighlightBox 
                 icon={Target} 
                 title="Client Getting" 
-                desc="Find, pitch, close, and get paid — step by step. No generic cold calling." 
+                desc="Find, pitch, and close clients within 21 days. No generic cold calling." 
               />
               <HighlightBox 
                 icon={PhoneCall} 
                 title="Daily Update Calls" 
-                desc="We call you every single day to track your progress. No student gets left behind." 
+                desc="We call you daily to track progress. Every student is held accountable to the grind." 
               />
               <HighlightBox 
                 icon={UserCheck} 
-                title="1-on-1 Sessions" 
-                desc="Personalized strategy sessions to audit your profiles and review your bids." 
+                title="Personalized Backup" 
+                desc="Missed a session? We give you a dedicated 1-on-1 recovery call to keep you on track." 
               />
               <HighlightBox 
-                icon={Layout} 
-                title="Portfolio Build" 
-                desc="We build your personal high-fidelity portfolio under our engineering guidance." 
+                icon={Briefcase} 
+                title="Project Overflow" 
+                desc="Top students get access to real BudgetDev project leads for immediate pay." 
               />
             </div>
           </div>
@@ -188,21 +189,21 @@ export default function CoursePage() {
         {/* SECTION 4 — CURRICULUM */}
         <section className="py-32 px-6 bg-[#121212]">
           <div className="max-w-4xl mx-auto space-y-20">
-            <h2 className="text-4xl md:text-6xl font-black text-white text-center uppercase font-anton">What You Will Learn</h2>
+            <h2 className="text-4xl md:text-6xl font-black text-white text-center uppercase font-anton">The 15-Day Roadmap</h2>
             
             <div className="space-y-16">
               {/* WEEK 1 */}
               <div className="space-y-8">
                 <div className="inline-flex items-center gap-4 px-6 py-2 bg-[#FF6B00] text-white rounded-full text-lg font-black uppercase font-anton">
-                  Week 1 — Build Your Foundation (Mon-Fri)
+                  Week 1 — Build Your Foundation
                 </div>
                 <div className="space-y-4">
                   {[
-                    { day: "Day 1", title: "Freelancing Mindset & Platforms", detail: "Why freelancing beats an 8k salary. Workspace setup." },
-                    { day: "Day 2", title: "Freelancer.com Mastery", detail: "Psychological profile hacks and the first loophole walkthrough." },
-                    { day: "Day 3", title: "Upwork Optimization", detail: "Algorithm gaming and connects management for beginners." },
-                    { day: "Day 4", title: "Social Proof (IG & FB)", detail: "DMs that convert and professional social branding." },
-                    { day: "Day 5", title: "System Audit & Workspace", detail: "Live profile review by Venkatesh and workspace optimization." }
+                    { day: "Day 1", title: "Freelancing Mindset & Platforms", detail: "Breaking the salary mindset. Workspace setup for sub-second efficiency." },
+                    { day: "Day 2", title: "Freelancer.com Mastery", detail: "Psychological profile hacks. Profile headline and bio audit." },
+                    { day: "Day 3", title: "Upwork Optimization", detail: "Gaming the algorithm. Managing connects like a business owner." },
+                    { day: "Day 4", title: "Social Proof (IG & FB)", detail: "Converting DMs and creating professional social proof." },
+                    { day: "Day 5", title: "System Audit & Workspace", detail: "Live profile review by Venkatesh. Portfolio build for beginners." }
                   ].map((item, i) => (
                     <div key={i} className="p-6 bg-[#0D0D0D] border border-white/5 rounded-2xl flex gap-6">
                       <span className="text-[#FF6B00] font-black text-xl shrink-0 font-anton">{item.day}</span>
@@ -218,15 +219,15 @@ export default function CoursePage() {
               {/* WEEK 2 */}
               <div className="space-y-8">
                 <div className="inline-flex items-center gap-4 px-6 py-2 bg-[#FFB800] text-black rounded-full text-lg font-black uppercase font-anton">
-                  Week 2 — Client Getting Machine (Mon-Fri)
+                  Week 2 — Client Getting Machine
                 </div>
                 <div className="space-y-4">
                   {[
-                    { day: "Day 6", title: "The Exact Loophole Deep-Dive", detail: "The 'I already know your site' proposal method explained." },
-                    { day: "Day 7", title: "Winning Proposals & Quotations", detail: "Price objection scripts and the 5-line proposal formula." },
-                    { day: "Day 8", title: "Local Cold Outreach", detail: "Finding city-based clients using local search tactics." },
-                    { day: "Day 9", title: "Closing the Deal (Simulation)", detail: "Discovery calls and handling price pushback live." },
-                    { day: "Day 10", title: "Payment Systems (Global & Local)", detail: "UPI, Payoneer, and the 'milestone' golden rule." }
+                    { day: "Day 6", title: "The Exact Loophole Deep-Dive", detail: "The 'I already know your site' proposal method explained step-by-step." },
+                    { day: "Day 7", title: "Winning Proposals & Quotations", detail: "The 5-line proposal formula. Handling price pushback live." },
+                    { day: "Day 8", title: "Local Cold Outreach", detail: "Finding city-based clients using local search tactics. No ads needed." },
+                    { day: "Day 9", title: "Closing the Deal (Simulation)", detail: "Discovery calls and psychological triggers for a 'YES'." },
+                    { day: "Day 10", title: "Payment Systems (Global & Local)", detail: "Milestone rules. Payoneer, Wise, and Razorpay for beginners." }
                   ].map((item, i) => (
                     <div key={i} className="p-6 bg-[#0D0D0D] border border-white/5 rounded-2xl flex gap-6">
                       <span className="text-[#FFB800] font-black text-xl shrink-0 font-anton">{item.day}</span>
@@ -242,15 +243,15 @@ export default function CoursePage() {
               {/* WEEK 3 */}
               <div className="space-y-8">
                 <div className="inline-flex items-center gap-4 px-6 py-2 bg-[#00D757] text-white rounded-full text-lg font-black uppercase font-anton">
-                  Week 3 — Full Stack Delivery (Mon-Fri)
+                  Week 3 — Full Stack Delivery
                 </div>
                 <div className="space-y-4">
                   {[
-                    { day: "Day 11", title: "MERN Stack Introduction", detail: "Frontend vs Backend logic for freelance projects." },
-                    { day: "Day 12", title: "React for Freelancers", detail: "Fast landing page delivery using Tailwind CSS." },
-                    { day: "Day 13", title: "Backend Logic & Database", detail: "Node, Express, and MongoDB Atlas form handling." },
-                    { day: "Day 14", title: "Live Build & Handover", detail: "Simulated client project built from scratch to live URL." },
-                    { day: "Day 15", title: "Meta Ads & 30-Day Action Plan", detail: "Finding ad-spending clients and your final roadmap." }
+                    { day: "Day 11", title: "MERN Stack Fundamentals", detail: "Frontend vs Backend logic for freelance deliverables." },
+                    { day: "Day 12", title: "React for Freelancers", detail: "High-speed landing page delivery using Tailwind CSS." },
+                    { day: "Day 13", title: "Backend Logic & Database", detail: "Node, Express, and MongoDB Atlas form handling for clients." },
+                    { day: "Day 14", title: "Live Build & Handover", detail: "Simulated client project from scratch to live URL handover." },
+                    { day: "Day 15", title: "Meta Ads & 30-Day Action Plan", detail: "Finding ad-spending clients. Your final roadmap for dominance." }
                   ].map((item, i) => (
                     <div key={i} className="p-6 bg-[#0D0D0D] border border-white/5 rounded-2xl flex gap-6">
                       <span className="text-[#00D757] font-black text-xl shrink-0 font-anton">{item.day}</span>
@@ -277,8 +278,8 @@ export default function CoursePage() {
               </div>
               
               <div className="space-y-6 text-xl md:text-2xl text-white/80 leading-relaxed italic border-l-4 border-[#FF6B00] pl-8 py-4 bg-white/5 rounded-r-3xl">
-                <p>"I was exactly where you are. I spent an entire year with skills but no clients. I tried everything, and I wasted over ₹40,000 on courses from big influencers that were just pure theory."</p>
-                <p>"I built this masterclass because I lived the pain of the ₹8,000 salary trap. I found the loopholes. I know how to get paid safely. This isn't just a course — it's the system I wish I had from day one."</p>
+                <p>"I was where you are. I spent an entire year with zero clients despite having the skills. I wasted ₹40,000 on courses from big influencers that were 100% pure theory."</p>
+                <p>"I built this masterclass because I lived the pain of the salary trap. I found the loopholes. I know how to get paid safely. This is the 3-week system I wish I had from day one."</p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -314,10 +315,10 @@ export default function CoursePage() {
               {[
                 { label: "Personal Portfolio Build", icon: <Layout className="w-5 h-5" />, detail: "We guide you in building a high-fidelity personal portfolio that converts." },
                 { label: "Real Project Overflow", icon: <Briefcase className="w-5 h-5" />, detail: "Top students get access to our real agency project pipeline for pay." },
-                { label: "Daily Update Calls", icon: <PhoneCall className="w-5 h-5" />, detail: "We call you daily to track your progress. No student gets left behind." },
-                { label: "1:1 Strategy Sessions", icon: <UserCheck className="w-5 h-5" />, detail: "Personalized calls to audit your profiles and review your bids." },
-                { label: "3 Weeks Live Classes", icon: <CheckCircle2 className="w-5 h-5" />, detail: "Monday to Friday sessions. No boring slides. Pure hustle." },
-                { label: "Personalized Backup", icon: <UserCheck className="w-5 h-5" />, detail: "Dedicated recovery calls if you miss a live class." }
+                { label: "Daily Update Calls", icon: <PhoneCall className="w-5 h-5" />, detail: "We call you daily to track your progress. Accountability is everything." },
+                { label: "6 Months Elite Guidance", icon: <ShieldCheck className="w-5 h-5" />, detail: "Direct mentorship for 6 months to ensure you scale your business." },
+                { label: "1:1 Strategy Sessions", icon: <UserCheck className="w-5 h-5" />, detail: "Personalized calls to audit your profiles and review your live bids." },
+                { label: "Personalized Backup", icon: <AlertCircle className="w-5 h-5" />, detail: "Dedicated 1-on-1 recovery calls if you miss a live session." }
               ].map((item, i) => (
                 <div key={i} className="p-8 bg-[#0D0D0D] border-2 border-white/5 rounded-[2.5rem] flex flex-col gap-4 group hover:border-[#FF6B00]/30 transition-all">
                   <div className="text-[#FF6B00] group-hover:scale-110 transition-transform">{item.icon}</div>
@@ -337,7 +338,7 @@ export default function CoursePage() {
             <h2 className="text-4xl md:text-7xl font-black text-[#FF6B00] uppercase font-anton">Zero Risk. Guaranteed.</h2>
             <div className="space-y-6 max-w-2xl mx-auto">
               <p className="text-xl md:text-2xl font-bold text-white/90">
-                Follow the course. Do the work. Apply the system. <br />
+                Follow the 3-week system. Get 6 months of elite guidance. <br />
                 If you don't land a single client within 6 months — we refund every rupee.
               </p>
               <p className="text-lg font-bold text-white/50">No forms. No questions. No drama.</p>
@@ -351,13 +352,13 @@ export default function CoursePage() {
           <div className="max-w-4xl mx-auto space-y-16">
             <div className="text-center space-y-4">
               <h2 className="text-4xl md:text-6xl font-black text-white uppercase font-anton tracking-tight">One Investment.</h2>
-              <p className="text-xl text-white/60 font-medium">Six months of real support.</p>
+              <p className="text-xl text-white/60 font-medium">Results in 3 weeks. Support for 6 months.</p>
             </div>
 
             <Card className="bg-[#0D0D0D] border-4 border-[#FF6B00] rounded-[3rem] overflow-hidden shadow-2xl">
               <div className="p-10 md:p-16 space-y-10">
                 <div className="text-center space-y-4">
-                  <p className="text-[10px] font-black text-[#FF6B00] uppercase tracking-widest border border-[#FF6B00] inline-block px-4 py-1 rounded-full mb-4">Limited Availability</p>
+                  <p className="text-[10px] font-black text-[#FF6B00] uppercase tracking-widest border border-[#FF6B00] inline-block px-4 py-1 rounded-full mb-4">Limited Seats Per Batch</p>
                   <div className="flex items-center justify-center gap-2">
                     <span className="text-5xl md:text-[100px] font-black text-[#FFB800] font-anton leading-none">₹1,999</span>
                   </div>
@@ -370,9 +371,9 @@ export default function CoursePage() {
                     "1:1 Strategy & Profile Audit",
                     "Guided Portfolio Build",
                     "Real Project Overflow Access",
-                    "3 Weeks Live (Mon-Fri)",
-                    "6 Months Mentorship",
-                    "MERN Stack + AI Skills",
+                    "3 Weeks Intensive (Mon-Fri)",
+                    "6 Months Elite Guidance",
+                    "MERN Stack Delivery Skills",
                     "Full Refund Guarantee"
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-3">
@@ -417,12 +418,11 @@ export default function CoursePage() {
             <h2 className="text-4xl md:text-6xl font-black text-white text-center uppercase font-anton">Common Questions</h2>
             <Accordion type="single" collapsible className="w-full space-y-4">
               {[
-                { q: "I have no experience. Can I still join?", a: "Yes. This course starts from zero. No prior freelancing or coding experience needed." },
-                { q: "What if I don't get a client?", a: "Full refund if you follow the process and get zero clients in 6 months. We mean it. Every rupee comes back to you." },
-                { q: "Is this recorded or live?", a: "Live sessions, Monday to Friday for 3 weeks. We don't provide recordings to ensure you stay accountable. If you miss a class, you get a Personalized Backup Session." },
-                { q: "Daily calls? Really?", a: "Yes. Every student gets a daily progress check-in call from our team. We ensure you stay on track with your profile setup and bidding." },
-                { q: "What platforms will my profiles be on?", a: "Fiverr, Upwork, Freelancer.com, Instagram, Facebook, and more." },
-                { q: "Do I need a laptop?", a: "Yes. A basic laptop with internet is enough. We will show you how to do everything with zero monthly cost tools." }
+                { q: "Can I join with zero experience?", a: "Yes. This course is designed to take you from absolute zero to your first paying client using a system that doesn't require past fame." },
+                { q: "What if I don't land a client?", a: "Full refund if you follow the process and get zero clients in 6 months. We only succeed if you succeed." },
+                { q: "Why no recordings?", a: "Recordings lead to procrastination. We want you live, focused, and grinding. If you miss a class for an emergency, we provide a Personalized Backup Session." },
+                { q: "Is the daily call real?", a: "Yes. Our team calls you every single morning during the 3 weeks to track your bidding and profile setup progress." },
+                { q: "Do I need a laptop?", a: "Yes. A basic laptop with internet is enough. We will show you how to use free professional tools for everything." }
               ].map((item, i) => (
                 <AccordionItem key={i} value={`item-${i}`} className="bg-[#151515] rounded-3xl border-none px-8">
                   <AccordionTrigger className="text-lg md:text-xl font-bold text-white hover:no-underline py-6 text-left uppercase font-anton tracking-tight">{item.q}</AccordionTrigger>
@@ -437,12 +437,12 @@ export default function CoursePage() {
         <section className="min-h-screen bg-[#0D0D0D] flex flex-col items-center justify-center px-6 text-center border-t border-white/5">
           <div className="max-w-5xl space-y-12">
             <h2 className="text-[32px] md:text-[70px] font-black text-[#FF6B00] leading-none uppercase font-anton tracking-tighter">
-              One Hour From Now You Could Have Your Profile Live. <br />
-              One Week From Now You Could Have Your First Proposal Sent. <br />
-              One Month From Now You Could Have Your First Client.
+              Get Your First Client in 3 Weeks. <br />
+              Scale for 6 Months. <br />
+              Start Your Escape.
             </h2>
             <p className="text-2xl md:text-3xl text-white font-medium italic">
-              The only question is — will you start?
+              One decision away from breaking the trap.
             </p>
             <div className="pt-8">
               <Button asChild className="h-20 md:h-28 px-12 md:px-24 bg-[#FF6B00] hover:bg-[#FF8533] text-white rounded-full font-black text-2xl md:text-4xl shadow-[0_0_60px_rgba(255,107,0,0.3)] transition-all font-anton">
