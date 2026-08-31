@@ -14,7 +14,12 @@ import {
   Star,
   Quote,
   ArrowRight,
-  ChevronDown
+  ChevronDown,
+  AlertCircle,
+  TrendingUp,
+  Target,
+  LockOpen,
+  Bot
 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -353,44 +358,79 @@ export default function CoursePage() {
         </div>
       </section>
 
-      {/* SECTION 5 — WHO TEACHES YOU */}
+      {/* SECTION 5 — WHO TEACHES YOU (Story-focused) */}
       <section className="py-32 px-6 overflow-hidden">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <div className="space-y-10">
-            <div className="space-y-4">
-              <h2 className="text-5xl md:text-8xl font-['Anton'] uppercase tracking-tighter">Your Mentor</h2>
-              <div className="space-y-1">
-                <p className="text-4xl md:text-6xl font-['Anton'] uppercase text-[#FF6B00]">Venkatesh Choppa</p>
-                <p className="text-xl font-bold uppercase text-[#FFB800] tracking-widest">Founder, BudgetDev</p>
+        <div className="max-w-7xl mx-auto space-y-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div className="space-y-10">
+              <div className="space-y-4">
+                <h2 className="text-5xl md:text-8xl font-['Anton'] uppercase tracking-tighter">Your Mentor</h2>
+                <div className="space-y-1">
+                  <p className="text-4xl md:text-6xl font-['Anton'] uppercase text-[#FF6B00]">Venkatesh Choppa</p>
+                  <p className="text-xl font-bold uppercase text-[#FFB800] tracking-widest">Founder, BudgetDev</p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {[
+                  "2.5 Years Experience in Freelancing",
+                  "14+ Live Products Deployed",
+                  "Real Company Owner"
+                ].map((c, i) => (
+                  <div key={i} className="bg-white/5 p-4 rounded-xl border border-white/10 text-center text-[10px] font-black uppercase tracking-widest leading-relaxed">
+                    {c}
+                  </div>
+                ))}
+              </div>
+
+              <div className="relative p-10 bg-white/5 rounded-[3rem] border border-white/10 italic text-xl md:text-2xl leading-relaxed font-medium">
+                 <Quote className="absolute top-6 left-6 w-10 h-10 text-[#FF6B00] opacity-20" />
+                 <p className="relative z-10">
+                   "I was exactly where you are. Skills but no clients. Income not enough to survive. I built the system I wish someone had given me. This is that system."
+                 </p>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                "2.5 Years Running Meta Ads",
-                "14+ Live Products Deployed",
-                "Real Company Owner"
-              ].map((c, i) => (
-                <div key={i} className="bg-white/5 p-4 rounded-xl border border-white/10 text-center text-xs font-black uppercase tracking-widest">
-                  {c}
-                </div>
-              ))}
-            </div>
-
-            <div className="relative p-10 bg-white/5 rounded-[3rem] border border-white/10 italic text-xl md:text-2xl leading-relaxed font-medium">
-               <Quote className="absolute top-6 left-6 w-10 h-10 text-[#FF6B00] opacity-20" />
-               <p className="relative z-10">
-                 "I was exactly where you are. Skills but no clients. Income not enough to survive. I built the system I wish someone had given me. This is that system."
-               </p>
+            <div className="relative aspect-square rounded-[4rem] overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl shadow-[#FF6B00]/10">
+              <img 
+                src="https://yasodha.in/assets/venkatesh-profile.png" 
+                alt="Venkatesh Choppa" 
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
 
-          <div className="relative aspect-square rounded-[4rem] overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl shadow-[#FF6B00]/10">
-            <img 
-              src="https://yasodha.in/assets/venkatesh-profile.png" 
-              alt="Venkatesh Choppa" 
-              className="w-full h-full object-cover"
-            />
+          {/* THE STORY BLOCK */}
+          <div className="bg-[#151515] p-12 md:p-20 rounded-[4rem] border-2 border-[#FF6B00]/20 space-y-12 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[#FF6B00]/5 rounded-full blur-3xl -mr-48 -mt-48" />
+            
+            <div className="max-w-4xl space-y-8 relative z-10">
+              <Badge className="bg-[#FF6B00] text-black font-black px-4 py-1 uppercase tracking-widest rounded-lg">The Origin Story</Badge>
+              <h3 className="text-4xl md:text-6xl font-['Anton'] uppercase text-white leading-tight tracking-tighter">
+                I Wasted ₹40,000 & 1 Year <br /> 
+                <span className="text-[#FFB800]">So You Don't Have To.</span>
+              </h3>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-white/70 text-lg md:text-xl font-medium leading-relaxed italic">
+                <p>
+                  "When I started, I thought having skills was enough. I worked day and night for <strong className="text-white">1 full year</strong> without landing a single client. I tried every generic advice out there—cold emails, job boards, everything—and nothing worked. I felt like a failure."
+                </p>
+                <p>
+                  "In my desperation, I spent <strong className="text-white">₹40,000 on courses</strong> from big influencers. But they taught me fluff—high-level theory that didn't help an Indian student with zero portfolio. That pain led me to discover the <strong className="text-[#FF6B00]">Loopholes</strong> that veterans hide. Now, I'm giving you that exact system."
+                </p>
+              </div>
+
+              <div className="pt-8 flex flex-wrap gap-4">
+                 <div className="flex items-center gap-3 px-6 py-3 bg-white/5 rounded-2xl border border-white/10">
+                   <AlertCircle className="w-6 h-6 text-[#FF6B00]" />
+                   <span className="text-xs font-black uppercase tracking-widest text-white">1 Year of Struggle Included</span>
+                 </div>
+                 <div className="flex items-center gap-3 px-6 py-3 bg-white/5 rounded-2xl border border-white/10">
+                   <TrendingUp className="w-6 h-6 text-[#FFB800]" />
+                   <span className="text-xs font-black uppercase tracking-widest text-white">Tested Bidding Loopholes</span>
+                 </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
