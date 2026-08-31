@@ -33,8 +33,8 @@ export function CourseHighlights() {
       icon: <TrendingUp className="w-8 h-8 text-[#FF6B00]" />,
     },
     {
-      title: "Special Makeup Classes",
-      description: "No recordings. If you miss a class, we hold a dedicated session to catch you up personally.",
+      title: "Dedicated Backup Sessions",
+      description: "No recordings. If you miss a class, we hold a personal catch-up session to ensure you stay on track.",
       icon: <Users className="w-8 h-8 text-[#FF6B00]" />,
     },
     {
