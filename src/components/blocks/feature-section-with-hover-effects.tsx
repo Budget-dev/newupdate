@@ -2,33 +2,33 @@
 
 import { cn } from "@/lib/utils";
 import {
-  IconLockOpen,
-  IconRobot,
-  IconTarget,
-  IconTrendingUp,
-} from "@tabler/icons-react";
+  LockOpen,
+  Bot,
+  Target,
+  TrendingUp,
+} from "lucide-react";
 
 export function CourseHighlights() {
   const highlights = [
     {
       title: "The Freelancer.com Loophole",
       description: "How beginners beat experienced freelancers every day. Our secret weapon.",
-      icon: <IconLockOpen className="w-8 h-8 text-[#FF6B00]" />,
+      icon: <LockOpen className="w-8 h-8 text-[#FF6B00]" />,
     },
     {
       title: "AI + Full Stack Dev",
       description: "MERN stack from system design to live deployment using power of AI.",
-      icon: <IconRobot className="w-8 h-8 text-[#FF6B00]" />,
+      icon: <Bot className="w-8 h-8 text-[#FF6B00]" />,
     },
     {
       title: "Client Getting System",
       description: "Find, pitch, close, and get paid — step by step with real scripts.",
-      icon: <IconTarget className="w-8 h-8 text-[#FF6B00]" />,
+      icon: <Target className="w-8 h-8 text-[#FF6B00]" />,
     },
     {
       title: "Profile Domination",
       description: "Fiverr, Upwork, Instagram — all optimized for maximum conversion.",
-      icon: <IconTrendingUp className="w-8 h-8 text-[#FF6B00]" />,
+      icon: <TrendingUp className="w-8 h-8 text-[#FF6B00]" />,
     },
   ];
   return (
