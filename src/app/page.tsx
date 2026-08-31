@@ -39,18 +39,6 @@ const completedProjects = [
     link: "https://ncfeschools.com/",
   },
   {
-    title: "The Garage Doctors",
-    category: "Automotive",
-    image: "https://s0.wp.com/mshots/v1/https://thegaragedoctors.in?w=1024&h=768",
-    link: "https://thegaragedoctors.in/",
-  },
-  {
-    title: "Inance School",
-    category: "EdTech",
-    image: "https://s0.wp.com/mshots/v1/https://inancechool.vercel.app/?w=1024&h=768",
-    link: "https://inancechool.vercel.app/",
-  },
-  {
     title: "Trinix Security",
     category: "Cybersecurity",
     image: "https://s0.wp.com/mshots/v1/https://studio-trinix.vercel.app?w=1024&h=768",
@@ -63,82 +51,61 @@ const completedProjects = [
     link: "https://vidhyaly.com",
   },
   {
-    title: "Bhoomi Collections",
-    category: "E-commerce",
-    image: "https://s0.wp.com/mshots/v1/https://www.bhoomicollections.in?w=1024&h=768",
-    link: "https://www.bhoomicollections.in",
-  },
-  {
     title: "The Baza",
     category: "Fashion Brand",
     image: "https://s0.wp.com/mshots/v1/https://thebaza.in?w=1024&h=768",
     link: "https://thebaza.in",
   },
   {
-    title: "Srinika Spices",
-    category: "Food Export",
-    image: "https://s0.wp.com/mshots/v1/https://srinikaspices.in?w=1024&h=768",
-    link: "https://srinikaspices.in",
-  },
-  {
-    title: "Gurucharan Interiors",
-    category: "Interior Design",
-    image: "https://s0.wp.com/mshots/v1/https://gurucharaninteriors.in?w=1024&h=768",
-    link: "https://gurucharaninteriors.in",
-  },
-  {
-    title: "Yasodha.in",
-    category: "Resume Portal",
-    image: "https://s0.wp.com/mshots/v1/https://yasodha.in?w=1024&h=768",
-    link: "https://yasodha.in",
-  },
-  {
-    title: "Roshni Boutiques",
-    category: "Luxury Wear",
-    image: "https://s0.wp.com/mshots/v1/https://roshniboutiques.com/?w=1024&h=768",
-    link: "https://roshniboutiques.com/",
+    title: "Bhoomi Collections",
+    category: "E-commerce",
+    image: "https://s0.wp.com/mshots/v1/https://www.bhoomicollections.in?w=1024&h=768",
+    link: "https://www.bhoomicollections.in",
   }
 ];
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background relative">
-      <PulseFitHero 
-        logo="BudgetDev"
-        navigation={[
-          { label: "Portfolio", href: "/portfolio" },
-          { label: "Our Team", href: "/about" },
-          { label: "Services", hasDropdown: true, href: "/services" },
-          { label: "Careers", href: "/careers" },
-        ]}
-        ctaButton={{
-          label: "Track Project",
-          href: "/portal/login",
-        }}
-        title="Software Engineering for dominance."
-        subtitle="We build high-performance iOS, Android, and Web applications tailored to your business goals. Affordable, scalable, and engineered for sub-second speeds."
-        primaryAction={{
-          label: "Start Your Project",
-          href: "/contact",
-        }}
-        secondaryAction={{
-          label: "View Portfolio",
-          href: "/portfolio",
-        }}
-        disclaimer="*Free technical roadmap with every inquiry"
-        socialProof={{
-          avatars: [
-            "https://yasodha.in/assets/venkatesh-profile.png",
-            "https://i.ibb.co/TMRK7qHD/Whats-App-Image-2026-03-28-at-11-09-06-PM.jpg",
-            "https://i.pravatar.cc/150?img=3",
-            "https://i.pravatar.cc/150?img=4",
-          ],
-          text: "Join over 52+ Successful Brands",
-        }}
-        programs={completedProjects}
-      />
-
+      <Navbar />
+      
       <main className="flex-1 relative z-10">
+        <PulseFitHero 
+          logo="BudgetDev"
+          navigation={[
+            { label: "Portfolio", href: "/portfolio" },
+            { label: "Masterclass", href: "/course" },
+            { label: "Services", href: "/services/web-development" },
+            { label: "Careers", href: "/careers" },
+            { label: "Team", href: "/about" },
+          ]}
+          ctaButton={{
+            label: "Track Project",
+            href: "/portal/login",
+          }}
+          title="Software Engineering for dominance."
+          subtitle="We build high-performance iOS, Android, and Web applications tailored to your business goals. Affordable, scalable, and engineered for sub-second speeds."
+          primaryAction={{
+            label: "Start Your Project",
+            href: "/contact",
+          }}
+          secondaryAction={{
+            label: "View Portfolio",
+            href: "/portfolio",
+          }}
+          disclaimer="*Free technical roadmap with every inquiry"
+          socialProof={{
+            avatars: [
+              "https://yasodha.in/assets/venkatesh-profile.png",
+              "https://i.ibb.co/TMRK7qHD/Whats-App-Image-2026-03-28-at-11-09-06-PM.jpg",
+              "https://i.pravatar.cc/150?img=3",
+              "https://i.pravatar.cc/150?img=4",
+            ],
+            text: "Join over 52+ Successful Brands",
+          }}
+          programs={completedProjects}
+        />
+
         <ResultsSection />
 
         <section className="py-12 px-6 relative">

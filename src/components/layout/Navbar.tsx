@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Menu, X, ChevronDown, LayoutDashboard } from "lucide-react";
+import { Menu, X, ChevronDown, LayoutDashboard, GraduationCap } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -37,6 +37,7 @@ const SERVICES = [
 ];
 
 const NAV_ITEMS = [
+  { name: { en: "Masterclass", in: "Masterclass" }, href: "/course", highlight: true },
   { name: { en: "Portfolio", in: "Portfolio" }, href: "/portfolio" },
   { name: { en: "Team", in: "Team" }, href: "/about" },
   { name: { en: "Careers", in: "Careers" }, href: "/careers" },
@@ -60,8 +61,6 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const toggleLang = () => setLang((l) => (l === "en" ? "in" : "en"));
 
   return (
     <nav
@@ -123,8 +122,12 @@ export default function Navbar() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-[11px] font-bold text-secondary/70 hover:text-secondary transition-colors uppercase tracking-wider"
+              className={cn(
+                "text-[11px] font-bold transition-colors uppercase tracking-wider flex items-center gap-1.5",
+                item.highlight ? "text-[#FF6B00] font-black" : "text-secondary/70 hover:text-secondary"
+              )}
             >
+              {item.highlight && <GraduationCap className="w-3 h-3" />}
               {item.name[lang]}
             </Link>
           ))}
@@ -181,7 +184,10 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block text-base font-bold text-secondary"
+                className={cn(
+                  "block text-base font-bold",
+                  item.highlight ? "text-[#FF6B00]" : "text-secondary"
+                )}
               >
                 {item.name[lang]}
               </Link>
