@@ -1,28 +1,14 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import Image from "next/image";
-import { 
-  Sparkles,
-  ArrowRight,
-  Check,
-  Star,
-  ExternalLink,
-  ArrowUpRight,
-  Palette,
-  Code,
-  ShieldCheck,
-  Cpu,
-  Bot,
-  Rocket,
-  Zap,
-  Smartphone,
-  MessageSquare
-} from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { 
+  Code,
+  Rocket,
+  Bot,
+  Smartphone
+} from "lucide-react";
 import { ResultsSection } from "@/components/sections/ResultsSection";
-import { PulseFitHero } from "@/components/ui/pulse-fit-hero";
+import { HeroParallax } from "@/components/ui/hero-parallax";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -31,36 +17,81 @@ export const metadata: Metadata = {
   keywords: 'software solutions vizianagaram, budget software solutions india, app development andhra pradesh, affordable software company india, ios android developer vizianagaram',
 };
 
-const completedProjects = [
+const products = [
   {
     title: "NCFE Schools",
-    category: "Institutional",
-    image: "https://s0.wp.com/mshots/v1/https://ncfeschools.com?w=1024&h=768",
     link: "https://ncfeschools.com/",
+    thumbnail: "https://s0.wp.com/mshots/v1/https://ncfeschools.com?w=1024&h=768",
   },
   {
-    title: "Trinix Security",
-    category: "Cybersecurity",
-    image: "https://s0.wp.com/mshots/v1/https://studio-trinix.vercel.app?w=1024&h=768",
+    title: "The Garage Doctors",
+    link: "https://thegaragedoctors.in/",
+    thumbnail: "https://s0.wp.com/mshots/v1/https://thegaragedoctors.in?w=1024&h=768",
+  },
+  {
+    title: "Inance School",
+    link: "https://inancechool.vercel.app/",
+    thumbnail: "https://s0.wp.com/mshots/v1/https://inancechool.vercel.app/?w=1024&h=768",
+  },
+  {
+    title: "Trinix Cybersecurity",
     link: "https://studio-trinix.vercel.app",
+    thumbnail: "https://s0.wp.com/mshots/v1/https://studio-trinix.vercel.app?w=1024&h=768",
   },
   {
     title: "Vidhyaly.com",
-    category: "LMS Portal",
-    image: "https://s0.wp.com/mshots/v1/https://vidhyaly.com?w=1024&h=768",
     link: "https://vidhyaly.com",
+    thumbnail: "https://s0.wp.com/mshots/v1/https://vidhyaly.com?w=1024&h=768",
   },
   {
-    title: "The Baza",
-    category: "Fashion Brand",
-    image: "https://s0.wp.com/mshots/v1/https://thebaza.in?w=1024&h=768",
-    link: "https://thebaza.in",
+    title: "BudgetDev.in",
+    link: "https://budgetdev.in",
+    thumbnail: "https://s0.wp.com/mshots/v1/https://budgetdev.in?w=1024&h=768",
+  },
+  {
+    title: "Srinika Spices",
+    link: "https://srinikaspices.in",
+    thumbnail: "https://s0.wp.com/mshots/v1/https://srinikaspices.in?w=1024&h=768",
+  },
+  {
+    title: "Gurucharan Interiors",
+    link: "https://gurucharaninteriors.in",
+    thumbnail: "https://s0.wp.com/mshots/v1/https://gurucharaninteriors.in?w=1024&h=768",
+  },
+  {
+    title: "Yasodha.in",
+    link: "https://yasodha.in",
+    thumbnail: "https://s0.wp.com/mshots/v1/https://yasodha.in?w=1024&h=768",
   },
   {
     title: "Bhoomi Collections",
-    category: "E-commerce",
-    image: "https://s0.wp.com/mshots/v1/https://www.bhoomicollections.in?w=1024&h=768",
     link: "https://www.bhoomicollections.in",
+    thumbnail: "https://s0.wp.com/mshots/v1/https://www.bhoomicollections.in?w=1024&h=768",
+  },
+  {
+    title: "The Baza",
+    link: "https://thebaza.in",
+    thumbnail: "https://s0.wp.com/mshots/v1/https://thebaza.in?w=1024&h=768",
+  },
+  {
+    title: "Roshni Boutiques",
+    link: "https://roshniboutiques.com/",
+    thumbnail: "https://s0.wp.com/mshots/v1/https://roshniboutiques.com/?w=1024&h=768",
+  },
+  {
+    title: "Pastels Boutique",
+    link: "https://pastelsboutique.com",
+    thumbnail: "https://s0.wp.com/mshots/v1/https://pastelsboutique.com?w=1024&h=768",
+  },
+  {
+    title: "Shreebhumi Natures",
+    link: "https://www.shreebhuminaturesbest.com",
+    thumbnail: "https://s0.wp.com/mshots/v1/https://www.shreebhuminaturesbest.com?w=1024&h=768",
+  },
+  {
+    title: "Cybersecurity Node",
+    link: "https://studio-trinix.vercel.app",
+    thumbnail: "https://picsum.photos/seed/cyber/1024/768",
   }
 ];
 
@@ -70,41 +101,7 @@ export default function Home() {
       <Navbar />
       
       <main className="flex-1 relative z-10">
-        <PulseFitHero 
-          logo="BudgetDev"
-          navigation={[
-            { label: "Portfolio", href: "/portfolio" },
-            { label: "Masterclass", href: "/course" },
-            { label: "Services", href: "/services/web-development" },
-            { label: "Careers", href: "/careers" },
-            { label: "Team", href: "/about" },
-          ]}
-          ctaButton={{
-            label: "Track Project",
-            href: "/portal/login",
-          }}
-          title="Software Engineering for dominance."
-          subtitle="We build high-performance iOS, Android, and Web applications tailored to your business goals. Affordable, scalable, and engineered for sub-second speeds."
-          primaryAction={{
-            label: "Start Your Project",
-            href: "/contact",
-          }}
-          secondaryAction={{
-            label: "View Portfolio",
-            href: "/portfolio",
-          }}
-          disclaimer="*Free technical roadmap with every inquiry"
-          socialProof={{
-            avatars: [
-              "https://yasodha.in/assets/venkatesh-profile.png",
-              "https://i.ibb.co/TMRK7qHD/Whats-App-Image-2026-03-28-at-11-09-06-PM.jpg",
-              "https://i.pravatar.cc/150?img=3",
-              "https://i.pravatar.cc/150?img=4",
-            ],
-            text: "Join over 52+ Successful Brands",
-          }}
-          programs={completedProjects}
-        />
+        <HeroParallax products={products} />
 
         <ResultsSection />
 
