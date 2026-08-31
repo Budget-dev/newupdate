@@ -62,26 +62,44 @@ export default function CoursePage() {
     <div className="flex flex-col min-h-screen bg-[#0D0D0D] text-white selection:bg-[#FF6B00]/30 selection:text-[#FF6B00]">
       <Navbar />
 
-      <main className="flex-1">
+      <main className="flex-1 pb-32 md:pb-0">
         {/* SECTION 1 — HERO */}
         <section className="min-h-screen flex flex-col items-center justify-center pt-32 pb-20 px-6 text-center">
           <div className="max-w-5xl space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-            <h1 className="text-[42px] md:text-[80px] font-black text-[#FF6B00] leading-[1.05] tracking-tight font-anton uppercase">
-              From Zero to First Client. <br />
-              No Degree. No Office. No Excuse.
-            </h1>
+            <div className="space-y-4">
+              <span className="inline-block px-4 py-1 rounded-full bg-white/5 border border-white/10 text-[#FFB800] text-[10px] md:text-xs font-black uppercase tracking-widest animate-pulse">
+                Batch Opening: Land Your First Client in 3 Weeks
+              </span>
+              <h1 className="text-[42px] md:text-[80px] font-black text-[#FF6B00] leading-[1.05] tracking-tight font-anton uppercase">
+                From Zero to First Client. <br />
+                No Degree. No Office. No Excuse.
+              </h1>
+            </div>
+            
             <p className="text-xl md:text-2xl text-white max-w-2xl mx-auto font-medium">
-              India&apos;s most practical freelancing course — built for students who are tired of waiting for a placement.
+              India's most practical freelancing course — built for students who are tired of waiting for a placement.
             </p>
+
             <div className="space-y-6 pt-4">
-              <Button asChild className="h-16 md:h-24 px-12 md:px-20 rounded-full bg-[#FF6B00] hover:bg-[#FF8533] text-white font-black text-xl md:text-3xl shadow-[0_0_40px_rgba(255,107,0,0.4)] transition-all hover:scale-105 active:scale-95">
+              <Button asChild className="h-20 md:h-24 px-12 md:px-20 rounded-full bg-[#FF6B00] hover:bg-[#FF8533] text-white font-black text-xl md:text-3xl shadow-[0_0_40px_rgba(255,107,0,0.4)] transition-all hover:scale-105 active:scale-95">
                 <Link href="https://wa.me/918466006486?text=I%20want%20to%20enroll%20in%20the%20Masterclass">
                   Enroll Now — ₹1,999 Only
                 </Link>
               </Button>
-              <p className="text-[#FFB800] text-sm md:text-base font-black uppercase tracking-widest flex items-center justify-center gap-2">
-                <Timer className="w-5 h-5 animate-pulse" /> ⚡ Full refund if you don&apos;t get a client in 6 months
-              </p>
+              <div className="flex flex-col items-center gap-2">
+                <p className="text-[#FFB800] text-sm md:text-base font-black uppercase tracking-widest flex items-center justify-center gap-2">
+                  <Timer className="w-5 h-5 animate-pulse" /> ⚡ Full refund if you don't get a client in 6 months
+                </p>
+                <div className="flex gap-4 text-[10px] font-black text-white/40 uppercase tracking-widest">
+                  <div className="flex gap-1.5 items-center">
+                    <span className="text-white font-anton text-lg">{timeLeft.h}h</span>
+                    <span>:</span>
+                    <span className="text-white font-anton text-lg">{timeLeft.m}m</span>
+                    <span>:</span>
+                    <span className="text-white font-anton text-lg">{timeLeft.s}s</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-20 border-t border-white/10">
@@ -112,13 +130,13 @@ export default function CoursePage() {
               ].map((pain, i) => (
                 <div key={i} className="bg-[#0D0D0D] p-10 border-l-8 border-[#FF6B00] rounded-r-3xl space-y-6">
                   <p className="text-xl md:text-2xl font-black italic text-white/90 leading-relaxed">
-                    &quot;{pain}&quot;
+                    "{pain}"
                   </p>
                 </div>
               ))}
             </div>
             <p className="text-[#FFB800] text-2xl md:text-4xl font-black text-center italic tracking-tight uppercase font-anton">
-              It is for you. You just didn&apos;t have the right system to escape.
+              It is for you. You just didn't have the right system to escape.
             </p>
           </div>
         </section>
@@ -260,8 +278,8 @@ export default function CoursePage() {
               </div>
               
               <div className="space-y-6 text-xl md:text-2xl text-white/80 leading-relaxed italic border-l-4 border-[#FF6B00] pl-8 py-4 bg-white/5 rounded-r-3xl">
-                <p>&quot;I was exactly where you are. I spent an entire year with skills but no clients. I tried everything, and I wasted over ₹40,000 on courses from big influencers that were just pure theory.&quot;</p>
-                <p>&quot;I built this masterclass because I lived the pain of the ₹8,000 salary trap. I found the loopholes. I know how to get paid safely. This isn&apos;t just a course — it&apos;s the system I wish I had from day one.&quot;</p>
+                <p>"I was exactly where you are. I spent an entire year with skills but no clients. I tried everything, and I wasted over ₹40,000 on courses from big influencers that were just pure theory."</p>
+                <p>"I built this masterclass because I lived the pain of the ₹8,000 salary trap. I found the loopholes. I know how to get paid safely. This isn't just a course — it's the system I wish I had from day one."</p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -321,7 +339,7 @@ export default function CoursePage() {
             <div className="space-y-6 max-w-2xl mx-auto">
               <p className="text-xl md:text-2xl font-bold text-white/90">
                 Follow the course. Do the work. Apply the system. <br />
-                If you don&apos;t land a single client within 6 months — we refund every rupee.
+                If you don't land a single client within 6 months — we refund every rupee.
               </p>
               <p className="text-lg font-bold text-white/50">No forms. No questions. No drama.</p>
             </div>
