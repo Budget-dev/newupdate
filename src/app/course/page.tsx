@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -13,7 +14,15 @@ import {
   Monitor,
   Zap,
   Star,
-  Quote
+  Quote,
+  LockOpen,
+  Bot,
+  Target,
+  TrendingUp,
+  Layout,
+  Search,
+  Wallet,
+  Globe
 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -44,6 +53,181 @@ export default function CoursePage() {
     document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const curriculum = [
+    {
+      week: "WEEK 1 — BUILD YOUR FOUNDATION",
+      tagline: "Before you find clients, clients must be able to find you.",
+      badge: "bg-[#FF6B00]",
+      days: [
+        {
+          day: "Day 1",
+          title: "Mindset + Platform Overview",
+          details: [
+            "Why freelancing beats a ₹8,000 salary",
+            "How the freelancing economy actually works in India",
+            "Overview of all platforms: Freelancer.com, Upwork, Fiverr, LinkedIn",
+            "Why we start on Freelancer.com first",
+            "Setting up your laptop/phone for freelancing workflow"
+          ]
+        },
+        {
+          day: "Day 2",
+          title: "Freelancer.com Optimization (2.5 hrs)",
+          details: [
+            "Profile photo, headline, and bio that attract clients",
+            "Building your portfolio from zero (even without past projects)",
+            "The Loophole Session Part 1: Detective research methods",
+            "Live walkthrough: finding 5 real projects with client links"
+          ]
+        },
+        {
+          day: "Day 3",
+          title: "Upwork Profile Mastery (2.5 hrs)",
+          details: [
+            "Setting up Upwork for Indian students (verification, connects)",
+            "Writing a profile that passes Upwork's algorithm",
+            "How Upwork ranks freelancers — and how to game it early",
+            "First Upwork portfolio section build from scratch"
+          ]
+        },
+        {
+          day: "Day 4",
+          title: "Social Proof (Instagram + Facebook)",
+          details: [
+            "Why social proof on Instagram converts clients in 2025",
+            "Creating a freelancer Instagram profile that looks professional",
+            "Content strategy: What to post vs what NOT to post",
+            "How to use Instagram DMs to reach local Indian clients directly"
+          ]
+        },
+        {
+          day: "Day 5",
+          title: "System Optimization + Audit",
+          details: [
+            "Setting up your complete freelancing workspace tools",
+            "Other platforms: Toptal, PeoplePerHour, LinkedIn ProFinder",
+            "Building a simple personal portfolio site (zero coding version)",
+            "Live Profile Audit: Venkatesh reviews students' profiles"
+          ]
+        }
+      ]
+    },
+    {
+      week: "WEEK 2 — CLIENT GETTING MACHINE",
+      tagline: "The loophole. The proposal. The close.",
+      badge: "bg-[#FFB800]",
+      days: [
+        {
+          day: "Day 6",
+          title: "The Freelancer.com Loophole (Deep Dive)",
+          details: [
+            "The exact loophole: Why 95% of bidders lose before they start",
+            "How to find projects where clients embed their website link",
+            "The 10-minute client research method",
+            "Writing the 'I already looked at your website' proposal — word for word"
+          ]
+        },
+        {
+          day: "Day 7",
+          title: "Winning Proposals + Quotations",
+          details: [
+            "The 5-line proposal formula (short wins over long)",
+            "How to write a quotation: scope, timeline, price, revisions",
+            "Pricing strategy: how to decide your rate as a beginner",
+            "Quotation template download + customization"
+          ]
+        },
+        {
+          day: "Day 8",
+          title: "Cold Outreach + Social Sales",
+          details: [
+            "Inbound vs outbound — which works faster",
+            "Cold DM framework: scripts for Instagram and Email",
+            "Reaching local businesses in your city for web projects",
+            "The Meta Ads → Developer gap: your biggest client source"
+          ]
+        },
+        {
+          day: "Day 9",
+          title: "How to Close the Deal",
+          details: [
+            "Handling 'I'll think about it' — the exact response",
+            "Price objections: How to hold firm without losing the client",
+            "Closing on Zoom vs WhatsApp vs Chat",
+            "Live roleplay: Pitching and closing live sessions"
+          ]
+        },
+        {
+          day: "Day 10",
+          title: "Payment Systems + Safe Payouts",
+          details: [
+            "Milestone Payments on Freelancer.com walkthrough",
+            "Payoneer, Wise, and UPI setup for Indian students",
+            "The golden rule: Funding milestones before starting work",
+            "How to invoice professionally using free tools"
+          ]
+        }
+      ]
+    },
+    {
+      week: "WEEK 3 — FULL STACK DELIVERY",
+      tagline: "Now you have clients — here's how to deliver like a pro.",
+      badge: "bg-[#00D757]",
+      days: [
+        {
+          day: "Day 11",
+          title: "Full Stack MERN Fundamentals",
+          details: [
+            "Setting up dev environment (VS Code, Node, Git)",
+            "What clients actually ask for (Landing pages, forms, dashboards)",
+            "Matching requirements to the right tech solution",
+            "Pushing first repo to GitHub"
+          ]
+        },
+        {
+          day: "Day 12",
+          title: "Frontend (React + Tailwind)",
+          details: [
+            "Building a landing page in React from scratch — live",
+            "Components, props, and state for freelancers",
+            "Mobile-first responsive design basics",
+            "Tailwind CSS crash course for fast styling"
+          ]
+        },
+        {
+          day: "Day 13",
+          title: "Backend (Node + MongoDB)",
+          details: [
+            "Setting up a Node/Express server from zero",
+            "Building a contact form backend with MongoDB Atlas",
+            "REST API basics for API integration projects",
+            "Deploying on Railway / Render (Free tier)"
+          ]
+        },
+        {
+          day: "Day 14",
+          title: "Live Client Simulation Build",
+          details: [
+            "Real client brief simulation: Scoping and quoting live",
+            "Full project build: Landing page + Form + Database",
+            "Git workflow and client handover process",
+            "Getting testimonials and first client reviews"
+          ]
+        },
+        {
+          day: "Day 15",
+          title: "Meta Ads + Course Wrap-Up",
+          details: [
+            "How to target clients using Meta Ads",
+            "The Meta Ads developer gap explained",
+            "Positioning yourself to ad agencies",
+            "Full course review and 30-day action plan"
+          ]
+        }
+      ]
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-[#0D0D0D] text-white font-sans selection:bg-[#FF6B00] selection:text-white">
       {/* Sticky Mobile CTA */}
@@ -62,11 +246,11 @@ export default function CoursePage() {
         
         <div className="max-w-5xl mx-auto text-center space-y-10 relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-[#FFB800] text-xs font-black uppercase tracking-[0.2em] animate-pulse">
-            🔥 Admissions Open — Limited Batch
+            🔥 Batch starting soon — Limited Seats
           </div>
           
           <h1 className="text-6xl md:text-[110px] font-['Anton'] uppercase leading-[0.9] text-[#FF6B00] tracking-tighter italic">
-            From Zero to ₹10,000 a Month.<br className="hidden md:block" />
+            From Zero to first client.<br className="hidden md:block" />
             <span className="text-white">No Degree. No Office. No Excuse.</span>
           </h1>
 
@@ -124,7 +308,7 @@ export default function CoursePage() {
                 icon: "📉"
               }
             ].map((card, i) => (
-              <Card key={i} className="bg-[#0D0D0D] border-none border-l-4 border-l-[#FF6B00] rounded-none p-10 space-y-6">
+              <Card key={i} className="bg-[#0D0D0D] border-none border-l-4 border-l-[#FF6B00] rounded-none p-10 space-y-6 shadow-xl">
                 <div className="text-5xl">{card.icon}</div>
                 <p className="text-xl text-white/80 font-medium leading-relaxed italic">"{card.text}"</p>
               </Card>
@@ -153,73 +337,44 @@ export default function CoursePage() {
         </div>
       </section>
 
-      {/* SECTION 4 — FULL CURRICULUM */}
+      {/* SECTION 4 — FULL CURRICULUM (EXPANDED) */}
       <section className="bg-[#151515] py-32 px-6">
-        <div className="max-w-4xl mx-auto space-y-20">
+        <div className="max-w-5xl mx-auto space-y-20">
           <h2 className="text-5xl md:text-8xl font-['Anton'] uppercase text-center tracking-tighter">
             What You Will Learn
           </h2>
 
-          <div className="space-y-12">
-            {[
-              {
-                week: "WEEK 1",
-                badgeColor: "bg-[#FF6B00]",
-                title: "Profile Creation & SEO Optimization",
-                items: [
-                  "Fiverr Profile Creation & Optimization (Gigs, Tags, Description)",
-                  "Upwork Setup — Getting your proposals accepted",
-                  "Freelancer.com — The bidding framework for beginners",
-                  "SEO Headline formulas that attract international clients",
-                  "Instagram & Facebook Business presence for developers",
-                  "Full Freelancing Workspace setup & Tools"
-                ]
-              },
-              {
-                week: "WEEK 2",
-                badgeColor: "bg-[#FFB800]",
-                title: "AI & Full Stack Development",
-                items: [
-                  "AI Development — Integrating ChatGPT API into your products",
-                  "System Design & Architecture — Plan like a CTO",
-                  "Advanced React — Building high-fidelity components",
-                  "Backend with Node + Express — Real world API needs",
-                  "MongoDB Database Engineering",
-                  "Live Project Deployment — From Localhost to Client URL",
-                  "Development for ₹0 — Free tools & hosting masterclass"
-                ]
-              },
-              {
-                week: "WEEK 3",
-                badgeColor: "bg-[#00D757]",
-                title: "Client Getting, Sales & Payments",
-                items: [
-                  "Meta Ads for Developers — Finding local clients in AP",
-                  "Freelancer.com Loopholes — Winning without reviews",
-                  "Reading Client Psychology — Identify budget & willingness to pay",
-                  "Cold DM Scripts — What works in 2025",
-                  "Sending Professional Quotations & Invoices",
-                  "How to Close the Deal — Handle price pushback",
-                  "Payment Systems (Payoneer, Wise, UPI) — Never work unpaid",
-                  "The Retention Strategy — Turning one client into many"
-                ]
-              }
-            ].map((week, idx) => (
-              <div key={idx} className="bg-[#0D0D0D] p-10 rounded-[2.5rem] border border-white/5 space-y-8">
-                <div className={`${week.badgeColor} inline-block px-4 py-1 text-black font-black text-sm uppercase tracking-widest rounded-lg`}>
-                  {week.week}
+          <div className="space-y-24">
+            {curriculum.map((week, idx) => (
+              <div key={idx} className="space-y-10">
+                <div className="space-y-4">
+                  <div className={`${week.badge} inline-block px-6 py-2 text-black font-black text-sm uppercase tracking-widest rounded-lg shadow-lg`}>
+                    {week.week}
+                  </div>
+                  <h3 className="text-3xl md:text-5xl font-['Anton'] uppercase text-white tracking-tight">
+                    {week.tagline}
+                  </h3>
                 </div>
-                <h3 className="text-3xl md:text-4xl font-['Anton'] uppercase text-white tracking-tight">
-                  {week.title}
-                </h3>
-                <ul className="space-y-4">
-                  {week.items.map((item, i) => (
-                    <li key={i} className="flex items-start gap-4 text-white/70 font-medium">
-                      <CheckCircle2 className="w-5 h-5 text-[#FF6B00] shrink-0 mt-1" />
-                      <span>{item}</span>
-                    </li>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {week.days.map((day, dIdx) => (
+                    <div key={dIdx} className="bg-[#0D0D0D] p-8 rounded-[2rem] border border-white/5 space-y-6 hover:border-[#FF6B00]/30 transition-all group">
+                      <div className="flex justify-between items-center">
+                        <span className="text-[#FF6B00] font-black uppercase text-xs tracking-widest">{day.day}</span>
+                        <div className="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-[#FF6B00] transition-colors" />
+                      </div>
+                      <h4 className="text-xl font-bold text-white uppercase tracking-tight">{day.title}</h4>
+                      <ul className="space-y-3">
+                        {day.details.map((detail, i) => (
+                          <li key={i} className="flex items-start gap-3 text-sm text-white/60 group-hover:text-white/80 transition-colors">
+                            <div className="w-1.5 h-1.5 rounded-full bg-[#FF6B00]/40 mt-1.5 shrink-0" />
+                            {detail}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             ))}
           </div>
@@ -268,27 +423,31 @@ export default function CoursePage() {
         </div>
       </section>
 
-      {/* SECTION 6 — WHAT'S INCLUDED */}
+      {/* SECTION 6 — MENTORSHIP & WHAT'S INCLUDED */}
       <section className="bg-[#151515] py-32 px-6">
         <div className="max-w-7xl mx-auto space-y-20">
-          <h2 className="text-4xl md:text-7xl font-['Anton'] uppercase text-center tracking-tighter">
-            Everything Inside the Course
-          </h2>
+          <div className="text-center space-y-4">
+             <h2 className="text-4xl md:text-7xl font-['Anton'] uppercase tracking-tighter">
+                6-Month Mentorship
+             </h2>
+             <p className="text-[#FFB800] font-black uppercase tracking-widest">Support that doesn't end with the course.</p>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              "3 Weeks of Live Classes — Mon to Fri",
-              "6 Months of Mentorship & Guidance",
-              "1-on-1 Phone Access — Call Venkatesh Anytime",
-              "5 Hours of Live Profile Creation",
-              "Session Recordings — 6 Months Access",
-              "Real Project Practice — No Theory Only"
+              { title: "Direct Phone Access", desc: "Venkatesh's personal number — call anytime you're stuck.", icon: <Phone className="w-6 h-6" /> },
+              { title: "1-on-1 WhatsApp", desc: "Ask questions, share proposals for review, get instant feedback.", icon: <MessageSquare className="w-6 h-6" /> },
+              { title: "Profile Audits", desc: "Unlimited profile review sessions on request across all platforms.", icon: <Users className="w-6 h-6" /> },
+              { title: "Proposal Reviews", desc: "Send your proposals before submitting — we help you win.", icon: <Star className="w-6 h-6" /> },
+              { title: "Client Leads Sharing", desc: "Active leads shared in the mentorship group for students.", icon: <Zap className="w-6 h-6" /> },
+              { title: "Replay Access", desc: "All 15 sessions available for 6 months replay anytime.", icon: <Monitor className="w-6 h-6" /> }
             ].map((f, i) => (
-              <div key={i} className="flex items-center gap-6 bg-[#0D0D0D] p-8 rounded-2xl border border-white/5 hover:border-[#FF6B00]/30 transition-all group">
-                <div className="w-12 h-12 rounded-full bg-[#FF6B00]/10 flex items-center justify-center text-[#FF6B00] group-hover:scale-110 transition-transform">
-                  <CheckCircle2 className="w-6 h-6" />
+              <div key={i} className="bg-[#0D0D0D] p-10 rounded-[2.5rem] border border-white/5 hover:border-[#FF6B00]/30 transition-all group space-y-4">
+                <div className="w-14 h-14 rounded-2xl bg-[#FF6B00]/10 flex items-center justify-center text-[#FF6B00] group-hover:scale-110 transition-transform">
+                  {f.icon}
                 </div>
-                <span className="text-xl font-black uppercase tracking-tight">{f}</span>
+                <h4 className="text-xl font-black uppercase tracking-tight">{f.title}</h4>
+                <p className="text-sm text-white/50 leading-relaxed font-medium">{f.desc}</p>
               </div>
             ))}
           </div>
@@ -297,7 +456,7 @@ export default function CoursePage() {
 
       {/* SECTION 7 — THE GUARANTEE */}
       <section className="py-32 px-6">
-        <div className="max-w-4xl mx-auto bg-[#FF6B00] p-12 md:p-24 rounded-[3rem] text-center text-black space-y-8 relative overflow-hidden">
+        <div className="max-w-4xl mx-auto bg-[#FF6B00] p-12 md:p-24 rounded-[3rem] text-center text-black space-y-8 relative overflow-hidden shadow-2xl">
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/20 rounded-full blur-3xl -mr-32 -mt-32" />
           
           <h2 className="text-5xl md:text-8xl font-['Anton'] uppercase tracking-tighter leading-[0.9]">
@@ -323,9 +482,9 @@ export default function CoursePage() {
           </div>
 
           <div className="max-w-xl mx-auto">
-            <Card className="bg-[#0D0D0D] border-4 border-[#FF6B00] rounded-[3rem] p-12 space-y-10 relative shadow-2xl">
-              <div className="absolute top-0 right-12 -translate-y-1/2 bg-[#FFB800] text-black px-6 py-2 rounded-full font-black text-xs uppercase tracking-widest">
-                Best Value in India
+            <Card className="bg-[#0D0D0D] border-4 border-[#FF6B00] rounded-[3rem] p-12 space-y-10 relative shadow-2xl overflow-hidden">
+              <div className="absolute top-0 right-12 -translate-y-1/2 bg-[#FFB800] text-black px-6 py-2 rounded-full font-black text-xs uppercase tracking-widest shadow-lg">
+                BEST VALUE IN INDIA
               </div>
 
               <div className="text-center space-y-4">
@@ -351,7 +510,7 @@ export default function CoursePage() {
               </div>
 
               <div className="space-y-6">
-                <Button asChild className="w-full h-20 bg-[#FF6B00] hover:bg-[#FF8533] text-white rounded-2xl font-black text-2xl uppercase tracking-tighter">
+                <Button asChild className="w-full h-20 bg-[#FF6B00] hover:bg-[#FF8533] text-white rounded-2xl font-black text-2xl uppercase tracking-tighter shadow-xl">
                   <Link href="https://wa.me/918466006486">Enroll Now — ₹1,999</Link>
                 </Button>
                 <div className="text-center space-y-2">
@@ -387,7 +546,34 @@ export default function CoursePage() {
         </div>
       </section>
 
-      {/* SECTION 10 — FINAL CTA */}
+      {/* SECTION 10 — SUMMARY & FINAL CTA */}
+      <section className="bg-[#0A0A0A] py-32 px-6">
+         <div className="max-w-4xl mx-auto space-y-16">
+            <div className="space-y-4 text-center">
+               <h2 className="text-4xl md:text-7xl font-['Anton'] uppercase tracking-tighter">Quick Summary</h2>
+               <p className="text-[#FF6B00] font-black uppercase tracking-widest italic">What you walk away with</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+               {[
+                 "Optimized profiles on Freelancer, Upwork, IG, FB",
+                 "The Freelancer.com loophole — your unfair advantage",
+                 "Proposal templates that beat veterans",
+                 "Full MERN stack skills — build and deploy",
+                 "Meta Ads knowledge to find high-paying clients",
+                 "Payment setup — Payoneer, Milestone, UPI, Wise",
+                 "Direct phone access to Venkatesh for 6 months",
+                 "The guarantee — get a client or get a refund"
+               ].map((item, i) => (
+                 <div key={i} className="flex items-center gap-4 bg-white/5 p-6 rounded-2xl border border-white/5">
+                    <CheckCircle2 className="w-5 h-5 text-[#00D757]" />
+                    <span className="text-sm font-black uppercase tracking-tight">{item}</span>
+                 </div>
+               ))}
+            </div>
+         </div>
+      </section>
+
       <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 bg-[#0D0D0D] relative overflow-hidden">
         <div className="absolute inset-0 bg-[#FF6B00]/5 pointer-events-none" />
         <div className="max-w-5xl mx-auto space-y-16 relative z-10">
@@ -403,7 +589,7 @@ export default function CoursePage() {
                <div className="h-2 w-32 bg-[#FF6B00] mx-auto rounded-full" />
             </div>
 
-            <Button asChild className="bg-[#FF6B00] hover:bg-[#FF8533] text-white px-16 h-24 md:h-32 rounded-3xl font-black text-3xl md:text-5xl uppercase tracking-tighter shadow-2xl">
+            <Button asChild className="bg-[#FF6B00] hover:bg-[#FF8533] text-white px-16 h-24 md:h-32 rounded-3xl font-black text-3xl md:text-5xl uppercase tracking-tighter shadow-2xl hover:scale-105 transition-all">
               <Link href="https://wa.me/918466006486">Yes. Enroll Me Now — ₹1,999</Link>
             </Button>
 
