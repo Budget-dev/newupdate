@@ -61,7 +61,7 @@ export default function CoursePage() {
     <div className="flex flex-col min-h-screen bg-[#0D0D0D] text-white selection:bg-[#FF6B00]/30 selection:text-[#FF6B00]">
       <Navbar />
 
-      <main className="flex-1 pb-32 md:pb-0">
+      <main className="flex-1 pb-40 md:pb-0">
         {/* SECTION 1 — HERO */}
         <section className="min-h-screen flex flex-col items-center justify-center pt-32 pb-20 px-6 text-center">
           <div className="max-w-5xl space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-1000">
@@ -418,7 +418,7 @@ export default function CoursePage() {
             <Accordion type="single" collapsible className="w-full space-y-4">
               {[
                 { q: "I have no experience. Can I still join?", a: "Yes. This course starts from zero. No prior freelancing or coding experience needed." },
-                { q: "What if I don't get a client?", a: "Full refund. We mean it. If you follow the process and get zero clients in 6 months, every rupee comes back to you." },
+                { q: "What if I don't get a client?", a: "Full refund if you follow the process and get zero clients in 6 months. We mean it. Every rupee comes back to you." },
                 { q: "Is this recorded or live?", a: "Live sessions, Monday to Friday for 3 weeks. We don't provide recordings to ensure you stay accountable. If you miss a class, you get a Personalized Backup Session." },
                 { q: "Daily calls? Really?", a: "Yes. Every student gets a daily progress check-in call from our team. We ensure you stay on track with your profile setup and bidding." },
                 { q: "What platforms will my profiles be on?", a: "Fiverr, Upwork, Freelancer.com, Instagram, Facebook, and more." },
