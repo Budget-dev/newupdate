@@ -31,7 +31,7 @@ export default function Footer() {
     ],
     legal: [
       { name: "Imprint", href: "#" },
-      { name: "Privacy Policy", href: "#" },
+      { name: "Privacy Policy", href: "/privacy" },
       { name: "Terms", href: "#" },
     ]
   };
@@ -110,11 +110,18 @@ export default function Footer() {
 
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-white/20 text-[10px] font-black uppercase tracking-widest">© {currentYear} BudgetDev Software Solutions</p>
-          <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10">
-            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <p className="text-white/60 text-[10px] font-bold uppercase tracking-wider">
-              Lead: <span className="text-white">Venkatesh Choppa</span>
-            </p>
+          <div className="flex items-center gap-6">
+            <div className="flex gap-4">
+               {footerLinks.legal.map((link) => (
+                 <Link key={link.name} href={link.href} className="text-white/20 text-[10px] font-black uppercase tracking-widest hover:text-white transition-colors">{link.name}</Link>
+               ))}
+            </div>
+            <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10">
+              <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              <p className="text-white/60 text-[10px] font-bold uppercase tracking-wider">
+                Lead: <span className="text-white">Venkatesh Choppa</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
